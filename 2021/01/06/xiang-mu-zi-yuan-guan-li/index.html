@@ -1,0 +1,1584 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <!--  DongLiu  modify 2020.08.15-->
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="项目资源管理, 陌生的小窝">
+    <meta name="baidu-site-verification" content="fmlEuI34ir">
+    <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
+    <meta name="description" content="
+项目资源管理包括识别、获取和管理所需资源以成功完成项目的各个过程，这些过程有助于确保项目经理和项目团队在正确的时间和地点使用正确的资源。
+
+
+项目资源管理过程
+
+
+规划资源管理：定义如何估算、获取、管理和利用实物以及团队项目资源的过程
+
+">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>项目资源管理 | 陌生的小窝</title>
+    <!-- <link rel="icon" type="image/png" href="avatar.jpg"> -->
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/lightgallery/1.6.12/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <style type="text/css">
+        
+            code[class*="language-"],
+            pre[class*="language-"] {
+                white-space: pre !important;
+            }
+
+        
+    </style>
+
+    <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    
+    
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+    <body>
+
+        <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    <span class="logo-span">陌生的小窝</span>
+                </a>
+            </div>
+            
+
+
+<!-- <a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/AV" class="waves-effect waves-light">
+            
+            <i class="fa fa-music"></i>
+            
+            <span>视听</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于我</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul> -->
+
+<!-- 支持二级菜单特性 DongLiu  modify 2020.09.17  -->
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right nav-menu">
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/" class="waves-effect waves-light">
+              
+                <i class="fa fa-home"></i>
+              
+              <span>首页</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/tags" class="waves-effect waves-light">
+              
+                <i class="fa fa-tags"></i>
+              
+              <span>标签</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/categories" class="waves-effect waves-light">
+              
+                <i class="fa fa-bookmark"></i>
+              
+              <span>分类</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/archives" class="waves-effect waves-light">
+              
+                <i class="fa fa-archive"></i>
+              
+              <span>归档</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/AV" class="waves-effect waves-light">
+              
+                <i class="fa fa-music"></i>
+              
+              <span>视听</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/about" class="waves-effect waves-light">
+              
+                <i class="fa fa-user-circle-o"></i>
+              
+              <span>关于我</span>
+            </a>
+
+            
+      </li>
+    
+
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        <div class="logo-name">陌生的小窝</div>
+        <div class="logo-desc">
+            
+            喜悦，是穿过重重荆棘之后的一泓清泉
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/AV" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-music"></i>
+                
+                视听
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于我
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/15806679020/15806679020.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+
+   
+   
+<!-- 支持二级菜单特性 DongLiu  modify 2020.09.17  -->
+<!-- <ul class="menu-list mobile-menu-list">
+    
+        <li class="m-nav-item">
+                
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-home"></i>
+                        
+                        首页
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/tags" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-tags"></i>
+                        
+                        标签
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/categories" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-bookmark"></i>
+                        
+                        分类
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/archives" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-archive"></i>
+                        
+                        归档
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/AV" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-music"></i>
+                        
+                        视听
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/about" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-user-circle-o"></i>
+                        
+                        关于我
+                    </a>
+              
+            </li>
+        
+
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/15806679020/15806679020.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul> -->
+
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/15806679020/15806679020.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+        
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        项目资源管理
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="container content">
+
+    
+    <!--  DongLiu  modify 2020.08.15-->
+<!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                        <a href="/tags/PMP/" target="_blank">
+                            <span class="chip bg-color">PMP</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/PMP/" class="post-category" target="_blank">
+                            PMP
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2021-01-06
+                </div>
+
+                <div class="post-author info-break-policy">
+                    <i class="fa fa-user-o fa-fw"></i>作者:&nbsp;&nbsp;
+                    
+                    DongLiu
+                    
+                </div>
+
+                
+                
+                <div class="info-break-policy">
+                    <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.5k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    8 分
+                </div>
+                
+                
+
+                
+                <span id="busuanzi_container_site_pv" style='display:none'></span>
+                <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                <span id="busuanzi_value_page_pv"></span>
+
+                
+
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <ul>
+<li>项目资源管理包括识别、获取和管理所需资源以成功完成项目的各个过程，这些过程有助于确保项目经理和项目团队在正确的时间和地点使用正确的资源。</li>
+</ul>
+<blockquote>
+<p>项目资源管理过程</p>
+</blockquote>
+<ul>
+<li><p>规划资源管理：定义如何估算、获取、管理和利用实物以及团队项目资源的过程</p>
+</li>
+<li><p>估算活动资源：估算执行项目所需的团队资源，以及材料、设备和用品的类型和数量的过程。</p>
+</li>
+<li><p>获取资源：获取项目所需的团队成员、设施、设备、材料、用品和其他资源的过程</p>
+</li>
+<li><p>建设团队：提高工作能力，促进团队成员互动，改善团队整体氛围，以提高项目绩效的过程</p>
+</li>
+<li><p>管理团队：跟踪团队成员工作表现，提供反馈，解决问题并管理团队变更，以优化项目绩效的过程</p>
+</li>
+<li><p>控制资源：确保按计划为项目分配实物资源，以及根据资源使用计划监督资源实际使用情况，并采取必要纠正措施的过程</p>
+</li>
+<li><p>团队资源管理相对于实物资源管理，对项目经理提出了不同的技能和能力要求，实物资源管理包括设备、材料、设施和基础设施，而团队资源或人员指的是人力资源。项目团队成员可能具备不同的技能，可能是全职或兼职的，了能随项目进展而增加或减少。</p>
+</li>
+</ul>
+<blockquote>
+<p>项目资源管理的核心概念</p>
+</blockquote>
+<ul>
+<li><p>项目团队由承担特定角色和职责的个人组成，他们为实现项目目标而共同努力。项目经理因此应在获取、管理、激励和增强项目团队方面投入适当的努力。尽管项目团队成员被分派了特定的角色和职责，但让他们全员参与项目规划和决策仍是有益的。团队成员参与规划阶段，即可使他们对项目规划工作贡献专业技能，又可以增强他们对项目的责任感</p>
+</li>
+<li><p>项目经理即是项目团队的领导者又是项目团队的管理者。除了项目管理活动，例如启动、规划、执行、监控和关闭各个项目阶段，项目经理还负责建设高效的团队</p>
+</li>
+<li><p>作为领导者，项目经理还负责积极培养团队技能和能力，同时提高并保持团队的满意度和积极性，项目经理还应留意并支持职业与道德行为，确保所有团队成员都遵守这些行为。</p>
+</li>
+</ul>
+<blockquote>
+<p>项目资源管理的趋势和新兴实践</p>
+</blockquote>
+<ul>
+<li>项目管理风格正在从管理项目的命令和控制结构，转向更加协作和支持性的管理方法，通过将决策权分配给团队成员来提高团队能力。此外，现代的项目资源管理方法致力于寻求优化资源使用。</li>
+<li>有关项目资源管理的趋势和新兴实践包括（但不限于）：<ul>
+<li>资源管理方法。过去几年，由于关键资源稀缺，在某些行业中出现了一些普遍的趋势，涌现出很多关于精益管理、准时制生产、Kaizen（持续改善）、全员生产维护（TPM）、约束理论等方法的文献资料。项目经理应确定执行组织是否采用了一种或多种资源管理工具，从而对项目做出相应的调整。</li>
+<li>情商。项目经理应提升内在（如自我管理和自我意识）和外在（如关系管理）能力，从而提高个人情商。研究表明，提高项目团队的情商或情绪能力可提高团队效率，还可以降低团队成员离职率</li>
+<li>自组织团队。随着敏捷方法在IT项目中的应用越来越普遍，自组织团队（无需集中管控运作）越来越多。对于拥有自组织团队的项目，”项目经理”（可能不称为”项目经理”）的角色主要是为团队创造环境、提供支持并信任团队可以完成工作</li>
+<li>虚拟团队/分布式团队。虚拟团队管理有独特的优势，例如能够利用项目团队的专业技术，即使相应的专家不在同一地理区域；将在家办公员工纳入团队；以及将行动不便者或残疾人纳入团队。而虚拟团队管理面临的挑战主要在于沟通，包括可能产生孤立感、团队成员之间难以分享知识和经验、难以跟进进度和生产率，以及可能存在时区和文化差异</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>裁剪考虑因素</p>
+</blockquote>
+<ul>
+<li>由于每个项目都是独特的，项目经理需要裁剪项目资源管理过程。</li>
+<li>裁剪时应考虑的因素包括（但不限于）：<ul>
+<li>多元化</li>
+<li>物流位置</li>
+<li>行业特定资源</li>
+<li>团队成员的获得</li>
+<li>团队管理</li>
+<li>生命周期方法</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>在敏捷或适应型环境中需要考虑的因素</p>
+</blockquote>
+<ul>
+<li>易变性高的项目得益于最大限度地集中和协作团队结构，例如拥有通才的自组织团队。协作旨在提高生产率和促进创新的问题解决方式。协作型团队可以促进不同工作活动的加速整合、改善沟通、增加知识分享，以及提供工作分配的灵活性和其他优势</li>
+</ul>
+<blockquote>
+<p>资源日历、资源直方图、资源分解结构</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>名称</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>资源日历</td>
+<td>资源日历是表明每种具体资源的可用工作日或工作班次的日历<br>日历规定了在项目期间特定的项目资源何时可用、可用多久。可以在活动或项目层面建立资源日历<br>资源日历规定了在项目期间的资源可用性<br>从资源日历中了解项目资源的种类和使用时间<br>资源日历记录每个项目团队成员在项目上的工作时间段。必须很好地了解每个人的可用性和时间限制<br>（包括时区、工作时间、休假时间、当地节假日和在其他项目的工作时间）</td>
+</tr>
+<tr>
+<td>资源直方图</td>
+<td>显示在整个项目期间每周（或每月）需要某人、某部门或整个项目团队的工作小时数<br>可在资源直方图中画一条水平线，代表某特定资源最多可用的小时数<br>如果柱形超过该水平线，就表示需要采用资源优化策略<br>项目管理团队可用资源直方图向所有干系人直观地展示人力资源分配情况</td>
+</tr>
+<tr>
+<td>资源分解结构</td>
+<td>资源分解结构是资源依类别和类型的层级展现<br>资源类别包括人力、材料、设备和用品。资源类型包括技能水平、等级水平或适用于项目的其他类型<br>资源分解结构有助于结合资源使用情况，组织与报告项目的进度数据</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>导入概述</p>
+</blockquote>
+<ul>
+<li>项目资源管理包括识别、获取和管理所需资源以成功完成项目的各个过程，这些过程有助于确保项目经理和项目团队在正确的时间地点使用正确的资源</li>
+<li>资源管理不仅仅局限于团队资源管理，也包括诸如机器设备，材料，工具，基础设施等实物资源管理。团队资源指的是人力资源，项目团队成员可能具备不同的技能，可能是全职或兼职的，可能随项目进展而增加或减少。项目资源管理与项目相关方管理之间有重叠的部分</li>
+</ul>
+<blockquote>
+<p>获取人力资源的主要工具技术</p>
+</blockquote>
+<ul>
+<li><p>决策（用多标准决策分析对潜在资源进行评级打分）</p>
+</li>
+<li><p>人际关系与团队技能：谈判</p>
+</li>
+<li><p>预分派（竞标过程中的承诺，项目章程指定）</p>
+</li>
+<li><p>虚拟团队作用：明确完成项目所需的资源种类、数量和特性。</p>
+</li>
+</ul>
+<blockquote>
+<p>虚拟团队需要关注</p>
+</blockquote>
+<ul>
+<li>项目经理需要特别关注虚拟团队的沟通问题。要花更多时间，来设定明确的期望，促进沟通，制定冲突解决方法，召集人员参与决策，理解文化差异，以及共享成功喜悦</li>
+<li>虚拟团队可能产生孤立感，团队成员难以分享知识经验，难以跟进进度和生产率，以及可能存在时区和文化差异</li>
+</ul>
+<blockquote>
+<p>跨国团队需要关注</p>
+</blockquote>
+<ul>
+<li>对于跨国团队，需要关注团队成员位置、时区和沟通能力，以及文化差异</li>
+</ul>
+<blockquote>
+<p>团队成员的职责和项目经理的职责</p>
+</blockquote>
+<ul>
+<li>在规划资源管理的工具和技术的数据表现中</li>
+<li>有层级型，责任分配矩阵，文本型三种表现方式。其中文本型就详细记录了团队成员的职责，可以在这里找到相应的信息</li>
+</ul>
+<blockquote>
+<p>高效团队的特征</p>
+</blockquote>
+<ul>
+<li>在建设团队中改善团队整体氛围，以提高项目绩效的过程<ul>
+<li>使用开放与有效的沟通</li>
+<li>创造团队建设机遇</li>
+<li>建立团队成员之间的信任</li>
+<li>以建设性的方式管理冲突</li>
+<li>鼓励合作型的问题解决方法</li>
+<li>鼓励合作型的决策方法</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>团队绩效评价和项目绩效评估的区别</p>
+</blockquote>
+<img src="/2021/01/06/xiang-mu-zi-yuan-guan-li/jx.png" title="团队绩效评价和项目绩效评估的区别"><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr />
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+            
+            <div class="reprint1">
+                <p>
+                    <span class="reprint1-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://www.ldclass.club" class="b-link-green">陌生的小窝</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2021/01/06/xiang-mu-zi-yuan-guan-li/" class="b-link-green">项目资源管理</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+    <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    /* valine 评论框增加背景图片 */
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("") 100% 100% no-repeat;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    /* 修复评论第一行位置错位 */
+    .v .vlist .vcard {
+        padding-top: 2.5em !important;
+    }
+
+
+    /* valine 评论框增加背景图片 */
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("http://www.luckyzmj.cn/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments .vwrap {
+        box-sizing: border-box;
+        padding: 0 0 44px;
+        background-color: #F0FFF0;
+    }
+
+    #vcomments .vwrap .vheader {
+        width: 80%;
+        bottom: 0;
+        position: absolute;
+        background: #F0FFF0;
+    }
+
+    #vcomments .vinput {
+        padding: 10px 15px;
+        text-align: center;
+    }
+
+    #vcomments .vwrap .vheader .vinput {
+        border-bottom: 0px
+    }
+
+    #vcomments .vwrap .vedit .vctrl {
+        margin-top: -44px;
+        right: 0;
+        position: absolute;
+        margin-right: -3px;
+    }
+
+    #vcomments .vwrap .vrow {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 20%;
+        padding-top: 0px;
+    }
+
+    #vcomments .vrow {
+        font-size: 0;
+        padding: 0px 0;
+    }
+
+    #vcomments .vicon {
+        margin-right: 15px;
+    }
+
+    #vcomments .vrow .vcol.vcol-30 {
+        display: none
+    }
+
+    #vcomments .vedit .vctrl span.vpreview-btn {
+        display: none
+    }
+
+    #vcomments .vrow .vcol.vcol-70 {
+        width: 100%;
+    }
+
+    #vcomments .vsubmit.vbtn {
+        border-radius: 0;
+        padding: 0;
+        color: #fff;
+        line-height: 44px;
+        width: 100%;
+        border: none;
+        background: #4cbf30;
+    }
+
+    #vcomments .vcards .vcard .vh .vhead .vsys {
+        background: #F0FFF0;
+    }
+
+    #vcomments .vcards .vcard .vh .vmeta .vat {
+        font-size: 12px;
+        display: block;
+        margin-left: 15px;
+        float: right;
+        color: #fff;
+        background-color: #4cbf30;
+        line-height: 20px;
+        padding: 0 6px;
+        border-radius: 3px;
+    }
+
+    @media screen and (max-width: 520px) {
+        #vcomments .vwrap .vheader .vinput {
+            width: 33.33%;
+            padding: 10px 5px;
+        }
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="/libs//libs/jQuery-emoji/dist/css/jquery.emoji.css">
+<script src="/libs//libs/jQuery-emoji/dist/js/jquery.emoji.min.js"></script>
+<script src="/libs//libs/jQuery-emoji/dist/js/emoji.list.js"></script> -->
+<script>
+    // new Valine({
+    //     el: '#vcomments',
+    //     appId: 'yHOHzWVmf4fK0U4skbOUFs4V-gzGzoHsz',
+    //     appKey: '7FQiVW3FVaXIdEc49YyCP4Lq',
+    //     notify: 'false' === 'true',
+    //     verify: 'true' === 'true',
+    //     visitor: 'true' === 'true',
+    //     avatar: 'mm',
+    //     pageSize: '10',
+    //     lang: 'zh-cn',
+    //     placeholder: 'just go go',
+
+    // });
+
+    //     function parse_emoji() {
+    //     jQuery(".vcontent").emojiParse({
+    //       basePath: '/libs/jQuery-emoji/images/emoji',
+    //       icons: emojiLists   // 注：详见 js/emoji.list.js
+    //     });
+    //   }
+
+    //   setTimeout(function() {
+    //     // jQuery emoji 解析
+    //     parse_emoji();
+    //     // jquery emoji 初始化
+    //     jQuery(".veditor").emoji({
+    //       showTab: true,
+    //       animation: 'slide',
+    //       basePath: '/libs/jQuery-emoji/images/emoji',
+    //       icons: emojiLists  // 注：详见 js/emoji.list.js
+    //     });
+    //     jQuery(".vmore").on("click", function() {
+    //       setTimeout(function() {
+    //         parse_emoji();
+    //       }, 500);
+    //     });
+    //   }, 800)
+
+    new Valine
+        ({
+            el: '#vcomments',
+            admin_email: '873791226@qq.com',
+            appId: 'yHOHzWVmf4fK0U4skbOUFs4V-gzGzoHsz',
+            appKey: '7FQiVW3FVaXIdEc49YyCP4Lq',
+            path: window.location.pathname,
+            comment_count: true,
+            notify: 'false' === 'true',
+            verify: 'true' === 'true',
+            visitor: 'true' === 'true',
+            avatar: 'mm',
+            pageSize: '10',
+            lang: 'zh-cn',
+            placeholder: 'just go go',
+        });
+    $(document).ready(function () {
+        $("#vcomments").on('click', 'span.vat', function () {
+            $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap"));
+            $('textarea#veditor').focus();
+        })
+    }) 
+</script>
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<script type="text/javascript">
+    jinrishici.load(function (result) {
+        var jrsc_plac = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author
+        document.getElementById("veditor").setAttribute("placeholder", jrsc_plac);
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2021/01/06/gong-han-she-ji-mo-shi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="工厂设计模式">
+                        
+                        <span class="card-title">工厂设计模式</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            一、工厂设计模式和应用
+介绍
+
+它提供了一种创建对象的最佳方式，我们在创建对象时不会对客户端暴露创建逻辑，并且是通过使用一个共同的接口来指向新创建的对象
+
+
+工厂模式有 3 种不同的实现方式
+
+简单工厂模式：通过传入相关的类型来返回相应的类
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-06
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/设计模式/" class="post-category" target="_blank">
+                                    设计模式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/设计模式/" target="_blank">
+                        <span class="chip bg-color">设计模式</span>
+                    </a>
+                    
+                    <a href="/tags/创建型/" target="_blank">
+                        <span class="chip bg-color">创建型</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2021/01/05/dan-li-she-ji-mo-shi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="单例设计模式">
+                        
+                        <span class="card-title">单例设计模式</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+单例设计模式
+
+
+单例意思只包含一个对象被称为单例的特殊类
+
+通过单例模式可以保证系统中，应用该模式的类只有一个对象实例
+
+使用场景
+
+业务系统全局只需要一个对象实例，比如发号器、redis连接对象等
+Spring IOC容器中的bean
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-05
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/设计模式/" class="post-category" target="_blank">
+                                    设计模式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/设计模式/" target="_blank">
+                        <span class="chip bg-color">设计模式</span>
+                    </a>
+                    
+                    <a href="/tags/创建型/" target="_blank">
+                        <span class="chip bg-color">创建型</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script> 
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script> 
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+ <style type="text/css">
+    code[class*="language-"],
+    pre[class*="language-"] {
+        white-space: pre !important;
+    }
+</style> 
+    
+
+</main>
+
+
+        <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&copy; 2020 DongLiu. 
+
+            <br>
+            <span id="sitetime"></span><span class="my-face">ღゝ◡╹)ノ♡</span>
+            <br>
+
+            
+
+            
+                    
+                        <span id="busuanzi_container_site_pv" style='display:none'></span>
+                        总访问量: <span id="busuanzi_value_site_pv" class="white-color"></span>
+                    
+        
+                    
+                        <span id="busuanzi_container_site_uv" style='display:none'></span>
+                        人次&nbsp; | &nbsp;访客人数: <span id="busuanzi_value_site_uv" class="white-color"></span> 人
+                    
+    
+            
+
+            
+                &nbsp; | &nbsp;字数统计:&nbsp;
+                <span class="white-color">182.4k</span> 字
+            
+
+            
+            <br>
+
+        </div>
+
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/15806679020" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+ 
+    <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=873791226@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+    <a href="http://wpa.qq.com/msgrd?v=3&uin=873791226&site=qq&menu=yes" class="tooltipped" target="_blank" data-tooltip="访问我的QQ空间" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+<!-- 
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+ --></div>
+
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+
+        var t1 = Date.UTC(2020, 08, 10, 00, 00, 00); //北京时间2020-8-1 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes *
+            minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已勉强运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours +
+            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒" ;
+    } /*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+
+
+
+
+
+        <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+        <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+        <script src="https://cdn.bootcss.com/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+        <script src="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.js"></script>
+        <script src="https://cdn.bootcss.com/scrollprogress/3.0.2/scrollProgress.min.js"></script>
+        <script src="https://cdn.bootcss.com/lightgallery/1.6.12/js/lightgallery-all.min.js"></script>
+        <script src="/js/matery.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+        
+            <script src="/libs/others/clicklove.js"></script>
+        
+
+        
+            <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+
+        <!-- DongLiu  add 2020.08.28 -->
+        <!-- <script type="text/javascript">
+            var OriginTitile = document.title,
+                st;
+            document.addEventListener("visibilitychange", function () {
+                document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title =
+                    "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () {
+                        document.title = OriginTitile
+                    }, 3e3))
+            })
+        </script> -->
+
+        <!-- 鼠标点击烟花爆炸效果  DongLiu  add 2020.09.09 -->
+        
+
+        <!-- 背景雪花飘落特效DongLiu  add 2020.09.10 -->
+        
+            <script type="text/javascript">
+            //只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/js/sakura.js"><\/script>');
+            }
+            </script>
+        
+
+        <!-- 鼠标点击文字特效 DongLiu  add 2020.09.10-->
+        
+            <script src="/js/wenzi.js" type="text/javascript"></script>
+        
+
+        <!-- 背景雪花飘落特效 DongLiu  add 2020.09.10 -->
+        
+            <script type="text/javascript">
+                var windowWidth = $(window).width();
+                if (windowWidth > 768) {
+                    document.write('<script type="text/javascript" src="/js/xuehuapiaoluo.js"><\/script>');
+                }
+            </script>
+        
+
+        <!-- 在线聊天工具  DongLiu  add 2020.09.11 -->
+        
+
+        <!-- 背景 canvas-nest  DongLiu   add 2020.09.15-->
+        
+
+        <!-- 背景静止彩带  DongLiu   add 2020.09.15-->
+        
+
+        <!-- 背景动态彩带 DongLiu   add 2020.09.15-->
+        
+
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+</html>
