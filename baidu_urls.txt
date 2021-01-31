@@ -1,4 +1,3 @@
-http://www.ldclass.club/2021/01/31/linux-an-zhuang-oracle/
 http://www.ldclass.club/2021/01/23/zookeeper/
 http://www.ldclass.club/2021/01/21/mysql-shu-ju-bei-fen/
 http://www.ldclass.club/2021/01/21/mysql-yu-ju-you-hua-si-lu/
@@ -78,3 +77,4 @@ http://www.ldclass.club/2020/11/26/vue-kai-fa-huan-jing-da-jian/
 http://www.ldclass.club/2020/11/26/springboot2-x-kua-yu-pei-zhi/
 http://www.ldclass.club/2020/11/25/ssm-zheng-he-guava-huan-cun/
 http://www.ldclass.club/2020/11/25/ssm-zheng-he-mysql-shu-ju-ku-kong-zhi-shi-wu/
+http://www.ldclass.club/2020/11/25/mybatis3-x-jian-dan-sql-cha-xun/
