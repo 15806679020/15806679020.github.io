@@ -685,15 +685,16 @@ systemctl restart firewalld.service<span aria-hidden="true" class="line-numbers-
 <ul>
 <li>重启、关闭、开启、firewalld.serverice 服务</li>
 </ul>
-<pre class="line-numbers language-shell"><code class="language-shell">Service firewalld restart #重启
-Service firewalld start  #开启
-Service firewalld stop  #关闭
+<pre class="line-numbers language-shell"><code class="language-shell">service firewalld restart #重启
+service firewalld start  #开启
+service firewalld stop  #关闭
 
 systemctl status firewalld  #查看状态
 systemctl stop firewalld  #关闭
 systemctl start firewalld #开启
 systemctl restart firewalld #重启
-systemctl disable firewalld  #关闭开机启动<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+systemctl disable firewalld  #关闭开机启动
+systemctl enable firewalld #开启开机启动<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>查看启动状态</li>
 </ul>
@@ -1479,7 +1480,7 @@ vim安装yum -y i
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">184.6k</span> 字
+                <span class="white-color">186.1k</span> 字
             
 
             

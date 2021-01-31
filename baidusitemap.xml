@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.ldclass.club/2021/02/01/docker-an-zhuang-mysql5-7/</loc>
+    <lastmod>2021-01-31</lastmod>
+  </url>  <url>
+    <loc>http://www.ldclass.club/2021/02/01/docker-an-zhuang-oracle11g/</loc>
+    <lastmod>2021-01-31</lastmod>
+  </url>  <url>
+    <loc>http://www.ldclass.club/2020/12/01/centos7-fang-huo-qiang-chang-yong-pei-zhi/</loc>
+    <lastmod>2021-01-31</lastmod>
+  </url>  <url>
     <loc>http://www.ldclass.club/2021/01/31/vmware-xu-ni-ji-she-zhi-jing-tai-ip/</loc>
     <lastmod>2021-01-30</lastmod>
   </url>  <url>
@@ -248,9 +257,6 @@
     <lastmod>2020-12-03</lastmod>
   </url>  <url>
     <loc>http://www.ldclass.club/2020/11/26/gitlab-xi-lie/</loc>
-    <lastmod>2020-12-02</lastmod>
-  </url>  <url>
-    <loc>http://www.ldclass.club/2020/12/01/centos7-fang-huo-qiang-chang-yong-pei-zhi/</loc>
     <lastmod>2020-12-02</lastmod>
   </url>  <url>
     <loc>http://www.ldclass.club/2020/11/26/git-xi-lie/</loc>
