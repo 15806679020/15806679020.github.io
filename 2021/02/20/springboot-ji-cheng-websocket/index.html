@@ -613,154 +613,144 @@ STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协
  */</span>
 <span class="token annotation punctuation">@EnableWebSocketMessageBroker</span>
 <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WebSocketConfig</span> <span class="token keyword">implements</span> <span class="token class-name">WebSocketMessageBrokerConfigurer</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">/**
+     * 注册STOMP端点，发布或者订阅消息的时候需要连接此端点
+     * SpringBoot2.4.0版本之前 使用setAllowedOrigins *表示允许跨域
+     * SpringBoot2.4.0版本之后 使用setAllowedOriginPatterns *表示允许跨域
+     * withSockJS  表示开始SockJS支持
+     * @param registry
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">registerStompEndpoints</span><span class="token punctuation">(</span>StompEndpointRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//广播</span>
+        registry<span class="token punctuation">.</span><span class="token function">addEndpoint</span><span class="token punctuation">(</span><span class="token string">"/webServer"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">setAllowedOriginPatterns</span><span class="token punctuation">(</span><span class="token string">"*"</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">withSockJS</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/**
+     * 配置消息代理,哪种路径的消息会进行代理处理
+     * enableSimpleBroker 服务端推送给客户端的路径前缀
+     * /topic 代表发布广播，即群发
+     * /user 代表点对点，即发指定用户
+     * setApplicationDestinationPrefixes 客户端给服务器端发送消息或订阅主题的一个前缀
+     * 例如客户端发送消息的目的地为/app/sendTest，则对应控制层@MessageMapping(“/sendTest”)
+     * 客户端订阅主题的目的地为/app/subscribeTest，则对应控制层@SubscribeMapping(“/subscribeTest”)
+     * setPathMatcher 可以以“.”来分割路径
+     * setUserDestinationPrefix 点对点使用的订阅前缀（客户端订阅路径上会体现出来），不设置的话，默认也是/user/
+     * @param registry
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configureMessageBroker</span><span class="token punctuation">(</span>MessageBrokerRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        registry<span class="token punctuation">.</span><span class="token function">enableSimpleBroker</span><span class="token punctuation">(</span><span class="token string">"/user"</span><span class="token punctuation">,</span><span class="token string">"/topic"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        registry<span class="token punctuation">.</span><span class="token function">setApplicationDestinationPrefixes</span><span class="token punctuation">(</span><span class="token string">"/app"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        registry<span class="token punctuation">.</span><span class="token function">setUserDestinationPrefix</span><span class="token punctuation">(</span><span class="token string">"/user/"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//registry.setPathMatcher(new AntPathMatcher("."));</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/**
+     * 配置发送与接收的消息参数，可以指定消息字节大小，缓存大小，发送超时时间
+     * @param registry
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configureWebSocketTransport</span><span class="token punctuation">(</span>WebSocketTransportRegistration registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/**
+     * 设置输入消息通道的线程数，默认线程为1，可以自己自定义线程数，最大线程数，线程存活时间
+     * @param registration
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configureClientInboundChannel</span><span class="token punctuation">(</span>ChannelRegistration registration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/**
+     * 设置输出消息通道的线程数，默认线程为1，可以自己自定义线程数，最大线程数，线程存活时间
+     * @param registration
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">configureClientOutboundChannel</span><span class="token punctuation">(</span>ChannelRegistration registration<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/**
+     * 自定义控制器方法的参数类型
+     * @param argumentResolvers
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addArgumentResolvers</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>HandlerMethodArgumentResolver<span class="token operator">></span> argumentResolvers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/**
+     * 自定义控制器方法返回值类型
+     * @param returnValueHandlers
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addReturnValueHandlers</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>HandlerMethodReturnValueHandler<span class="token operator">></span> returnValueHandlers<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/**
+     * 添加自定义的消息转换器
+     * spring 提供多种默认的消息转换器
+     * 返回false,不会添加消息转换器
+     * 返回true，会添加默认的消息转换器
+     * 当然也可以把自己写的消息转换器添加到转换链中
+     * @param messageConverters
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">configureMessageConverters</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>MessageConverter<span class="token operator">></span> messageConverters<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
+<li><p>消息实体类</p>
+<ul>
+<li>任意对象都可以</li>
 </ul>
-<pre><code>  /**
-   * 注册STOMP端点，发布或者订阅消息的时候需要连接此端点
-   * SpringBoot2.4.0版本之前 使用setAllowedOrigins *表示允许跨域
-   * SpringBoot2.4.0版本之后 使用setAllowedOriginPatterns *表示允许跨域
-   * withSockJS  表示开始SockJS支持
-   * @param registry
-   */
-  @Override
-  public void registerStompEndpoints(StompEndpointRegistry registry) {
-      //广播
-      registry.addEndpoint("/webServer")
-              .setAllowedOriginPatterns("*")
-              .withSockJS();
-  }
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+ * 接收消息
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MessageParam</span> <span class="token punctuation">{</span>
 
-  /**
-   * 配置消息代理,哪种路径的消息会进行代理处理
-   * enableSimpleBroker 服务端推送给客户端的路径前缀
-   * /topic 代表发布广播，即群发
-   * /user 代表点对点，即发指定用户
-   * setApplicationDestinationPrefixes 客户端给服务器端发送消息或订阅主题的一个前缀
-   * 例如客户端发送消息的目的地为/app/sendTest，则对应控制层@MessageMapping(“/sendTest”)
-   * 客户端订阅主题的目的地为/app/subscribeTest，则对应控制层@SubscribeMapping(“/subscribeTest”)
-   * setPathMatcher 可以以“.”来分割路径
-   * setUserDestinationPrefix 点对点使用的订阅前缀（客户端订阅路径上会体现出来），不设置的话，默认也是/user/
-   * @param registry
-   */
-  @Override
-  public void configureMessageBroker(MessageBrokerRegistry registry) {
-      registry.enableSimpleBroker("/user","/topic");
-      registry.setApplicationDestinationPrefixes("/app");
-      registry.setUserDestinationPrefix("/user/");
-      //registry.setPathMatcher(new AntPathMatcher("."));
-  }
+    <span class="token keyword">private</span> String content<span class="token punctuation">;</span>
 
-  /**
-   * 配置发送与接收的消息参数，可以指定消息字节大小，缓存大小，发送超时时间
-   * @param registry
-   */
-  @Override
-  public void configureWebSocketTransport(WebSocketTransportRegistration registry) {
+    <span class="token keyword">public</span> String <span class="token function">getContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> content<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-  }
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setContent</span><span class="token punctuation">(</span>String content<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>content <span class="token operator">=</span> content<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-  /**
-   * 设置输入消息通道的线程数，默认线程为1，可以自己自定义线程数，最大线程数，线程存活时间
-   * @param registration
-   */
-  @Override
-  public void configureClientInboundChannel(ChannelRegistration registration) {
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"MessageParam{"</span> <span class="token operator">+</span>
+                <span class="token string">"content='"</span> <span class="token operator">+</span> content <span class="token operator">+</span> <span class="token string">'\''</span> <span class="token operator">+</span>
+                <span class="token string">'}'</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
 
-  }
+<span class="token comment" spellcheck="true">/**
+ * 返回消息
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MessageResult</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token function">MessageResult</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token punctuation">}</span>
 
-  /**
-   * 设置输出消息通道的线程数，默认线程为1，可以自己自定义线程数，最大线程数，线程存活时间
-   * @param registration
-   */
-  @Override
-  public void configureClientOutboundChannel(ChannelRegistration registration) {
+    <span class="token keyword">public</span> <span class="token function">MessageResult</span><span class="token punctuation">(</span>String content<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>content <span class="token operator">=</span> content<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-  }
+    <span class="token keyword">private</span> String content<span class="token punctuation">;</span>
 
-  /**
-   * 自定义控制器方法的参数类型
-   * @param argumentResolvers
-   */
-  @Override
-  public void addArgumentResolvers(List&lt;HandlerMethodArgumentResolver&gt; argumentResolvers) {
+    <span class="token keyword">public</span> String <span class="token function">getContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> content<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
 
-  }
-
-  /**
-   * 自定义控制器方法返回值类型
-   * @param returnValueHandlers
-   */
-  @Override
-  public void addReturnValueHandlers(List&lt;HandlerMethodReturnValueHandler&gt; returnValueHandlers) {
-
-  }
-
-  /**
-   * 添加自定义的消息转换器
-   * spring 提供多种默认的消息转换器
-   * 返回false,不会添加消息转换器
-   * 返回true，会添加默认的消息转换器
-   * 当然也可以把自己写的消息转换器添加到转换链中
-   * @param messageConverters
-   * @return
-   */
-  @Override
-  public boolean configureMessageConverters(List&lt;MessageConverter&gt; messageConverters) {
-      return false;
-  }</code></pre><p>  }</p>
-<pre><code>
-- 消息实体类
-  - 任意对象都可以
-
-  ```java
-  /**
-   * 接收消息
-   */
-  public class MessageParam {
-
-      private String content;
-
-      public String getContent() {
-          return content;
-      }
-
-      public void setContent(String content) {
-          this.content = content;
-      }
-
-      @Override
-      public String toString() {
-          return "MessageParam{" +
-                  "content='" + content + '\'' +
-                  '}';
-      }
-  }
-
-
-  /**
-   * 返回消息
-   */
-  public class MessageResult {
-      public MessageResult() {
-      }
-
-      public MessageResult(String content) {
-          this.content = content;
-      }
-
-      private String content;
-
-      public String getContent() {
-          return content;
-      }
-
-      public void setContent(String content) {
-          this.content = content;
-      }
-  }
-</code></pre><ul>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setContent</span><span class="token punctuation">(</span>String content<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>content <span class="token operator">=</span> content<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p>工具类</p>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
  * JSON 转换
@@ -802,52 +792,59 @@ STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">/**
+ * 日期工具类
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">DateUtil</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> Logger LOGGER <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>DateUtil<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 格式化 LocalDateTime
+     * @return
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> String <span class="token function">dateTimeFormatter</span><span class="token punctuation">(</span>LocalDateTime localDateTime<span class="token punctuation">)</span><span class="token punctuation">{</span>
+        LOGGER<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span>localDateTime<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        DateTimeFormatter dtf <span class="token operator">=</span> DateTimeFormatter<span class="token punctuation">.</span><span class="token function">ofPattern</span><span class="token punctuation">(</span><span class="token string">"yyyy-MM-dd HH:mm:ss"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String ldStr <span class="token operator">=</span> dtf<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>localDateTime<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        LOGGER<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span>ldStr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> ldStr<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/**
+ * 全局工具类
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CommonUtils</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 获得指定数目的UUID
+     *
+     * @param number int 需要获得的UUID数量
+     * @return String[] UUID数组
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">getUUID</span><span class="token punctuation">(</span><span class="token keyword">int</span> number<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>number <span class="token operator">&lt;</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> retArray <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span>number<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> number<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            retArray<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">getUUID</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> retArray<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 获得一个UUID
+     *
+     * @return String UUID
+     */</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> String <span class="token function">getUUID</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String uuid <span class="token operator">=</span> UUID<span class="token punctuation">.</span><span class="token function">randomUUID</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//去掉“-”符号</span>
+        <span class="token keyword">return</span> uuid<span class="token punctuation">.</span><span class="token function">replaceAll</span><span class="token punctuation">(</span><span class="token string">"-"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
-</ul>
-<p>  /**</p>
-<ul>
-<li><p>日期工具类</p>
-</li>
-<li><p>/<br>public final class DateUtil {<br>  private static final Logger LOGGER = LoggerFactory.getLogger(DateUtil.class);</p>
-<p>  /**</p>
-<ul>
-<li>格式化 LocalDateTime</li>
-<li>@return</li>
-<li>/<br>public static String dateTimeFormatter(LocalDateTime localDateTime){<br>  LOGGER.info(localDateTime.toString());<br>  DateTimeFormatter dtf = DateTimeFormatter.ofPattern(“yyyy-MM-dd HH:mm:ss”);<br>  String ldStr = dtf.format(localDateTime);<br>  LOGGER.info(ldStr);<br>  return ldStr;<br>}<br>}</li>
-</ul>
-</li>
-</ul>
-<p>  /**</p>
-<ul>
-<li><p>全局工具类</p>
-</li>
-<li><p>/<br>public class CommonUtils {</p>
-<p>  /**</p>
-<ul>
-<li><p>获得指定数目的UUID</p>
-</li>
-<li></li>
-<li><p>@param number int 需要获得的UUID数量</p>
-</li>
-<li><p>@return String[] UUID数组</p>
-</li>
-<li><p>/<br>public static String[] getUUID(int number) {<br>  if (number &lt; 1) {</p>
-<pre><code>  return null;</code></pre><p>  }<br>  String[] retArray = new String[number];<br>  for (int i = 0; i &lt; number; i++) {</p>
-<pre><code>  retArray[i] = getUUID();</code></pre><p>  }<br>  return retArray;<br>}</p>
-<p>/**</p>
-</li>
-<li><p>获得一个UUID</p>
-</li>
-<li></li>
-<li><p>@return String UUID</p>
-</li>
-<li><p>/<br>public static String getUUID() {<br>  String uuid = UUID.randomUUID().toString();<br>  //去掉“-”符号<br>  return uuid.replaceAll(“-“, “”);<br>}<br>}</p>
-<pre><code></code></pre></li>
-</ul>
-</li>
-</ul>
-<ul>
 <li><p>webSocket控制层</p>
 <pre class="line-numbers language-java"><code class="language-java">
 <span class="token annotation punctuation">@Controller</span>
@@ -857,7 +854,6 @@ STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协
      */</span>
     <span class="token annotation punctuation">@Autowired</span>
     <span class="token keyword">public</span> SimpMessagingTemplate template<span class="token punctuation">;</span>
-
     <span class="token comment" spellcheck="true">/**
      * 广播推送
      * @MessageMapping 接收客户端消息
@@ -872,7 +868,6 @@ STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协
         String result <span class="token operator">=</span> JsonUtil<span class="token punctuation">.</span><span class="token function">parseObjToJson</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MessageResult</span><span class="token punctuation">(</span>DateUtil<span class="token punctuation">.</span><span class="token function">dateTimeFormatter</span><span class="token punctuation">(</span>LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" 接收到:"</span> <span class="token operator">+</span> message<span class="token punctuation">.</span><span class="token function">getContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> result<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-
     <span class="token comment" spellcheck="true">/**
      * 精准推送，点对点订阅
      * @MessageMapping接收客户端消息
@@ -890,7 +885,6 @@ STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协
         String result <span class="token operator">=</span> JsonUtil<span class="token punctuation">.</span><span class="token function">parseObjToJson</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MessageResult</span><span class="token punctuation">(</span>DateUtil<span class="token punctuation">.</span><span class="token function">dateTimeFormatter</span><span class="token punctuation">(</span>LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" 接收到:"</span> <span class="token operator">+</span> message<span class="token punctuation">.</span><span class="token function">getContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> result<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-
     <span class="token comment" spellcheck="true">/**
      * 点对点订阅
      * 客户端订阅“/app/hello3”,服务器直接返回消息
@@ -901,138 +895,126 @@ STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协
         String result <span class="token operator">=</span> JsonUtil<span class="token punctuation">.</span><span class="token function">parseObjToJson</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MessageResult</span><span class="token punctuation">(</span>DateUtil<span class="token punctuation">.</span><span class="token function">dateTimeFormatter</span><span class="token punctuation">(</span>LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">+</span> <span class="token string">"客户端订阅了/app/hello3"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token keyword">return</span> result<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/**
+     * 服务器主动精准推送，根据标识 “content” 向订阅了 /user/{{content}}/messages 路径的客户端推送消息
+     * content可以设置为用户标识
+     *
+     * @param message
+     */</span>
+    <span class="token annotation punctuation">@MessageMapping</span><span class="token punctuation">(</span><span class="token string">"/hello4"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test4</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> MessageParam message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String content <span class="token operator">=</span> message<span class="token punctuation">.</span><span class="token function">getContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String result <span class="token operator">=</span> JsonUtil<span class="token punctuation">.</span><span class="token function">parseObjToJson</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MessageResult</span><span class="token punctuation">(</span>DateUtil<span class="token punctuation">.</span><span class="token function">dateTimeFormatter</span><span class="token punctuation">(</span>LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">+</span> <span class="token string">" 服务端发送消息给:"</span> <span class="token operator">+</span> content<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        template<span class="token punctuation">.</span><span class="token function">convertAndSendToUser</span><span class="token punctuation">(</span>content<span class="token punctuation">,</span> <span class="token string">"/messages"</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">/**
+     * 服务器主动广播推送，向所有订阅了“/messages”路径的客户端发送消息
+     *
+     * @param message
+     */</span>
+    <span class="token annotation punctuation">@MessageMapping</span><span class="token punctuation">(</span><span class="token string">"/hello5"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test5</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> MessageParam message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        String content <span class="token operator">=</span> message<span class="token punctuation">.</span><span class="token function">getContent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String result <span class="token operator">=</span> JsonUtil<span class="token punctuation">.</span><span class="token function">parseObjToJson</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">MessageResult</span><span class="token punctuation">(</span>DateUtil<span class="token punctuation">.</span><span class="token function">dateTimeFormatter</span><span class="token punctuation">(</span>LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">" "</span><span class="token operator">+</span>content<span class="token operator">+</span><span class="token string">" 上线了"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        template<span class="token punctuation">.</span><span class="token function">convertAndSend</span><span class="token punctuation">(</span><span class="token string">"/messages"</span><span class="token punctuation">,</span> result<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>websocket测试页</p>
+<ul>
+<li>引入<code>jquery.js、sockjs.js、stomp.js</code></li>
+</ul>
+<pre class="line-numbers language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>Content-Type<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/html; charset<span class="token punctuation">=</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>websocket测试页<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>jquery.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>index.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span> <span class="token attr-name">onload</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>disconnect()<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">></span></span>用户:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>username<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>connect<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>connect();<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>连接<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>disconnect<span class="token punctuation">"</span></span> <span class="token attr-name">disabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>disabled<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>disconnect();<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>断开<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>conversationDiv<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">margin-top</span><span class="token punctuation">:</span> <span class="token number">20</span>px</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">></span></span>发送消息:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>send_message<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>send<span class="token punctuation">"</span></span> <span class="token attr-name">onclick</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>send();<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>发送<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">margin-top</span><span class="token punctuation">:</span> <span class="token number">20</span>px</span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">></span></span>返回消息:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>back_message<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">height</span><span class="token punctuation">:</span> <span class="token number">100</span>px<span class="token punctuation">;</span><span class="token property">width</span><span class="token punctuation">:</span><span class="token number">600</span>px</span><span class="token punctuation">"</span></span><span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> stompClient <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">function</span> <span class="token function">setConnected</span><span class="token punctuation">(</span>connected<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'connect'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>disabled <span class="token operator">=</span> connected<span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'disconnect'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>disabled <span class="token operator">=</span> <span class="token operator">!</span>connected<span class="token punctuation">;</span>
+    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'conversationDiv'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>visibility <span class="token operator">=</span> connected <span class="token operator">?</span> <span class="token string">'visible'</span> <span class="token punctuation">:</span> <span class="token string">'hidden'</span><span class="token punctuation">;</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#response'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">function</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 连接 SockJs 的 endpoint 名称为 "/webServer"</span>
+    <span class="token comment" spellcheck="true">// http://localhost:8081/webServer</span>
+    <span class="token keyword">var</span> socket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SockJS</span><span class="token punctuation">(</span><span class="token string">'http://127.0.0.1:8081/webServer'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 使用 STOMP 子协议的 WebSocket 客户端</span>
+    stompClient <span class="token operator">=</span> Stomp<span class="token punctuation">.</span><span class="token function">over</span><span class="token punctuation">(</span>socket<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    stompClient<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>frame<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token function">setConnected</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Connected: '</span> <span class="token operator">+</span> frame<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//客户端订阅“/topic/messages”，对应@SendTo("/topic/messages")</span>
+        <span class="token comment" spellcheck="true">//或对应template.convertAndSend("/topic/messages", result);</span>
+        stompClient<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token string">'/topic/messages'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>respnose<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//展示返回的信息，只有对应标识的客户端可以接收到服务端返回的信息</span>
+            <span class="token function">showResponse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>respnose<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//客户端订阅“/user/topic/messages”</span>
+        <span class="token comment" spellcheck="true">//对应@SendToUser("/topic/messages")</span>
+        stompClient<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token string">'/user/topic/messages'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>respnose<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//展示返回的信息，只有对应标识的客户端可以接收到服务端返回的信息</span>
+            <span class="token function">showResponse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>respnose<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//客户端订阅了”/app/hello3“</span>
+        <span class="token comment" spellcheck="true">//对应@SubscribeMapping("/hello3")</span>
+        stompClient<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token string">'/app/hello3'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>respnose<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//展示返回的信息，只有对应标识的客户端可以接收到服务端返回的信息</span>
+            <span class="token function">showResponse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>respnose<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">// 客户端订阅“/user/'+$('#username').val()+'/messages”,</span>
+        <span class="token comment" spellcheck="true">// 对应template.convertAndSendToUser("username", "/messages", result);</span>
+        stompClient<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token string">'/user/'</span><span class="token operator">+</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#username'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'/messages'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>respnose<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//展示返回的信息，只有对应标识的客户端可以接收到服务端返回的信息</span>
+            <span class="token function">showResponse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>respnose<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
-<pre><code>  /**
-   * 服务器主动精准推送，根据标识 “content” 向订阅了 /user/{{content}}/messages 路径的客户端推送消息
-   * content可以设置为用户标识
-   *
-   * @param message
-   */
-  @MessageMapping("/hello4")
-  public void test4(@RequestBody MessageParam message) {
-      String content = message.getContent();
-      String result = JsonUtil.parseObjToJson(new MessageResult(DateUtil.dateTimeFormatter(LocalDateTime.now())+ " 服务端发送消息给:" + content));
-      template.convertAndSendToUser(content, "/messages", result);
-  }
-
-  /**
-   * 服务器主动广播推送，向所有订阅了“/messages”路径的客户端发送消息
-   *
-   * @param message
-   */
-  @MessageMapping("/hello5")
-  public void test5(@RequestBody MessageParam message) {
-      String content = message.getContent();
-      String result = JsonUtil.parseObjToJson(new MessageResult(DateUtil.dateTimeFormatter(LocalDateTime.now())+" "+content+" 上线了"));
-      template.convertAndSend("/messages", result);
-  }</code></pre><p>  }</p>
+<p>  function disconnect() {<br>      // 断开连接<br>      if (stompClient != null) {<br>          stompClient.disconnect();<br>      }<br>      setConnected(false);<br>      console.log(“Disconnected”);<br>  }</p>
+<p>  function send() {<br>      // 通过 stompClient.send 向 /hello （服务端）发送信息，对应控制器 @MessageMapping 中的定义<br>      stompClient.send(“/app/hello5”, {}, JSON.stringify({content: $(‘#username’).val()}));<br>  }</p>
+<p>  function showResponse(message) {<br>      // 接收返回的消息<br>      $(“#back_message”).val(message.content);<br>  }</p>
 <pre><code>
-- websocket测试页
-
-  - 引入`jquery.js、sockjs.js、stomp.js`
-
-  ```html
-  &lt;!DOCTYPE html&gt;
-  &lt;html&gt;
-  &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/&gt;
-  &lt;head&gt;
-      &lt;title&gt;websocket测试页&lt;/title&gt;
-      &lt;script src="jquery.min.js"&gt;&lt;/script&gt;
-      &lt;script src="https://cdn.bootcss.com/sockjs-client/1.1.4/sockjs.min.js"&gt;&lt;/script&gt;
-      &lt;script src="https://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"&gt;&lt;/script&gt;
-      &lt;script src="index.js"&gt;&lt;/script&gt;
-  &lt;/head&gt;
-  &lt;body onload="disconnect()"&gt;
-  &lt;div&gt;
-      &lt;div&gt;
-          &lt;label&gt;用户:&lt;/label&gt;&lt;input type="text" id="username"/&gt;
-          &lt;button id="connect" onclick="connect();"&gt;连接&lt;/button&gt;
-          &lt;button id="disconnect" disabled="disabled" onclick="disconnect();"&gt;断开&lt;/button&gt;
-      &lt;/div&gt;
-      &lt;div id="conversationDiv" style="margin-top: 20px"&gt;
-          &lt;div&gt;
-              &lt;label&gt;发送消息:&lt;/label&gt;&lt;input type="text" id="send_message"/&gt;
-              &lt;button id="send" onclick="send();"&gt;发送&lt;/button&gt;
-          &lt;/div&gt;
-          &lt;div style="margin-top: 20px"&gt;
-              &lt;label&gt;返回消息:&lt;/label&gt;
-              &lt;input type="text" id="back_message" style="height: 100px;width:600px"/&gt;
-          &lt;/div&gt;
-      &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;/body&gt;
-  &lt;/html&gt;</code></pre><pre class="line-numbers language-javascript"><code class="language-javascript">  <span class="token keyword">var</span> stompClient <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-
-  <span class="token keyword">function</span> <span class="token function">setConnected</span><span class="token punctuation">(</span>connected<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'connect'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>disabled <span class="token operator">=</span> connected<span class="token punctuation">;</span>
-      document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'disconnect'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>disabled <span class="token operator">=</span> <span class="token operator">!</span>connected<span class="token punctuation">;</span>
-      document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'conversationDiv'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>visibility <span class="token operator">=</span> connected <span class="token operator">?</span> <span class="token string">'visible'</span> <span class="token punctuation">:</span> <span class="token string">'hidden'</span><span class="token punctuation">;</span>
-      <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#response'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">function</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment" spellcheck="true">// 连接 SockJs 的 endpoint 名称为 "/webServer"</span>
-      <span class="token comment" spellcheck="true">// http://localhost:8081/webServer</span>
-      <span class="token keyword">var</span> socket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SockJS</span><span class="token punctuation">(</span><span class="token string">'http://127.0.0.1:8081/webServer'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token comment" spellcheck="true">// 使用 STOMP 子协议的 WebSocket 客户端</span>
-      stompClient <span class="token operator">=</span> Stomp<span class="token punctuation">.</span><span class="token function">over</span><span class="token punctuation">(</span>socket<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      stompClient<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>frame<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          <span class="token function">setConnected</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-          console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Connected: '</span> <span class="token operator">+</span> frame<span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token comment" spellcheck="true">//客户端订阅“/topic/messages”，对应@SendTo("/topic/messages")</span>
-          <span class="token comment" spellcheck="true">//或对应template.convertAndSend("/topic/messages", result);</span>
-          stompClient<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token string">'/topic/messages'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>respnose<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-              <span class="token comment" spellcheck="true">//展示返回的信息，只有对应标识的客户端可以接收到服务端返回的信息</span>
-              <span class="token function">showResponse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>respnose<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-          <span class="token comment" spellcheck="true">//客户端订阅“/user/topic/messages”</span>
-          <span class="token comment" spellcheck="true">//对应@SendToUser("/topic/messages")</span>
-          stompClient<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token string">'/user/topic/messages'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>respnose<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-              <span class="token comment" spellcheck="true">//展示返回的信息，只有对应标识的客户端可以接收到服务端返回的信息</span>
-              <span class="token function">showResponse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>respnose<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-          <span class="token comment" spellcheck="true">//客户端订阅了”/app/hello3“</span>
-          <span class="token comment" spellcheck="true">//对应@SubscribeMapping("/hello3")</span>
-          stompClient<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token string">'/app/hello3'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>respnose<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-              <span class="token comment" spellcheck="true">//展示返回的信息，只有对应标识的客户端可以接收到服务端返回的信息</span>
-              <span class="token function">showResponse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>respnose<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-          <span class="token comment" spellcheck="true">// 客户端订阅“/user/'+$('#username').val()+'/messages”,</span>
-          <span class="token comment" spellcheck="true">// 对应template.convertAndSendToUser("username", "/messages", result);</span>
-          stompClient<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token string">'/user/'</span><span class="token operator">+</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#username'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'/messages'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>respnose<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-              <span class="token comment" spellcheck="true">//展示返回的信息，只有对应标识的客户端可以接收到服务端返回的信息</span>
-              <span class="token function">showResponse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>respnose<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-          <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-      <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
 
 
-  <span class="token keyword">function</span> <span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment" spellcheck="true">// 断开连接</span>
-      <span class="token keyword">if</span> <span class="token punctuation">(</span>stompClient <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-          stompClient<span class="token punctuation">.</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">}</span>
-      <span class="token function">setConnected</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Disconnected"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
 
-  <span class="token keyword">function</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment" spellcheck="true">// 通过 stompClient.send 向 /hello （服务端）发送信息，对应控制器 @MessageMapping 中的定义</span>
-      stompClient<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"/app/hello5"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>content<span class="token punctuation">:</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#username'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span>
-
-  <span class="token keyword">function</span> <span class="token function">showResponse</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-      <span class="token comment" spellcheck="true">// 接收返回的消息</span>
-      <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#back_message"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<script>
+</code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1718,7 +1700,7 @@ docker run --
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">188.6k</span> 字
+                <span class="white-color">188.5k</span> 字
             
 
             
