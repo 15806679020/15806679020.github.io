@@ -956,14 +956,12 @@ STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-javascript"><code class="language-javascript"><span class="token keyword">var</span> stompClient <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
-
 <span class="token keyword">function</span> <span class="token function">setConnected</span><span class="token punctuation">(</span>connected<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'connect'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>disabled <span class="token operator">=</span> connected<span class="token punctuation">;</span>
     document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'disconnect'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>disabled <span class="token operator">=</span> <span class="token operator">!</span>connected<span class="token punctuation">;</span>
     document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'conversationDiv'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>style<span class="token punctuation">.</span>visibility <span class="token operator">=</span> connected <span class="token operator">?</span> <span class="token string">'visible'</span> <span class="token punctuation">:</span> <span class="token string">'hidden'</span><span class="token punctuation">;</span>
     <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#response'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">html</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-
 <span class="token keyword">function</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">// 连接 SockJs 的 endpoint 名称为 "/webServer"</span>
     <span class="token comment" spellcheck="true">// http://localhost:8081/webServer</span>
@@ -979,42 +977,44 @@ STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协
             <span class="token comment" spellcheck="true">//展示返回的信息，只有对应标识的客户端可以接收到服务端返回的信息</span>
             <span class="token function">showResponse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>respnose<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
         <span class="token comment" spellcheck="true">//客户端订阅“/user/topic/messages”</span>
         <span class="token comment" spellcheck="true">//对应@SendToUser("/topic/messages")</span>
         stompClient<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token string">'/user/topic/messages'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>respnose<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token comment" spellcheck="true">//展示返回的信息，只有对应标识的客户端可以接收到服务端返回的信息</span>
             <span class="token function">showResponse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>respnose<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token comment" spellcheck="true">//客户端订阅了”/app/hello3“</span>
         <span class="token comment" spellcheck="true">//对应@SubscribeMapping("/hello3")</span>
         stompClient<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token string">'/app/hello3'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>respnose<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token comment" spellcheck="true">//展示返回的信息，只有对应标识的客户端可以接收到服务端返回的信息</span>
             <span class="token function">showResponse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>respnose<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
         <span class="token comment" spellcheck="true">// 客户端订阅“/user/'+$('#username').val()+'/messages”,</span>
         <span class="token comment" spellcheck="true">// 对应template.convertAndSendToUser("username", "/messages", result);</span>
         stompClient<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token string">'/user/'</span><span class="token operator">+</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#username'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token string">'/messages'</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span>respnose<span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token comment" spellcheck="true">//展示返回的信息，只有对应标识的客户端可以接收到服务端返回的信息</span>
             <span class="token function">showResponse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>respnose<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
     <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token comment" spellcheck="true">// 断开连接</span>
+<span class="token keyword">function</span> <span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>stompClient <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        stompClient<span class="token punctuation">.</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token function">setConnected</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Disconnected"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">send</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 通过 stompClient.send 向 /hello （服务端）发送信息，对应控制器 @MessageMapping 中的定义</span>
+    stompClient<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"/app/hello5"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span><span class="token punctuation">{</span>content<span class="token punctuation">:</span> <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'#username'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">showResponse</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 接收返回的消息</span>
+    <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#back_message"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">val</span><span class="token punctuation">(</span>message<span class="token punctuation">.</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
-<p>  function disconnect() {<br>      // 断开连接<br>      if (stompClient != null) {<br>          stompClient.disconnect();<br>      }<br>      setConnected(false);<br>      console.log(“Disconnected”);<br>  }</p>
-<p>  function send() {<br>      // 通过 stompClient.send 向 /hello （服务端）发送信息，对应控制器 @MessageMapping 中的定义<br>      stompClient.send(“/app/hello5”, {}, JSON.stringify({content: $(‘#username’).val()}));<br>  }</p>
-<p>  function showResponse(message) {<br>      // 接收返回的消息<br>      $(“#back_message”).val(message.content);<br>  }</p>
-<pre><code>
-
-
-
-</code></pre><script>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
