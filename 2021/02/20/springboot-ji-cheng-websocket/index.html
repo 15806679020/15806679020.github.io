@@ -601,7 +601,7 @@ STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li>创建<code>WebSocketStompConfig</code><ul>
-<li>java方式配置websocket stomp使用注解@EnableWebSocketMessageBroker继承WebSocketMessageBrokerConfigurer类</li>
+<li>java方式配置websocket stomp使用注解@EnableWebSocketMessageBroker，实现WebSocketMessageBrokerConfigurer</li>
 <li>@EnableWebSocketMessageBroker注解。这表明这个配置类不仅配置了WebSocket，还配置了基于代理的STOMP消息。它重载了registerStompEndpoints()方法，将“/webServer”注册为STOMP端点。这个路径与之前发送和接收消息的目的地路径有所不同。这是一个端点，客户端在订阅或发布消息到目的地路径前，要连接该端点。将其目的地前缀设置为“/topic”和“/user”。这样的话，Spring就能知道所有目的地前缀为“/topic”或“/user”的消息都会发送到STOMP代理中。根据你所选择的STOMP代理不同，目的地的可选前缀也会有所限制。</li>
 </ul>
 </li>
