@@ -11,19 +11,16 @@
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
     <meta name="description" content="
 docker查找mysql5.7镜像
-
 docker search mysql5.7
 
 
 拉取MySQL镜像(:5.7 表示5.7版本)
-
 docker pull mysql:5.7
 
 
-运行MySQL容器
+创建挂载目录
 
-
-docker run --">
+mkdir -p /home/app/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -557,14 +554,14 @@ docker run --">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    699
+                    926
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
                 
@@ -582,21 +579,61 @@ docker run --">
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <ul>
-<li><p>docker查找mysql5.7镜像</p>
-<ul>
+<li>docker查找mysql5.7镜像<ul>
 <li><code>docker search mysql5.7</code></li>
 </ul>
 </li>
-<li><p>拉取MySQL镜像(:5.7 表示5.7版本)</p>
-<ul>
+<li>拉取MySQL镜像(:5.7 表示5.7版本)<ul>
 <li><code>docker pull mysql:5.7</code></li>
 </ul>
 </li>
-<li><p>运行MySQL容器</p>
-</li>
+<li>创建挂载目录</li>
 </ul>
-<pre class="line-numbers language-shell"><code class="language-shell">docker run --restart=always -d -p 13306:3306 --privileged=true -v /docker/mysql/conf/my.cnf:/etc/my.cnf -v /docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --name mysql mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci
+<pre class="line-numbers language-shell"><code class="language-shell">mkdir -p /home/app/mysql/conf
+mkdir -p /home/app/mysql/data
+mkdir -p /home/app/mysql/logs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>创建my.cnf</li>
+</ul>
+<pre class="line-numbers language-shell"><code class="language-shell">vi /home/app/mysql/conf/my.cnf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>在my.cnf中写入</li>
+</ul>
+<pre class="line-numbers language-shell"><code class="language-shell"># Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.
+#
+# This program is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; version 2 of the License.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA
 
+#
+# The MySQL  Server configuration file.
+#
+# For explanations see
+# http://dev.mysql.com/doc/mysql/en/server-system-variables.html
+
+[mysqld]
+pid-file        = /var/run/mysqld/mysqld.pid
+socket          = /var/run/mysqld/mysqld.sock
+datadir         = /var/lib/mysql
+secure-file-priv= NULL
+# Disabling symbolic-links is recommended to prevent assorted security risks
+symbolic-links=0
+
+# Custom config should go here
+!includedir /etc/mysql/conf.d/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>运行MySQL容器</li>
+</ul>
+<pre class="line-numbers language-shell"><code class="language-shell">docker run --restart=always -d --privileged=true -v /home/app/mysql/conf/my.cnf:/etc/mysql/my.cnf -v /home/app/mysql/logs:/logs -v /home/app/mysql/data/mysql:/var/lib/mysql  -p 13306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=Root@123 mysql:5.7
 
 #参数说明
 run　run 是运行一个容器
@@ -609,7 +646,7 @@ run　run 是运行一个容器
 -e MYSQL_ROOT_PASSWORD=123456　　　设置MySQL数据库root用户的密码
 --name mysql　　　　 设值容器名称为mysql
 mysql:5.7　　表示从docker镜像mysql:5.7中启动一个容器
---character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci 设值数据库默认编码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+--character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci 设值数据库默认编码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
 <li><p>新建MySQL用户</p>
 <ul>
@@ -1346,7 +1383,7 @@ wget http://mirrors.aliyun.com/docker-ce/l
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">190k</span> 字
+                <span class="white-color">190.8k</span> 字
             
 
             

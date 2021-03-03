@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>mysql的sql_mode设置</title>
+      <link href="2021/03/03/mysql-de-sql-mode-she-zhi/"/>
+      <url>2021/03/03/mysql-de-sql-mode-she-zhi/</url>
+      
+        <content type="html"><![CDATA[<ul><li>查询sql_mode</li></ul><pre class="line-numbers language-mysql"><code class="language-mysql">select @@GLOBAL.sql_mode或select @@SESSION.sql_mode<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ul><li>设置sql_mode<ul><li>通过命令设置</li><li>在配置文件中设置<ul><li>在/etc/my.cnf的[mysqld]下设置</li></ul></li></ul></li></ul><pre class="line-numbers language-mysql"><code class="language-mysql">SET GLOBAL sql_mode = 'modes...';或SET SESSION sql_mode = 'modes...';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-shell"><code class="language-shell">[mysqld]sql_mode=STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li>sql_mode常用值</li></ul><pre class="line-numbers language-shell"><code class="language-shell">ONLY_FULL_GROUP_BY对于GROUP BY聚合操作，如果在SELECT中的列，没有在GROUP BY中出现，那么这个SQL是不合法的，因为列不在GROUP BY从句中NO_AUTO_VALUE_ON_ZERO该值影响自增长列的插入。默认设置下，插入0或NULL代表生成下一个自增长值。如果用户希望插入的值为0，而该列又是自增长的，那么这个选项就有用了。STRICT_TRANS_TABLES在该模式下，如果一个值不能插入到一个事务中，则中断当前的操作，对非事务表不做限制NO_ZERO_IN_DATE在严格模式下，不允许日期和月份为零NO_ZERO_DATE设置该值，mysql数据库不允许插入零日期，插入零日期会抛出错误而不是警告ERROR_FOR_DIVISION_BY_ZERO在insert或update过程中，如果数据被零除，则产生错误而非警告。如果未给出该模式，那么数据被零除时Mysql返回NULLNO_AUTO_CREATE_USER禁止GRANT创建密码为空的用户NO_ENGINE_SUBSTITUTION如果需要的存储引擎被禁用或未编译，那么抛出错误。不设置此值时，用默认的存储引擎替代，并抛出一个异常PIPES_AS_CONCAT将"||"视为字符串的连接操作符而非或运算符，这和Oracle数据库是一样是，也和字符串的拼接函数Concat想类似ANSI_QUOTES启用ANSI_QUOTES后，不能用双引号来引用字符串，因为它被解释为识别符ORACLE的sql_mode设置等同：PIPES_AS_CONCAT, ANSI_QUOTES, IGNORE_SPACE, NO_KEY_OPTIONS, NO_TABLE_OPTIONS, NO_FIELD_OPTIONS, NO_AUTO_CREATE_USER.如果使用mysql，为了继续保留大家使用oracle的习惯，可以对mysql的sql_mode设置如下：在my.cnf添加如下配置[mysqld]sql_mode='ONLY_FULL_GROUP_BY,NO_AUTO_VALUE_ON_ZERO,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION,PIPES_AS_CONCAT,ANSI_QUOTES'<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> MYSQL </category>
+          
+          <category> sql_Mode </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MYSQL </tag>
+            
+            <tag> sql_Mode </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>互动答题人人对战实现方案</title>
       <link href="2021/03/03/hu-dong-da-ti-ren-ren-dui-zhan-shi-xian-fang-an/"/>
       <url>2021/03/03/hu-dong-da-ti-ren-ren-dui-zhan-shi-xian-fang-an/</url>
@@ -62,7 +91,7 @@
       <link href="2021/02/01/docker-an-zhuang-mysql5-7/"/>
       <url>2021/02/01/docker-an-zhuang-mysql5-7/</url>
       
-        <content type="html"><![CDATA[<ul><li><p>docker查找mysql5.7镜像</p><ul><li><code>docker search mysql5.7</code></li></ul></li><li><p>拉取MySQL镜像(:5.7 表示5.7版本)</p><ul><li><code>docker pull mysql:5.7</code></li></ul></li><li><p>运行MySQL容器</p></li></ul><pre class="line-numbers language-shell"><code class="language-shell">docker run --restart=always -d -p 13306:3306 --privileged=true -v /docker/mysql/conf/my.cnf:/etc/my.cnf -v /docker/mysql/data:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 --name mysql mysql:5.7 --character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci#参数说明run　run 是运行一个容器-d　 表示后台运行--restart=always 表示随docker重启-p　　表示容器内部端口和服务器端口映射关联--privileged=true　设置MySQL的root用户权限, 否则外部不能使用root用户登陆-v /docker/mysql/conf/my.cnf:/etc/my.cnf 将服务器中的my.cnf配置映射到docker中的/docker/mysql/conf/my.cnf配置-v /docker/mysql/data:/var/lib/mysql　　同上,映射数据库的数据目录, 避免以后docker删除重新运行MySQL容器时数据丢失-e MYSQL_ROOT_PASSWORD=123456　　　设置MySQL数据库root用户的密码--name mysql　　　　 设值容器名称为mysqlmysql:5.7　　表示从docker镜像mysql:5.7中启动一个容器--character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci 设值数据库默认编码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><p>新建MySQL用户</p><ul><li>先进入容器<code>docker exec -it mysql8 bash</code></li></ul><img src="/2021/02/01/docker-an-zhuang-mysql5-7/1.png" title="进入容器"><ul><li>登录root用户：<code>mysql -uroot -p</code>，输入密码</li><li>新建用户<ul><li><code>CREATE USER 'username'@'host' IDENTIFIED BY 'password';</code><ul><li>username：你将创建的用户名</li><li>localhost：指定该用户在哪个主机上可以登陆，如果是本地用户可用localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符<code>%</code></li><li>password：该用户的登陆密码，密码可以为空，如果为空则该用户可以不需要密码登陆服务器</li><li>实例<code>CREATE USER 'test'@'localhost' IDENTIFIED BY 'Test@123';</code></li></ul></li><li>更改host，设置可远程连接<ul><li><code>use mysql</code></li><li><code>update user set host='%' where user='username';</code></li></ul></li></ul></li><li>授权<ul><li><code>GRANT privileges ON databasename.tablename TO 'username'@'host'</code><ul><li>privileges：用户的操作权限，如<code>SELECT</code>，<code>INSERT</code>，<code>UPDATE</code>等，如果要授予所有的权限则使用<code>ALL</code></li><li>databasename：数据库名</li><li>tablename：表名，如果要授予该用户对所有数据库和表的相应操作权限则可用<code>*</code>表示，如<code>*.*</code></li><li>实例<code>GRANT ALL ON *.* TO 'test'@'localhost';</code></li></ul></li><li>用以上命令授权的用户不能给其它用户授权，如果想让该用户可以授权，用以下命令:<ul><li><code>GRANT privileges ON databasename.tablename TO 'username'@'host' WITH GRANT OPTION;</code></li></ul></li></ul></li><li>设置与更改用户密码<ul><li>用于mysql5.7：<code>SET PASSWORD FOR 'username'@'host' = PASSWORD('newpassword');</code><ul><li>更改当前登录用户密码：<code>SET PASSWORD = PASSWORD("newpassword");</code></li></ul></li><li>用于mysql8：<code>ALTER USER 'username'@'host' IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'newpassword';</code></li></ul></li><li>撤销用户权限<ul><li><code>REVOKE privilege ON databasename.tablename FROM 'username'@'host';</code></li><li>实例：<code>REVOKE ALL ON *.* FROM 'test'@'localhost';</code></li></ul></li><li>删除用户<ul><li><code>DROP USER 'username'@'host';</code></li><li>实例：<code>DROP USER 'test'@'localhost';</code></li></ul></li></ul></li><li><p>DBeaver连接测试</p></li></ul><img src="/2021/02/01/docker-an-zhuang-mysql5-7/2.png" title="DBeaver测试链接"><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<ul><li>docker查找mysql5.7镜像<ul><li><code>docker search mysql5.7</code></li></ul></li><li>拉取MySQL镜像(:5.7 表示5.7版本)<ul><li><code>docker pull mysql:5.7</code></li></ul></li><li>创建挂载目录</li></ul><pre class="line-numbers language-shell"><code class="language-shell">mkdir -p /home/app/mysql/confmkdir -p /home/app/mysql/datamkdir -p /home/app/mysql/logs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ul><li>创建my.cnf</li></ul><pre class="line-numbers language-shell"><code class="language-shell">vi /home/app/mysql/conf/my.cnf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>在my.cnf中写入</li></ul><pre class="line-numbers language-shell"><code class="language-shell"># Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.## This program is free software; you can redistribute it and/or modify# it under the terms of the GNU General Public License as published by# the Free Software Foundation; version 2 of the License.## This program is distributed in the hope that it will be useful,# but WITHOUT ANY WARRANTY; without even the implied warranty of# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the# GNU General Public License for more details.## You should have received a copy of the GNU General Public License# along with this program; if not, write to the Free Software# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA## The MySQL  Server configuration file.## For explanations see# http://dev.mysql.com/doc/mysql/en/server-system-variables.html[mysqld]pid-file        = /var/run/mysqld/mysqld.pidsocket          = /var/run/mysqld/mysqld.sockdatadir         = /var/lib/mysqlsecure-file-priv= NULL# Disabling symbolic-links is recommended to prevent assorted security riskssymbolic-links=0# Custom config should go here!includedir /etc/mysql/conf.d/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>运行MySQL容器</li></ul><pre class="line-numbers language-shell"><code class="language-shell">docker run --restart=always -d --privileged=true -v /home/app/mysql/conf/my.cnf:/etc/mysql/my.cnf -v /home/app/mysql/logs:/logs -v /home/app/mysql/data/mysql:/var/lib/mysql  -p 13306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=Root@123 mysql:5.7#参数说明run　run 是运行一个容器-d　 表示后台运行--restart=always 表示随docker重启-p　　表示容器内部端口和服务器端口映射关联--privileged=true　设置MySQL的root用户权限, 否则外部不能使用root用户登陆-v /docker/mysql/conf/my.cnf:/etc/my.cnf 将服务器中的my.cnf配置映射到docker中的/docker/mysql/conf/my.cnf配置-v /docker/mysql/data:/var/lib/mysql　　同上,映射数据库的数据目录, 避免以后docker删除重新运行MySQL容器时数据丢失-e MYSQL_ROOT_PASSWORD=123456　　　设置MySQL数据库root用户的密码--name mysql　　　　 设值容器名称为mysqlmysql:5.7　　表示从docker镜像mysql:5.7中启动一个容器--character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci 设值数据库默认编码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><p>新建MySQL用户</p><ul><li>先进入容器<code>docker exec -it mysql8 bash</code></li></ul><img src="/2021/02/01/docker-an-zhuang-mysql5-7/1.png" title="进入容器"><ul><li>登录root用户：<code>mysql -uroot -p</code>，输入密码</li><li>新建用户<ul><li><code>CREATE USER 'username'@'host' IDENTIFIED BY 'password';</code><ul><li>username：你将创建的用户名</li><li>localhost：指定该用户在哪个主机上可以登陆，如果是本地用户可用localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符<code>%</code></li><li>password：该用户的登陆密码，密码可以为空，如果为空则该用户可以不需要密码登陆服务器</li><li>实例<code>CREATE USER 'test'@'localhost' IDENTIFIED BY 'Test@123';</code></li></ul></li><li>更改host，设置可远程连接<ul><li><code>use mysql</code></li><li><code>update user set host='%' where user='username';</code></li></ul></li></ul></li><li>授权<ul><li><code>GRANT privileges ON databasename.tablename TO 'username'@'host'</code><ul><li>privileges：用户的操作权限，如<code>SELECT</code>，<code>INSERT</code>，<code>UPDATE</code>等，如果要授予所有的权限则使用<code>ALL</code></li><li>databasename：数据库名</li><li>tablename：表名，如果要授予该用户对所有数据库和表的相应操作权限则可用<code>*</code>表示，如<code>*.*</code></li><li>实例<code>GRANT ALL ON *.* TO 'test'@'localhost';</code></li></ul></li><li>用以上命令授权的用户不能给其它用户授权，如果想让该用户可以授权，用以下命令:<ul><li><code>GRANT privileges ON databasename.tablename TO 'username'@'host' WITH GRANT OPTION;</code></li></ul></li></ul></li><li>设置与更改用户密码<ul><li>用于mysql5.7：<code>SET PASSWORD FOR 'username'@'host' = PASSWORD('newpassword');</code><ul><li>更改当前登录用户密码：<code>SET PASSWORD = PASSWORD("newpassword");</code></li></ul></li><li>用于mysql8：<code>ALTER USER 'username'@'host' IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'newpassword';</code></li></ul></li><li>撤销用户权限<ul><li><code>REVOKE privilege ON databasename.tablename FROM 'username'@'host';</code></li><li>实例：<code>REVOKE ALL ON *.* FROM 'test'@'localhost';</code></li></ul></li><li>删除用户<ul><li><code>DROP USER 'username'@'host';</code></li><li>实例：<code>DROP USER 'test'@'localhost';</code></li></ul></li></ul></li><li><p>DBeaver连接测试</p></li></ul><img src="/2021/02/01/docker-an-zhuang-mysql5-7/2.png" title="DBeaver测试链接"><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
@@ -1257,9 +1286,9 @@
       
         <tags>
             
-            <tag> Thread </tag>
-            
             <tag> 线程 </tag>
+            
+            <tag> Thread </tag>
             
         </tags>
       
@@ -1286,9 +1315,9 @@
       
         <tags>
             
-            <tag> Thread </tag>
-            
             <tag> 线程 </tag>
+            
+            <tag> Thread </tag>
             
         </tags>
       
@@ -1315,9 +1344,9 @@
       
         <tags>
             
-            <tag> Thread </tag>
-            
             <tag> 线程 </tag>
+            
+            <tag> Thread </tag>
             
         </tags>
       
@@ -1344,9 +1373,9 @@
       
         <tags>
             
-            <tag> Thread </tag>
-            
             <tag> 线程 </tag>
+            
+            <tag> Thread </tag>
             
         </tags>
       
@@ -1450,9 +1479,9 @@
       
         <tags>
             
-            <tag> Thread </tag>
-            
             <tag> 线程 </tag>
+            
+            <tag> Thread </tag>
             
         </tags>
       
