@@ -9,9 +9,7 @@
     <meta name="keywords" content="SpringBoot集成websocket, 陌生的小窝">
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
-    <meta name="description" content="
-SpringBoot中建立WebSocket连接(STOMP)主动推送消息
-
+    <meta name="description" content="一、SpringBoot中建立WebSocket连接(STOMP)主动推送消息
 STOMP协议介绍
 
 STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协议，是一种为MOM(M">
@@ -544,14 +542,14 @@ STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    2.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    11 分
+                    12 分
                 </div>
                 
                 
@@ -568,9 +566,7 @@ STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<h3 id="SpringBoot中建立WebSocket连接-STOMP-主动推送消息"><a href="#SpringBoot中建立WebSocket连接-STOMP-主动推送消息" class="headerlink" title="SpringBoot中建立WebSocket连接(STOMP)主动推送消息"></a>SpringBoot中建立WebSocket连接(STOMP)主动推送消息</h3></blockquote>
-<ul>
+                <h3 id="一、SpringBoot中建立WebSocket连接-STOMP-主动推送消息"><a href="#一、SpringBoot中建立WebSocket连接-STOMP-主动推送消息" class="headerlink" title="一、SpringBoot中建立WebSocket连接(STOMP)主动推送消息"></a>一、SpringBoot中建立WebSocket连接(STOMP)主动推送消息</h3><ul>
 <li><p>STOMP协议介绍</p>
 <ul>
 <li>STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协议，是一种为MOM(Message Oriented Middleware，面向消息的中间件)设计的简单文本协议。</li>
@@ -1014,6 +1010,62 @@ STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
+<h3 id="二、Vue中使用webSocket"><a href="#二、Vue中使用webSocket" class="headerlink" title="二、Vue中使用webSocket"></a>二、Vue中使用webSocket</h3><ul>
+<li>安装sockjs-client 和 stompjs</li>
+</ul>
+<pre class="line-numbers language-console"><code class="language-console">npm install sockjs-client
+npm install stompjs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>在vue项目中引入</li>
+</ul>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">import</span> SockJS <span class="token keyword">from</span> <span class="token string">'sockjs-client'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Stomp <span class="token keyword">from</span> <span class="token string">'stompjs'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<ul>
+<li>定义一个全局变量，存放开启的webSocket实例</li>
+</ul>
+<pre class="line-numbers language-js"><code class="language-js">stompClient<span class="token punctuation">:</span> <span class="token string">''</span><span class="token punctuation">,</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>开启webSocket</li>
+</ul>
+<pre class="line-numbers language-js"><code class="language-js">methods<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// 连接webSocket 使用socket.js</span>
+    <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// 获取用户的userId</span>
+      <span class="token keyword">let</span> userId <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>loginInfo<span class="token punctuation">.</span>userId<span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">// 连接 SockJs 的 endpoint 名称为 "/webServer" `${this.$api}/webServer`</span>
+      <span class="token keyword">let</span> socket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SockJS</span><span class="token punctuation">(</span><span class="token template-string"><span class="token string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token keyword">this</span><span class="token punctuation">.</span>$api<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/webServer`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment" spellcheck="true">// 使用 STOMP 子协议的 WebSocket 客户端</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>stompClient <span class="token operator">=</span> Stomp<span class="token punctuation">.</span><span class="token function">over</span><span class="token punctuation">(</span>socket<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>stompClient<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>frame<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// setConnected(true);</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Connected: '</span> <span class="token operator">+</span> frame<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//订阅消息路径  </span>
+        <span class="token comment" spellcheck="true">// join</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>stompClient<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token string">'/user/'</span> <span class="token operator">+</span> userId <span class="token operator">+</span> <span class="token string">'/join'</span><span class="token punctuation">,</span> 
+          <span class="token punctuation">(</span>respnose<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+              <span class="token comment" spellcheck="true">//展示返回的信息，只有对应标识的客户端可以接收到服务端返回的信息</span>
+              console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>respnose<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">// startMatch</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>stompClient<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token string">'/user/'</span> <span class="token operator">+</span> userId <span class="token operator">+</span> <span class="token string">'/startMatch'</span><span class="token punctuation">,</span>
+          <span class="token punctuation">(</span>respnose<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//展示返回的信息，只有对应标识的客户端可以接收到服务端返回的信息</span>
+            console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>respnose<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+          <span class="token punctuation">}</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>关闭webSocket</li>
+</ul>
+<pre class="line-numbers language-js"><code class="language-js">   <span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// 断开连接</span>
+      <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>stompClient <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>stompClient<span class="token punctuation">.</span><span class="token function">disconnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">}</span>
+      <span class="token comment" spellcheck="true">// setConnected(false);</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Disconnected'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
@@ -1516,57 +1568,59 @@ STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/02/20/springboot-ji-cheng-websocket/">
+                <a href="/2021/03/03/hu-dong-da-ti-ren-ren-dui-zhan-shi-xian-fang-an/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="SpringBoot集成websocket">
+                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="互动答题人人对战实现方案">
                         
-                        <span class="card-title">SpringBoot集成websocket</span>
+                        <span class="card-title">互动答题人人对战实现方案</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-SpringBoot中建立WebSocket连接(STOMP)主动推送消息
+                            一、配置互动答题规则
+限制题目数量
+限制每题答题时间
+限制每日答题失败次数
+根据积分类型限制每日积分上限
+设置互动答题匹配等待时间
 
-STOMP协议介绍
-
-STOMP，Streaming Text Orientated Message Protocol，是流文本定向消息协议，是一种为MOM(M
+二、创建实体类
+用户类
+包含属性：用户ID、用户名、部门ID、部门名称、用户当前状态（FREE空闲、MAT
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-02-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-03-02
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/WebSocket/" class="post-category" target="_blank">
-                                    WebSocket
+                            <a href="/categories/互动答题/" class="post-category" target="_blank">
+                                    互动答题
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/SpringBoot/" target="_blank">
-                        <span class="chip bg-color">SpringBoot</span>
+                    <a href="/tags/互动答题/" target="_blank">
+                        <span class="chip bg-color">互动答题</span>
                     </a>
                     
-                    <a href="/tags/WebSocket/" target="_blank">
-                        <span class="chip bg-color">WebSocket</span>
+                    <a href="/tags/人人对战/" target="_blank">
+                        <span class="chip bg-color">人人对战</span>
                     </a>
                     
                 </div>
@@ -1700,7 +1754,7 @@ docker run --
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">188.5k</span> 字
+                <span class="white-color">190k</span> 字
             
 
             
