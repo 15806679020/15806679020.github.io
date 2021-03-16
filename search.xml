@@ -33,33 +33,6 @@
     
     
     <entry>
-      <title>互动答题人人对战实现方案</title>
-      <link href="2021/03/03/hu-dong-da-ti-ren-ren-dui-zhan-shi-xian-fang-an/"/>
-      <url>2021/03/03/hu-dong-da-ti-ren-ren-dui-zhan-shi-xian-fang-an/</url>
-      
-        <content type="html"><![CDATA[<h4 id="一、配置互动答题规则"><a href="#一、配置互动答题规则" class="headerlink" title="一、配置互动答题规则"></a>一、配置互动答题规则</h4><ol><li>限制题目数量</li><li>限制每题答题时间</li><li>限制每日答题失败次数</li><li>根据积分类型限制每日积分上限</li><li>设置互动答题匹配等待时间</li></ol><h4 id="二、创建实体类"><a href="#二、创建实体类" class="headerlink" title="二、创建实体类"></a>二、创建实体类</h4><ol><li>用户类<ol><li>包含属性：用户ID、用户名、部门ID、部门名称、用户当前状态（FREE空闲、MATCH匹配中、READY就绪、PLAY游戏中）、对战房间、试题专业ID、试题专业名称、试题集合、正确答题数、本次答题总积分、积分记录集合、是否跳到下一题标识、是否获胜标识</li></ol></li><li>对战房间类<ol><li>包含属性：房间号、房间创建时间、匹配等待时间、匹配剩余等待时间</li></ol></li></ol><h4 id="三、互动答题人人对战实现"><a href="#三、互动答题人人对战实现" class="headerlink" title="三、互动答题人人对战实现"></a>三、互动答题人人对战实现</h4><ol><li><p>根据系统设置的规则，判断该用户是否可以参与互动答题。<code>/appAnswerPk/pkOrNot</code></p><ol><li>用户访问互动答题界面，向服务端发送用户信息，服务端查询当日该用户参与对战的失败次数<ol><li>失败次数=当日允许失败次数，服务端向客户端发送不允许参与互动答题</li><li>失败次数&lt;当日允许失败次数,服务端查询互动答题当日已获得积分<ol><li>当日已获得积分=每日积分上限，服务端向客户端发送不允许参与互动答题</li><li>当日已获得积分&lt;每日积分上限，服务端向客户端发送对战规则</li></ol></li></ol></li></ol></li><li><p>用户进入人人对战页面。<code>/pvp/joinPVP</code></p><p>1、获取客户端发送的用户信息，并初始化用户其余信息，临时保存到对战人员集合中</p></li><li><p>用户开始匹配。<code>/pvp/startMatch</code></p><ol><li>客户端选择答题专业，点击开始匹配</li><li>服务端获取客户端发送的用户信息、试题专业信息</li><li>根据专业ID和用户状态，在对战人员集合中查找选择了相同专业，并处于匹配中的人员<ol><li>人数为0时，新建房间，创建房间号、查询匹配等待时间、根据答题数目查询试题及答案</li><li>人数大于0时，从已在房间中的用户获取房间信息、试题信息，根据房间创建时间和当前用户的加入时间，计算剩余等待时间</li><li>将房间信息、试题信息、剩余等待时间赋值给当前用户，并更改当前用户的状态为匹配中</li><li>服务端向此房间内的所有用户发送用户信息，客户端根据已匹配到的人员或者剩余匹配时间，判断是否可以开始答题<ol><li>已匹配到4人，无论匹配剩余等待时间是否为0，即可开始答题</li><li>匹配人数大于1，但是不足4人，匹配剩余等待时间为0时，开始答题</li><li>匹配人数为1，匹配剩余等待时间为0时，结束匹配</li></ol></li></ol></li></ol></li><li><p>用户结束匹配。<code>/pvp/endMatch</code></p><ol><li>两种情况<ol><li>用户点击取消匹配，主动结束匹配</li><li>匹配人数为1，匹配剩余等待时间为0时，结束匹配</li></ol></li><li>重置当前用户的属性，表示当前用户退出房间，<ol><li>剩余人数&gt;0，需要重新计算匹配剩余等待时间，并向房间内剩余用户发送用户信息</li><li>剩余人员&lt;0，房间解散</li></ol></li></ol></li><li><p>用户开始答题。<code>/pvp/startPK</code></p><ol><li>匹配人数到达4人或者匹配人数大于1人不足4人，但是剩余匹配时间为0时，开始答题。</li><li>用户状态更改为游戏中</li></ol></li><li><p>用户获取得分。<code>/pvp/getScore</code></p><ol><li>用户每答一题，向服务端发送用户信息和当前题得分</li><li>服务端计算当前用户累计得分，并将当前用户跳到下一题的标识置为是，发送给房间内所有用户</li><li>当房间内所有用户跳到下一题的标识都为是时，客服端跳到下一题，服务端再将房间内所有用户跳到下一题的标识置为否</li><li>本题得分大于0，并且当前用户未达到当日积分上限时，临时保存积分记录</li></ol></li><li><p>用户结束答题。<code>/pvp/endPK</code></p><ol><li>当房间内所有用户都已答完最后一题时，客户端调用结束答题接口</li><li>服务端根据每个用户的累计得分，判断胜负，并将结果发送给房间内所有用户</li><li>保存当前用户的积分记录、PK记录、试题及选项记录</li></ol></li><li><p>用户离开人人对战页面。<code>/pvp/leavePVP</code></p><ol><li>获取客户端发送的用户信息，在对战人员集合中删除此用户</li></ol></li></ol><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-      
-      
-      <categories>
-          
-          <category> 互动答题 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 互动答题 </tag>
-            
-            <tag> 人人对战 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>SpringBoot集成websocket</title>
       <link href="2021/02/20/springboot-ji-cheng-websocket/"/>
       <url>2021/02/20/springboot-ji-cheng-websocket/</url>
@@ -1286,9 +1259,9 @@
       
         <tags>
             
-            <tag> 线程 </tag>
-            
             <tag> Thread </tag>
+            
+            <tag> 线程 </tag>
             
         </tags>
       
@@ -1315,9 +1288,9 @@
       
         <tags>
             
-            <tag> 线程 </tag>
-            
             <tag> Thread </tag>
+            
+            <tag> 线程 </tag>
             
         </tags>
       
@@ -1344,9 +1317,9 @@
       
         <tags>
             
-            <tag> 线程 </tag>
-            
             <tag> Thread </tag>
+            
+            <tag> 线程 </tag>
             
         </tags>
       
@@ -1373,9 +1346,9 @@
       
         <tags>
             
-            <tag> 线程 </tag>
-            
             <tag> Thread </tag>
+            
+            <tag> 线程 </tag>
             
         </tags>
       
@@ -1479,9 +1452,9 @@
       
         <tags>
             
-            <tag> 线程 </tag>
-            
             <tag> Thread </tag>
+            
+            <tag> 线程 </tag>
             
         </tags>
       
@@ -1853,11 +1826,11 @@
       
         <tags>
             
+            <tag> AlibabaCloud </tag>
+            
             <tag> CAP </tag>
             
             <tag> BASE </tag>
-            
-            <tag> AlibabaCloud </tag>
             
         </tags>
       
