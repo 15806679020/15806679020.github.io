@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.ldclass.club/2021/01/19/nginx/</loc>
+    <lastmod>2021-03-24</lastmod>
+  </url>  <url>
+    <loc>http://www.ldclass.club/2021/03/24/oracle-zhang-hu-jie-suo/</loc>
+    <lastmod>2021-03-24</lastmod>
+  </url>  <url>
+    <loc>http://www.ldclass.club/2020/10/18/javase/</loc>
+    <lastmod>2021-03-24</lastmod>
+  </url>  <url>
     <loc>http://www.ldclass.club/2021/03/03/mysql-de-sql-mode-she-zhi/</loc>
     <lastmod>2021-03-03</lastmod>
   </url>  <url>
@@ -30,9 +39,6 @@
   </url>  <url>
     <loc>http://www.ldclass.club/2020/11/20/springboot2-x-zheng-he-redis/</loc>
     <lastmod>2021-01-22</lastmod>
-  </url>  <url>
-    <loc>http://www.ldclass.club/2021/01/19/nginx/</loc>
-    <lastmod>2021-01-21</lastmod>
   </url>  <url>
     <loc>http://www.ldclass.club/2021/01/21/mysql-zhi-shi-wu-shi-tu-hong-fa-qi-cun-chu-guo-cheng/</loc>
     <lastmod>2021-01-21</lastmod>
@@ -450,9 +456,6 @@
   </url>  <url>
     <loc>http://www.ldclass.club/2020/11/06/http-ji-chu-xie-yi-he-jie-xi/</loc>
     <lastmod>2020-11-07</lastmod>
-  </url>  <url>
-    <loc>http://www.ldclass.club/2020/10/18/javase/</loc>
-    <lastmod>2020-11-04</lastmod>
   </url>  <url>
     <loc>http://www.ldclass.club/2020/10/15/hexo-chang-yong-ming-ling/</loc>
     <lastmod>2020-11-04</lastmod>

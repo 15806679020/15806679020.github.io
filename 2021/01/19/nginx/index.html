@@ -975,8 +975,13 @@ server {
     server_name aabbccdd.com;
     location /app/img {
         alias /usr/local/software/img/;
+
+        autoindex on;   #允许nginx在浏览器以文件夹形式访问
+        autoindex_exact_size off;  #显示文件大小
+        autoindex_localtime on;    #显示文件时间
+        index index.html index.htm;
     }
-}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="六、Nginx的访问日志"><a href="#六、Nginx的访问日志" class="headerlink" title="六、Nginx的访问日志"></a>六、Nginx的访问日志</h3><ul>
 <li><p>access.log⽇日志⽤用处</p>
 <ul>
@@ -2524,7 +2529,7 @@ alter table user a
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">189.5k</span> 字
+                <span class="white-color">189.9k</span> 字
             
 
             

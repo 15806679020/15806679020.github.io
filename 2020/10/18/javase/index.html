@@ -1510,6 +1510,7 @@ set.remove("xxx");
 set.isEmpty();</code></pre></li>
 <li><p>区别</p>
 <ul>
+<li>两个都是List的接口，两个都是非线程安全的</li>
 <li>HashSet不能保证元素的排列顺序，TreeSet是SortedSet接口的唯一实现类，可以确保集合元素处于排序状态</li>
 <li>HashSet底层用的是哈希表，TreeSet采用的数据结构是红黑树（红黑树是一种特定类型的二叉树）</li>
 <li>HashSet中元素可以是null，但只能有一个，TreeSet不允许放入null</li>
@@ -3323,7 +3324,7 @@ hexo g
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">189.5k</span> 字
+                <span class="white-color">189.9k</span> 字
             
 
             
