@@ -1,3 +1,4 @@
+http://www.ldclass.club/2021/05/08/vue-xiang-mu-bu-shu-nginx-hou-ye-mian-shua-xin-404/
 http://www.ldclass.club/2021/03/24/oracle-zhang-hu-jie-suo/
 http://www.ldclass.club/2021/03/03/mysql-de-sql-mode-she-zhi/
 http://www.ldclass.club/2021/02/20/springboot-ji-cheng-websocket/
@@ -77,4 +78,3 @@ http://www.ldclass.club/2020/12/03/svn-xi-lie/
 http://www.ldclass.club/2020/12/01/bian-yi-an-zhuang-mysql/
 http://www.ldclass.club/2020/12/01/centos7-fang-huo-qiang-chang-yong-pei-zhi/
 http://www.ldclass.club/2020/11/30/min-jie-chi-xu-ji-cheng/
-http://www.ldclass.club/2020/11/26/xu-ni-ji-an-zhuang-centos7/

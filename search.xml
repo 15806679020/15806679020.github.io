@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Vue项目部署Nginx后，页面刷新404</title>
+      <link href="2021/05/08/vue-xiang-mu-bu-shu-nginx-hou-ye-mian-shua-xin-404/"/>
+      <url>2021/05/08/vue-xiang-mu-bu-shu-nginx-hou-ye-mian-shua-xin-404/</url>
+      
+        <content type="html"><![CDATA[<p>问题：</p><p>​    Vue单页应用项目打包部署Nginx服务器后，刷新页面后，出现404。</p><p>原因：</p><p>​    加载单页应用后路由改变均由浏览器处理，而刷新时将会请求当前的链接，而Nginx无法找到对应的页面。</p><p>解决：</p><p>   在Nginx配置文件nginx.conf中的location节点加入如下配置。(index.html根据实际页面配置）</p><pre class="line-numbers language-shell"><code class="language-shell">try_files $uri $uri/ /index.html;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Nginx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Nginx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Oracle账户解锁</title>
       <link href="2021/03/24/oracle-zhang-hu-jie-suo/"/>
       <url>2021/03/24/oracle-zhang-hu-jie-suo/</url>
@@ -132,9 +157,9 @@
       
         <tags>
             
-            <tag> Oracle </tag>
-            
             <tag> Docker </tag>
+            
+            <tag> Oracle </tag>
             
         </tags>
       
@@ -1851,11 +1876,11 @@
       
         <tags>
             
-            <tag> AlibabaCloud </tag>
-            
             <tag> CAP </tag>
             
             <tag> BASE </tag>
+            
+            <tag> AlibabaCloud </tag>
             
         </tags>
       

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ldclass.club/"/>
-  <updated>2021-03-24T08:03:03.124Z</updated>
+  <updated>2021-05-07T08:23:34.188Z</updated>
   <id>http://www.ldclass.club/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Vue项目部署Nginx后，页面刷新404</title>
+    <link href="http://www.ldclass.club/2021/05/08/vue-xiang-mu-bu-shu-nginx-hou-ye-mian-shua-xin-404/"/>
+    <id>http://www.ldclass.club/2021/05/08/vue-xiang-mu-bu-shu-nginx-hou-ye-mian-shua-xin-404/</id>
+    <published>2021-05-07T16:20:59.000Z</published>
+    <updated>2021-05-07T08:23:34.188Z</updated>
+    
+    <content type="html"><![CDATA[<p>问题：</p><p>​    Vue单页应用项目打包部署Nginx服务器后，刷新页面后，出现404。</p><p>原因：</p><p>​    加载单页应用后路由改变均由浏览器处理，而刷新时将会请求当前的链接，而Nginx无法找到对应的页面。</p><p>解决：</p><p>   在Nginx配置文件nginx.conf中的location节点加入如下配置。(index.html根据实际页面配置）</p><pre class="line-numbers language-shell"><code class="language-shell">try_files $uri $uri/ /index.html;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;问题：&lt;/p&gt;
+&lt;p&gt;​    Vue单页应用项目打包部署Nginx服务器后，刷新页面后，出现404。&lt;/p&gt;
+&lt;p&gt;原因：&lt;/p&gt;
+&lt;p&gt;​    加载单页应用后路由改变均由浏览器处理，而刷新时将会请求当前的链接，而Nginx无法找到对应的页面。&lt;/p&gt;
+&lt;p&gt;解决：&lt;/
+      
+    
+    </summary>
+    
+      <category term="Nginx" scheme="http://www.ldclass.club/categories/Nginx/"/>
+    
+    
+      <category term="Nginx" scheme="http://www.ldclass.club/tags/Nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>Oracle账户解锁</title>
@@ -170,9 +199,9 @@ select @@SES
       <category term="Docker" scheme="http://www.ldclass.club/categories/Oracle/Docker/"/>
     
     
-      <category term="Oracle" scheme="http://www.ldclass.club/tags/Oracle/"/>
-    
       <category term="Docker" scheme="http://www.ldclass.club/tags/Docker/"/>
+    
+      <category term="Oracle" scheme="http://www.ldclass.club/tags/Oracle/"/>
     
   </entry>
   
@@ -581,39 +610,6 @@ rename
 &lt;li&gt;&lt;p&gt;备忘录设计模式(Memento Pattern)&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;在不破坏封闭的前提下，捕获一个对象的内部状态，保存对象的某个状
-      
-    
-    </summary>
-    
-      <category term="设计模式" scheme="http://www.ldclass.club/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-    
-      <category term="设计模式" scheme="http://www.ldclass.club/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/"/>
-    
-      <category term="行为型" scheme="http://www.ldclass.club/tags/%E8%A1%8C%E4%B8%BA%E5%9E%8B/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>迭代器设计模式</title>
-    <link href="http://www.ldclass.club/2021/01/16/die-dai-qi-she-ji-mo-shi/"/>
-    <id>http://www.ldclass.club/2021/01/16/die-dai-qi-she-ji-mo-shi/</id>
-    <published>2021-01-15T21:11:42.000Z</published>
-    <updated>2021-01-15T13:25:34.975Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>迭代器设计模式（Iterator Pattern）</p></blockquote><ul><li><p>迭代器设计模式</p><ul><li>提供一种方法顺序访问一个聚合对象中各个元素, 而又无须暴露该对象的内部实现，属于行为型模式</li><li>提到迭代器，想到它是与集合相关的，集合也叫容器，可以将集合看成是一个可以包容对象的容器，例如List，Set，Map，甚至数组都可以叫做集合，迭代器的作用就是把容器中的对象一个一个地遍历出来</li></ul></li><li><p>应用场景</p><ul><li>一般来说，迭代器模式是与集合是共存的，只要实现一个集合，就需要同时提供这个集合的迭代器，就像java中的Collection，List、Set、Map等都有自己的迭代器</li><li>JAVA 中的 iterator迭代器</li></ul></li><li><p>角色</p></li><li><p>抽象容器（Aggregate）：提供创建具体迭代器角色的接口，一般是接口，包括一个iterator()方法，例如java中的Collection接口，List接口，Set接口等。</p></li><li><p>具体容器角色（ConcreteAggregate）：实现抽象容器的具体实现类，比如List接口的有序列表实现ArrayList，List接口的链表实LinkedList, Set接口的哈希列表的实现HashSet等。</p></li><li><p>抽象迭代器角色（Iterator）：负责定义访问和遍历元素的接口，包括几个核心方法，取得下一个元素的方法next()，判断是否遍历结束的方法isDone()（或者叫hasNext()），移除当前对象的方法remove()</p></li><li><p>具体迭代器角色（ConcreteIterator）：实现迭代器接口中定义的方法，并要记录遍历中的当前位置，完成集合的迭代</p></li><li><p>优点</p><ul><li>可以做到不暴露集合的内部结构，又可让外部代码透明地访问集合内部的数据</li><li>支持以不同的方式遍历一个聚合对象</li></ul></li><li><p>缺点</p><ul><li>对于比较简单的遍历（像数组或者有序列表），使用迭代器方式遍历较为繁琐</li><li>迭代器模式在遍历的同时更改迭代器所在的集合结构会导致出现异常</li></ul></li><li><p>实例</p></li></ul><pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/** * @description: 抽象迭代器 */</span><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">Iterator</span> <span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">/**     * 获取下一个元素     * @return     */</span>    Object <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/**     * 是否有下一个     * @return     */</span>    <span class="token keyword">boolean</span> <span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/**     * 删除元素     * @param obj     * @return     */</span>    Object <span class="token function">remove</span><span class="token punctuation">(</span>Object obj<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConcreteIterator</span> <span class="token keyword">implements</span> <span class="token class-name">Iterator</span> <span class="token punctuation">{</span>    <span class="token keyword">private</span> List list<span class="token punctuation">;</span>    <span class="token keyword">private</span> <span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>    <span class="token keyword">public</span> <span class="token function">ConcreteIterator</span><span class="token punctuation">(</span>List list<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">this</span><span class="token punctuation">.</span>list <span class="token operator">=</span> list<span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> Object <span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        Object obj <span class="token operator">=</span> null<span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>            obj <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>list<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>            index<span class="token operator">++</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token keyword">return</span> obj<span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">return</span> list<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> index<span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> Object <span class="token function">remove</span><span class="token punctuation">(</span>Object obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">return</span> list<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ICollection</span> <span class="token punctuation">{</span>    <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span>Object obj<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">void</span> <span class="token function">remove</span><span class="token punctuation">(</span>Object obj<span class="token punctuation">)</span><span class="token punctuation">;</span>    Iterator <span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyCollection</span> <span class="token keyword">implements</span> <span class="token class-name">ICollection</span><span class="token punctuation">{</span>    <span class="token keyword">private</span> List list <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span>Object obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>        list<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">remove</span><span class="token punctuation">(</span>Object obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>        list<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> Iterator <span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ConcreteIterator</span><span class="token punctuation">(</span>list<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-java"><code class="language-java"> <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>        ICollection collection <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MyCollection</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        collection<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"小A"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        collection<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"小B"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        collection<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"小C"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        collection<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">"小D"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        Iterator iterator <span class="token operator">=</span> collection<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">while</span> <span class="token punctuation">(</span>iterator<span class="token punctuation">.</span><span class="token function">hasNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>            Object obj <span class="token operator">=</span> iterator<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;迭代器设计模式（Iterator Pattern）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;迭代器设计模式&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;提供一种方法顺序访问一个聚合对象中各个元素, 而又无须暴露该对象的内部实现，属于行为型模式&lt;/
       
     
     </summary>
