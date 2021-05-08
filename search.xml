@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>vue自动触发标签点击事件</title>
+      <link href="2021/05/08/vue-zi-dong-hong-fa-biao-qian-dian-ji-shi-jian/"/>
+      <url>2021/05/08/vue-zi-dong-hong-fa-biao-qian-dian-ji-shi-jian/</url>
+      
+        <content type="html"><![CDATA[<ul><li><p>问题：页面加载时，触发某个元素的点击事件</p></li><li><p>解决思路</p><ul><li><code>directives</code></li><li><code>v-trigger</code><ul><li>directives 在生命周期内用</li></ul></li></ul><pre class="line-numbers language-vue"><code class="language-vue">export default {    data() {        return {             };    },    directives:{        'local-test':function(el,binding,vnode){            /** el可以获取当前dom节点，并且进行编译，也可以操作事件 **/            /** binding指的是一个对象，一般不用 **/            /** vnode 是 Vue 编译生成的虚拟节点 **/            //el.style.border="1px solid red";  //操作style所有样式            //console.log(el.value);  //获取v-model的值            //console.log(el.dataset.name) //data-name绑定的值，需要el.dataset来获取            //console.log(vnode.context.$route); //获取当前路由信息            trigger:{             inserted(el,binging){             console.log(el)             el.click()             // $(el).trigger('click')            }        }    },    components:{    },    filters:{    },    watch:{    }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vue项目部署Nginx后，页面刷新404</title>
       <link href="2021/05/08/vue-xiang-mu-bu-shu-nginx-hou-ye-mian-shua-xin-404/"/>
       <url>2021/05/08/vue-xiang-mu-bu-shu-nginx-hou-ye-mian-shua-xin-404/</url>
