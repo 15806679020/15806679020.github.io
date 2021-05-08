@@ -503,12 +503,12 @@ keytool -genkey -alias tomcat -keyalg RSA -keystore D:\ssl\tomcat.keystore">
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/https/" target="_blank">
-                            <span class="chip bg-color">https</span>
-                        </a>
-                        
                         <a href="/tags/Tomcat/" target="_blank">
                             <span class="chip bg-color">Tomcat</span>
+                        </a>
+                        
+                        <a href="/tags/https/" target="_blank">
+                            <span class="chip bg-color">https</span>
                         </a>
                         
                     </div>
@@ -1159,36 +1159,35 @@ keytool -genkey -alias tomcat -keyalg RSA -keystore D:\ssl\tomcat.keystore">
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
-            </div>
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/05/08/tomcat-sheng-cheng-zheng-shu-pei-zhi-https/">
+                <a href="/2021/05/08/vue-shi-yong-elementui-zu-jian-ku-zai-tomcat-fu-wu-qi-bu-shu-hou-tu-biao-bu-xian-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="tomcat生成证书配置https">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="vue使用elementUI组件库在tomcat服务器部署后图标不显示">
                         
-                        <span class="card-title">tomcat生成证书配置https</span>
+                        <span class="card-title">vue使用elementUI组件库在tomcat服务器部署后图标不显示</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-tomcat之https配置（生成证书）
+问题
+vue使用elementUI组件库在tomcat服务器部署后图标不能正常显示
 
 
-生成ssl证书
-管理员打开cmd窗口，输入
-keytool -genkey -alias tomcat -keyalg RSA -keystore D:\ssl\tomcat.keystore
+原因
+通过查看 /build/webpack.base.conf.js 文件可以发现，woff 或 ttf 这些字体会经由 url-loader 处理
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-05-08
-                            </span>
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2021-05-08
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fa fa-bookmark fa-fw icon-category"></i>
@@ -1197,20 +1196,27 @@ keytool -genkey -alias tomcat -keyalg RSA -keystore D:\ssl\tomcat.keystore
                                     Tomcat
                                 </a>
                             
-                            <a href="/categories/Tomcat/https/" class="post-category" target="_blank">
-                                    https
+                            <a href="/categories/Tomcat/vue/" class="post-category" target="_blank">
+                                    vue
+                                </a>
+                            
+                            <a href="/categories/Tomcat/vue/element/" class="post-category" target="_blank">
+                                    element
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/https/" target="_blank">
-                        <span class="chip bg-color">https</span>
+                    <a href="/tags/vue/" target="_blank">
+                        <span class="chip bg-color">vue</span>
+                    </a>
+                    
+                    <a href="/tags/element/" target="_blank">
+                        <span class="chip bg-color">element</span>
                     </a>
                     
                     <a href="/tags/Tomcat/" target="_blank">
@@ -1339,7 +1345,7 @@ OpenSSl环境变量配置
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">191.3k</span> 字
+                <span class="white-color">191.8k</span> 字
             
 
             

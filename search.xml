@@ -4,6 +4,68 @@
   
     
     <entry>
+      <title>Vue项目部署tomcat后，页面刷新404</title>
+      <link href="2021/05/08/vue-xiang-mu-bu-shu-tomcat-hou-ye-mian-shua-xin-404/"/>
+      <url>2021/05/08/vue-xiang-mu-bu-shu-tomcat-hou-ye-mian-shua-xin-404/</url>
+      
+        <content type="html"><![CDATA[<ul><li><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul><li>将 npm run bulid 打包好的 dist文件放到 webapps 目录下<ul><li>访问路径：<code>http://ip:端口/dist</code></li><li>能访问成功，但可能刷新 404</li></ul></li></ul></li><li><h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><ul><li>在上传到tomcat 项目的根目录下  创建WEB-INF/web.xml </li><li>在web.xml写入</li></ul><pre class="line-numbers language-xml"><code class="language-xml">在这里插入代码片  <span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-app</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>           <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaeehttp://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd<span class="token punctuation">"</span></span>           <span class="token attr-name">version</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>3.1<span class="token punctuation">"</span></span> <span class="token attr-name">metadata-complete</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>display-name</span><span class="token punctuation">></span></span>Router for Tomcat<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>display-name</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>error-page</span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>error-code</span><span class="token punctuation">></span></span>404<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>error-code</span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>location</span><span class="token punctuation">></span></span>/index.html<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>location</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>error-page</span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-app</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+          <category> Tomcat </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+            <tag> Tomcat </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>vue使用elementUI组件库在tomcat服务器部署后图标不显示</title>
+      <link href="2021/05/08/vue-shi-yong-elementui-zu-jian-ku-zai-tomcat-fu-wu-qi-bu-shu-hou-tu-biao-bu-xian-shi/"/>
+      <url>2021/05/08/vue-shi-yong-elementui-zu-jian-ku-zai-tomcat-fu-wu-qi-bu-shu-hou-tu-biao-bu-xian-shi/</url>
+      
+        <content type="html"><![CDATA[<ul><li><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul><li>vue使用elementUI组件库在tomcat服务器部署后图标不能正常显示</li></ul></li><li><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><ul><li>通过查看 /build/webpack.base.conf.js 文件可以发现，woff 或 ttf 这些字体会经由 url-loader 处理后在 static/fonts 目录下生成相应的文件。</li><li>也就是说实际应该通过 /static/fonts/** 路径来获取字体图标，而实际我们通过调试窗口发现，却是请求 /static/css/static/fonts/**，自然报错误。 <ul><li><code>GET https://localhost:8443/static/css/static/fonts/element-icons.535877f.woff net::ERR_ABORTED 404</code></li></ul></li></ul></li><li><h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><ul><li>打开build/utils.js文件，加上 publicPath: ‘../../‘，如下所示：</li></ul><pre class="line-numbers language-js"><code class="language-js"> <span class="token keyword">if</span> <span class="token punctuation">(</span>options<span class="token punctuation">.</span>extract<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">return</span> ExtractTextPlugin<span class="token punctuation">.</span><span class="token function">extract</span><span class="token punctuation">(</span><span class="token punctuation">{</span>        use<span class="token punctuation">:</span> loaders<span class="token punctuation">,</span>        fallback<span class="token punctuation">:</span> <span class="token string">'vue-style-loader'</span><span class="token punctuation">,</span>        publicPath<span class="token punctuation">:</span><span class="token string">"../../"</span>      <span class="token punctuation">}</span><span class="token punctuation">)</span>    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>      <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">'vue-style-loader'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>loaders<span class="token punctuation">)</span>    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>重新build，重新部署之后，可以正常显示</p></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tomcat </category>
+          
+          <category> vue </category>
+          
+          <category> element </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+            <tag> element </tag>
+            
+            <tag> Tomcat </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>tomcat生成证书配置https</title>
       <link href="2021/05/08/tomcat-sheng-cheng-zheng-shu-pei-zhi-https/"/>
       <url>2021/05/08/tomcat-sheng-cheng-zheng-shu-pei-zhi-https/</url>
@@ -22,9 +84,9 @@
       
         <tags>
             
-            <tag> https </tag>
-            
             <tag> Tomcat </tag>
+            
+            <tag> https </tag>
             
         </tags>
       
