@@ -4,6 +4,93 @@
   
     
     <entry>
+      <title>tomcat生成证书配置https</title>
+      <link href="2021/05/08/tomcat-sheng-cheng-zheng-shu-pei-zhi-https/"/>
+      <url>2021/05/08/tomcat-sheng-cheng-zheng-shu-pei-zhi-https/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>tomcat之https配置（生成证书）</p></blockquote><ul><li><h4 id="生成ssl证书"><a href="#生成ssl证书" class="headerlink" title="生成ssl证书"></a>生成ssl证书</h4><ul><li><p>管理员打开cmd窗口，输入</p><p><code>keytool -genkey -alias tomcat -keyalg RSA -keystore D:\ssl\tomcat.keystore -validity 36500</code></p><p>keytool 是jdk中的工具。</p><p><code>D:\ssl\tomcat.keystore</code> 是证书文件保存位置</p><p><code>tomcat.keystore</code>是证书文件名称</p><p><code>-validity 36500</code> 是证书有效期，36500表示100年，默认值是90天。</p></li><li><p>输入密钥库口令</p><ul><li>输入密钥库密码：此处需要输入大于6个字符的字符串，例如123456</li></ul></li><li><p>输入两次通过后，弹出一些问题</p><ul><li><p>“您的名字与姓氏是什么？” 这是必填项，并且必须是TOMCAT部署主机的域名或者IP [如：baidu.com 或者 127.0.0.1]，就是你将来要在浏览器中输入的访问地址;</p><p>其他得问题可填可不填，最后对照信息正确则输入y，不正确打算重来则输入n。</p></li></ul></li><li><p>输入密钥口令</p><p>密钥库口令，这里我理解的是tomcat的主密码，会在tomcat配置文件中使用，建议输入与keystore的密码一致，设置其它密码也可以生成完成，可在指定目录下找到证书文件。</p></li></ul></li><li><h4 id="配置tomcat"><a href="#配置tomcat" class="headerlink" title="配置tomcat"></a>配置tomcat</h4><ul><li><p>修改server.xml</p><ul><li>打开tomcat目录下conf/server.xml文件，修改如下</li></ul><pre class="line-numbers language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8999<span class="token punctuation">"</span></span> <span class="token attr-name">protocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>HTTP/1.1<span class="token punctuation">"</span></span>               <span class="token attr-name">connectionTimeout</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>200000<span class="token punctuation">"</span></span>               <span class="token attr-name">redirectPort</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8443<span class="token punctuation">"</span></span>               <span class="token attr-name">URIEncoding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span>                <span class="token attr-name">compression</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>on<span class="token punctuation">"</span></span>                              <span class="token attr-name">compressionMinSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1024<span class="token punctuation">"</span></span>                <span class="token attr-name">maxPostSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>-1<span class="token punctuation">"</span></span>                <span class="token attr-name">disableUploadTimeout</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span>               <span class="token punctuation">/></span></span>               <span class="token comment" spellcheck="true">&lt;!-- A "Connector" using the shared thread pool--></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8443<span class="token punctuation">"</span></span>        <span class="token attr-name">protocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.apache.coyote.http11.Http11NioProtocol<span class="token punctuation">"</span></span>        <span class="token attr-name">SSLEnabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>        <span class="token attr-name">maxThreads</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>800<span class="token punctuation">"</span></span>        <span class="token attr-name">scheme</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https<span class="token punctuation">"</span></span>        <span class="token attr-name">secure</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>        <span class="token attr-name">clientAuth</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span>        <span class="token attr-name">sslProtocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>TLS<span class="token punctuation">"</span></span>        <span class="token attr-name">keystoreFile</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>D:/ssl/tomcat.keystore<span class="token punctuation">"</span></span>        <span class="token attr-name">keystorePass</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>123456<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>修改web.xml</p><ul><li>打开conf/web.xml，在最后增加以下代码：</li></ul><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>login-config</span><span class="token punctuation">></span></span>        <span class="token comment" spellcheck="true">&lt;!-- Authorization setting for SSL --></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>auth-method</span><span class="token punctuation">></span></span>CLIENT-CERT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>auth-method</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>realm-name</span><span class="token punctuation">></span></span>Client Cert Users-only Area<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>realm-name</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>login-config</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>security-constraint</span><span class="token punctuation">></span></span>        <span class="token comment" spellcheck="true">&lt;!-- Authorization setting for SSL --></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-resource-collection</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-resource-name</span><span class="token punctuation">></span></span>SSL<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-resource-name</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-resource-collection</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>user-data-constraint</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transport-guarantee</span><span class="token punctuation">></span></span>CONFIDENTIAL<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>transport-guarantee</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>user-data-constraint</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>security-constraint</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul></li><li><p>至此tomcat配置完成，启动tomcat即可使用ssl，在浏览器输入localhost:8080</p><ul><li>Tomcat配置完成后，使用Https访问，Chrome会提示安全警告，点击“高级”，继续访问即可，之后再https下使用ip地址访问是没有问题的。</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tomcat </category>
+          
+          <category> https </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> https </tag>
+            
+            <tag> Tomcat </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>nginx生成证书</title>
+      <link href="2021/05/08/nginx-sheng-cheng-zheng-shu/"/>
+      <url>2021/05/08/nginx-sheng-cheng-zheng-shu/</url>
+      
+        <content type="html"><![CDATA[<ul><li><h4 id="OpenSSl安装配置"><a href="#OpenSSl安装配置" class="headerlink" title="OpenSSl安装配置"></a>OpenSSl安装配置</h4><ul><li>下载链接：<code>https://slproweb.com/products/Win32OpenSSL.html</code></li><li>安装OpenSSL，右键以管理员身份运行，选择安装路径，安装路径不要带中文。</li><li>OpenSSl环境变量配置<ul><li>变量名：OPENSSL_HOME</li><li>变量值：F:\tool\OpenSSL-Win64</li></ul></li><li>配置PATH<ul><li>在最后添加%OPENSSL_HOME%\bin</li></ul></li></ul></li><li><h4 id="生成SSL证书"><a href="#生成SSL证书" class="headerlink" title="生成SSL证书"></a>生成SSL证书</h4><ul><li>打开nginx安装目录，进入F:\nginux\nginx-1.17.1\conf，在地址栏输入cmd，按回车，打开命令行窗口</li><li>执行命令：openssl genrsa -des3 -out server.key，需要你设置一个密码</li><li>执创建csr证书，命令：openssl req -new -key server.key -out server.csr，照实填写即可（此处如果报错需先执行：set OPENSSL_CONF=F:\tool\OpenSSL-Win64\bin\openssl.cfg 设置配置文件路径）</li><li>拷贝目录下生成的server.key并重命名为server.key.org</li><li>去除密码，命令：openssl rsa -in server.key.org -out server.key</li><li>生成证书文件server.crt，命令：openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt （-days 365为证书生效时间，可以设长点）</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> nginx </category>
+          
+          <category> https </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> nginx </tag>
+            
+            <tag> https </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>tomcat部署vue项目</title>
+      <link href="2021/05/08/tomcat-bu-shu-vue-xiang-mu/"/>
+      <url>2021/05/08/tomcat-bu-shu-vue-xiang-mu/</url>
+      
+        <content type="html"><![CDATA[<ul><li><p>修改vue项目下config/index.js，注意dev和build都要改assetsPublicPath的配置</p><pre class="line-numbers language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>  dev<span class="token punctuation">:</span> <span class="token punctuation">{</span>    <span class="token operator">...</span>    assetsPublicPath<span class="token punctuation">:</span> <span class="token string">'./'</span><span class="token punctuation">,</span>    <span class="token operator">...</span>  <span class="token punctuation">}</span><span class="token punctuation">,</span>  build<span class="token punctuation">:</span> <span class="token punctuation">{</span>    <span class="token operator">...</span>    assetsPublicPath<span class="token punctuation">:</span> <span class="token string">'./'</span><span class="token punctuation">,</span>    <span class="token operator">...</span>  <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>修改路由配置src/router/index.js，增加配置base: ‘/xxx/‘，也可为空。如果这里不配置，会导致部署的项目首页访问一片空白，但不报错，且引入的文件有正常加载</p><pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">new</span> <span class="token class-name">Router</span><span class="token punctuation">(</span><span class="token punctuation">{</span>  <span class="token comment" spellcheck="true">//如打包文件存放在Tomcat/webapps/xxxx下，那么base就这么写，如果放到ROOT下，则base:'/'</span>  base<span class="token punctuation">:</span> <span class="token string">'/xxx/'</span><span class="token punctuation">,</span>  mode<span class="token punctuation">:</span> <span class="token string">'history'</span><span class="token punctuation">,</span>  routes<span class="token punctuation">:</span> <span class="token punctuation">[</span>      <span class="token operator">...</span>  <span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>执行npm run build，将打包生成的dist目录下的所有东西粘贴到Tomcat/webapps/xxxx路径下，xxxx是自定义的项目名</p></li><li><p>启动tomcat，在tomcat下的bin目录中双击startup.bat文件，或者打开命令行去访问startup.bat，</p></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Tomcat </category>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+            <tag> Tomcat </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vue自动触发标签点击事件</title>
       <link href="2021/05/08/vue-zi-dong-hong-fa-biao-qian-dian-ji-shi-jian/"/>
       <url>2021/05/08/vue-zi-dong-hong-fa-biao-qian-dian-ji-shi-jian/</url>
