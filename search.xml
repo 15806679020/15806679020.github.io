@@ -8,9 +8,21 @@
       <link href="2021/05/18/linux-diao-shi-chang-yong-ming-ling/"/>
       <url>2021/05/18/linux-diao-shi-chang-yong-ming-ling/</url>
       
-        <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<ul><li><p>Linux 查看端口占用情况</p><ul><li><code>lsof</code>：lsof -i 需要 root 用户的权限来执行</li></ul><pre class="line-numbers language-shell"><code class="language-shell">lsof -i:端口号<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-shell"><code class="language-shell"># lsof -i:8000COMMAND   PID USER   FD   TYPE   DEVICE SIZE/OFF NODE NAMEnodejs  26993 root   10u  IPv4 37999514      0t0  TCP *:8000 (LISTEN)    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ul><li><code>netstat</code>：netstat -tunlp 用于显示 tcp，udp 的端口和进程等相关情况。</li></ul><pre class="line-numbers language-shell"><code class="language-shell">netstat -tunlp | grep 端口号-t (tcp) 仅显示tcp相关选项-u (udp)仅显示udp相关选项-n 拒绝显示别名，能显示数字的全部转化为数字-l 仅列出在Listen(监听)的服务状态-p 显示建立相关链接的程序名<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-shell"><code class="language-shell"># netstat -tunlp | grep 8000tcp        0      0 0.0.0.0:8000            0.0.0.0:*               LISTEN      26993/nodejs   <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li>更多命令</li></ul><pre class="line-numbers language-shell"><code class="language-shell">netstat -ntlp   //查看当前所有tcp端口netstat -ntulp | grep 80   //查看所有80端口使用情况netstat -ntulp | grep 3306   //查看所有3306端口使用情况<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ul><li>netstat无法显示PID或进程名<ul><li>解决：使用root执行</li></ul></li></ul><pre class="line-numbers language-shell"><code class="language-shell">Active Internet connections (only servers)Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name   tcp        0      0 172.23.154.139:56000    0.0.0.0:*               LISTEN      131/sshd            tcp        0      0 172.23.154.139:36000    0.0.0.0:*               LISTEN      125/sshd            tcp        0      0 0.0.0.0:3306            0.0.0.0:*               LISTEN      32547/mysqld        tcp        0      0 0.0.0.0:41069           0.0.0.0:*               LISTEN      -                   tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      -                   tcp        0      0 0.0.0.0:31101           0.0.0.0:*               LISTEN      -<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>linux 读写权限</p><ul><li>设置文件夹的读写权限:<ul><li>读取权限 r = 4 </li><li>写入权限 w = 2 </li><li>执行权限 x = 1 </li><li>sudo chmod -R 777 /data</li></ul></li><li>权限码描述<ul><li>sudo chmod 600 ××× （只有所有者有读和写的权限）</li><li>sudo chmod 644 ××× （所有者有读和写的权限，组用户只有读的权限）</li><li>sudo chmod 700 ××× （只有所有者有读和写以及执行的权限）</li><li>sudo chmod 666 ××× （每个人都有读和写的权限）</li><li>sudo chmod 777 ××× （每个人都有读和写以及执行的权限）</li></ul></li><li>-R表示包含设置所有子目录</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
+      <categories>
+          
+          <category> linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1876,9 +1888,9 @@
       
         <tags>
             
-            <tag> nacos </tag>
-            
             <tag> AlibabaCloud </tag>
+            
+            <tag> nacos </tag>
             
         </tags>
       

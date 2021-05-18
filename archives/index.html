@@ -614,9 +614,13 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                             <div class="summary block-with-text">
                                 
                                 
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return
+Linux 查看端口占用情况
+
+lsof：lsof -i 需要 root 用户的权限来执行
+
+lsof -i:端口号
+# lsof -i:8000
+COMMAND   PID USER   FD   TYPE   DEVICE SIZE/
                                 
                             </div>
                             <div class="publish-info">
@@ -626,10 +630,23 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
                                 </span>
                                 <span class="publish-author">
                                     
+                                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                    
+                                    <a href="/categories/linux/" class="post-category" target="_blank">
+                                        linux
+                                    </a>
+                                    
+                                    
                                 </span>
                             </div>
                         </div>
 
+                        
+                        <div class="card-action article-tags">
+                            
+                            <a href="/tags/linux/"><span class="chip bg-color">linux</span></a>
+                            
+                        </div>
                         
                     </div>
                 </div>
@@ -1494,7 +1511,7 @@ select @@SESSION.sql_mode
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">193.1k</span> 字
+                <span class="white-color">193.6k</span> 字
             
 
             
