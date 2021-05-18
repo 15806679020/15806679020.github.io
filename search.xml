@@ -4,6 +4,57 @@
   
     
     <entry>
+      <title>linux调试常用命令</title>
+      <link href="2021/05/18/linux-diao-shi-chang-yong-ming-ling/"/>
+      <url>2021/05/18/linux-diao-shi-chang-yong-ming-ling/</url>
+      
+        <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux安装mysql</title>
+      <link href="2021/05/18/linux-an-zhuang-mysql/"/>
+      <url>2021/05/18/linux-an-zhuang-mysql/</url>
+      
+        <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Nginx.conf常用配置</title>
+      <link href="2021/05/18/nginx-conf-chang-yong-pei-zhi/"/>
+      <url>2021/05/18/nginx-conf-chang-yong-pei-zhi/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>http</p></blockquote><pre class="line-numbers language-shell"><code class="language-shell">#user  nobody;worker_processes  1;#error_log  logs/error.log;#error_log  logs/error.log  notice;#error_log  logs/error.log  info;#pid        logs/nginx.pid;events {    worker_connections  1024;}http {    include       mime.types;    default_type  application/octet-stream;    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '    #                  '$status $body_bytes_sent "$http_referer" '    #                  '"$http_user_agent" "$http_x_forwarded_for"';    #access_log  logs/access.log  main;    sendfile        on;    #tcp_nopush     on;    #keepalive_timeout  0;    keepalive_timeout  65;    #gzip  on;    #server {    #    listen       80;    #    server_name  192.168.8.104;#        location /test/file {#            # 服务默认启动目录 #           alias D:\\BpmLogs\\;    #        autoindex on;   #允许nginx在浏览器以文件夹形式访问    #        autoindex_exact_size off;  #显示文件大小    #        autoindex_localtime on;    #显示文件时间    #        index index.html index.htm;     #   }    #}    # another virtual host using mix of IP-, name-, and port-based configuration    #    #server {    #    listen       8000;    #    listen       somename:8080;    #    server_name  somename  alias  another.alias;    #    location / {    #        root   html;    #        index  index.html index.htm;    #    }    #}    # HTTPS server    #    server {        listen       9998 ssl;        server_name  localhost;        ssl_certificate      server.crt;        ssl_certificate_key  server.key;        #ssl_session_cache    shared:SSL:1m;        ssl_session_timeout  5m;        ssl_ciphers  HIGH:!aNULL:!MD5;        ssl_prefer_server_ciphers  on;        location / {            #静态资源路径            root   html/webim;            index  index.html index.htm;            chunked_transfer_encoding on;            add_header Cache-Control no-cache;            try_files $uri $uri/ /index.html;        }        error_page 500 502 503 504 /50x.html;        location = /50x.html {            root html;        }    }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>https</p></blockquote><pre class="line-numbers language-shell"><code class="language-shell">#user  nobody;worker_processes  1;#error_log  logs/error.log;#error_log  logs/error.log  notice;#error_log  logs/error.log  info;#pid        logs/nginx.pid;events {    worker_connections  1024;}http {    include       mime.types;    default_type  application/octet-stream;    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '    #                  '$status $body_bytes_sent "$http_referer" '    #                  '"$http_user_agent" "$http_x_forwarded_for"';    #access_log  logs/access.log  main;    sendfile        on;    #tcp_nopush     on;    #keepalive_timeout  0;    keepalive_timeout  65;    #gzip  on;    #server {        #listen       80;        #server_name  192.168.8.104;        #location /test/file {            # 服务默认启动目录     #       alias D:\\BpmLogs\\;    #        autoindex on;   #允许nginx在浏览器以文件夹形式访问    #        autoindex_exact_size off;  #显示文件大小    #        autoindex_localtime on;    #显示文件时间    #        index index.html index.htm;     #   }    #}    server {        listen            8081;        server_name        localhost;        location /{            root html\static;            index  index.html index.htm;            chunked_transfer_encoding on;            add_header Cache-Control no-cache;            try_files $uri $uri/ /index.html;        }        location /api/{            proxy_pass http://localhost:5000/;            proxy_set_header Host $http_host;            proxy_set_header X-Real_IP $remote_addr;            proxy_set_header REMOTE-HOST $remote_addr;            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;            add_header Access-Control-Allow-Origin *;            add_header Access-Control-Allow-Methods "DELETE,POST,GET,OPTIONS";            add_header Access-Control-Allow-Headers "Origin,Authorization,Accept";            add_header Access-Control-Allow-Credentials true;        }        error_page 500 502 503 504 /50x.html;        location = /50x.html {            root html;        }    }    # another virtual host using mix of IP-, name-, and port-based configuration    #    #server {    #    listen       8000;    #    listen       somename:8080;    #    server_name  somename  alias  another.alias;    #    location / {    #        root   html;    #        index  index.html index.htm;    #    }    #}    # HTTPS server    #    #server {    #    listen       9998 ssl;   #     server_name  localhost;  #      ssl_certificate      server.crt; #       ssl_certificate_key  server.key;        #ssl_session_cache    shared:SSL:1m;#        ssl_session_timeout  5m;        #ssl_ciphers  HIGH:!aNULL:!MD5;        #ssl_prefer_server_ciphers  on;        #location / {            #静态资源路径          #  root   html/webim;         #   index  index.html index.htm;        #    chunked_transfer_encoding on;        #    add_header Cache-Control no-cache;        #    try_files $uri $uri/ /index.html;     #   }    #    error_page 500 502 503 504 /50x.html;    #    location = /50x.html {    #        root html;    #    }    #}}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Nginx </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Nginx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Vue项目部署tomcat后，页面刷新404</title>
       <link href="2021/05/08/vue-xiang-mu-bu-shu-tomcat-hou-ye-mian-shua-xin-404/"/>
       <url>2021/05/08/vue-xiang-mu-bu-shu-tomcat-hou-ye-mian-shua-xin-404/</url>

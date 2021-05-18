@@ -1,3 +1,6 @@
+http://www.ldclass.club/2021/05/18/linux-diao-shi-chang-yong-ming-ling/
+http://www.ldclass.club/2021/05/18/linux-an-zhuang-mysql/
+http://www.ldclass.club/2021/05/18/nginx-conf-chang-yong-pei-zhi/
 http://www.ldclass.club/2021/05/08/vue-xiang-mu-bu-shu-tomcat-hou-ye-mian-shua-xin-404/
 http://www.ldclass.club/2021/05/08/vue-shi-yong-elementui-zu-jian-ku-zai-tomcat-fu-wu-qi-bu-shu-hou-tu-biao-bu-xian-shi/
 http://www.ldclass.club/2021/05/08/tomcat-sheng-cheng-zheng-shu-pei-zhi-https/
@@ -75,6 +78,3 @@ http://www.ldclass.club/2020/12/23/xiang-mu-zheng-he-guan-li-de-7-ge-zi-guo-chen
 http://www.ldclass.club/2020/12/23/nacos-chang-jian-bao-cuo/
 http://www.ldclass.club/2020/12/22/mian-xiang-shi-bai-bian-cheng/
 http://www.ldclass.club/2020/12/21/fen-bu-shi-jia-gou-li-lun/
-http://www.ldclass.club/2020/12/21/xiang-mu-guan-li-zhi-shi-ling-yu/
-http://www.ldclass.club/2020/12/15/wei-fu-wu-alibabacloud-quan-jia-tong/
-http://www.ldclass.club/2020/12/08/element-chang-yong-zu-jian/
