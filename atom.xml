@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ldclass.club/"/>
-  <updated>2021-05-18T10:32:35.532Z</updated>
+  <updated>2021-05-19T08:54:34.336Z</updated>
   <id>http://www.ldclass.club/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo+阿里云+域名部署个人微博</title>
+    <link href="http://www.ldclass.club/2021/05/20/hexo-a-li-yun-yu-ming-bu-shu-ge-ren-wei-bo/"/>
+    <id>http://www.ldclass.club/2021/05/20/hexo-a-li-yun-yu-ming-bu-shu-ge-ren-wei-bo/</id>
+    <published>2021-05-19T16:23:57.000Z</published>
+    <updated>2021-05-19T08:54:34.336Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><h3 id="本地部署"><a href="#本地部署" class="headerlink" title="本地部署"></a>本地部署</h3></li><li><h4 id="配置SSH密钥"><a href="#配置SSH密钥" class="headerlink" title="配置SSH密钥"></a>配置SSH密钥</h4><ul><li>为了使本地可以跟远程的github建立联系，需要在本地配置SSH密钥，这样就可以在本地直接提交代码到GitHub上或者远端git仓库。</li><li>如果你是第一次配置SSH，则配置一下git的username 和 email</li></ul><pre class="line-numbers language-shell"><code class="language-shell">$ git config --global user.name "你要设置的名字"$ git config --global user.email "你要设置的邮箱"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li>生成SSH密钥：</li></ul><pre class="line-numbers language-shell"><code class="language-shell">$ ssh-keygen -t rsa -C "你刚刚设置的邮箱"<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>如果不需要设置密码的话，连续三次回车即可。在这之后会得到两个文件： id_rsa 和 id_rsa.pub，找到id_rsa.pub文件，复制其内容。</li></ul></li><li><h3 id="服务器部署"><a href="#服务器部署" class="headerlink" title="服务器部署"></a>服务器部署</h3></li><li><h4 id="git配置"><a href="#git配置" class="headerlink" title="git配置"></a>git配置</h4><ul><li><p>安装git：<code>yum install git</code></p></li><li><p>创建git账户：<code>adduser git</code></p></li><li><p>添加git账户权限：<code>chmod 740 /etc/sudoers</code></p></li><li><p>编辑sudoers：<code>vim /etc/sudoers</code></p><ul><li>在<code>root ALL=(ALL) ALL</code> 下面添加<code>git    ALL=(ALL)   ALL</code></li></ul></li><li><p>改回权限：<code>chmod 400 /etc/sudoers</code></p></li><li><p>设置git账户密码：<code>passwd git</code></p></li><li><p>切换至git用户，创建 ~/.ssh 文件夹和 ~/.ssh/authorized_keys 文件，并赋予相应的权限</p><pre class="line-numbers language-shell"><code class="language-shell">su gitmkdir ~/.sshvim ~/.ssh/authorized_keys<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ul><li>按”i”进入编辑模式，将本地生成的id_rsa.pub文件中的公钥复制到authorized_keys中，按”esc”，然后按”:wq”，保存退出。</li></ul></li><li><p>接着，输入一下命令，赋予权限</p><pre class="line-numbers language-shell"><code class="language-shell">chmod 600 /home/git/.ssh/authorized_keyschmod 700 /home/git/.ssh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li><li><p>在本地Git终端中测试是否能免密登录git，其中SERVER为填写自己的云主机IP，执行输入yes后输入你之前配置的git密码，无报错就说明好了。</p><p>打开终端，输入以下命令，其中SERVER填写自己的云主机ip，执行输入yes后不用密码说明配置成功了。</p><pre class="line-numbers language-shell"><code class="language-shell">ssh -v git@SERVER<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li></ul></li><li><h4 id="创建仓库目录及相关配置"><a href="#创建仓库目录及相关配置" class="headerlink" title="创建仓库目录及相关配置"></a>创建仓库目录及相关配置</h4><ul><li><p>创建目录</p><ul><li>在var目录下创建repo作为Git仓库目录，返回服务端命令行切换到root账户，然后输入：</li></ul><pre class="line-numbers language-shell"><code class="language-shell">mkdir /var/repo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li><p>赋予权限</p><pre class="line-numbers language-shell"><code class="language-shell">chown -R git:git /var/repochmod -R 755 /var/repo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li><li><p>创建hexo目录作为网站根目录，并赋予权限：</p><pre class="line-numbers language-shell"><code class="language-shell">mkdir /var/hexochown -R git:git /var/hexochmod -R 755 /var/hexo<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li><li><p>创建一个空白的git仓库</p><pre class="line-numbers language-shell"><code class="language-shell">cd /var/repogit init --bare hexo.git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li><li><p>创建一个新的 Git 钩子，用于自动部署</p><ul><li>在 /var/repo/hexo.git 下，有一个自动生成的 hooks 文件夹。我们需要在里边新建一个新的钩子文件 post-receive。</li></ul><pre class="line-numbers language-shell"><code class="language-shell">vim /var/repo/hexo.git/hooks/post-receive<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>进入编辑模式，然后将下面那两行代码粘贴进去，保存退出。</li></ul><pre class="line-numbers language-shell"><code class="language-shell">#!/bin/bashgit --work-tree=/var/hexo --git-dir=/var/repo/hexo.git checkout -f<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li>修改权限</li></ul><pre class="line-numbers language-shell"><code class="language-shell">chown -R git:git /var/repo/hexo.git/hooks/post-receivechmod +x /var/repo/hexo.git/hooks/post-receive<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li><li><p>Git仓库搭建完毕</p></li></ul></li><li><h4 id="配置Nginx"><a href="#配置Nginx" class="headerlink" title="配置Nginx"></a>配置Nginx</h4><ul><li>具体步骤查看本微博中Ngnix篇</li></ul></li><li><h4 id="修改Hexo配置"><a href="#修改Hexo配置" class="headerlink" title="修改Hexo配置"></a>修改Hexo配置</h4><ul><li>进入本地电脑hexo博客的根目录，编辑<strong>站点配置文件 _config.yml</strong>，找到deploy，修改成以下</li></ul><pre class="line-numbers language-shell"><code class="language-shell">deploy:  type: git  #repo改为repo: git@你的域名:/var/repo/hexo.git  repo: git@example.com:/var/repo/hexo.git  branch: master<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>最后在本地电脑hexo博客的根目录，打开终端，输入以下命令部署</li></ul><pre class="line-numbers language-shell"><code class="language-shell">hexo cleanhexo dhexo g<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ul><li><p>可能出现问题，导致部署到git失败。</p></li><li><p>问题一：权限</p><img src="/2021/05/20/hexo-a-li-yun-yu-ming-bu-shu-ge-ren-wei-bo/1.png" title="git发布失败"><ul><li>解决：在服务器终端输入以下命令即可</li></ul><pre class="line-numbers language-shell"><code class="language-shell">chown -R git:git /var/repo/chown -R git:git /var/hexo/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li>最后再<code>hexo d -g</code>部署，用域名访问即可看到部署成功了。</li></ul></li><li><p>问题二：秘钥</p><ul><li><p>在使用git提交代码时出现 fatal: Could not read from remote repository 这个错误</p></li><li><p>解决：</p><ul><li>首先，将本地生成的 id_rsa以及id_rsa.pub这两个文件删除掉</li><li>然后，使用命令 ssh-keygen -t rsa -C “邮箱地址”重新生成密钥</li><li>最后，重新将id_rsa.pub文件里的内容复制到服务器的authorized_keys中</li></ul></li></ul></li><li><p>问题三</p><ul><li><p>Git提交时提示‘The file will have its original line endings in your working directory’</p></li><li><p>解决：</p><ul><li>Gitshell中输入如下命令解决：</li></ul><pre class="line-numbers language-shell"><code class="language-shell">git config --global core.autocrlf false<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li></ul></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;本地部署&quot;&gt;&lt;a href=&quot;#本地部署&quot; class=&quot;headerlink&quot; title=&quot;本地部署&quot;&gt;&lt;/a&gt;本地部署&lt;/h3&gt;&lt;/li&gt;
+&lt;li&gt;&lt;h4 id=&quot;配置SSH密钥&quot;&gt;&lt;a href=&quot;#配置SSH密钥&quot; class=&quot;hea
+      
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://www.ldclass.club/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="http://www.ldclass.club/tags/Hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>linux调试常用命令</title>
@@ -606,37 +633,6 @@ select @@SES
 &lt;ul&gt;
 &lt;li&gt;保护数据的安全&lt;/li&gt;
 &lt;li&gt;在出现意外的时
-      
-    
-    </summary>
-    
-      <category term="MYSQL" scheme="http://www.ldclass.club/categories/MYSQL/"/>
-    
-    
-      <category term="MYSQL" scheme="http://www.ldclass.club/tags/MYSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Mysql语句优化思路</title>
-    <link href="http://www.ldclass.club/2021/01/21/mysql-yu-ju-you-hua-si-lu/"/>
-    <id>http://www.ldclass.club/2021/01/21/mysql-yu-ju-you-hua-si-lu/</id>
-    <published>2021-01-21T09:17:08.000Z</published>
-    <updated>2021-01-21T01:25:19.289Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>mysql的慢查询日志开启</p></blockquote><ul><li>查看是否已经开启了慢查询日志</li></ul><pre class="line-numbers language-mysql"><code class="language-mysql">show variables like 'slow%';slow_launch_time        2slow_query_log            ONslow_query_log_file        /var/lib/mysql/iZ2zeewcii3f53e59qe1neZ-slow.log<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>开启慢查询日志</li></ul><pre class="line-numbers language-mysql"><code class="language-mysql">set global slow_query_log = on ;#日志路径也可以自定义：1.路径存在且mysql有读写权限：sudo chown mysql:mysql -R /usr/local/mysqlSlowLog/2.set global slow_query_log_file = '路径';<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>查看慢查询的时间临界值</li></ul><pre class="line-numbers language-mysql"><code class="language-mysql">show variables like '%long%';<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>设置慢查询的时间标准</li></ul><pre class="line-numbers language-mysql"><code class="language-mysql">set long_query_time=0.4;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>永久生效的设置方法  </li></ul><pre class="line-numbers language-shell"><code class="language-shell">#修改配置文件 vi /etc/my.cnf[mysqld]slow_query_log = 1long_query_time = 0.1slow_query_log_file =/usr/local/mysql/mysql_slow.log#必须重启服务才能生效！<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>mysql的sql语句执行过程解析</p></blockquote><ul><li>查看性能详情是否开启</li></ul><pre class="line-numbers language-mysql"><code class="language-mysql">show variables like '%profiling%';have_profiling            YESprofiling                ONprofiling_history_size    15<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>开启性能记录功能</li></ul><pre class="line-numbers language-mysql"><code class="language-mysql">set profiling = on ;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>查看性能的记录</li></ul><pre class="line-numbers language-mysql"><code class="language-mysql">show profiles;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>查看语句的执行性能详情</li></ul><pre class="line-numbers language-mysql"><code class="language-mysql">show profile for query 4;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>性能线程的详细解释官方文档链接<ul><li><code>https://dev.mysql.com/doc/refman/5.7/en/general-thread-states.html</code></li></ul></li></ul><blockquote><p>mysql语句优化思路</p></blockquote><ul><li>尽量避免使用select *from ，尽量精确到想要的结果字段</li><li>尽量避免条件使用or</li><li>记得加上limit 限制行数，避免数据量过大消耗性能</li><li>使用模糊查询时，%放在前面是会使索引失效</li><li>要小心条件字段类型的转换</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;mysql的慢查询日志开启&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;查看是否已经开启了慢查询日志&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&quot;line-numbers language-mysql&quot;&gt;&lt;code class=&quot;lan
       
     
     </summary>
