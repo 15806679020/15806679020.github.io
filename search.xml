@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>iframe标签开启麦克风和摄像权限</title>
+      <link href="2021/05/23/ifame-biao-qian-kai-qi-mai-ke-feng-he-she-xiang-quan-xian/"/>
+      <url>2021/05/23/ifame-biao-qian-kai-qi-mai-ke-feng-he-she-xiang-quan-xian/</url>
+      
+        <content type="html"><![CDATA[<ul><li>直接通过html<ul><li>使用iframe进行嵌入调用：可以调取麦克风和摄像头</li></ul></li></ul><pre class="line-numbers language-html"><code class="language-html">&lt;iframe id="refFrame" allow="microphone;camera;midi;encrypted-media;" src = "https://XXXX"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>在vue框架中<ul><li>在vue模板中，直接嵌入iframe去调用也是不行的；</li><li>在vue中嵌入iframe去调取摄像头和麦克风，iframe的allow的属性必须得通过js的方式添加进去</li></ul></li></ul><pre class="line-numbers language-vue"><code class="language-vue"><iframe id="refFrame"  src = "https://XXXX"></iframe><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-js"><code class="language-js"><span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">//调取摄像头和麦克风</span>    <span class="token keyword">var</span> iframeElment <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">.</span>refFrame    <span class="token keyword">if</span> <span class="token punctuation">(</span>iframeElment<span class="token punctuation">)</span> <span class="token punctuation">{</span>        iframeElment<span class="token punctuation">.</span>allow <span class="token operator">=</span> <span class="token string">'microphone;camera;midi;encrypted-media;'</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Html </category>
+          
+          <category> iframe </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Html </tag>
+            
+            <tag> iframe </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hexo+阿里云+域名部署个人微博</title>
       <link href="2021/05/20/hexo-a-li-yun-yu-ming-bu-shu-ge-ren-wei-bo/"/>
       <url>2021/05/20/hexo-a-li-yun-yu-ming-bu-shu-ge-ren-wei-bo/</url>
