@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.ldclass.club/2021/05/27/linux-an-zhuang-nodejs/</loc>
+    <lastmod>2021-05-27</lastmod>
+  </url>  <url>
+    <loc>http://www.ldclass.club/2021/05/27/linux-an-zhuang-yarn/</loc>
+    <lastmod>2021-05-27</lastmod>
+  </url>  <url>
+    <loc>http://www.ldclass.club/2020/11/23/mybatis3-x-ji-chu/</loc>
+    <lastmod>2021-05-27</lastmod>
+  </url>  <url>
+    <loc>http://www.ldclass.club/2021/05/08/nginx-sheng-cheng-zheng-shu/</loc>
+    <lastmod>2021-05-27</lastmod>
+  </url>  <url>
     <loc>http://www.ldclass.club/2021/05/23/ifame-biao-qian-kai-qi-mai-ke-feng-he-she-xiang-quan-xian/</loc>
     <lastmod>2021-05-22</lastmod>
   </url>  <url>
@@ -20,9 +32,6 @@
     <lastmod>2021-05-08</lastmod>
   </url>  <url>
     <loc>http://www.ldclass.club/2021/05/08/vue-shi-yong-elementui-zu-jian-ku-zai-tomcat-fu-wu-qi-bu-shu-hou-tu-biao-bu-xian-shi/</loc>
-    <lastmod>2021-05-08</lastmod>
-  </url>  <url>
-    <loc>http://www.ldclass.club/2021/05/08/nginx-sheng-cheng-zheng-shu/</loc>
     <lastmod>2021-05-08</lastmod>
   </url>  <url>
     <loc>http://www.ldclass.club/2021/05/08/tomcat-bu-shu-vue-xiang-mu/</loc>
@@ -345,9 +354,6 @@
   </url>  <url>
     <loc>http://www.ldclass.club/2020/11/23/mybatis3-x-chang-jian-pei-zhi/</loc>
     <lastmod>2020-11-23</lastmod>
-  </url>  <url>
-    <loc>http://www.ldclass.club/2020/11/23/mybatis3-x-ji-chu/</loc>
-    <lastmod>2020-11-22</lastmod>
   </url>  <url>
     <loc>http://www.ldclass.club/2020/11/23/springboot2-x-zheng-he-mo-ban-yin-qing-thymelea-he-fk/</loc>
     <lastmod>2020-11-22</lastmod>
