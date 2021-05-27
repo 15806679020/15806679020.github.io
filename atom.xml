@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ldclass.club/"/>
-  <updated>2021-05-27T07:10:11.686Z</updated>
+  <updated>2021-05-27T07:58:52.566Z</updated>
   <id>http://www.ldclass.club/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>windows安装yarn</title>
+    <link href="http://www.ldclass.club/2021/05/27/windows-an-zhuang-yarn/"/>
+    <id>http://www.ldclass.club/2021/05/27/windows-an-zhuang-yarn/</id>
+    <published>2021-05-27T15:47:14.000Z</published>
+    <updated>2021-05-27T07:58:52.566Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>安装Yarn</p></blockquote><ul><li><p>方法一：使用安装包安装</p><ul><li>官方下载安装包，<code>https://yarnpkg.com/zh-Hans/docs/install</code>，安装完毕后，一定要配置环境变量。</li></ul></li><li><p>方法二：使用npm安装</p></li></ul><pre class="line-numbers language-shell"><code class="language-shell">npm i yarn -g-i：install -g：全局安装（global）,使用 -g 或 --global<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><p>输入yarn -version 可以看到版本号，说明安装成功了。我们就可以在项目中像使用npm一样使用yarn了。</p></li><li><p>解决：‘yarn’ 不是内部或外部命令，也不是可运行的程序</p><img src="/2021/05/27/windows-an-zhuang-yarn/1.png" title="安装yarn"><ul><li>根据安装的路径添加环境变量<ul><li>第1步：找到你刚才安装的yarn 如:E:\nodejs\node_global\node_modules\yarn\bin</li><li>第2步：系统变量-&gt;path,打开之后添加 E:\nodejs\node_global\node_modules\yarn\bin 重新打开cmd，输入 yarn -v 即可</li></ul></li></ul></li></ul><blockquote><p>卸载yarn</p></blockquote><ul><li>安装包直接软件卸载。</li><li>npm安装的则通过命令npm uninstall yarn -g卸载。</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;安装Yarn&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;方法一：使用安装包安装&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;官方下载安装包，&lt;code&gt;https://yarnpkg.com/zh-Hans/docs/install&lt;/code&gt;，
+      
+    
+    </summary>
+    
+      <category term="yarn" scheme="http://www.ldclass.club/categories/yarn/"/>
+    
+    
+      <category term="yarn" scheme="http://www.ldclass.club/tags/yarn/"/>
+    
+  </entry>
   
   <entry>
     <title>Nginx虚拟目录alias和root目录</title>
@@ -90,27 +121,27 @@
     <link href="http://www.ldclass.club/2021/05/27/linux-an-zhuang-nodejs/"/>
     <id>http://www.ldclass.club/2021/05/27/linux-an-zhuang-nodejs/</id>
     <published>2021-05-27T11:51:13.000Z</published>
-    <updated>2021-05-27T04:15:33.825Z</updated>
+    <updated>2021-05-27T07:41:24.390Z</updated>
     
-    <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    <content type="html"><![CDATA[<ul><li><p>去官网下载和自己系统匹配的文件：</p><ul><li>英文网址：<code>https://nodejs.org/en/download/</code></li><li>中文网址：<code>http://nodejs.cn/download/</code></li></ul></li><li><p>通过  uname -a  命令查看到Linux系统位数（备注：x86_64表示64位系统， i686 i386表示32位系统）</p></li><li><p>下载下来的tar文件上传到服务器并且解压，然后通过建立软连接变为全局；</p><ul><li>上传服务器可以是自己任意路径，目前我的放置路径为  cd /app/software/</li><li>解压上传（解压后的文件我这边将名字改为了nodejs，这个地方自己随意，只要在建立软连接的时候写正确就可以）<ul><li>tar -xvf  node-v6.10.0-linux-x64.tar.xz  </li><li>mv node-v6.10.0-linux-x64  nodejs </li><li>确认一下nodejs下bin目录是否有node 和npm文件，如果有执行软连接，如果没有重新下载执行上边步骤；</li></ul></li><li>建立软连接，变为全局<ul><li>ln -s /app/software/nodejs/bin/npm /usr/local/bin/ </li><li>ln -s /app/software/nodejs/bin/node /usr/local/bin/</li></ul></li><li>最后一步检验nodejs是否已变为全局<ul><li>在Linux命令行node -v 命令会显示nodejs版本，如图所示为大功告成</li></ul></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;script&gt;
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if (!el.dataset.src) { return; }
-        
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;去官网下载和自己系统匹配的文件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;英文网址：&lt;code&gt;https://nodejs.org/en/download/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;中文网址：&lt;code&gt;http://nodejs.cn/download/&lt;/
       
     
     </summary>
     
-      <category term="nodejs" scheme="http://www.ldclass.club/categories/nodejs/"/>
+      <category term="Node" scheme="http://www.ldclass.club/categories/Node/"/>
     
     
-      <category term="nodejs" scheme="http://www.ldclass.club/tags/nodejs/"/>
+      <category term="Node" scheme="http://www.ldclass.club/tags/Node/"/>
     
   </entry>
   
@@ -119,19 +150,16 @@
     <link href="http://www.ldclass.club/2021/05/27/linux-an-zhuang-yarn/"/>
     <id>http://www.ldclass.club/2021/05/27/linux-an-zhuang-yarn/</id>
     <published>2021-05-27T11:50:51.000Z</published>
-    <updated>2021-05-27T04:15:16.328Z</updated>
+    <updated>2021-05-27T07:44:05.420Z</updated>
     
-    <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    <content type="html"><![CDATA[<ul><li><p>Yarn 是一个依赖管理工具。它能够管理你的代码，并与全世界的开发者分享代码。Yarn 是高效、安全和可靠的，你完全可以安心使用。代码是通过包（有时也被称为组件）。 在每一个包中会定义一个 <code>package.json</code> 文件，用来描述这个包中所有要被分享的代码。</p></li><li><p>在 CentOS, Fedora 和 RHEL 操作系统上，你可以通过RPM 包仓库来安装 Yarn</p></li></ul><pre class="line-numbers language-shell"><code class="language-shell">sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>如果尚未安装 Node.js（查看是否安装node.js用命令：node -v可以显示版本。安装方法参考<code>https://www.ldclass.club/2021/05/27/linux-an-zhuang-nodejs/</code>，配置 Node 源仓库：</li></ul><pre class="line-numbers language-shell"><code class="language-shell">curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>运行：</li></ul><pre class="line-numbers language-shell"><code class="language-shell">sudo yum install yarn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>安装完成。查看yarn版本用命令：<code>yarn --version</code></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;script&gt;
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if (!el.dataset.src) { return; }
-        
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Yarn 是一个依赖管理工具。它能够管理你的代码，并与全世界的开发者分享代码。Yarn 是高效、安全和可靠的，你完全可以安心使用。代码是通过包（有时也被称为组件）。 在每一个包中会定义一个 &lt;code&gt;package.json&lt;/code&gt; 文件，用来描述
       
     
     </summary>
@@ -612,41 +640,6 @@ select @@SES
       <category term="SpringBoot" scheme="http://www.ldclass.club/tags/SpringBoot/"/>
     
       <category term="WebSocket" scheme="http://www.ldclass.club/tags/WebSocket/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker安装mysql5.7</title>
-    <link href="http://www.ldclass.club/2021/02/01/docker-an-zhuang-mysql5-7/"/>
-    <id>http://www.ldclass.club/2021/02/01/docker-an-zhuang-mysql5-7/</id>
-    <published>2021-01-31T22:24:20.000Z</published>
-    <updated>2021-03-03T07:46:39.910Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>docker查找mysql5.7镜像<ul><li><code>docker search mysql5.7</code></li></ul></li><li>拉取MySQL镜像(:5.7 表示5.7版本)<ul><li><code>docker pull mysql:5.7</code></li></ul></li><li>创建挂载目录</li></ul><pre class="line-numbers language-shell"><code class="language-shell">mkdir -p /home/app/mysql/confmkdir -p /home/app/mysql/datamkdir -p /home/app/mysql/logs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ul><li>创建my.cnf</li></ul><pre class="line-numbers language-shell"><code class="language-shell">vi /home/app/mysql/conf/my.cnf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>在my.cnf中写入</li></ul><pre class="line-numbers language-shell"><code class="language-shell"># Copyright (c) 2017, Oracle and/or its affiliates. All rights reserved.## This program is free software; you can redistribute it and/or modify# it under the terms of the GNU General Public License as published by# the Free Software Foundation; version 2 of the License.## This program is distributed in the hope that it will be useful,# but WITHOUT ANY WARRANTY; without even the implied warranty of# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the# GNU General Public License for more details.## You should have received a copy of the GNU General Public License# along with this program; if not, write to the Free Software# Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA## The MySQL  Server configuration file.## For explanations see# http://dev.mysql.com/doc/mysql/en/server-system-variables.html[mysqld]pid-file        = /var/run/mysqld/mysqld.pidsocket          = /var/run/mysqld/mysqld.sockdatadir         = /var/lib/mysqlsecure-file-priv= NULL# Disabling symbolic-links is recommended to prevent assorted security riskssymbolic-links=0# Custom config should go here!includedir /etc/mysql/conf.d/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>运行MySQL容器</li></ul><pre class="line-numbers language-shell"><code class="language-shell">docker run --restart=always -d --privileged=true -v /home/app/mysql/conf/my.cnf:/etc/mysql/my.cnf -v /home/app/mysql/logs:/logs -v /home/app/mysql/data/mysql:/var/lib/mysql  -p 13306:3306 --name mysql -e MYSQL_ROOT_PASSWORD=Root@123 mysql:5.7#参数说明run　run 是运行一个容器-d　 表示后台运行--restart=always 表示随docker重启-p　　表示容器内部端口和服务器端口映射关联--privileged=true　设置MySQL的root用户权限, 否则外部不能使用root用户登陆-v /docker/mysql/conf/my.cnf:/etc/my.cnf 将服务器中的my.cnf配置映射到docker中的/docker/mysql/conf/my.cnf配置-v /docker/mysql/data:/var/lib/mysql　　同上,映射数据库的数据目录, 避免以后docker删除重新运行MySQL容器时数据丢失-e MYSQL_ROOT_PASSWORD=123456　　　设置MySQL数据库root用户的密码--name mysql　　　　 设值容器名称为mysqlmysql:5.7　　表示从docker镜像mysql:5.7中启动一个容器--character-set-server=utf8mb4 --collation-server=utf8mb4_general_ci 设值数据库默认编码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><p>新建MySQL用户</p><ul><li>先进入容器<code>docker exec -it mysql8 bash</code></li></ul><img src="/2021/02/01/docker-an-zhuang-mysql5-7/1.png" title="进入容器"><ul><li>登录root用户：<code>mysql -uroot -p</code>，输入密码</li><li>新建用户<ul><li><code>CREATE USER 'username'@'host' IDENTIFIED BY 'password';</code><ul><li>username：你将创建的用户名</li><li>localhost：指定该用户在哪个主机上可以登陆，如果是本地用户可用localhost，如果想让该用户可以从任意远程主机登陆，可以使用通配符<code>%</code></li><li>password：该用户的登陆密码，密码可以为空，如果为空则该用户可以不需要密码登陆服务器</li><li>实例<code>CREATE USER 'test'@'localhost' IDENTIFIED BY 'Test@123';</code></li></ul></li><li>更改host，设置可远程连接<ul><li><code>use mysql</code></li><li><code>update user set host='%' where user='username';</code></li></ul></li></ul></li><li>授权<ul><li><code>GRANT privileges ON databasename.tablename TO 'username'@'host'</code><ul><li>privileges：用户的操作权限，如<code>SELECT</code>，<code>INSERT</code>，<code>UPDATE</code>等，如果要授予所有的权限则使用<code>ALL</code></li><li>databasename：数据库名</li><li>tablename：表名，如果要授予该用户对所有数据库和表的相应操作权限则可用<code>*</code>表示，如<code>*.*</code></li><li>实例<code>GRANT ALL ON *.* TO 'test'@'localhost';</code></li></ul></li><li>用以上命令授权的用户不能给其它用户授权，如果想让该用户可以授权，用以下命令:<ul><li><code>GRANT privileges ON databasename.tablename TO 'username'@'host' WITH GRANT OPTION;</code></li></ul></li></ul></li><li>设置与更改用户密码<ul><li>用于mysql5.7：<code>SET PASSWORD FOR 'username'@'host' = PASSWORD('newpassword');</code><ul><li>更改当前登录用户密码：<code>SET PASSWORD = PASSWORD("newpassword");</code></li></ul></li><li>用于mysql8：<code>ALTER USER 'username'@'host' IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'newpassword';</code></li></ul></li><li>撤销用户权限<ul><li><code>REVOKE privilege ON databasename.tablename FROM 'username'@'host';</code></li><li>实例：<code>REVOKE ALL ON *.* FROM 'test'@'localhost';</code></li></ul></li><li>删除用户<ul><li><code>DROP USER 'username'@'host';</code></li><li>实例：<code>DROP USER 'test'@'localhost';</code></li></ul></li></ul></li><li><p>DBeaver连接测试</p></li></ul><img src="/2021/02/01/docker-an-zhuang-mysql5-7/2.png" title="DBeaver测试链接"><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;docker查找mysql5.7镜像&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;docker search mysql5.7&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;拉取MySQL镜像(:5.7 表示5.7版本)&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;docker pu
-      
-    
-    </summary>
-    
-      <category term="Docker" scheme="http://www.ldclass.club/categories/Docker/"/>
-    
-      <category term="MYSQL" scheme="http://www.ldclass.club/categories/Docker/MYSQL/"/>
-    
-    
-      <category term="Docker" scheme="http://www.ldclass.club/tags/Docker/"/>
-    
-      <category term="MYSQL" scheme="http://www.ldclass.club/tags/MYSQL/"/>
     
   </entry>
   

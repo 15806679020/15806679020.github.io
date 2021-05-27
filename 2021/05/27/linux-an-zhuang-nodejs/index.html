@@ -10,9 +10,13 @@
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
     <meta name="description" content="
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if (!el.dataset.src) { return">
+去官网下载和自己系统匹配的文件：
+
+英文网址：https://nodejs.org/en/download/
+中文网址：http://nodejs.cn/download/
+
+
+通过  uname -a  命令查看到Linux系统位数（备">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -589,8 +593,8 @@
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/nodejs/" target="_blank">
-                            <span class="chip bg-color">nodejs</span>
+                        <a href="/tags/Node/" target="_blank">
+                            <span class="chip bg-color">Node</span>
                         </a>
                         
                     </div>
@@ -601,8 +605,8 @@
                     <div class="post-cate">
                         <i class="fa fa-bookmark fa-fw icon-category"></i>
                         
-                        <a href="/categories/nodejs/" class="post-category" target="_blank">
-                            nodejs
+                        <a href="/categories/Node/" class="post-category" target="_blank">
+                            Node
                         </a>
                         
                     </div>
@@ -627,7 +631,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    52
+                    336
                 </div>
                 
 
@@ -651,7 +655,37 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <script>
+                <ul>
+<li><p>去官网下载和自己系统匹配的文件：</p>
+<ul>
+<li>英文网址：<code>https://nodejs.org/en/download/</code></li>
+<li>中文网址：<code>http://nodejs.cn/download/</code></li>
+</ul>
+</li>
+<li><p>通过  uname -a  命令查看到Linux系统位数（备注：x86_64表示64位系统， i686 i386表示32位系统）</p>
+</li>
+<li><p>下载下来的tar文件上传到服务器并且解压，然后通过建立软连接变为全局；</p>
+<ul>
+<li>上传服务器可以是自己任意路径，目前我的放置路径为  cd /app/software/</li>
+<li>解压上传（解压后的文件我这边将名字改为了nodejs，这个地方自己随意，只要在建立软连接的时候写正确就可以）<ul>
+<li>tar -xvf  node-v6.10.0-linux-x64.tar.xz  </li>
+<li>mv node-v6.10.0-linux-x64  nodejs </li>
+<li>确认一下nodejs下bin目录是否有node 和npm文件，如果有执行软连接，如果没有重新下载执行上边步骤；</li>
+</ul>
+</li>
+<li>建立软连接，变为全局<ul>
+<li>ln -s /app/software/nodejs/bin/npm /usr/local/bin/ </li>
+<li>ln -s /app/software/nodejs/bin/node /usr/local/bin/</li>
+</ul>
+</li>
+<li>最后一步检验nodejs是否已变为全局<ul>
+<li>在Linux命令行node -v 命令会显示nodejs版本，如图所示为大功告成</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1236,9 +1270,7 @@ Windows设置 –&gt; 应用–&gt; 找到Node–&gt;点击卸载
                     <div class="summary block-with-text">
                         
                             
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return
+Yarn 是一个依赖管理工具。它能够管理你的代码，并与全世界的开发者分享代码。Yarn 是高效、安全和可靠的，你完全可以安心使用。代码是通过包（有时也被称为组件）。 在每一个包中会定义一个 package.json 文件，用来描述这个包中
                         
                     </div>
                     <div class="publish-info">
@@ -1421,7 +1453,7 @@ Windows设置 –&gt; 应用–&gt; 找到Node–&gt;点击卸载
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">196k</span> 字
+                <span class="white-color">196.7k</span> 字
             
 
             

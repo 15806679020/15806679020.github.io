@@ -1,3 +1,4 @@
+http://www.ldclass.club/2021/05/27/windows-an-zhuang-yarn/
 http://www.ldclass.club/2021/05/27/nginx-xu-ni-mu-lu-alias-he-root-mu-lu/
 http://www.ldclass.club/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/
 http://www.ldclass.club/2021/05/27/linux-an-zhuang-nodejs/
@@ -77,4 +78,3 @@ http://www.ldclass.club/2020/12/27/wei-fu-wu-xia-de-docker-jie-shao/
 http://www.ldclass.club/2020/12/25/fen-bu-shi-pei-zhi-zhong-xin/
 http://www.ldclass.club/2020/12/25/wei-fu-wu-lian-lu-zhui-zong-xi-tong/
 http://www.ldclass.club/2020/12/25/xiang-mu-fan-wei-guan-li-de-6-ge-zi-guo-cheng/
-http://www.ldclass.club/2020/12/24/xiang-mu-fan-wei-guan-li/

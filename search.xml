@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>windows安装yarn</title>
+      <link href="2021/05/27/windows-an-zhuang-yarn/"/>
+      <url>2021/05/27/windows-an-zhuang-yarn/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>安装Yarn</p></blockquote><ul><li><p>方法一：使用安装包安装</p><ul><li>官方下载安装包，<code>https://yarnpkg.com/zh-Hans/docs/install</code>，安装完毕后，一定要配置环境变量。</li></ul></li><li><p>方法二：使用npm安装</p></li></ul><pre class="line-numbers language-shell"><code class="language-shell">npm i yarn -g-i：install -g：全局安装（global）,使用 -g 或 --global<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><p>输入yarn -version 可以看到版本号，说明安装成功了。我们就可以在项目中像使用npm一样使用yarn了。</p></li><li><p>解决：‘yarn’ 不是内部或外部命令，也不是可运行的程序</p><img src="/2021/05/27/windows-an-zhuang-yarn/1.png" title="安装yarn"><ul><li>根据安装的路径添加环境变量<ul><li>第1步：找到你刚才安装的yarn 如:E:\nodejs\node_global\node_modules\yarn\bin</li><li>第2步：系统变量-&gt;path,打开之后添加 E:\nodejs\node_global\node_modules\yarn\bin 重新打开cmd，输入 yarn -v 即可</li></ul></li></ul></li></ul><blockquote><p>卸载yarn</p></blockquote><ul><li>安装包直接软件卸载。</li><li>npm安装的则通过命令npm uninstall yarn -g卸载。</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> yarn </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> yarn </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Nginx虚拟目录alias和root目录</title>
       <link href="2021/05/27/nginx-xu-ni-mu-lu-alias-he-root-mu-lu/"/>
       <url>2021/05/27/nginx-xu-ni-mu-lu-alias-he-root-mu-lu/</url>
@@ -66,19 +91,19 @@
       <link href="2021/05/27/linux-an-zhuang-nodejs/"/>
       <url>2021/05/27/linux-an-zhuang-nodejs/</url>
       
-        <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<ul><li><p>去官网下载和自己系统匹配的文件：</p><ul><li>英文网址：<code>https://nodejs.org/en/download/</code></li><li>中文网址：<code>http://nodejs.cn/download/</code></li></ul></li><li><p>通过  uname -a  命令查看到Linux系统位数（备注：x86_64表示64位系统， i686 i386表示32位系统）</p></li><li><p>下载下来的tar文件上传到服务器并且解压，然后通过建立软连接变为全局；</p><ul><li>上传服务器可以是自己任意路径，目前我的放置路径为  cd /app/software/</li><li>解压上传（解压后的文件我这边将名字改为了nodejs，这个地方自己随意，只要在建立软连接的时候写正确就可以）<ul><li>tar -xvf  node-v6.10.0-linux-x64.tar.xz  </li><li>mv node-v6.10.0-linux-x64  nodejs </li><li>确认一下nodejs下bin目录是否有node 和npm文件，如果有执行软连接，如果没有重新下载执行上边步骤；</li></ul></li><li>建立软连接，变为全局<ul><li>ln -s /app/software/nodejs/bin/npm /usr/local/bin/ </li><li>ln -s /app/software/nodejs/bin/node /usr/local/bin/</li></ul></li><li>最后一步检验nodejs是否已变为全局<ul><li>在Linux命令行node -v 命令会显示nodejs版本，如图所示为大功告成</li></ul></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
           
-          <category> nodejs </category>
+          <category> Node </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> nodejs </tag>
+            <tag> Node </tag>
             
         </tags>
       
@@ -91,7 +116,7 @@
       <link href="2021/05/27/linux-an-zhuang-yarn/"/>
       <url>2021/05/27/linux-an-zhuang-yarn/</url>
       
-        <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<ul><li><p>Yarn 是一个依赖管理工具。它能够管理你的代码，并与全世界的开发者分享代码。Yarn 是高效、安全和可靠的，你完全可以安心使用。代码是通过包（有时也被称为组件）。 在每一个包中会定义一个 <code>package.json</code> 文件，用来描述这个包中所有要被分享的代码。</p></li><li><p>在 CentOS, Fedora 和 RHEL 操作系统上，你可以通过RPM 包仓库来安装 Yarn</p></li></ul><pre class="line-numbers language-shell"><code class="language-shell">sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>如果尚未安装 Node.js（查看是否安装node.js用命令：node -v可以显示版本。安装方法参考<code>https://www.ldclass.club/2021/05/27/linux-an-zhuang-nodejs/</code>，配置 Node 源仓库：</li></ul><pre class="line-numbers language-shell"><code class="language-shell">curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>运行：</li></ul><pre class="line-numbers language-shell"><code class="language-shell">sudo yum install yarn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>安装完成。查看yarn版本用命令：<code>yarn --version</code></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
