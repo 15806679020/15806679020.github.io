@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ldclass.club/"/>
-  <updated>2021-05-27T04:15:33.825Z</updated>
+  <updated>2021-05-27T07:10:11.686Z</updated>
   <id>http://www.ldclass.club/</id>
   
   <author>
@@ -15,6 +15,75 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Nginx虚拟目录alias和root目录</title>
+    <link href="http://www.ldclass.club/2021/05/27/nginx-xu-ni-mu-lu-alias-he-root-mu-lu/"/>
+    <id>http://www.ldclass.club/2021/05/27/nginx-xu-ni-mu-lu-alias-he-root-mu-lu/</id>
+    <published>2021-05-27T14:59:42.000Z</published>
+    <updated>2021-05-27T07:10:11.686Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><p>nginx是通过alias设置虚拟目录，在nginx的配置中，alias目录和root目录是有区别的：</p><ul><li>alias指定的目录是准确的，即location匹配访问的path目录下的文件直接是在alias目录下查找的；</li><li>root指定的目录是location匹配访问的path目录的上一级目录,这个path目录一定要是真实存在root指定目录下的；</li><li>使用alias标签的目录块中不能使用rewrite的break；另外，alias指定的目录后面必须要加上”/“符号！！</li><li>alias虚拟目录配置中，location匹配的path目录如果后面不带”/“，那么访问的url地址中这个path目录后面加不加”/“不影响访问，访问时它会自动加上”/“；但是如果location匹配的path目录后面加上”/“，那么访问的url地址中这个path目录必须要加上”/“，访问时它不会自动加上”/“。如果不加上”/“，访问就会失败！</li><li>root目录配置中，location匹配的path目录后面带不带”/“，都不会影响访问。</li></ul></li><li><p>示例</p></li></ul><pre class="line-numbers language-nginx"><code class="language-nginx">        <span class="token keyword">location</span>  <span class="token operator">/</span> <span class="token punctuation">{</span>            <span class="token keyword">root</span>   <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>excalidraw<span class="token operator">/</span>build<span class="token punctuation">;</span>            <span class="token keyword">index</span>  <span class="token keyword">index</span><span class="token punctuation">.</span>html <span class="token keyword">index</span><span class="token punctuation">.</span>htm<span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">#location匹配访问的path目录名与项目路径一致时，可以使用alias 也可以使用root</span>        <span class="token keyword">location</span> <span class="token operator">/</span>build <span class="token punctuation">{</span>            <span class="token keyword">alias</span>  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>excalidraw<span class="token operator">/</span>build<span class="token operator">/</span><span class="token punctuation">;</span>            <span class="token keyword">index</span>  <span class="token keyword">index</span><span class="token punctuation">.</span>html <span class="token keyword">index</span><span class="token punctuation">.</span>htm<span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">#/usr/local/excalidraw下必须有build目录</span>        <span class="token keyword">location</span> <span class="token operator">/</span>build<span class="token punctuation">{</span>            <span class="token keyword">root</span>  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>excalidraw<span class="token punctuation">;</span>            <span class="token keyword">index</span>  <span class="token keyword">index</span><span class="token punctuation">.</span>html <span class="token keyword">index</span><span class="token punctuation">.</span>htm<span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">#location匹配访问的path目录名与项目路径不一致时，不能直接更改为root</span>        <span class="token keyword">location</span> <span class="token operator">/</span>excalidraw <span class="token punctuation">{</span>            <span class="token keyword">alias</span>  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>excalidraw<span class="token operator">/</span>build<span class="token operator">/</span><span class="token punctuation">;</span>            <span class="token keyword">index</span>  <span class="token keyword">index</span><span class="token punctuation">.</span>html <span class="token keyword">index</span><span class="token punctuation">.</span>htm<span class="token punctuation">;</span>        <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>所以，一般情况下，在nginx配置中的良好习惯是：<ul><li>在location /中配置root目录；</li><li>在location /path中配置alias虚拟目录。</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;nginx是通过alias设置虚拟目录，在nginx的配置中，alias目录和root目录是有区别的：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;alias指定的目录是准确的，即location匹配访问的path目录下的文件直接是在alias目录下查找的；&lt;/li&gt;
+&lt;l
+      
+    
+    </summary>
+    
+      <category term="Nginx" scheme="http://www.ldclass.club/categories/Nginx/"/>
+    
+      <category term="Alias" scheme="http://www.ldclass.club/categories/Nginx/Alias/"/>
+    
+    
+      <category term="Nginx" scheme="http://www.ldclass.club/tags/Nginx/"/>
+    
+      <category term="Alias" scheme="http://www.ldclass.club/tags/Alias/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>windows使用nvm管理node版本</title>
+    <link href="http://www.ldclass.club/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/"/>
+    <id>http://www.ldclass.club/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/</id>
+    <published>2021-05-27T13:59:56.000Z</published>
+    <updated>2021-05-27T07:32:32.348Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>需要在同一台机器上安装多个版本的Node，使用<code>nvm</code>来做Node版本的管理。</li></ul><blockquote><p>安装前需要先将之前安装的Node版本完全删除</p></blockquote><ul><li><p>Windows设置 –&gt; 应用–&gt; 找到Node–&gt;点击卸载</p></li><li><p>重启电脑（或者从任务管理器中杀死所有Node相关的进程）</p></li><li><p>寻找以下文件夹并删除他们。根据您安装的版本，这些文件可能存在也可能不存在：</p><ul><li>C:\Program Files (x86)\Nodejs</li><li>C:\Program Files\Nodejs</li><li>C:\Users{User}\AppData\Roaming\npm（或%appdata%\npm）</li><li>C:\Users{User}\AppData\Roaming\npm-cache（或%appdata%\npm-cache）</li></ul></li><li><p>检查%PATH%环境变量，确保没有引用Nodejs和npm的存在</p></li><li><p>重启（重启大法解决90%问题）</p></li></ul><blockquote><p>下载安装</p></blockquote><ul><li>链接：<code>https://github.com/coreybutler/nvm-windows/releases</code></li><li>可下载以下版本：<ul><li>nvm-noinstall.zip：绿色免安装版，但使用时需要进行配置。</li><li>nvm-setup.zip：安装版，推荐使用</li></ul></li><li>双击解压后的文件<code>nvm-setup.exe</code></li><li>选择nvm安装路径<ul><li>在选择文件夹的时候，需要注意，文件夹名不要出现 <code>中文</code> 和 <code>空格</code></li></ul></li></ul><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/1.png" title="选择nvm安装路径"><ul><li>选择nodejs安装路径</li></ul><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/2.png" title="选择nodejs安装路径"><ul><li>检查是否安装成功<ul><li>打开cmd，输入<code>nvm</code>，安装成功则会如下图所示，它会显示出当前nvm版本以及nvm的命令：</li></ul></li></ul><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/3.png" title="检查是否安装成功"><blockquote><p>环境变量</p></blockquote><ul><li>安装好之后，环境变量会自动设置好</li></ul><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/4.png" title="环境变量"><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/5.png" title="环境变量"><blockquote><p>使用</p></blockquote><ul><li>nvm list 命令 - 显示版本列表</li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm list // 显示已安装的版本（同 nvm list installed）nvm list installed // 显示已安装的版本nvm list available // 显示所有可以下载的版本<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ul><li>nvm install 命令 - 安装指定版本nodejs<ul><li>在运行<code>nvm install</code> 的时候，有可能会出现无权限安装的问题，如果遇到此问题，请 <code>以管理员身份运行</code> cmd。</li></ul></li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm install 14.5.0 // 安装14.5.0版本nodenvm install latest // 安装最新版本node<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li>nvm uninstall 命令 - 卸载指定版本 node</li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm uninstall 14.5.0 // 卸载14.5.0版本node<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>nvm use 命令 // 使用指定版本Node</li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm use 14.5.0 // 使用14.5.0版本node<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><p>可能遇到的问题</p></blockquote><ul><li><p>错误一：无法安装npm</p><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/6.png" title="错误一"><ul><li><p>可行的解决方法：</p><ul><li>使用nvm-windows高版本时需要单独另外安装npm，nvm只是用来管理node版本的，没有管理npm功能</li><li>为 nvm 设置淘宝镜像</li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm uninstall 14.5.0nvm npm_mirror https://npm.taobao.org/mirrors/npm/nvm install 14.5.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;需要在同一台机器上安装多个版本的Node，使用&lt;code&gt;nvm&lt;/code&gt;来做Node版本的管理。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;安装前需要先将之前安装的Node版本完全删除&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p
+      
+    
+    </summary>
+    
+      <category term="Node" scheme="http://www.ldclass.club/categories/Node/"/>
+    
+      <category term="nvm" scheme="http://www.ldclass.club/categories/Node/nvm/"/>
+    
+    
+      <category term="Node" scheme="http://www.ldclass.club/tags/Node/"/>
+    
+      <category term="nvm" scheme="http://www.ldclass.club/tags/nvm/"/>
+    
+  </entry>
   
   <entry>
     <title>linux安装nodejs</title>
@@ -338,7 +407,7 @@ worker_process
     <link href="http://www.ldclass.club/2021/05/08/nginx-sheng-cheng-zheng-shu/"/>
     <id>http://www.ldclass.club/2021/05/08/nginx-sheng-cheng-zheng-shu/</id>
     <published>2021-05-08T11:56:15.000Z</published>
-    <updated>2021-05-27T04:14:40.576Z</updated>
+    <updated>2021-05-27T06:00:26.678Z</updated>
     
     <content type="html"><![CDATA[<ul><li><h4 id="OpenSSl安装配置"><a href="#OpenSSl安装配置" class="headerlink" title="OpenSSl安装配置"></a>OpenSSl安装配置</h4><ul><li>下载链接：<code>https://slproweb.com/products/Win32OpenSSL.html</code></li><li>安装OpenSSL，右键以管理员身份运行，选择安装路径，安装路径不要带中文。</li><li>OpenSSl环境变量配置<ul><li>变量名：OPENSSL_HOME</li><li>变量值：F:\tool\OpenSSL-Win64</li></ul></li><li>配置PATH<ul><li>在最后添加%OPENSSL_HOME%\bin</li></ul></li></ul></li><li><h4 id="生成SSL证书"><a href="#生成SSL证书" class="headerlink" title="生成SSL证书"></a>生成SSL证书</h4><ul><li>打开nginx安装目录，进入F:\nginux\nginx-1.17.1\conf，在地址栏输入cmd，按回车，打开命令行窗口</li><li>执行命令：openssl genrsa -des3 -out server.key，需要你设置一个密码</li><li>执创建csr证书，命令：openssl req -new -key server.key -out server.csr，照实填写即可（此处如果报错需先执行：set OPENSSL_CONF=F:\tool\OpenSSL-Win64\bin\openssl.cfg 设置配置文件路径）</li><li>拷贝目录下生成的server.key并重命名为server.key.org</li><li>去除密码，命令：openssl rsa -in server.key.org -out server.key</li><li>生成证书文件server.crt，命令：openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt （-days 365为证书生效时间，可以设长点）</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
@@ -578,80 +647,6 @@ select @@SES
       <category term="Docker" scheme="http://www.ldclass.club/tags/Docker/"/>
     
       <category term="MYSQL" scheme="http://www.ldclass.club/tags/MYSQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker安装oracle11g</title>
-    <link href="http://www.ldclass.club/2021/02/01/docker-an-zhuang-oracle11g/"/>
-    <id>http://www.ldclass.club/2021/02/01/docker-an-zhuang-oracle11g/</id>
-    <published>2021-01-31T18:45:16.000Z</published>
-    <updated>2021-01-31T14:21:48.211Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><p>安装Docker</p><p>安装环境：Centos 7.5</p><ul><li>安装wget命令 </li><li>下载阿里云docker社区版 yum源<ul><li><code>cd /etc/yum.repos.d/</code></li><li><code>wget http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</code></li></ul></li><li>查看docker安装包：<code>yum list | grep docker</code></li><li>安装Docker Ce 社区版本：<code>yum install -y docker-ce.x86_64</code></li><li>设置开机启动：<code>systemctl enable docker</code></li><li>更新xfsprogs：<code>yum -y update xfsprogs</code></li><li>启动docker：<code>systemctl start docker</code></li><li>查看版本：<code>docker version</code></li><li>查看详细信息：<code>docker info</code></li></ul></li><li><p>配置阿里云镜像加速</p><ul><li>阿里云镜像加速器配置地址：<code>https://cr.console.aliyun.com/cn-shenzhen/instances/mirrors</code></li><li>配置步骤：<code>vi /etc/docker/daemon.json</code></li></ul><pre class="line-numbers language-shell"><code class="language-shell">{"registry-mirrors": ["https://5xok66d4.mirror.aliyuncs.com"]}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ul><li>重启：<code>systemctl daemon-reload &amp;&amp; systemctl restart docker</code></li></ul></li><li><p>常用命令</p><ul><li>查看镜像<code>docker images</code></li><li>搜索镜像<code>docker search xxxx</code></li><li>下载xxx镜像：<code>docker pull xxxx</code></li><li>本地镜像的删除：<code>docker rmi xxxx</code></li><li>创建并启动容器：<code>docker run -itd --name=自定义名 xxx:版本号</code></li><li>查看本地所有的容器：docker ps -a</li><li>查看本地正在运行的容器：docker ps</li><li>停止容器：<code>docker stop CONTAINER_ID / CONTAINER_NAME</code></li><li>一次性停止所有容器：<code>docker stop $(docker ps -a -q)</code></li><li>启动容器：<code>docker start CONTAINER_ID / CONTAINER_NAME</code></li><li>重启容器：<code>docker restart CONTAINER_ID / CONTAINER_NAME</code></li><li>删除容器：<code>docker rm CONTAINER_ID / CONTAINER_NAME</code></li><li>强制删除容器：<code>docker rmi -f CONTAINER_ID / CONTAINER_NAME</code></li><li>查看容器详细信息：<code>docker inspect CONTAINER_ID / CONTAINER_NAME</code></li><li>进入容器：<code>docker exec -it CONTAINER_ID /bin/bash</code></li></ul></li><li><p>Docker安装oracle_11g</p><ul><li>搜索oracle_11g镜像<ul><li><code>docker search oracle_11g</code></li></ul></li></ul><img src="/2021/02/01/docker-an-zhuang-oracle11g/1.png" title="搜索oracle_11g镜像"><ul><li><p>下载oracle_11g镜像</p><ul><li><p><code>docker pull iatebes/oracle_11g</code> </p><p>或</p></li><li><p><code>docker pull registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g</code></p></li><li><p>其余镜像可以自己测试</p></li></ul></li><li><p>查看镜像</p><ul><li><code>docker images</code></li></ul></li></ul><img src="/2021/02/01/docker-an-zhuang-oracle11g/2.png" title="查看镜像"><ul><li><p>防火墙设置</p><ul><li>如果选择的是<code>iatebes/oracle_11g</code>镜像，必须先关闭firewall防火墙，并开启iptables防火墙，否则启动容器报以下错误提示：<ul><li>开启iptables防火墙后，需要重启docker</li><li>参考链接<code>https://blog.csdn.net/u013948858/article/details/83115388</code></li></ul></li></ul><img src="/2021/02/01/docker-an-zhuang-oracle11g/3.png" title="错误提示"><ul><li>如果选择的是<code>registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g</code>镜像，可以关闭防护墙，或者给防火墙开放设置的数据库访问端口<ul><li>firewall开放端口<ul><li><code>firewall-cmd --zone=public --add-port=11521/tcp --permanent</code></li><li><code>firewall-cmd --reload</code></li><li><code>firewall-cmd --list-all</code></li></ul></li></ul></li></ul></li><li><p>创建容器并启动</p><ul><li><code>docker run --restart=always -p 11521:1521 --name oracle_11g -d registry.cn-hangzhou.aliyuncs.com/helowin/oracle_11g</code></li><li><code>--restart=always</code> ：docker重启时，同时重启容器</li></ul></li><li><p>查看已创建并运行的镜像：<code>docker ps</code></p></li></ul><img src="/2021/02/01/docker-an-zhuang-oracle11g/4.png" title="已创建并运行的镜像"><ul><li>登录 Docker 中 Oracle 软件所在的 oracle 用户<ul><li><code>docker exec -it my_oracle_11g bash</code></li><li>如果进入后是root用户，修改一下root用户以及oracle用户的密码，再切换到oracle用户<ul><li>passwd root</li><li>passwd oracle</li></ul></li></ul></li></ul><img src="/2021/02/01/docker-an-zhuang-oracle11g/5.png" title="登录 Docker 中 Oracle 软件所在的 oracle 用户"><ul><li>查看 oracle 用户<ul><li><code>id oracle</code></li></ul></li></ul><img src="/2021/02/01/docker-an-zhuang-oracle11g/6.png" title="查看 oracle 用户"><ul><li>查找Oracle环境变量<code>.bash_profile</code>文件路径<ul><li>需要切换到root用户</li><li><code>/opt/oracle/.bash_profile</code></li></ul></li></ul><img src="/2021/02/01/docker-an-zhuang-oracle11g/7.png" title="查找Oracle环境变量`.bash_profile`文件路径"><ul><li>刷新环境变量<ul><li><code>source /opt/oracle/.bash_profile</code></li></ul></li><li>查看监听<ul><li><code>lsnrctl status</code></li></ul></li></ul><img src="/2021/02/01/docker-an-zhuang-oracle11g/8.png" title="查看监听"><ul><li>修改system密码<ul><li>oracle 用户下 输入 <code>sqlplus /nolog</code>，实现无用户名登录oracle</li><li><code>conn /as sysdba</code>  连接到数据本地数据</li><li><code>alter user system identified by password;</code> 修改system 密码 为password(你自定义的密码)</li></ul></li></ul><img src="/2021/02/01/docker-an-zhuang-oracle11g/9.png" title="修改system密码"><ul><li>PLSQL测试链接<ul><li>输入用户名，口令，与数据库连接串 <code>ip:port/SID</code></li></ul></li></ul><img src="/2021/02/01/docker-an-zhuang-oracle11g/10.png" title="PLSQL测试链接"><ul><li>从Docker退出到虚拟机</li></ul><img src="/2021/02/01/docker-an-zhuang-oracle11g/11.png" title="从Docker退出到虚拟机"></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;安装Docker&lt;/p&gt;
-&lt;p&gt;安装环境：Centos 7.5&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;安装wget命令 &lt;/li&gt;
-&lt;li&gt;下载阿里云docker社区版 yum源&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;cd /etc/yum.repos.d/&lt;/code&gt;&lt;/l
-      
-    
-    </summary>
-    
-      <category term="Oracle" scheme="http://www.ldclass.club/categories/Oracle/"/>
-    
-      <category term="Docker" scheme="http://www.ldclass.club/categories/Oracle/Docker/"/>
-    
-    
-      <category term="Docker" scheme="http://www.ldclass.club/tags/Docker/"/>
-    
-      <category term="Oracle" scheme="http://www.ldclass.club/tags/Oracle/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>VMware虚拟机设置静态IP</title>
-    <link href="http://www.ldclass.club/2021/01/31/vmware-xu-ni-ji-she-zhi-jing-tai-ip/"/>
-    <id>http://www.ldclass.club/2021/01/31/vmware-xu-ni-ji-she-zhi-jing-tai-ip/</id>
-    <published>2021-01-30T23:27:07.000Z</published>
-    <updated>2021-01-30T16:05:31.623Z</updated>
-    
-    <content type="html"><![CDATA[<p>以<code>VMware® Workstation 16 Pro</code> 为例</p><p>系统 <code>CentOS7.5</code></p><ul><li><p>编辑 =》虚拟网络编辑器 </p><ul><li>点击更改设置</li></ul><img src="/2021/01/31/vmware-xu-ni-ji-she-zhi-jing-tai-ip/1.png" title="虚拟网络编辑器界面"><img src="/2021/01/31/vmware-xu-ni-ji-she-zhi-jing-tai-ip/2.png" title="虚拟网络编辑器界面"></li><li><p>检查宿主机VM8 网卡设置，打开网络和共享中心→ 更改适配器设置→，在VMware Network Adapter VMnet8上单击右键，选择属性按钮打开属性对话框。  </p><img src="/2021/01/31/vmware-xu-ni-ji-she-zhi-jing-tai-ip/3.png" title="VMware Network Adapter VMnet8"><img src="/2021/01/31/vmware-xu-ni-ji-she-zhi-jing-tai-ip/4.png" title="VMware Network Adapter VMnet8"></li><li><p>在虚拟机右下角，点击网络适配器按钮，右键选择断开连接，然后再重新连接，确保刚才的设置生效。然后开启虚拟机，输入<code>ifconfig</code>查看当前分配的IP。</p><img src="/2021/01/31/vmware-xu-ni-ji-she-zhi-jing-tai-ip/5.png" title="查看当前分配的ip"></li><li><p>关闭虚拟机防火墙</p><ul><li><code>systemctl stop firewalld</code></li></ul></li><li><p>关闭防火墙开机启动</p><ul><li><code>systemctl disable firewalld</code></li></ul></li><li><p>修改网络配置文件</p><ul><li><code>vim etc/sysconfig/network-scripts/xxxx</code></li></ul><pre class="line-numbers language-shell"><code class="language-shell">#与自己的配置文件对比修改TYPE="Ethernet"PROXY_METHOD="none"BROWSER_ONLY="no"BOOTPROTO="static"IPADDR="192.168.6.128"NETMASK="255.255.255.0"GATEWAY="192.168.6.2"DEFROUTE="yes"IPV4_FAILURE_FATAL="no"IPV6INIT="yes"IPV6_AUTOCONF="yes"IPV6_DEFROUTE="yes"IPV6_FAILURE_FATAL="no"IPV6_ADDR_GEN_MODE="stable-privacy"NAME="ens32"UUID="7c379f83-cbd2-42e7-a7f6-0a8bc31c4d88"DEVICE="ens32"ONBOOT="yes"              <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>测试</p><ul><li>ping宿主机IP（192.168.2.168）</li><li>宿主机VM8IP（192.168.6.1）</li><li>宿主机与虚拟机之前的网关IP（192.168.6.2）</li><li>ping外网IP或域名，比如（<code>www.baidu.com</code>）</li><li>都可以通则说明虚拟机固定IP设置成功。</li></ul></li><li><p>如果ping外网ip可以通，但是ping 域名，提示<code>ping: www.baidu.com: Name or service not known</code></p><ul><li><p>查看一下<code>DNS</code>的配置<code>cat /etc/resolv.conf</code></p><ul><li>如果发现<code>DNS</code>里面的配置就只有一行注释，则需要对DNS进行配置<code>vim  /etc/resolv.conf</code>，配置如下：</li></ul><pre class="line-numbers language-shell"><code class="language-shell"># Generated by NetworkManagernameserver 8.8.8.8nameserver 114.114.114.114<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li></ul></li><li><p>重启network service</p><ul><li><code>systemctl restart network</code></li></ul></li><li><p>测试<code>ping www.baidu.com</code></p><ul><li>通过</li></ul></li><li><p>重启Linux，测试IP是否改变<code>reboot</code></p></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;以&lt;code&gt;VMware® Workstation 16 Pro&lt;/code&gt; 为例&lt;/p&gt;
-&lt;p&gt;系统 &lt;code&gt;CentOS7.5&lt;/code&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;编辑 =》虚拟网络编辑器 &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;点击更改设置&lt;/li&gt;
-&lt;/ul&gt;
-      
-    
-    </summary>
-    
-      <category term="CentOS7" scheme="http://www.ldclass.club/categories/CentOS7/"/>
-    
-      <category term="VMware" scheme="http://www.ldclass.club/categories/CentOS7/VMware/"/>
-    
-      <category term="linux" scheme="http://www.ldclass.club/categories/CentOS7/VMware/linux/"/>
-    
-    
-      <category term="CentOS7" scheme="http://www.ldclass.club/tags/CentOS7/"/>
-    
-      <category term="VMware" scheme="http://www.ldclass.club/tags/VMware/"/>
-    
-      <category term="linux" scheme="http://www.ldclass.club/tags/linux/"/>
     
   </entry>
   

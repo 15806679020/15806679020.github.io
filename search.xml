@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>Nginx虚拟目录alias和root目录</title>
+      <link href="2021/05/27/nginx-xu-ni-mu-lu-alias-he-root-mu-lu/"/>
+      <url>2021/05/27/nginx-xu-ni-mu-lu-alias-he-root-mu-lu/</url>
+      
+        <content type="html"><![CDATA[<ul><li><p>nginx是通过alias设置虚拟目录，在nginx的配置中，alias目录和root目录是有区别的：</p><ul><li>alias指定的目录是准确的，即location匹配访问的path目录下的文件直接是在alias目录下查找的；</li><li>root指定的目录是location匹配访问的path目录的上一级目录,这个path目录一定要是真实存在root指定目录下的；</li><li>使用alias标签的目录块中不能使用rewrite的break；另外，alias指定的目录后面必须要加上”/“符号！！</li><li>alias虚拟目录配置中，location匹配的path目录如果后面不带”/“，那么访问的url地址中这个path目录后面加不加”/“不影响访问，访问时它会自动加上”/“；但是如果location匹配的path目录后面加上”/“，那么访问的url地址中这个path目录必须要加上”/“，访问时它不会自动加上”/“。如果不加上”/“，访问就会失败！</li><li>root目录配置中，location匹配的path目录后面带不带”/“，都不会影响访问。</li></ul></li><li><p>示例</p></li></ul><pre class="line-numbers language-nginx"><code class="language-nginx">        <span class="token keyword">location</span>  <span class="token operator">/</span> <span class="token punctuation">{</span>            <span class="token keyword">root</span>   <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>excalidraw<span class="token operator">/</span>build<span class="token punctuation">;</span>            <span class="token keyword">index</span>  <span class="token keyword">index</span><span class="token punctuation">.</span>html <span class="token keyword">index</span><span class="token punctuation">.</span>htm<span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">#location匹配访问的path目录名与项目路径一致时，可以使用alias 也可以使用root</span>        <span class="token keyword">location</span> <span class="token operator">/</span>build <span class="token punctuation">{</span>            <span class="token keyword">alias</span>  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>excalidraw<span class="token operator">/</span>build<span class="token operator">/</span><span class="token punctuation">;</span>            <span class="token keyword">index</span>  <span class="token keyword">index</span><span class="token punctuation">.</span>html <span class="token keyword">index</span><span class="token punctuation">.</span>htm<span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">#/usr/local/excalidraw下必须有build目录</span>        <span class="token keyword">location</span> <span class="token operator">/</span>build<span class="token punctuation">{</span>            <span class="token keyword">root</span>  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>excalidraw<span class="token punctuation">;</span>            <span class="token keyword">index</span>  <span class="token keyword">index</span><span class="token punctuation">.</span>html <span class="token keyword">index</span><span class="token punctuation">.</span>htm<span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">#location匹配访问的path目录名与项目路径不一致时，不能直接更改为root</span>        <span class="token keyword">location</span> <span class="token operator">/</span>excalidraw <span class="token punctuation">{</span>            <span class="token keyword">alias</span>  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>excalidraw<span class="token operator">/</span>build<span class="token operator">/</span><span class="token punctuation">;</span>            <span class="token keyword">index</span>  <span class="token keyword">index</span><span class="token punctuation">.</span>html <span class="token keyword">index</span><span class="token punctuation">.</span>htm<span class="token punctuation">;</span>        <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>所以，一般情况下，在nginx配置中的良好习惯是：<ul><li>在location /中配置root目录；</li><li>在location /path中配置alias虚拟目录。</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Nginx </category>
+          
+          <category> Alias </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Nginx </tag>
+            
+            <tag> Alias </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>windows使用nvm管理node版本</title>
+      <link href="2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/"/>
+      <url>2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/</url>
+      
+        <content type="html"><![CDATA[<ul><li>需要在同一台机器上安装多个版本的Node，使用<code>nvm</code>来做Node版本的管理。</li></ul><blockquote><p>安装前需要先将之前安装的Node版本完全删除</p></blockquote><ul><li><p>Windows设置 –&gt; 应用–&gt; 找到Node–&gt;点击卸载</p></li><li><p>重启电脑（或者从任务管理器中杀死所有Node相关的进程）</p></li><li><p>寻找以下文件夹并删除他们。根据您安装的版本，这些文件可能存在也可能不存在：</p><ul><li>C:\Program Files (x86)\Nodejs</li><li>C:\Program Files\Nodejs</li><li>C:\Users{User}\AppData\Roaming\npm（或%appdata%\npm）</li><li>C:\Users{User}\AppData\Roaming\npm-cache（或%appdata%\npm-cache）</li></ul></li><li><p>检查%PATH%环境变量，确保没有引用Nodejs和npm的存在</p></li><li><p>重启（重启大法解决90%问题）</p></li></ul><blockquote><p>下载安装</p></blockquote><ul><li>链接：<code>https://github.com/coreybutler/nvm-windows/releases</code></li><li>可下载以下版本：<ul><li>nvm-noinstall.zip：绿色免安装版，但使用时需要进行配置。</li><li>nvm-setup.zip：安装版，推荐使用</li></ul></li><li>双击解压后的文件<code>nvm-setup.exe</code></li><li>选择nvm安装路径<ul><li>在选择文件夹的时候，需要注意，文件夹名不要出现 <code>中文</code> 和 <code>空格</code></li></ul></li></ul><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/1.png" title="选择nvm安装路径"><ul><li>选择nodejs安装路径</li></ul><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/2.png" title="选择nodejs安装路径"><ul><li>检查是否安装成功<ul><li>打开cmd，输入<code>nvm</code>，安装成功则会如下图所示，它会显示出当前nvm版本以及nvm的命令：</li></ul></li></ul><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/3.png" title="检查是否安装成功"><blockquote><p>环境变量</p></blockquote><ul><li>安装好之后，环境变量会自动设置好</li></ul><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/4.png" title="环境变量"><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/5.png" title="环境变量"><blockquote><p>使用</p></blockquote><ul><li>nvm list 命令 - 显示版本列表</li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm list // 显示已安装的版本（同 nvm list installed）nvm list installed // 显示已安装的版本nvm list available // 显示所有可以下载的版本<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ul><li>nvm install 命令 - 安装指定版本nodejs<ul><li>在运行<code>nvm install</code> 的时候，有可能会出现无权限安装的问题，如果遇到此问题，请 <code>以管理员身份运行</code> cmd。</li></ul></li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm install 14.5.0 // 安装14.5.0版本nodenvm install latest // 安装最新版本node<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li>nvm uninstall 命令 - 卸载指定版本 node</li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm uninstall 14.5.0 // 卸载14.5.0版本node<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>nvm use 命令 // 使用指定版本Node</li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm use 14.5.0 // 使用14.5.0版本node<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><p>可能遇到的问题</p></blockquote><ul><li><p>错误一：无法安装npm</p><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/6.png" title="错误一"><ul><li><p>可行的解决方法：</p><ul><li>使用nvm-windows高版本时需要单独另外安装npm，nvm只是用来管理node版本的，没有管理npm功能</li><li>为 nvm 设置淘宝镜像</li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm uninstall 14.5.0nvm npm_mirror https://npm.taobao.org/mirrors/npm/nvm install 14.5.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Node </category>
+          
+          <category> nvm </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Node </tag>
+            
+            <tag> nvm </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>linux安装nodejs</title>
       <link href="2021/05/27/linux-an-zhuang-nodejs/"/>
       <url>2021/05/27/linux-an-zhuang-nodejs/</url>
