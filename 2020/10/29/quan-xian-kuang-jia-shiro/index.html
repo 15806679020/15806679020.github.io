@@ -1,0 +1,2374 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+    <!--  DongLiu  modify 2020.08.15-->
+
+
+
+<head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="权限框架Shiro, 陌生的小窝">
+    <meta name="baidu-site-verification" content="fmlEuI34ir">
+    <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
+    <meta name="description" content="权限框架Shiro
+
+
+1.权限框架ACL/RBAC
+ACL
+
+Access Control List 访问控制列表
+用户直接和权限挂钩
+实例：文件系统权限设计
+
+
+RBAC: 
+
+Role Based Access Control
+
+基于">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>权限框架Shiro | 陌生的小窝</title>
+    <!-- <link rel="icon" type="image/png" href="avatar.jpg"> -->
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.bootcss.com/lightgallery/1.6.12/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+    
+    <style type="text/css">
+        
+            code[class*="language-"],
+            pre[class*="language-"] {
+                white-space: pre !important;
+            }
+
+        
+    </style>
+
+    <script src="https://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+    
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?46e79e71af0709a5b9106bf20cecc493";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    
+    
+
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
+
+    <body>
+
+        <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    <span class="logo-span">陌生的小窝</span>
+                </a>
+            </div>
+            
+
+
+<!-- <a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right">
+    
+    <li class="hide-on-med-and-down">
+        <a href="/" class="waves-effect waves-light">
+            
+            <i class="fa fa-home"></i>
+            
+            <span>首页</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/tags" class="waves-effect waves-light">
+            
+            <i class="fa fa-tags"></i>
+            
+            <span>标签</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/categories" class="waves-effect waves-light">
+            
+            <i class="fa fa-bookmark"></i>
+            
+            <span>分类</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/archives" class="waves-effect waves-light">
+            
+            <i class="fa fa-archive"></i>
+            
+            <span>归档</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/AV" class="waves-effect waves-light">
+            
+            <i class="fa fa-music"></i>
+            
+            <span>视听</span>
+        </a>
+    </li>
+    
+    <li class="hide-on-med-and-down">
+        <a href="/about" class="waves-effect waves-light">
+            
+            <i class="fa fa-user-circle-o"></i>
+            
+            <span>关于我</span>
+        </a>
+    </li>
+    
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+</ul> -->
+
+<!-- 支持二级菜单特性 DongLiu  modify 2020.09.17  -->
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fa fa-navicon"></i></a>
+<ul class="right nav-menu">
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/" class="waves-effect waves-light">
+              
+                <i class="fa fa-home"></i>
+              
+              <span>首页</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/tags" class="waves-effect waves-light">
+              
+                <i class="fa fa-tags"></i>
+              
+              <span>标签</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/categories" class="waves-effect waves-light">
+              
+                <i class="fa fa-bookmark"></i>
+              
+              <span>分类</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/archives" class="waves-effect waves-light">
+              
+                <i class="fa fa-archive"></i>
+              
+              <span>归档</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/AV" class="waves-effect waves-light">
+              
+                <i class="fa fa-music"></i>
+              
+              <span>视听</span>
+            </a>
+
+            
+      </li>
+    
+      <li class="hide-on-med-and-down nav-item" >
+
+        
+            <a href="/about" class="waves-effect waves-light">
+              
+                <i class="fa fa-user-circle-o"></i>
+              
+              <span>关于我</span>
+            </a>
+
+            
+      </li>
+    
+
+    <li>
+        <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+            <i id="searchIcon" class="fa fa-search" title="搜索"></i>
+        </a>
+    </li>
+
+</ul>
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        <div class="logo-name">陌生的小窝</div>
+        <div class="logo-desc">
+            
+            喜悦，是穿过重重荆棘之后的一泓清泉
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li>
+            <a href="/" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-home"></i>
+                
+                首页
+            </a>
+        </li>
+        
+        <li>
+            <a href="/tags" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-tags"></i>
+                
+                标签
+            </a>
+        </li>
+        
+        <li>
+            <a href="/categories" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-bookmark"></i>
+                
+                分类
+            </a>
+        </li>
+        
+        <li>
+            <a href="/archives" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-archive"></i>
+                
+                归档
+            </a>
+        </li>
+        
+        <li>
+            <a href="/AV" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-music"></i>
+                
+                视听
+            </a>
+        </li>
+        
+        <li>
+            <a href="/about" class="waves-effect waves-light">
+                
+                <i class="fa fa-fw fa-user-circle-o"></i>
+                
+                关于我
+            </a>
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/15806679020/15806679020.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+
+   
+   
+<!-- 支持二级菜单特性 DongLiu  modify 2020.09.17  -->
+<!-- <ul class="menu-list mobile-menu-list">
+    
+        <li class="m-nav-item">
+                
+                    <a href="/" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-home"></i>
+                        
+                        首页
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/tags" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-tags"></i>
+                        
+                        标签
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/categories" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-bookmark"></i>
+                        
+                        分类
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/archives" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-archive"></i>
+                        
+                        归档
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/AV" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-music"></i>
+                        
+                        视听
+                    </a>
+              
+            </li>
+        
+        <li class="m-nav-item">
+                
+                    <a href="/about" class="waves-effect waves-light">
+                        
+                        <i class="fa fa-fw fa-user-circle-o"></i>
+                        
+                        关于我
+                    </a>
+              
+            </li>
+        
+
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/15806679020/15806679020.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fa fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul> -->
+
+</div>
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/15806679020/15806679020.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+        
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <div class="description center-align post-title">
+                        权限框架Shiro
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        margin: 35px 0 15px 0;
+        padding-left: 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #toc-content .is-active-link::before {
+        background-color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 20px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!--  DongLiu  modify 2020.08.15-->
+<!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                        <a href="/tags/权限框架/" target="_blank">
+                            <span class="chip bg-color">权限框架</span>
+                        </a>
+                        
+                        <a href="/tags/Shiro/" target="_blank">
+                            <span class="chip bg-color">Shiro</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/Shiro/" class="post-category" target="_blank">
+                            Shiro
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                <div class="post-date info-break-policy">
+                    <i class="fa fa-calendar-minus-o fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2020-10-29
+                </div>
+
+                <div class="post-author info-break-policy">
+                    <i class="fa fa-user-o fa-fw"></i>作者:&nbsp;&nbsp;
+                    
+                    Dong Liu
+                    
+                </div>
+
+                
+                
+                <div class="info-break-policy">
+                    <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    17 分
+                </div>
+                
+                
+
+                
+                <span id="busuanzi_container_site_pv" style='display:none'></span>
+                <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                <span id="busuanzi_value_page_pv"></span>
+
+                
+
+            </div>
+        </div>
+        <hr class="clearfix">
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>权限框架Shiro</p>
+<a id="more"></a>
+
+<h3 id="1-权限框架ACL-RBAC"><a href="#1-权限框架ACL-RBAC" class="headerlink" title="1.权限框架ACL/RBAC"></a>1.权限框架ACL/RBAC</h3><ul>
+<li><p>ACL</p>
+<ul>
+<li>Access Control List 访问控制列表</li>
+<li>用户直接和权限挂钩</li>
+<li>实例：文件系统权限设计</li>
+</ul>
+</li>
+<li><p>RBAC: </p>
+<ul>
+<li><p>Role Based Access Control</p>
+</li>
+<li><p>基于角色的访问控制系统。权限与角色相关联，用户通过成为适当角色的成员而得到这些角色的权限</p>
+</li>
+<li><p>实例：Apache Shiro、spring Security</p>
+<ul>
+<li><p>spring Security</p>
+<pre><code>Spring Security是一个能够为基于Spring的企业应用系统提供声明式的安全访问控制解决方案的安全框架。它提供了一组可以在Spring应用上下文中配置的Bean，充分利用了Spring IoC，DI（控制反转Inversion of Control,DI:Dependency Injection 依赖注入）和AOP（面向切面编程）功能，为应用系统提供声明式的安全访问控制功能，减少了为企业系统安全控制编写大量重复代码的工作。</code></pre><ul>
+<li>Spring Security 的前身是 Acegi Security ，是 Spring 项目组中用来提供安全认证服务的框架</li>
+</ul>
+</li>
+<li><p>Apache Shiro</p>
+<pre><code>Apache Shiro是一个强大且易用的Java安全框架,执行身份验证、授权、密码和会话管理。使用Shiro的易于理解的API,您可以快速、轻松地获得任何应用程序,从最小的移动应用程序到最大的网络和企业应用程序。</code></pre><ul>
+<li>Shiro是一个强大易用的Java安全框架,提供了认证、授权、加密和会话管理等功能</li>
+</ul>
+</li>
+<li><p>优缺点</p>
+<ul>
+<li>Shiro 功能强大、 简单、灵活， 不跟任何的框架或者容器绑定，可以独立运行</li>
+<li>Spring Security 对Spring 体系支持比较好，脱离Spring体系则很难开发</li>
+<li>SpringSecutiry 支持Oauth鉴权，Shiro需要自己实现</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-Apache-Shiro基础概念知识"><a href="#2-Apache-Shiro基础概念知识" class="headerlink" title="2.Apache Shiro基础概念知识"></a>2.Apache Shiro基础概念知识</h3><ul>
+<li><p>四大核心模块</p>
+<ul>
+<li>身份认证，授权，会话管理和加密</li>
+<li>身份认证<ul>
+<li>Authentication，身份证认证，一般就是登录</li>
+</ul>
+</li>
+<li>授权<ul>
+<li>Authorization，给用户分配角色或者访问某些资源的权限</li>
+</ul>
+</li>
+<li>会话管理<ul>
+<li>Session Management, 用户的会话管理员，多数情况下是web session</li>
+</ul>
+</li>
+<li>加密<ul>
+<li>Cryptography, 数据加解密，比如密码加解密等</li>
+</ul>
+</li>
+<li><img src="/2020/10/29/quan-xian-kuang-jia-shiro/ShiroFeatures.png" title="Shiro架构图">
+</li>
+</ul>
+</li>
+<li><p>常见概念</p>
+<ul>
+<li>Subject<ul>
+<li>我们把用户或者程序称为主体（如用户，第三方服务，cron作业），主体去访问系统或者资源</li>
+</ul>
+</li>
+<li>SecurityManager<ul>
+<li>安全管理器，Subject的认证和授权都要在安全管理器下进行</li>
+</ul>
+</li>
+<li>Authenticator<ul>
+<li>认证器，主要负责Subject的认证</li>
+</ul>
+</li>
+<li>Realm<ul>
+<li>数据域，Shiro和安全数据的连接器，好比jdbc连接数据库； 通过realm获取认证授权相关信息</li>
+</ul>
+</li>
+<li>Authorizer<ul>
+<li>授权器，主要负责Subject的授权, 控制subject拥有的角色或者权限</li>
+</ul>
+</li>
+<li>Cryptography<ul>
+<li>加解密，Shiro的包含易于使用和理解的数据加解密方法，简化了很多复杂的api</li>
+</ul>
+</li>
+<li>Cache Manager<ul>
+<li>缓存管理器，比如认证或授权信息，通过缓存进行管理，提高性能</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-SpringBoot2-x整合Shiro"><a href="#3-SpringBoot2-x整合Shiro" class="headerlink" title="3.SpringBoot2.x整合Shiro"></a>3.SpringBoot2.x整合Shiro</h3><ul>
+<li><p>阿里巴巴数据源相关jar包</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>com.alibaba<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>druid<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.1.6<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>整合Shiro相关jar包</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.shiro<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>shiro-spring<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.4.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h3 id="4-Shiro认证和授权"><a href="#4-Shiro认证和授权" class="headerlink" title="4.Shiro认证和授权"></a>4.Shiro认证和授权</h3><ul>
+<li><p>认证    </p>
+<ul>
+<li><img src="/2020/10/29/quan-xian-kuang-jia-shiro/Shiro认证.png" title="Shiro认证">
+</li>
+<li><p>实例</p>
+<pre class="line-numbers language-java"><code class="language-java">
+    <span class="token keyword">private</span> SimpleAccountRealm accountRealm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleAccountRealm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> DefaultSecurityManager defaultSecurityManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DefaultSecurityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Before</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//初始化数据源</span>
+        accountRealm<span class="token punctuation">.</span><span class="token function">addAccount</span><span class="token punctuation">(</span><span class="token string">"ldclass"</span><span class="token punctuation">,</span><span class="token string">"123"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        accountRealm<span class="token punctuation">.</span><span class="token function">addAccount</span><span class="token punctuation">(</span><span class="token string">"jack"</span><span class="token punctuation">,</span><span class="token string">"456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//构建环境</span>
+        defaultSecurityManager<span class="token punctuation">.</span><span class="token function">setRealm</span><span class="token punctuation">(</span>accountRealm<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testAuthentication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//将securityManager 设置到当前运行环境中</span>
+        SecurityUtils<span class="token punctuation">.</span><span class="token function">setSecurityManager</span><span class="token punctuation">(</span>defaultSecurityManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//当前操作主体，application user</span>
+        Subject subject <span class="token operator">=</span> SecurityUtils<span class="token punctuation">.</span><span class="token function">getSubject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//用户输入账号密码</span>
+        UsernamePasswordToken usernamePasswordToken <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">UsernamePasswordToken</span><span class="token punctuation">(</span><span class="token string">"jack"</span><span class="token punctuation">,</span><span class="token string">"456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        subject<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>usernamePasswordToken<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//是否认证成功</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"认证结果:"</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">isAuthenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>授权</p>
+<ul>
+<li><img src="/2020/10/29/quan-xian-kuang-jia-shiro/Shiro授权.png" title="Shiro授权">
+</li>
+<li><p>常用API</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//是否有对应的角色</span>
+subject<span class="token punctuation">.</span><span class="token function">hasRole</span><span class="token punctuation">(</span><span class="token string">"root"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//获取subject名</span>
+subject<span class="token punctuation">.</span><span class="token function">getPrincipal</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//检查是否有对应的角色，无返回值，直接在SecurityManager里面进行判断</span>
+subject<span class="token punctuation">.</span><span class="token function">checkRole</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//检查是否有对应的角色</span>
+subject<span class="token punctuation">.</span><span class="token function">hasRole</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//退出登录</span>
+subject<span class="token punctuation">.</span><span class="token function">logout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>实例</p>
+<pre class="line-numbers language-java"><code class="language-java">     <span class="token keyword">private</span> SimpleAccountRealm accountRealm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleAccountRealm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> DefaultSecurityManager defaultSecurityManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DefaultSecurityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Before</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//初始化数据源</span>
+        accountRealm<span class="token punctuation">.</span><span class="token function">addAccount</span><span class="token punctuation">(</span><span class="token string">"ldclass"</span><span class="token punctuation">,</span><span class="token string">"123"</span><span class="token punctuation">,</span><span class="token string">"root"</span><span class="token punctuation">,</span><span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        accountRealm<span class="token punctuation">.</span><span class="token function">addAccount</span><span class="token punctuation">(</span><span class="token string">"jack"</span><span class="token punctuation">,</span><span class="token string">"456"</span><span class="token punctuation">,</span><span class="token string">"user"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//构建环境</span>
+        defaultSecurityManager<span class="token punctuation">.</span><span class="token function">setRealm</span><span class="token punctuation">(</span>accountRealm<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testAuthentication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//将securityManager 设置到当前运行环境中</span>
+        SecurityUtils<span class="token punctuation">.</span><span class="token function">setSecurityManager</span><span class="token punctuation">(</span>defaultSecurityManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//当前操作主体，application user</span>
+        Subject subject <span class="token operator">=</span> SecurityUtils<span class="token punctuation">.</span><span class="token function">getSubject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//用户输入账号密码</span>
+        UsernamePasswordToken usernamePasswordToken <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">UsernamePasswordToken</span><span class="token punctuation">(</span><span class="token string">"ldclass"</span><span class="token punctuation">,</span><span class="token string">"123"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        subject<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>usernamePasswordToken<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//是否认证成功</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"认证结果:"</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">isAuthenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//是否有对应角色</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"是否有对应角色:"</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">hasRole</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//获取subject名</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getPrincipal:"</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">getPrincipal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//检查是否有对应的角色，无返回值</span>
+        subject<span class="token punctuation">.</span><span class="token function">checkRole</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//退出登录</span>
+        subject<span class="token punctuation">.</span><span class="token function">logout</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//推出后认证结果</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"logout后认证结果:"</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">isAuthenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-Shiro-Realm"><a href="#5-Shiro-Realm" class="headerlink" title="5.Shiro Realm"></a>5.Shiro Realm</h3><ul>
+<li><p>realm作用：Shiro 从 Realm 获取安全数据</p>
+</li>
+<li><p>两个概念</p>
+<ul>
+<li>principal : 主体的标识，可以有多个，但是需要具有唯一性，常见的有用户名，手机号，邮箱等</li>
+<li>credential：凭证, 一般就是密码</li>
+<li>所以一般我们说 principal + credential 就账号 + 密码</li>
+</ul>
+</li>
+<li><p>内置IniRealm –&gt;shiro.ini</p>
+<pre><code># 格式 name=password,role1,role2,..roleN
+[users]
+jack = 456, user
+ldclass = 123, root,admin
+
+# 格式 role=permission1,permission2...permissionN 也可以用通配符
+# 下面配置user的权限为所有video:find,video:buy，如果需要配置video全部操作crud 则 user = video:*
+[roles]
+user = video:find,video:buy
+admin = *</code></pre><pre class="line-numbers language-java"><code class="language-java">     <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testAuthentication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//创建SecurityManager工厂，通过配置文件ini创建</span>
+        Factory<span class="token operator">&lt;</span>SecurityManager<span class="token operator">></span> factory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IniSecurityManagerFactory</span><span class="token punctuation">(</span><span class="token string">"classpath:shiro.ini"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        SecurityManager securityManager <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//将securityManager 设置到当前运行环境中</span>
+        SecurityUtils<span class="token punctuation">.</span><span class="token function">setSecurityManager</span><span class="token punctuation">(</span>securityManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//当前操作主体，application user</span>
+        Subject subject <span class="token operator">=</span> SecurityUtils<span class="token punctuation">.</span><span class="token function">getSubject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//用户输入账号密码</span>
+        UsernamePasswordToken usernamePasswordToken <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">UsernamePasswordToken</span><span class="token punctuation">(</span><span class="token string">"ldclass"</span><span class="token punctuation">,</span><span class="token string">"123"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        subject<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>usernamePasswordToken<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//是否认证成功</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"认证结果:"</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">isAuthenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"是否有video:find权限："</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">isPermitted</span><span class="token punctuation">(</span><span class="token string">"video:find"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>内置 JdbcRealm </p>
+<ul>
+<li>方式一 –&gt; jdbcrealm.ini</li>
+</ul>
+<pre><code>#声明Realm，指定realm类型
+jdbcRealm=org.apache.shiro.realm.jdbc.JdbcRealm
+
+#配置数据源
+#dataSource=com.mchange.v2.c3p0.ComboPooledDataSource
+dataSource=com.alibaba.druid.pool.DruidDataSource
+
+# mysql-connector-java 5 用的驱动url是com.mysql.jdbc.Driver，mysql-connector-java6以后用的是com.mysql.cj.jdbc.Driver
+dataSource.driverClassName=com.mysql.cj.jdbc.Driver
+
+#避免安全警告
+dataSource.url=jdbc:mysql://xxx.xxx.xxx.xxx:3306/ldclass_shiro?characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;useSSL=false
+dataSource.username=root
+dataSource.password=Root@123
+
+#指定数据源
+jdbcRealm.dataSource=$dataSource
+
+#开启查找权限, 默认是false
+jdbcRealm.permissionsLookupEnabled=true
+
+#指定SecurityManager的Realms实现，设置realms，可以有多个，用逗号隔开
+securityManager.realms=$jdbcRealm</code></pre><pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testAuthentication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//创建SecurityManager工厂，通过配置文件ini创建</span>
+        Factory<span class="token operator">&lt;</span>SecurityManager<span class="token operator">></span> factory <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IniSecurityManagerFactory</span><span class="token punctuation">(</span><span class="token string">"classpath:jdbcrealm.ini"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        SecurityManager securityManager <span class="token operator">=</span> factory<span class="token punctuation">.</span><span class="token function">getInstance</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//将securityManager 设置到当前运行环境中</span>
+        SecurityUtils<span class="token punctuation">.</span><span class="token function">setSecurityManager</span><span class="token punctuation">(</span>securityManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//当前操作主体，application user</span>
+        Subject subject <span class="token operator">=</span> SecurityUtils<span class="token punctuation">.</span><span class="token function">getSubject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//用户输入账号密码</span>
+        UsernamePasswordToken usernamePasswordToken <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">UsernamePasswordToken</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">,</span><span class="token string">"456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        subject<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>usernamePasswordToken<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//是否认证成功</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"认证结果:"</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">isAuthenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"是否有video:find权限："</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">isPermitted</span><span class="token punctuation">(</span><span class="token string">"video:find"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>方式二</li>
+</ul>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        DefaultSecurityManager securityManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DefaultSecurityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        DruidDataSource ds <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DruidDataSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ds<span class="token punctuation">.</span><span class="token function">setDriverClassName</span><span class="token punctuation">(</span><span class="token string">"com.mysql.cj.jdbc.Driver"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ds<span class="token punctuation">.</span><span class="token function">setUrl</span><span class="token punctuation">(</span><span class="token string">"jdbc:mysql://xxx.xxx.xxx.xxx:3306/ldclass_shiro?characterEncoding=UTF-8&amp;serverTimezone=UTC&amp;useSSL=false"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ds<span class="token punctuation">.</span><span class="token function">setUsername</span><span class="token punctuation">(</span><span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ds<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span><span class="token string">"Root@123"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        JdbcRealm jdbcRealm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">JdbcRealm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jdbcRealm<span class="token punctuation">.</span><span class="token function">setPermissionsLookupEnabled</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        jdbcRealm<span class="token punctuation">.</span><span class="token function">setDataSource</span><span class="token punctuation">(</span>ds<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        securityManager<span class="token punctuation">.</span><span class="token function">setRealm</span><span class="token punctuation">(</span>jdbcRealm<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//将securityManager 设置到当前运行环境中</span>
+        SecurityUtils<span class="token punctuation">.</span><span class="token function">setSecurityManager</span><span class="token punctuation">(</span>securityManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//当前操作主体，application user</span>
+        Subject subject <span class="token operator">=</span> SecurityUtils<span class="token punctuation">.</span><span class="token function">getSubject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//用户输入账号密码</span>
+        UsernamePasswordToken usernamePasswordToken <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">UsernamePasswordToken</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">,</span><span class="token string">"456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        subject<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>usernamePasswordToken<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//是否认证成功</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"认证结果:"</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">isAuthenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"是否有video:find权限："</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">isPermitted</span><span class="token punctuation">(</span><span class="token string">"video:find"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>自定义Realm</p>
+<ul>
+<li><p>步骤：</p>
+<ul>
+<li>创建一个类 ，继承AuthorizingRealm</li>
+<li>重写授权方法 doGetAuthorizationInfo</li>
+<li>重写认证方法 doGetAuthenticationInfo</li>
+</ul>
+</li>
+<li><p>方法：</p>
+<ul>
+<li>当用户登陆的时候会调用 doGetAuthenticationInfo</li>
+<li>进行权限校验的时候会调用: doGetAuthorizationInfo</li>
+</ul>
+</li>
+<li><p>对象</p>
+<ul>
+<li><p>UsernamePasswordToken ： 对应就是 shiro的token中有Principal和Credential</p>
+<pre><code>UsernamePasswordToken-》HostAuthenticationToken-》AuthenticationToken</code></pre></li>
+<li><p>SimpleAuthorizationInfo：代表用户角色权限信息</p>
+</li>
+<li><p>SimpleAuthenticationInfo ：代表该用户的认证信息</p>
+</li>
+</ul>
+</li>
+<li><p>实例</p>
+<ul>
+<li>自定义Realm 并重写doGetAuthorizationInfo/doGetAuthenticationInfo</li>
+</ul>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/**
+     * 授权
+     * @param principals
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> AuthorizationInfo <span class="token function">doGetAuthorizationInfo</span><span class="token punctuation">(</span>PrincipalCollection principals<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"授权 doGetAuthorizationInfo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        String name <span class="token operator">=</span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span>principals<span class="token punctuation">.</span><span class="token function">getPrimaryPrincipal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment" spellcheck="true">//从数据库获取权限</span>
+        Set<span class="token operator">&lt;</span>String<span class="token operator">></span> permissions <span class="token operator">=</span> <span class="token function">getPermissionsByNameFromDB</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//从数据库获取角色</span>
+        Set<span class="token operator">&lt;</span>String<span class="token operator">></span> roles <span class="token operator">=</span> <span class="token function">getRolesByNameFromDB</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        SimpleAuthorizationInfo simpleAuthorizationInfo <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">SimpleAuthorizationInfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        simpleAuthorizationInfo<span class="token punctuation">.</span><span class="token function">setRoles</span><span class="token punctuation">(</span>roles<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        simpleAuthorizationInfo<span class="token punctuation">.</span><span class="token function">setStringPermissions</span><span class="token punctuation">(</span>permissions<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> simpleAuthorizationInfo<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 登录认证
+     * @param token
+     * @return
+     * @throws AuthenticationException
+     */</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> AuthenticationInfo <span class="token function">doGetAuthenticationInfo</span><span class="token punctuation">(</span>AuthenticationToken token<span class="token punctuation">)</span> <span class="token keyword">throws</span> AuthenticationException <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"认证 doGetAuthenticationInfo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//从token中获取身份信息，token代表用户输入的信息</span>
+        String name <span class="token operator">=</span> <span class="token punctuation">(</span>String<span class="token punctuation">)</span> token<span class="token punctuation">.</span><span class="token function">getPrincipal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//从数据库获取密码</span>
+        String pwd <span class="token operator">=</span> <span class="token function">getPwdByUserNameFromDB</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>pwd <span class="token operator">==</span> null <span class="token operator">||</span> <span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>pwd<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        SimpleAuthenticationInfo simpleAuthenticationInfo <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">SimpleAuthenticationInfo</span><span class="token punctuation">(</span>name<span class="token punctuation">,</span>pwd<span class="token punctuation">,</span><span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">return</span> simpleAuthenticationInfo<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>调用自定义的Realm</li>
+</ul>
+<pre class="line-numbers language-java"><code class="language-java">    <span class="token keyword">private</span> CustomRealm customRealm <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CustomRealm</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> DefaultSecurityManager defaultSecurityManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DefaultSecurityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Before</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//构建环境</span>
+        defaultSecurityManager<span class="token punctuation">.</span><span class="token function">setRealm</span><span class="token punctuation">(</span>customRealm<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        SecurityUtils<span class="token punctuation">.</span><span class="token function">setSecurityManager</span><span class="token punctuation">(</span>defaultSecurityManager<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testAuthentication</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//获取当前操作的主题</span>
+        Subject subject <span class="token operator">=</span> SecurityUtils<span class="token punctuation">.</span><span class="token function">getSubject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//用户输入账号密码</span>
+        UsernamePasswordToken usernamePasswordToken <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">UsernamePasswordToken</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">,</span><span class="token string">"456"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        subject<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span>usernamePasswordToken<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//是否认证成功</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"认证结果:"</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">isAuthenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//获取主体标识属性</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"getPrincipal:"</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">getPrincipal</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//是否有对应的角色</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"是否有对应的角色："</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">hasRole</span><span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//是否有对应的权限</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"是否有对应的权限："</span><span class="token operator">+</span>subject<span class="token punctuation">.</span><span class="token function">isPermitted</span><span class="token punctuation">(</span><span class="token string">"video:add"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-Shiro内置过滤器"><a href="#6-Shiro内置过滤器" class="headerlink" title="6.Shiro内置过滤器"></a>6.Shiro内置过滤器</h3><ul>
+<li>核心过滤器类：DefaultFilter, 配置哪个路径对应哪个拦截器进行处理</li>
+<li>authc：org.apache.shiro.web.filter.authc.FormAuthenticationFilter<ul>
+<li>需要认证登录才能访问</li>
+</ul>
+</li>
+<li>user：org.apache.shiro.web.filter.authc.UserFilter<ul>
+<li>用户拦截器，表示必须存在用户。</li>
+</ul>
+</li>
+<li>anon：org.apache.shiro.web.filter.authc.AnonymousFilter<ul>
+<li>匿名拦截器，不需要登录即可访问的资源，匿名用户或游客，一般用于过滤静态资源。</li>
+</ul>
+</li>
+<li>roles：org.apache.shiro.web.filter.authz.RolesAuthorizationFilter<ul>
+<li>角色授权拦截器，验证用户是或否拥有角色。</li>
+<li>参数可写多个，表示某些角色才能通过，多个参数时写 roles[“admin,user”]，当有多个参数时必须每个参数都通过才算通过</li>
+</ul>
+</li>
+<li>perms：org.apache.shiro.web.filter.authz.PermissionsAuthorizationFilter<ul>
+<li>权限授权拦截器，验证用户是否拥有权限</li>
+<li>参数可写多个，表示需要某些权限才能通过，多个参数时写 perms[“user, admin”]，当有多个参数时必须每个参数都通过才算可以</li>
+</ul>
+</li>
+<li>authcBasic：org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter<ul>
+<li>httpBasic 身份验证拦截器。</li>
+</ul>
+</li>
+<li>logout：org.apache.shiro.web.filter.authc.LogoutFilter<ul>
+<li>退出拦截器，执行后会直接跳转到shiroFilterFactoryBean.setLoginUrl(); 设置的 url</li>
+</ul>
+</li>
+<li>port：org.apache.shiro.web.filter.authz.PortFilter<ul>
+<li>端口拦截器, 可通过的端口。</li>
+</ul>
+</li>
+<li>ssl：org.apache.shiro.web.filter.authz.SslFilter<ul>
+<li>ssl拦截器，只有请求协议是https才能通过。</li>
+</ul>
+</li>
+</ul>
+<h3 id="7-Shiro-Filter配置"><a href="#7-Shiro-Filter配置" class="headerlink" title="7.Shiro Filter配置"></a>7.Shiro Filter配置</h3><ul>
+<li><p>路径通配符支持 ?、<em>、*</em></p>
+<ul>
+<li>通配符匹配不包括目录分隔符“/”</li>
+</ul>
+</li>
+<li><ul>
+<li>可以匹配所有，不加 * 可以进行前缀匹配，但多个冒号就需要多个 * 来匹配</li>
+</ul>
+</li>
+<li><p>URL权限采取第一次匹配优先的方式</p>
+<pre><code>? : 匹配一个字符，如 /user? , 匹配 /userX，但不匹配/user/;
+* : 匹配零个或多个字符串，如 /add* ,匹配 /addXXXX，但不匹配 /add/xxx
+** : 匹配路径中的零个或多个路径，如 /user/** 将匹配 /user/xxx 或 /user/xxx/yyy</code></pre></li>
+<li><p>性能问题：通配符比字符串匹配会复杂点，所以性能也会稍弱，推荐是使用字符串匹配方式</p>
+</li>
+</ul>
+<h3 id="8-Shiro数据加解密"><a href="#8-Shiro数据加解密" class="headerlink" title="8.Shiro数据加解密"></a>8.Shiro数据加解密</h3><ul>
+<li><p>散列算法</p>
+<ul>
+<li>一般叫hash，简单的说就是一种将任意长度的消息压缩到某一固定长度的消息摘要的函数，适合存储密码，比如MD5</li>
+</ul>
+</li>
+<li><p>salt(盐)</p>
+</li>
+<li><p>如果直接通过散列函数得到加密数据，容易被对应解密网站暴力破解，一般会在应用程序里面加特殊的自动进行处理，比如用户id，例子：加密数据 = MD5(明文密码+用户id), 破解难度会更大，也可以使用多重散列，比如多次md5</p>
+</li>
+<li><p>Shiro的CredentialsMatcher</p>
+<ul>
+<li><p>验证密码是否正确</p>
+</li>
+<li><p>源码</p>
+<pre><code>AuthenticatingRealm -&gt; assertCredentialsMatch()</code></pre><pre class="line-numbers language-java"><code class="language-java">一般会自定义验证规则
+<span class="token annotation punctuation">@Bean</span>
+<span class="token keyword">public</span> HashedCredentialsMatcher <span class="token function">hashedCredentialsMatcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    HashedCredentialsMatcher hashedCredentialsMatcher <span class="token operator">=</span> <span class="token keyword">new</span>    <span class="token class-name">HashedCredentialsMatcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//散列算法，使用MD5算法;</span>
+    hashedCredentialsMatcher<span class="token punctuation">.</span><span class="token function">setHashAlgorithmName</span><span class="token punctuation">(</span><span class="token string">"md5"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//散列的次数，比如散列两次，相当于 md5(md5("xxx"));</span>
+    hashedCredentialsMatcher<span class="token punctuation">.</span><span class="token function">setHashIterations</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> hashedCredentialsMatcher<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="9-Shiro权限控制注解和编程方式"><a href="#9-Shiro权限控制注解和编程方式" class="headerlink" title="9.Shiro权限控制注解和编程方式"></a>9.Shiro权限控制注解和编程方式</h3><ul>
+<li><p>配置文件方式</p>
+<ul>
+<li>使用ShiroConfig</li>
+</ul>
+</li>
+<li><p>注解方式</p>
+<pre><code>//常用
+@RequiresRoles(value={"admin", "editor"}, logical= Logical.AND)
+需要角色 admin 和 editor两个角色 AND表示两个同时成立 OR是或的意思
+@RequiresPermissions (value={"user:add", "user:del"}, logical= Logical.OR)
+需要权限 user:add 或 user:del权限其中一个，OR是或的意思。
+
+</code></pre></li>
+</ul>
+<p>  @RequiresAuthentication<br>  已经授过权，调用Subject.isAuthenticated()返回true<br>  @RequiresUser<br>  身份验证或者通过记 住我登录的</p>
+<pre><code>
+- 编程方式
+
+  ```java
+  Subject subject = SecurityUtils.getSubject();
+  //基于角色判断
+  if(subject.hasRole(“admin”)) {
+      //有角色，有权限
+  } else {
+      //无角色，无权限
+  }
+  //或者权限判断
+  if(subject.isPermitted("/user/add")){
+      //有权限
+  }else{
+      //无权限
+  }</code></pre><ul>
+<li><p>常见API</p>
+<pre><code>subject.hasRole("xxx");
+subject.isPermitted("xxx");
+subject.isPermittedAll("xxxxx","yyyy");
+subject.checkRole("xxx"); // 无返回值，可以认为内部使用断言的方式</code></pre></li>
+</ul>
+<h3 id="10-Shiro缓存"><a href="#10-Shiro缓存" class="headerlink" title="10.Shiro缓存"></a>10.Shiro缓存</h3><ul>
+<li>shiro中提供了对认证信息和授权信息的缓存<ul>
+<li>默认是关闭认证信息缓存的，对于授权信息的缓存shiro默认开启的</li>
+</ul>
+</li>
+<li>AuthenticatingRealm 及 AuthorizingRealm 分别提供了对AuthenticationInfo 和 AuthorizationInfo 信息的缓存</li>
+</ul>
+<h3 id="11-Shiro-Session"><a href="#11-Shiro-Session" class="headerlink" title="11.Shiro Session"></a>11.Shiro Session</h3><ul>
+<li><p>用户和程序直接的链接，程序可以根据session识别到哪个用户，和javaweb中的session类似</p>
+</li>
+<li><p>会话管理器 SessionManager</p>
+<ul>
+<li><p>会话管理器管理所有subject的所有操作，是shiro的核心组件</p>
+</li>
+<li><p>核心方法：</p>
+<pre><code>//开启一个session
+Session start(SessionContext context);
+//指定Key获取session
+Session getSession(SessionKey key)</code></pre></li>
+<li><p>shiro中的会话管理器有多个实现</p>
+</li>
+</ul>
+</li>
+<li><p>会话存储/持久化 SessionDao</p>
+<ul>
+<li><p>SessionDAO AbstractSessionDAO CachingSessionDAO EnterpriseCacheSessionDAOMemorySessionDAO</p>
+</li>
+<li><p>核心方法：</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//创建</span>
+Serializable <span class="token function">create</span><span class="token punctuation">(</span>Session session<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//获取</span>
+Session <span class="token function">readSession</span><span class="token punctuation">(</span>Serializable sessionId<span class="token punctuation">)</span> <span class="token keyword">throws</span> UnknownSessionException<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//更新</span>
+<span class="token keyword">void</span> <span class="token function">update</span><span class="token punctuation">(</span>Session session<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">//删除，会话过期时会调用</span>
+<span class="token keyword">void</span> <span class="token function">delete</span><span class="token punctuation">(</span>Session session<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">//获取活跃的session</span>
+Collection<span class="token operator">&lt;</span>Session<span class="token operator">></span> <span class="token function">getActiveSessions</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>会话存储有多个实现</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="12-Shiro实例"><a href="#12-Shiro实例" class="headerlink" title="12.Shiro实例"></a>12.Shiro实例</h3><ul>
+<li><p>基于RBAC权限控制的Mysql数据库设计</p>
+</li>
+<li><p>用户-角色-权限 及关联表</p>
+</li>
+<li><p>ShiroFilterFactoryBean配置</p>
+<ul>
+<li><p>拦截器路径配置</p>
+<ul>
+<li><p>坑一：部分路径无法拦截，时有时无，是因为filterChainDefinitionMap 使用的是无序的HashMap，应该使用LinkedHashMap</p>
+<pre><code>Map&lt;String,String&gt; filterChainDefinitionMap = new LinkedHashMap&lt;&gt;();</code></pre></li>
+<li><p>坑二：过滤链是顺序执行的，从上而下，一般将/**放到最下边</p>
+<pre><code>filterChainDefinitionMap.put("/**","authc");</code></pre></li>
+<li><p>如果不是前后端分离的项目，则不必设置SessionManager</p>
+<pre><code>securityManager.setSessionManager(sessionManager());</code></pre></li>
+<li><p>设置realm，推荐放在SecurityManager方法最后，不然会出现不生效的情况</p>
+<pre><code>securityManager.setRealm(customRealm());</code></pre></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="13-Redis整合CacheManager"><a href="#13-Redis整合CacheManager" class="headerlink" title="13.Redis整合CacheManager"></a>13.Redis整合CacheManager</h3><ul>
+<li><p>加依赖</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token comment" spellcheck="true">&lt;!-- shiro+redis缓存插件 --></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.crazycake<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>shiro-redis<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.1.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>配置bean</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">//在securityManager中使用自定义的cacheManager</span>
+securityManager<span class="token punctuation">.</span><span class="token function">setCacheManager</span><span class="token punctuation">(</span><span class="token function">cacheManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/**
+* 配置redisManager
+*/</span>
+<span class="token keyword">public</span> RedisManager <span class="token function">getRedisManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    RedisManager redisManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedisManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    redisManager<span class="token punctuation">.</span><span class="token function">setHost</span><span class="token punctuation">(</span><span class="token string">"localhost"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    redisManager<span class="token punctuation">.</span><span class="token function">setPort</span><span class="token punctuation">(</span><span class="token number">6379</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> redisManager<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">/**
+* 配置具体cache实现类
+* @return
+*/</span>
+<span class="token keyword">public</span> RedisCacheManager <span class="token function">cacheManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    RedisCacheManager redisCacheManager <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedisCacheManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    redisCacheManager<span class="token punctuation">.</span><span class="token function">setRedisManager</span><span class="token punctuation">(</span><span class="token function">getRedisManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//设置过期时间，单位是秒，例如20s,</span>
+    redisCacheManager<span class="token punctuation">.</span><span class="token function">setExpire</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> redisCacheManager<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>出现报错，需要修改缓存的唯一ID</p>
+<pre><code>Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [org.crazycake.shiro.exception.PrincipalInstanceException: class java.lang.String must has getter for field: authCacheKey or id
+We need a field to identify this Cache Object in Redis. So you need to defined an id field which you can get unique id to identify this principal. For example, if you use UserInfo as Principal class, the id field maybe userId, userName, email, etc. For example, getUserId(), getUserName(), getEmail(), etc.
+Default value is authCacheKey or id, that means your principal object has a method called "getAuthCacheKey()" or "getId()"] with root cause</code></pre></li>
+</ul>
+<h3 id="14-Redis整合SessionManager"><a href="#14-Redis整合SessionManager" class="headerlink" title="14.Redis整合SessionManager"></a>14.Redis整合SessionManager</h3><ul>
+<li><p>session持久化</p>
+<ul>
+<li>重启应用，用户无感知，可以继续以原先的状态继续访问</li>
+</ul>
+</li>
+<li><p>配置</p>
+<pre class="line-numbers language-java"><code class="language-java">  <span class="token comment" spellcheck="true">/**
+     * 自定义session持久化
+     * @return redisSessionDAO
+     */</span>
+    <span class="token keyword">public</span> RedisSessionDAO <span class="token function">redisSessionDAO</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        RedisSessionDAO redisSessionDAO <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RedisSessionDAO</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        redisSessionDAO<span class="token punctuation">.</span><span class="token function">setRedisManager</span><span class="token punctuation">(</span><span class="token function">getRedisManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> redisSessionDAO<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><p>在customSessionManager中配置session持久化</p>
+<pre><code>customSessionManager.setSessionDAO(redisSessionDAO());</code></pre></li>
+</ul>
+</li>
+<li><p>注意</p>
+<ul>
+<li>DO对象需要实现序列化接口 Serializable</li>
+</ul>
+</li>
+<li><p>常用bean</p>
+<pre class="line-numbers language-java"><code class="language-java">  <span class="token comment" spellcheck="true">/**
+     * 管理shiro一些bean的生命周期 即bean初始化 与销毁
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> LifecycleBeanPostProcessor <span class="token function">lifecycleBeanPostProcessor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">LifecycleBeanPostProcessor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token comment" spellcheck="true">/**
+     * 加入注解的使用，不加入这个AOP注解不生效(shiro的注解 例如 @RequiresGuest)
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> AuthorizationAttributeSourceAdvisor <span class="token function">authorizationAttributeSourceAdvisor</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{</span>
+        AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor <span class="token operator">=</span> <span class="token keyword">new</span>
+                <span class="token class-name">AuthorizationAttributeSourceAdvisor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        authorizationAttributeSourceAdvisor<span class="token punctuation">.</span><span class="token function">setSecurityManager</span><span class="token punctuation">(</span><span class="token function">securityManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> authorizationAttributeSourceAdvisor<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-java"><code class="language-java"> <span class="token comment" spellcheck="true">/**
+     * 用来扫描上下文寻找所有的Advistor(通知器), 将符合条件的Advisor应用到切入点的Bean中，需要在LifecycleBeanPostProcessor创建后才可以创建
+     * @return
+     */</span>
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token annotation punctuation">@DependsOn</span><span class="token punctuation">(</span><span class="token string">"lifecycleBeanPostProcessor"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> DefaultAdvisorAutoProxyCreator <span class="token function">getDefaultAdvisorAutoProxyCreator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator<span class="token operator">=</span><span class="token keyword">new</span>
+                <span class="token class-name">DefaultAdvisorAutoProxyCreator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        defaultAdvisorAutoProxyCreator<span class="token punctuation">.</span><span class="token function">setUsePrefix</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> defaultAdvisorAutoProxyCreator<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+<h3 id="15-应用的鉴权方式"><a href="#15-应用的鉴权方式" class="headerlink" title="15.应用的鉴权方式"></a>15.应用的鉴权方式</h3><ul>
+<li>分布式session</li>
+<li>UUID</li>
+<li>JWT</li>
+<li>Oauth2.0</li>
+</ul>
+<h3 id="16-自定义SessionId"><a href="#16-自定义SessionId" class="headerlink" title="16.自定义SessionId"></a>16.自定义SessionId</h3><ul>
+<li><p>Shiro 默认的sessionid生成 类名 SessionIdGenerator</p>
+</li>
+<li><p>创建一个类，实现 SessionIdGenerator 接口的方法</p>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CustomSessionIdGenerator</span> <span class="token keyword">implements</span> <span class="token class-name">SessionIdGenerator</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Serializable <span class="token function">generateId</span><span class="token punctuation">(</span>Session session<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//根据业务自定义</span>
+        <span class="token keyword">return</span> <span class="token string">"class"</span><span class="token operator">+</span>UUID<span class="token punctuation">.</span><span class="token function">randomUUID</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"-"</span><span class="token punctuation">,</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>在redisSessionDao中配置sessionId生成器</p>
+<pre><code>//设置sessionid生成器
+redisSessionDAO.setSessionIdGenerator(new CustomSessionIdGenerator());</code></pre></li>
+</ul>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
+            </div>
+            <hr />
+
+            
+
+            <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+
+<div id="article-share">
+    
+    <div class="social-share" data-disabled="qzone" data-wechat-qrcode-helper="<p>微信里点“发现”->“扫一扫”二维码便可查看分享。</p>"></div>
+    
+</div>
+
+<script src="/libs/share/js/social-share.min.js"></script>
+
+            
+
+            
+            <div class="reprint1">
+                <p>
+                    <span class="reprint1-tip">
+                        <i class="fa fa-exclamation-circle"></i>&nbsp;&nbsp;转载请注明:
+                    </span>
+                    <a href="http://www.ldclass.club" class="b-link-green">陌生的小窝</a>
+                    <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
+                    <a href="/2020/10/29/quan-xian-kuang-jia-shiro/" class="b-link-green">权限框架Shiro</a>
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+    <style>
+    .valine-card {
+        margin: 1.5rem auto;
+    }
+
+    .valine-card .card-content {
+        padding: 20px 20px 5px 20px;
+    }
+
+    /* valine 评论框增加背景图片 */
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("") 100% 100% no-repeat;
+    }
+
+    #vcomments input[type=text],
+    #vcomments input[type=email],
+    #vcomments input[type=url],
+    #vcomments textarea {
+        box-sizing: border-box;
+    }
+
+    #vcomments p {
+        margin: 2px 2px 10px;
+        font-size: 1.05rem;
+        line-height: 1.78rem;
+    }
+
+    #vcomments blockquote p {
+        text-indent: 0.2rem;
+    }
+
+    #vcomments a {
+        padding: 0 2px;
+        color: #42b983;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    #vcomments img {
+        max-width: 100%;
+        height: auto;
+        cursor: pointer;
+    }
+
+    #vcomments ol li {
+        list-style-type: decimal;
+    }
+
+    #vcomments ol,
+    ul {
+        display: block;
+        padding-left: 2em;
+        word-spacing: 0.05rem;
+    }
+
+    #vcomments ul li,
+    ol li {
+        display: list-item;
+        line-height: 1.8rem;
+        font-size: 1rem;
+    }
+
+    #vcomments ul li {
+        list-style-type: disc;
+    }
+
+    #vcomments ul ul li {
+        list-style-type: circle;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        border: 0;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments h1 {
+        font-size: 1.85rem;
+        font-weight: bold;
+        line-height: 2.2rem;
+    }
+
+    #vcomments h2 {
+        font-size: 1.65rem;
+        font-weight: bold;
+        line-height: 1.9rem;
+    }
+
+    #vcomments h3 {
+        font-size: 1.45rem;
+        font-weight: bold;
+        line-height: 1.7rem;
+    }
+
+    #vcomments h4 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    #vcomments h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        line-height: 1.4rem;
+    }
+
+    #vcomments h6 {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
+
+    #vcomments p {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+
+    #vcomments hr {
+        margin: 12px 0;
+        border: 0;
+        border-top: 1px solid #ccc;
+    }
+
+    #vcomments blockquote {
+        margin: 15px 0;
+        border-left: 5px solid #42b983;
+        padding: 1rem 0.8rem 0.3rem 0.8rem;
+        color: #666;
+        background-color: rgba(66, 185, 131, .1);
+    }
+
+    #vcomments pre {
+        font-family: monospace, monospace;
+        padding: 1.2em;
+        margin: .5em 0;
+        background: #272822;
+        overflow: auto;
+        border-radius: 0.3em;
+        tab-size: 4;
+    }
+
+    #vcomments code {
+        font-family: monospace, monospace;
+        padding: 1px 3px;
+        font-size: 0.92rem;
+        color: #e96900;
+        background-color: #f8f8f8;
+        border-radius: 2px;
+    }
+
+    #vcomments pre code {
+        font-family: monospace, monospace;
+        padding: 0;
+        color: #e8eaf6;
+        background-color: #272822;
+    }
+
+    #vcomments pre[class*="language-"] {
+        padding: 1.2em;
+        margin: .5em 0;
+    }
+
+    #vcomments code[class*="language-"],
+    pre[class*="language-"] {
+        color: #e8eaf6;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    #vcomments b,
+    strong {
+        font-weight: bold;
+    }
+
+    #vcomments dfn {
+        font-style: italic;
+    }
+
+    #vcomments small {
+        font-size: 85%;
+    }
+
+    #vcomments cite {
+        font-style: normal;
+    }
+
+    #vcomments mark {
+        background-color: #fcf8e3;
+        padding: .2em;
+    }
+
+    #vcomments table,
+    th,
+    td {
+        padding: 12px 13px;
+        border: 1px solid #dfe2e5;
+    }
+
+    table tr:nth-child(2n),
+    thead {
+        background-color: #fafafa;
+    }
+
+    #vcomments table th {
+        background-color: #f2f2f2;
+        min-width: 80px;
+    }
+
+    #vcomments table td {
+        min-width: 80px;
+    }
+
+    #vcomments [type="checkbox"]:not(:checked),
+    [type="checkbox"]:checked {
+        position: inherit;
+        margin-left: -1.3rem;
+        margin-right: 0.4rem;
+        margin-top: -1px;
+        vertical-align: middle;
+        left: unset;
+        visibility: visible;
+    }
+
+    /* 修复评论第一行位置错位 */
+    .v .vlist .vcard {
+        padding-top: 2.5em !important;
+    }
+
+
+    /* valine 评论框增加背景图片 */
+    #vcomments textarea {
+        box-sizing: border-box;
+        background: url("http://www.luckyzmj.cn/medias/comment_bg.png") 100% 100% no-repeat;
+    }
+
+    #vcomments .vwrap {
+        box-sizing: border-box;
+        padding: 0 0 44px;
+        background-color: #F0FFF0;
+    }
+
+    #vcomments .vwrap .vheader {
+        width: 80%;
+        bottom: 0;
+        position: absolute;
+        background: #F0FFF0;
+    }
+
+    #vcomments .vinput {
+        padding: 10px 15px;
+        text-align: center;
+    }
+
+    #vcomments .vwrap .vheader .vinput {
+        border-bottom: 0px
+    }
+
+    #vcomments .vwrap .vedit .vctrl {
+        margin-top: -44px;
+        right: 0;
+        position: absolute;
+        margin-right: -3px;
+    }
+
+    #vcomments .vwrap .vrow {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 20%;
+        padding-top: 0px;
+    }
+
+    #vcomments .vrow {
+        font-size: 0;
+        padding: 0px 0;
+    }
+
+    #vcomments .vicon {
+        margin-right: 15px;
+    }
+
+    #vcomments .vrow .vcol.vcol-30 {
+        display: none
+    }
+
+    #vcomments .vedit .vctrl span.vpreview-btn {
+        display: none
+    }
+
+    #vcomments .vrow .vcol.vcol-70 {
+        width: 100%;
+    }
+
+    #vcomments .vsubmit.vbtn {
+        border-radius: 0;
+        padding: 0;
+        color: #fff;
+        line-height: 44px;
+        width: 100%;
+        border: none;
+        background: #4cbf30;
+    }
+
+    #vcomments .vcards .vcard .vh .vhead .vsys {
+        background: #F0FFF0;
+    }
+
+    #vcomments .vcards .vcard .vh .vmeta .vat {
+        font-size: 12px;
+        display: block;
+        margin-left: 15px;
+        float: right;
+        color: #fff;
+        background-color: #4cbf30;
+        line-height: 20px;
+        padding: 0 6px;
+        border-radius: 3px;
+    }
+
+    @media screen and (max-width: 520px) {
+        #vcomments .vwrap .vheader .vinput {
+            width: 33.33%;
+            padding: 10px 5px;
+        }
+    }
+</style>
+
+<div class="card valine-card" data-aos="fade-up">
+    <div id="vcomments" class="card-content"></div>
+</div>
+
+<script src="/libs/valine/av-min.js"></script>
+<script src="/libs/valine/Valine.min.js"></script>
+<!-- <link rel="stylesheet" type="text/css" href="/libs//libs/jQuery-emoji/dist/css/jquery.emoji.css">
+<script src="/libs//libs/jQuery-emoji/dist/js/jquery.emoji.min.js"></script>
+<script src="/libs//libs/jQuery-emoji/dist/js/emoji.list.js"></script> -->
+<script>
+    // new Valine({
+    //     el: '#vcomments',
+    //     appId: 'yHOHzWVmf4fK0U4skbOUFs4V-gzGzoHsz',
+    //     appKey: '7FQiVW3FVaXIdEc49YyCP4Lq',
+    //     notify: 'false' === 'true',
+    //     verify: 'true' === 'true',
+    //     visitor: 'true' === 'true',
+    //     avatar: 'mm',
+    //     pageSize: '10',
+    //     lang: 'zh-cn',
+    //     placeholder: 'just go go',
+
+    // });
+
+    //     function parse_emoji() {
+    //     jQuery(".vcontent").emojiParse({
+    //       basePath: '/libs/jQuery-emoji/images/emoji',
+    //       icons: emojiLists   // 注：详见 js/emoji.list.js
+    //     });
+    //   }
+
+    //   setTimeout(function() {
+    //     // jQuery emoji 解析
+    //     parse_emoji();
+    //     // jquery emoji 初始化
+    //     jQuery(".veditor").emoji({
+    //       showTab: true,
+    //       animation: 'slide',
+    //       basePath: '/libs/jQuery-emoji/images/emoji',
+    //       icons: emojiLists  // 注：详见 js/emoji.list.js
+    //     });
+    //     jQuery(".vmore").on("click", function() {
+    //       setTimeout(function() {
+    //         parse_emoji();
+    //       }, 500);
+    //     });
+    //   }, 800)
+
+    new Valine
+        ({
+            el: '#vcomments',
+            admin_email: '873791226@qq.com',
+            appId: 'yHOHzWVmf4fK0U4skbOUFs4V-gzGzoHsz',
+            appKey: '7FQiVW3FVaXIdEc49YyCP4Lq',
+            path: window.location.pathname,
+            comment_count: true,
+            notify: 'false' === 'true',
+            verify: 'true' === 'true',
+            visitor: 'true' === 'true',
+            avatar: 'mm',
+            pageSize: '10',
+            lang: 'zh-cn',
+            placeholder: 'just go go',
+        });
+    $(document).ready(function () {
+        $("#vcomments").on('click', 'span.vat', function () {
+            $(this).parent('div.vmeta').next("div.vcontent").after($("div.vwrap"));
+            $('textarea#veditor').focus();
+        })
+    }) 
+</script>
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<script type="text/javascript">
+    jinrishici.load(function (result) {
+        var jrsc_plac = result.data.content + "\n「" + result.data.origin.title + "」" + result.data.origin.dynasty + " · " + result.data.origin.author
+        document.getElementById("veditor").setAttribute("placeholder", jrsc_plac);
+    });
+</script>
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fa fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2020/10/30/springboot/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="SpringBoot">
+                        
+                        <span class="card-title">SpringBoot</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            SpringBoot基础
+
+
+1.淘宝maven私服地址&lt;repositories&gt;
+        &lt;repository&gt;
+            &lt;id&gt;maven-net-cn&lt;/id&gt
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-29
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SpringBoot/" class="post-category" target="_blank">
+                                    SpringBoot
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SpringBoot/" target="_blank">
+                        <span class="chip bg-color">SpringBoot</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fa fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/10/27/chang-yong-sql/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="常用sql">
+                        
+                        <span class="card-title">常用sql</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            ​    oracle、mysql常用sql
+
+
+oracle
+计算上个月份
+select to_char(add_months(trunc(sysdate),-1),'yyyy-mm') from dual;
+
+判断是否包含数字
+sele
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2020-10-27
+                            </span>
+                        <span class="publish-author">
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/sql/" target="_blank">
+                        <span class="chip bg-color">sql</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFunction.js"></script>
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script> 
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script> 
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script> 
+<!-- 代码块折行 -->
+ <style type="text/css">
+    code[class*="language-"],
+    pre[class*="language-"] {
+        white-space: pre !important;
+    }
+</style> 
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget">
+            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fa fa-list"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            // headingsOffset: -205,
+            headingSelector: 'h1, h2, h3, h4, h5'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+            // 先关闭目录
+            /* 修复文章卡片 div 的宽度. */
+            let fixPostCardWidth = function (srcId, targetId) {
+                let srcDiv = $('#' + srcId);
+                if (srcDiv.length === 0) {
+                    return;
+                }
+
+                let w = srcDiv.width();
+                if (w >= 450) {
+                    w = w + 21;
+                } else if (w >= 350 && w < 450) {
+                    w = w + 18;
+                } else if (w >= 300 && w < 350) {
+                    w = w + 16;
+                } else {
+                    w = w + 14;
+                }
+                $('#' + targetId).width(w);
+            };
+
+            // 切换TOC目录展开收缩的相关操作.
+            const expandedClass = 'expanded';
+            let $tocAside = $('#toc-aside');
+            let $mainContent = $('#main-content');
+            // $tocAside.removeClass(expandedClass).slideUp(500);
+            // $mainContent.removeClass('l9');
+            // fixPostCardWidth('artDetail', 'prenext-posts');
+            $('#floating-toc-btn .btn-floating').click(function () {
+                if ($tocAside.hasClass(expandedClass)) {
+                    $tocAside.removeClass(expandedClass).slideUp(500);
+                    $mainContent.removeClass('l9');
+                } else {
+                    $tocAside.addClass(expandedClass).slideDown(500);
+                    $mainContent.addClass('l9');
+                }
+                fixPostCardWidth('artDetail', 'prenext-posts');
+            });
+          
+    });
+</script>
+    
+
+</main>
+
+
+        <footer class="page-footer bg-color">
+    <div class="container row center-align">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&copy; 2020 DongLiu. 
+
+            <br>
+            <span id="sitetime"></span><span class="my-face">ღゝ◡╹)ノ♡</span>
+            <br>
+
+            
+
+            
+                    
+                        <span id="busuanzi_container_site_pv" style='display:none'></span>
+                        总访问量: <span id="busuanzi_value_site_pv" class="white-color"></span>
+                    
+        
+                    
+                        <span id="busuanzi_container_site_uv" style='display:none'></span>
+                        人次&nbsp; | &nbsp;访客人数: <span id="busuanzi_value_site_uv" class="white-color"></span> 人
+                    
+    
+            
+
+            
+                &nbsp; | &nbsp;字数统计:&nbsp;
+                <span class="white-color">197.4k</span> 字
+            
+
+            
+            <br>
+
+        </div>
+
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/15806679020" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fa fa-github"></i>
+    </a>
+
+
+ 
+    <a href="https://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=873791226@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fa fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+    <a href="http://wpa.qq.com/msgrd?v=3&uin=873791226&site=qq&menu=yes" class="tooltipped" target="_blank" data-tooltip="访问我的QQ空间" data-position="top" data-delay="50">
+        <i class="fa fa-qq"></i>
+    </a>
+
+
+
+
+<!-- 
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fa fa-rss"></i>
+    </a>
+ --></div>
+
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+<script language=javascript>
+    function siteTime() {
+        window.setTimeout("siteTime()", 1000);
+        var seconds = 1000;
+        var minutes = seconds * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        var today = new Date();
+        var todayYear = today.getFullYear();
+        var todayMonth = today.getMonth() + 1;
+        var todayDate = today.getDate();
+        var todayHour = today.getHours();
+        var todayMinute = today.getMinutes();
+        var todaySecond = today.getSeconds();
+
+        /* Date.UTC() -- 返回date对象距世界标准时间(UTC)1970年1月1日午夜之间的毫秒数(时间戳)
+        year - 作为date对象的年份，为4位年份值
+        month - 0-11之间的整数，做为date对象的月份
+        day - 1-31之间的整数，做为date对象的天数
+        hours - 0(午夜24点)-23之间的整数，做为date对象的小时数
+        minutes - 0-59之间的整数，做为date对象的分钟数
+        seconds - 0-59之间的整数，做为date对象的秒数
+        microseconds - 0-999之间的整数，做为date对象的毫秒数 */
+
+        var t1 = Date.UTC(2020, 08, 10, 00, 00, 00); //北京时间2020-8-1 00:00:00
+        var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+        var diff = t2 - t1;
+        var diffYears = Math.floor(diff / years);
+        var diffDays = Math.floor((diff / days) - diffYears * 365);
+        var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+        var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) / minutes);
+        var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours - diffMinutes *
+            minutes) / seconds);
+        document.getElementById("sitetime").innerHTML = "本站已勉强运行 " + diffYears + " 年 " + diffDays + " 天 " + diffHours +
+            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒" ;
+    } /*因为建站时间还没有一年，就将之注释掉了。需要的可以取消*/
+    siteTime();
+</script>
+
+
+
+
+
+
+        <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fa fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script src="/js/search.js"></script>
+<script type="text/javascript">
+$(function () {
+    searchFunc("/" + "search.xml", 'searchInput', 'searchResult');
+});
+</script>
+        <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fa fa-angle-up"></i>
+    </a>
+</div>
+
+
+        <script src="https://cdn.bootcss.com/materialize/1.0.0/js/materialize.min.js"></script>
+        <script src="https://cdn.bootcss.com/masonry/4.2.2/masonry.pkgd.min.js"></script>
+        <script src="https://cdn.bootcss.com/aos/3.0.0-beta.6/aos.js"></script>
+        <script src="https://cdn.bootcss.com/scrollprogress/3.0.2/scrollProgress.min.js"></script>
+        <script src="https://cdn.bootcss.com/lightgallery/1.6.12/js/lightgallery-all.min.js"></script>
+        <script src="/js/matery.js"></script>
+
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+
+        
+            <script src="/libs/others/clicklove.js"></script>
+        
+
+        
+            <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+        
+
+        <!-- DongLiu  add 2020.08.28 -->
+        <!-- <script type="text/javascript">
+            var OriginTitile = document.title,
+                st;
+            document.addEventListener("visibilitychange", function () {
+                document.hidden ? (document.title = "看不见我🙈~看不见我🙈~", clearTimeout(st)) : (document.title =
+                    "(๑•̀ㅂ•́) ✧被发现了～", st = setTimeout(function () {
+                        document.title = OriginTitile
+                    }, 3e3))
+            })
+        </script> -->
+
+        <!-- 鼠标点击烟花爆炸效果  DongLiu  add 2020.09.09 -->
+        
+
+        <!-- 背景雪花飘落特效DongLiu  add 2020.09.10 -->
+        
+            <script type="text/javascript">
+            //只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/js/sakura.js"><\/script>');
+            }
+            </script>
+        
+
+        <!-- 鼠标点击文字特效 DongLiu  add 2020.09.10-->
+        
+            <script src="/js/wenzi.js" type="text/javascript"></script>
+        
+
+        <!-- 背景雪花飘落特效 DongLiu  add 2020.09.10 -->
+        
+            <script type="text/javascript">
+                var windowWidth = $(window).width();
+                if (windowWidth > 768) {
+                    document.write('<script type="text/javascript" src="/js/xuehuapiaoluo.js"><\/script>');
+                }
+            </script>
+        
+
+        <!-- 在线聊天工具  DongLiu  add 2020.09.11 -->
+        
+
+        <!-- 背景 canvas-nest  DongLiu   add 2020.09.15-->
+        
+
+        <!-- 背景静止彩带  DongLiu   add 2020.09.15-->
+        
+
+        <!-- 背景动态彩带 DongLiu   add 2020.09.15-->
+        
+
+    <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
+</html>
