@@ -10,9 +10,17 @@
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
     <meta name="description" content="
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if (!el.dataset.src) { return">
+springBoot集成webservice
+
+
+项目示例：https://gitee.com/liudong666/springboot_webservice.git
+pom.xml
+
+
+
+    4.0.0
+    
+        ">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -487,99 +495,10 @@
 
 
 
-<main class="post-container content">
+<main class="container content">
 
     
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #toc-content .is-active-link::before {
-        background-color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 20px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!--  DongLiu  modify 2020.08.15-->
+    <!--  DongLiu  modify 2020.08.15-->
 <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
@@ -588,11 +507,24 @@
                 <div class="col s7">
                     
                     <div class="article-tag">
-                        <span class="chip bg-color">无标签</span>
+                        
+                        <a href="/tags/webService/" target="_blank">
+                            <span class="chip bg-color">webService</span>
+                        </a>
+                        
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/webService/" class="post-category" target="_blank">
+                            webService
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -614,14 +546,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    52
+                    395
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
                 
@@ -638,7 +570,146 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <script>
+                <blockquote>
+<p>springBoot集成webservice</p>
+</blockquote>
+<ul>
+<li><h4 id="项目示例：https-gitee-com-liudong666-springboot-webservice-git"><a href="#项目示例：https-gitee-com-liudong666-springboot-webservice-git" class="headerlink" title="项目示例：https://gitee.com/liudong666/springboot_webservice.git"></a>项目示例：<code>https://gitee.com/liudong666/springboot_webservice.git</code></h4></li>
+<li><h4 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h4></li>
+</ul>
+<pre class="line-numbers language-xm"><code class="language-xm"><?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.5.0</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.ldclass</groupId>
+    <artifactId>ws_sb_demo</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>ws_sb_demo</name>
+    <description>Demo project for Spring Boot</description>
+    <properties>
+        <java.version>1.8</java.version>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web-services</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-frontend-jaxws</artifactId>
+            <version>3.1.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.cxf</groupId>
+            <artifactId>cxf-rt-transports-http</artifactId>
+            <version>3.1.6</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><h4 id="新建CxfConfig"><a href="#新建CxfConfig" class="headerlink" title="新建CxfConfig"></a>新建CxfConfig</h4></li>
+</ul>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>ws_sb_demo<span class="token punctuation">.</span>config<span class="token punctuation">;</span>
+
+
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>ws_sb_demo<span class="token punctuation">.</span>service<span class="token punctuation">.</span>DemoService<span class="token punctuation">;</span>
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>ws_sb_demo<span class="token punctuation">.</span>service<span class="token punctuation">.</span>impl<span class="token punctuation">.</span>DemoServiceImpl<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>cxf<span class="token punctuation">.</span>Bus<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>cxf<span class="token punctuation">.</span>bus<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>SpringBus<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>cxf<span class="token punctuation">.</span>jaxws<span class="token punctuation">.</span>EndpointImpl<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>cxf<span class="token punctuation">.</span>transport<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>CXFServlet<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>boot<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletRegistrationBean<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Bean<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Configuration<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>xml<span class="token punctuation">.</span>ws<span class="token punctuation">.</span>Endpoint<span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CxfConfig</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> ServletRegistrationBean <span class="token function">createServletRegistrationBean</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ServletRegistrationBean</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">CXFServlet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token string">"/webService/*"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Bean</span><span class="token punctuation">(</span>name <span class="token operator">=</span> Bus<span class="token punctuation">.</span>DEFAULT_BUS_ID<span class="token punctuation">)</span>
+    <span class="token keyword">public</span> SpringBus <span class="token function">springBus</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">SpringBus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> DemoService <span class="token function">demoService</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">DemoServiceImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> Endpoint <span class="token function">endpoint</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        EndpointImpl endpoint <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">EndpointImpl</span><span class="token punctuation">(</span><span class="token function">springBus</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">demoService</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        endpoint<span class="token punctuation">.</span><span class="token function">publish</span><span class="token punctuation">(</span><span class="token string">"/api"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> endpoint<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><h3 id="service"><a href="#service" class="headerlink" title="service"></a>service</h3></li>
+</ul>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>ws_sb_demo<span class="token punctuation">.</span>service<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>jws<span class="token punctuation">.</span>WebParam<span class="token punctuation">;</span>
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>jws<span class="token punctuation">.</span>WebService<span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@WebService</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"DemoService"</span><span class="token punctuation">,</span><span class="token comment" spellcheck="true">//暴露服务名称</span>
+        targetNamespace <span class="token operator">=</span> <span class="token string">"http://service.ws_sb_demo.ldclass.com"</span> <span class="token comment" spellcheck="true">//命名空间，一般是接口的包名倒序</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">DemoService</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> String <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token annotation punctuation">@WebParam</span><span class="token punctuation">(</span>name <span class="token operator">=</span> <span class="token string">"username"</span><span class="token punctuation">)</span> String username<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><h4 id="impl"><a href="#impl" class="headerlink" title="impl"></a>impl</h4></li>
+</ul>
+<pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>ws_sb_demo<span class="token punctuation">.</span>service<span class="token punctuation">.</span>impl<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> com<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>ws_sb_demo<span class="token punctuation">.</span>service<span class="token punctuation">.</span>DemoService<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>jws<span class="token punctuation">.</span>WebService<span class="token punctuation">;</span>
+
+
+<span class="token annotation punctuation">@WebService</span><span class="token punctuation">(</span>serviceName <span class="token operator">=</span> <span class="token string">"DemoService"</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 与接口中指定的name一致</span>
+        targetNamespace <span class="token operator">=</span> <span class="token string">"http://service.ws_sb_demo.ldclass.com"</span><span class="token punctuation">,</span> <span class="token comment" spellcheck="true">// 与接口中的命名空间一致,一般是接口的包名倒</span>
+        endpointInterface <span class="token operator">=</span> <span class="token string">"com.ldclass.ws_sb_demo.service.DemoService"</span><span class="token comment" spellcheck="true">// 接口地址</span>
+<span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoServiceImpl</span> <span class="token keyword">implements</span> <span class="token class-name">DemoService</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">sayHello</span><span class="token punctuation">(</span>String username<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"Hi,"</span> <span class="token operator">+</span> username<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1157,12 +1228,13 @@
                     <div class="summary block-with-text">
                         
                             
-非Maven搭建SSM框架
+搭建SSM框架
 
 
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.datas
+项目示例：https://gitee.com/liudong666/ssm-demo.git
+pom.xml
+
+&lt;project xmlns="http://maven.apache.org/POM/4.0.0"
                         
                     </div>
                     <div class="publish-info">
@@ -1212,9 +1284,13 @@
                     <div class="summary block-with-text">
                         
                             
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return
+SSM集成webService-maven
+
+
+项目示例：https://gitee.com/liudong666/ssm-demo.git
+pom.xml
+
+        &lt;!-- 集成CXF实现Webservice接口 -->
                         
                     </div>
                     <div class="publish-info">
@@ -1223,8 +1299,31 @@
                             </span>
                         <span class="publish-author">
                             
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SSM/" class="post-category" target="_blank">
+                                    SSM
+                                </a>
+                            
+                            <a href="/categories/SSM/webService/" class="post-category" target="_blank">
+                                    webService
+                                </a>
+                            
+                            
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SSM/" target="_blank">
+                        <span class="chip bg-color">SSM</span>
+                    </a>
+                    
+                    <a href="/tags/webService/" target="_blank">
+                        <span class="chip bg-color">webService</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1254,103 +1353,6 @@
         white-space: pre !important;
     }
 </style> 
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
-            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fa fa-list"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            // headingsOffset: -205,
-            headingSelector: 'h1, h2, h3, h4, h5'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-            // 先关闭目录
-            /* 修复文章卡片 div 的宽度. */
-            let fixPostCardWidth = function (srcId, targetId) {
-                let srcDiv = $('#' + srcId);
-                if (srcDiv.length === 0) {
-                    return;
-                }
-
-                let w = srcDiv.width();
-                if (w >= 450) {
-                    w = w + 21;
-                } else if (w >= 350 && w < 450) {
-                    w = w + 18;
-                } else if (w >= 300 && w < 350) {
-                    w = w + 16;
-                } else {
-                    w = w + 14;
-                }
-                $('#' + targetId).width(w);
-            };
-
-            // 切换TOC目录展开收缩的相关操作.
-            const expandedClass = 'expanded';
-            let $tocAside = $('#toc-aside');
-            let $mainContent = $('#main-content');
-            // $tocAside.removeClass(expandedClass).slideUp(500);
-            // $mainContent.removeClass('l9');
-            // fixPostCardWidth('artDetail', 'prenext-posts');
-            $('#floating-toc-btn .btn-floating').click(function () {
-                if ($tocAside.hasClass(expandedClass)) {
-                    $tocAside.removeClass(expandedClass).slideUp(500);
-                    $mainContent.removeClass('l9');
-                } else {
-                    $tocAside.addClass(expandedClass).slideDown(500);
-                    $mainContent.addClass('l9');
-                }
-                fixPostCardWidth('artDetail', 'prenext-posts');
-            });
-          
-    });
-</script>
     
 
 </main>
@@ -1382,7 +1384,7 @@
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">197.4k</span> 字
+                <span class="white-color">201.3k</span> 字
             
 
             
