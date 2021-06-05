@@ -557,7 +557,7 @@ tar -zvxf mysql-5.7.28">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    678
+                    694
                 </div>
                 
 
@@ -635,7 +635,8 @@ datadir=/usr/local/mysql/data
 socket=/usr/local/mysql/mysql.sock
 sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 port=13306
-
+# 不区分大小写
+lower_case_table_names=1
 # Disabling symbolic-links is recommended to prevent assorted security risks
 symbolic-links=0
 #skip-grant-tables
@@ -647,7 +648,7 @@ symbolic-links=0
 # include all files from the config directory
 
 [client]
-socket=/usr/local/mysql/mysql.sock<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+socket=/usr/local/mysql/mysql.sock<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <pre class="line-numbers language-shell"><code class="language-shell">[mysqld]
 basedir=/usr/local/mysql
 datadir=/usr/local/mysql/data
@@ -655,6 +656,8 @@ socket=/usr/local/mysql/mysql.sock
 sql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES
 # 访问端口
 port = 13306
+# 不区分大小写
+lower_case_table_names=1
 # 允许连接的客户端IP。临时只允许通过本地访问数据库,禁止外部连接.删除或注释掉bindaddress
 即可放开访问权限
 # bind-address = 127.0.0.1
@@ -686,7 +689,7 @@ explicit_defaults_for_timestamp = ON
 risks
 symbolic-links=0
 [client]
-socket=/usr/local/mysql/mysql.sock<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+socket=/usr/local/mysql/mysql.sock<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
 <p>初始化mysql数据库</p>
 </blockquote>
@@ -1391,7 +1394,7 @@ worker_processes  1;
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">201.5k</span> 字
+                <span class="white-color">201.6k</span> 字
             
 
             

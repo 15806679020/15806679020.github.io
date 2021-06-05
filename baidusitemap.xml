@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.ldclass.club/2021/06/04/redis-bu-shu-yu-dao-de-wen-ti/</loc>
+    <lastmod>2021-06-04</lastmod>
+  </url>  <url>
+    <loc>http://www.ldclass.club/2021/05/18/linux-an-zhuang-mysql/</loc>
+    <lastmod>2021-06-04</lastmod>
+  </url>  <url>
     <loc>http://www.ldclass.club/2021/06/04/springboot-ji-cheng-webservice/</loc>
     <lastmod>2021-06-03</lastmod>
   </url>  <url>
@@ -44,9 +50,6 @@
     <lastmod>2021-05-19</lastmod>
   </url>  <url>
     <loc>http://www.ldclass.club/2021/05/18/linux-diao-shi-chang-yong-ming-ling/</loc>
-    <lastmod>2021-05-18</lastmod>
-  </url>  <url>
-    <loc>http://www.ldclass.club/2021/05/18/linux-an-zhuang-mysql/</loc>
     <lastmod>2021-05-18</lastmod>
   </url>  <url>
     <loc>http://www.ldclass.club/2021/05/18/nginx-conf-chang-yong-pei-zhi/</loc>
