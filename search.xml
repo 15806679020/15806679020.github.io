@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Centos7本地挂载yum源</title>
+      <link href="2021/06/08/centos7-ben-di-gua-zai-yum-yuan/"/>
+      <url>2021/06/08/centos7-ben-di-gua-zai-yum-yuan/</url>
+      
+        <content type="html"><![CDATA[<ul><li>挂载镜像</li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# mkdir  -p  /mnt/centos7[root@lmzf ~]# mount  /root/CentOS-7-x86_64-DVD-1708.iso  /mnt/centos7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li>开机永久挂载</li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# cat  /etc/fstab/root/CentOS-7-x86_64-DVD-1708.iso   /mnt/centos7  iso9660 defaults,loop,ro  0  0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li><p>删除<code>/etc/yum.repo.d/</code>中的所有yum源 (重要)</p></li><li><p>创建本地的<code>repo</code>文件</p></li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# vim  /etc/yum.repo.d/centos7.repo[centos7]name=centos7baseurl=file:///mnt/centos7gpgcheck=0enabled=1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>开始yum安装软件</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> Centos7 </tag>
+            
+            <tag> yum </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>redis部署遇到的问题</title>
       <link href="2021/06/04/redis-bu-shu-yu-dao-de-wen-ti/"/>
       <url>2021/06/04/redis-bu-shu-yu-dao-de-wen-ti/</url>
@@ -2474,11 +2503,11 @@
       
         <tags>
             
-            <tag> AlibabaCloud </tag>
-            
             <tag> CAP </tag>
             
             <tag> BASE </tag>
+            
+            <tag> AlibabaCloud </tag>
             
         </tags>
       

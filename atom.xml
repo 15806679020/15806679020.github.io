@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ldclass.club/"/>
-  <updated>2021-06-04T05:45:07.278Z</updated>
+  <updated>2021-06-07T09:36:52.684Z</updated>
   <id>http://www.ldclass.club/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Centos7本地挂载yum源</title>
+    <link href="http://www.ldclass.club/2021/06/08/centos7-ben-di-gua-zai-yum-yuan/"/>
+    <id>http://www.ldclass.club/2021/06/08/centos7-ben-di-gua-zai-yum-yuan/</id>
+    <published>2021-06-07T17:34:49.000Z</published>
+    <updated>2021-06-07T09:36:52.684Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>挂载镜像</li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# mkdir  -p  /mnt/centos7[root@lmzf ~]# mount  /root/CentOS-7-x86_64-DVD-1708.iso  /mnt/centos7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li>开机永久挂载</li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# cat  /etc/fstab/root/CentOS-7-x86_64-DVD-1708.iso   /mnt/centos7  iso9660 defaults,loop,ro  0  0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li><p>删除<code>/etc/yum.repo.d/</code>中的所有yum源 (重要)</p></li><li><p>创建本地的<code>repo</code>文件</p></li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# vim  /etc/yum.repo.d/centos7.repo[centos7]name=centos7baseurl=file:///mnt/centos7gpgcheck=0enabled=1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>开始yum安装软件</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;挂载镜像&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;line-numbers language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;[root@lmzf ~]# mkdir  -p  /mnt/centos7
+[root@
+      
+    
+    </summary>
+    
+      <category term="Linux" scheme="http://www.ldclass.club/categories/Linux/"/>
+    
+    
+      <category term="Linux" scheme="http://www.ldclass.club/tags/Linux/"/>
+    
+      <category term="Centos7" scheme="http://www.ldclass.club/tags/Centos7/"/>
+    
+      <category term="yum" scheme="http://www.ldclass.club/tags/yum/"/>
+    
+  </entry>
   
   <entry>
     <title>redis部署遇到的问题</title>
@@ -600,37 +633,6 @@ worker_process
     
     
       <category term="Tomcat" scheme="http://www.ldclass.club/tags/Tomcat/"/>
-    
-      <category term="https" scheme="http://www.ldclass.club/tags/https/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>nginx生成证书</title>
-    <link href="http://www.ldclass.club/2021/05/08/nginx-sheng-cheng-zheng-shu/"/>
-    <id>http://www.ldclass.club/2021/05/08/nginx-sheng-cheng-zheng-shu/</id>
-    <published>2021-05-08T11:56:15.000Z</published>
-    <updated>2021-05-27T06:00:26.678Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><h4 id="OpenSSl安装配置"><a href="#OpenSSl安装配置" class="headerlink" title="OpenSSl安装配置"></a>OpenSSl安装配置</h4><ul><li>下载链接：<code>https://slproweb.com/products/Win32OpenSSL.html</code></li><li>安装OpenSSL，右键以管理员身份运行，选择安装路径，安装路径不要带中文。</li><li>OpenSSl环境变量配置<ul><li>变量名：OPENSSL_HOME</li><li>变量值：F:\tool\OpenSSL-Win64</li></ul></li><li>配置PATH<ul><li>在最后添加%OPENSSL_HOME%\bin</li></ul></li></ul></li><li><h4 id="生成SSL证书"><a href="#生成SSL证书" class="headerlink" title="生成SSL证书"></a>生成SSL证书</h4><ul><li>打开nginx安装目录，进入F:\nginux\nginx-1.17.1\conf，在地址栏输入cmd，按回车，打开命令行窗口</li><li>执行命令：openssl genrsa -des3 -out server.key，需要你设置一个密码</li><li>执创建csr证书，命令：openssl req -new -key server.key -out server.csr，照实填写即可（此处如果报错需先执行：set OPENSSL_CONF=F:\tool\OpenSSL-Win64\bin\openssl.cfg 设置配置文件路径）</li><li>拷贝目录下生成的server.key并重命名为server.key.org</li><li>去除密码，命令：openssl rsa -in server.key.org -out server.key</li><li>生成证书文件server.crt，命令：openssl x509 -req -days 3650 -in server.csr -signkey server.key -out server.crt （-days 365为证书生效时间，可以设长点）</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;h4 id=&quot;OpenSSl安装配置&quot;&gt;&lt;a href=&quot;#OpenSSl安装配置&quot; class=&quot;headerlink&quot; title=&quot;OpenSSl安装配置&quot;&gt;&lt;/a&gt;OpenSSl安装配置&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;下载链接：&lt;code&gt;https://
-      
-    
-    </summary>
-    
-      <category term="Nginx" scheme="http://www.ldclass.club/categories/Nginx/"/>
-    
-      <category term="https" scheme="http://www.ldclass.club/categories/Nginx/https/"/>
-    
-    
-      <category term="Nginx" scheme="http://www.ldclass.club/tags/Nginx/"/>
     
       <category term="https" scheme="http://www.ldclass.club/tags/https/"/>
     

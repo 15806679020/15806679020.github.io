@@ -1,3 +1,4 @@
+http://www.ldclass.club/2021/06/08/centos7-ben-di-gua-zai-yum-yuan/
 http://www.ldclass.club/2021/06/04/redis-bu-shu-yu-dao-de-wen-ti/
 http://www.ldclass.club/2021/06/04/tomcat-jdk-web-xml-ban-ben-dui-ying/
 http://www.ldclass.club/2021/06/04/web-xml-ge-ban-ben-tou/
@@ -77,4 +78,3 @@ http://www.ldclass.club/2020/12/31/xiang-mu-cheng-ben-guan-li-de-4-ge-zi-guo-che
 http://www.ldclass.club/2020/12/31/xiang-mu-cheng-ben-guan-li/
 http://www.ldclass.club/2020/12/31/xian-cheng-an-quan-xing/
 http://www.ldclass.club/2020/12/30/xian-cheng-ji-chu/
-http://www.ldclass.club/2020/12/30/bing-fa-bian-cheng-yuan-li/
