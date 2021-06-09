@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ldclass.club/"/>
-  <updated>2021-06-07T09:36:52.684Z</updated>
+  <updated>2021-06-09T07:11:34.434Z</updated>
   <id>http://www.ldclass.club/</id>
   
   <author>
@@ -15,6 +15,145 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用.gitignore</title>
+    <link href="http://www.ldclass.club/2021/06/09/chang-yong-gitignore/"/>
+    <id>http://www.ldclass.club/2021/06/09/chang-yong-gitignore/</id>
+    <published>2021-06-09T11:34:11.000Z</published>
+    <updated>2021-06-09T07:11:34.434Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>常用.gitignore配置</p></blockquote><pre class="line-numbers language-gitignore"><code class="language-gitignore">## .gitignore for Grails 1.2 and 1.3# .gitignore for maven target/*.releaseBackup# web application files#/web-app/WEB-INF# IDE support files/.classpath/.launch/.project/.settings/*.launch/*.tmproj/ivy*/eclipse# default HSQL database files for production mode/prodDb.*# general HSQL database files*Db.properties*Db.script# logs/stacktrace.log/test/reports/logs*.log*.log.*# project release file/*.war# plugin release file/*.zip/*.zip.sha1# older plugin install locations/plugins/web-app/plugins/web-app/WEB-INF/classes# "temporary" build filestarget/out/build/# other*.iws#.gitignore for java*.class# Package Files #*.jar*.war*.ear## .gitignore for eclipse*.pydevproject.project.metadatabin/**tmp/**tmp/**/**.tmp*.bak*.swp*~.niblocal.properties.classpath.settings/.loadpath# External tool builders.externalToolBuilders/# Locally stored "Eclipse launch configurations"*.launch# CDT-specific.cproject# PDT-specific.buildpath## .gitignore for intellij*.iml*.ipr*.iws.idea/## .gitignore for linux.*!.gitignore*~## .gitignore for windows# Windows image file cachesThumbs.dbehthumbs.db# Folder config fileDesktop.ini# Recycle Bin used on file shares$RECYCLE.BIN/## .gitignore for mac os x.DS_Store.AppleDouble.LSOverrideIcon# Thumbnails._*# Files that might appear on external disk.Spotlight-V100.Trashes## hack for graddle wrapper!wrapper/*.jar!**/wrapper/*.jar<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;常用.gitignore配置&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;pre class=&quot;line-numbers language-gitignore&quot;&gt;&lt;code class=&quot;language-gitignore&quot;&gt;## .gitignore
+      
+    
+    </summary>
+    
+      <category term="Git" scheme="http://www.ldclass.club/categories/Git/"/>
+    
+      <category term="gitignore" scheme="http://www.ldclass.club/categories/Git/gitignore/"/>
+    
+    
+      <category term="Git" scheme="http://www.ldclass.club/tags/Git/"/>
+    
+      <category term="gitignore" scheme="http://www.ldclass.club/tags/gitignore/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>不安全的HTTP请求方法配置</title>
+    <link href="http://www.ldclass.club/2021/06/09/bu-an-quan-de-http-qing-qiu-fang-fa-pei-zhi/"/>
+    <id>http://www.ldclass.club/2021/06/09/bu-an-quan-de-http-qing-qiu-fang-fa-pei-zhi/</id>
+    <published>2021-06-09T09:31:25.000Z</published>
+    <updated>2021-06-09T01:31:25.100Z</updated>
+    
+    <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb登录拦截过滤器</title>
+    <link href="http://www.ldclass.club/2021/06/09/javaweb-deng-lu-lan-jie-guo-lu-qi/"/>
+    <id>http://www.ldclass.club/2021/06/09/javaweb-deng-lu-lan-jie-guo-lu-qi/</id>
+    <published>2021-06-09T09:26:14.000Z</published>
+    <updated>2021-06-09T01:26:14.184Z</updated>
+    
+    <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CORS跨域配置</title>
+    <link href="http://www.ldclass.club/2021/06/09/cors-kua-yu-pei-zhi/"/>
+    <id>http://www.ldclass.club/2021/06/09/cors-kua-yu-pei-zhi/</id>
+    <published>2021-06-09T09:25:30.000Z</published>
+    <updated>2021-06-09T01:25:30.788Z</updated>
+    
+    <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Xss保护过滤器</title>
+    <link href="http://www.ldclass.club/2021/06/09/xss-bao-hu-guo-lu-qi/"/>
+    <id>http://www.ldclass.club/2021/06/09/xss-bao-hu-guo-lu-qi/</id>
+    <published>2021-06-09T09:14:27.000Z</published>
+    <updated>2021-06-09T06:43:18.428Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><h5 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h5><ul><li>预防存储型跨站脚本攻击</li><li>网站会将用户输入内容中包含的JavaScript代码呈现到页面上。如果攻击者能够设法诱骗合法用户访问其构造的链接或表单，攻击者就能以目标网站的身份在合法用户的浏览器上执行任意JS代码，从而窃取Cookie、执行CSRF、甚至借助浏览器漏洞完全控制用户主机。</li></ul></li><li><h5 id="风险分析"><a href="#风险分析" class="headerlink" title="风险分析"></a>风险分析</h5><ul><li>攻击者可以利用存在XSS漏洞的Web系统攻击浏览相关网页的用户，窃取用户会话中诸如用户名和口令（可能包含在Cookie里）等敏感信息、通过插入恶意代码对用户执行挂马攻击、XSS漏洞还可能被攻击者用于网页篡改。</li></ul></li><li><h5 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h5><ul><li><code>JavaWeb</code>：配置<code>Xss</code>过滤器</li><li></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;h5 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h5&gt;&lt;ul&gt;
+&lt;li&gt;预防存储型跨站脚本攻击&lt;/li&gt;
+&lt;li&gt;网站会将用户输入内容中包含的JavaScript代码
+      
+    
+    </summary>
+    
+      <category term="Xss" scheme="http://www.ldclass.club/categories/Xss/"/>
+    
+      <category term="JavaWeb" scheme="http://www.ldclass.club/categories/Xss/JavaWeb/"/>
+    
+    
+      <category term="JavaWeb" scheme="http://www.ldclass.club/tags/JavaWeb/"/>
+    
+      <category term="Xss" scheme="http://www.ldclass.club/tags/Xss/"/>
+    
+  </entry>
   
   <entry>
     <title>Centos7本地挂载yum源</title>
@@ -468,173 +607,6 @@
     
     
       <category term="linux" scheme="http://www.ldclass.club/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux安装mysql</title>
-    <link href="http://www.ldclass.club/2021/05/18/linux-an-zhuang-mysql/"/>
-    <id>http://www.ldclass.club/2021/05/18/linux-an-zhuang-mysql/</id>
-    <published>2021-05-18T11:33:44.000Z</published>
-    <updated>2021-06-04T05:36:59.405Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>卸载历史版本</p></blockquote><ul><li>查询系统是否已安装mysql，如果已安装则卸载，并删除mysql相关目录</li></ul><pre class="line-numbers language-shell"><code class="language-shell">rpm -qa mysql*find / -name mysql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><blockquote><p>解压</p></blockquote><pre class="line-numbers language-shell"><code class="language-shell">cd /opt/tar -zvxf mysql-5.7.28-linux-glibc2.12-x86_64.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><blockquote><p>安装</p></blockquote><ul><li>如果目录下磁盘空间较小，可以将数据目录放在其他位置，在初始化参数中数据文件目录以及/etc/my.cnf 文件中写清</li></ul><pre class="line-numbers language-shell"><code class="language-shell">mv mysql-5.7.28-linux-glibc2.12-x86_64 /usr/local/mysqlcd /usr/local/mysql/mkdir datagroupadd mysqluseradd -r -g mysql mysqlchown -R mysql:mysql /usr/local/mysql/cp /usr/local/mysql/support-files/mysql.server /etc/init.d/mysqldln -s /usr/local/mysql/bin/mysql /usr/bin/mysql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>初始化</p></blockquote><ul><li>删除系统默认的配置文件，复制配置信息到/etc/my.cnf 中</li></ul><pre class="line-numbers language-shell"><code class="language-shell">rm -rf /etc/my.cnf /etc/my.cnf.d /usr/my.cnf /usr/my-new.cnftouch /etc/my.cnf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ul><li>配置信息如下（二选其一）：</li></ul><pre class="line-numbers language-shell"><code class="language-shell">[mysqld]basedir=/usr/local/mysqldatadir=/usr/local/mysql/datasocket=/usr/local/mysql/mysql.socksql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLESport=13306# 不区分大小写lower_case_table_names=1# Disabling symbolic-links is recommended to prevent assorted security riskssymbolic-links=0#skip-grant-tables[mysqld_safe]#log-error=/var/log/mariadb/mariadb.log#pid-file=/var/run/mariadb/mariadb.pid# include all files from the config directory[client]socket=/usr/local/mysql/mysql.sock<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-shell"><code class="language-shell">[mysqld]basedir=/usr/local/mysqldatadir=/usr/local/mysql/datasocket=/usr/local/mysql/mysql.socksql_mode=NO_ENGINE_SUBSTITUTION,STRICT_TRANS_TABLES# 访问端口port = 13306# 不区分大小写lower_case_table_names=1# 允许连接的客户端IP。临时只允许通过本地访问数据库,禁止外部连接.删除或注释掉bindaddress即可放开访问权限# bind-address = 127.0.0.1# 开启事件功能event_scheduler=ON# ------开始 慢SQL日志相关配置----------------# 开启慢SQL记录slow_query_log = 1# 记录执行时间超过3秒的SQL语句long_query_time = 5# 指定慢SQL记录输出日志文件slow_query_log_file = slow.log# 是否记录未走索引的SQL语句log_queries_not_using_indexes = 0log_throttle_queries_not_using_indexes = 500# 日志内容过期时间expire_logs_days = 30# 过滤最小检索行数min_examined_row_limit = 100binlog-rows-query-log-events = 1log-bin-trust-function-creators = 1log_timestamps=systemlog_slow_admin_statements = 1log_slow_slave_statements = 1# ------结束 慢SQL日志相关配置----------------# 避免timestamp格式数据无法导入问题explicit_defaults_for_timestamp = ON# Disabling symbolic-links is recommended to prevent assorted securityriskssymbolic-links=0[client]socket=/usr/local/mysql/mysql.sock<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>初始化mysql数据库</p></blockquote><pre class="line-numbers language-shell"><code class="language-shell">cd bin/./mysqld --initialize --user=mysql --datadir=/usr/local/mysql/data --basedir=/usr/local/mysql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><blockquote><p>启动mysql服务</p></blockquote><pre class="line-numbers language-shell"><code class="language-shell">cd ../support-files/./mysql.server start<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><blockquote><p>配置</p></blockquote><pre class="line-numbers language-shell"><code class="language-shell">mysql -uroot -p输入密码<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><blockquote><p>进入mysql交互操作界面</p></blockquote><pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">--修改密码</span>mysql<span class="token operator">></span> <span class="token keyword">set</span> password <span class="token keyword">for</span> root<span class="token variable">@localhost</span> <span class="token operator">=</span> password<span class="token punctuation">(</span><span class="token string">'Root@123'</span><span class="token punctuation">)</span><span class="token punctuation">;</span> mysql<span class="token operator">></span> <span class="token keyword">use</span> mysql<span class="token punctuation">;</span><span class="token comment" spellcheck="true">--开启远程访问</span>mysql<span class="token operator">></span> <span class="token keyword">update</span> <span class="token keyword">user</span> <span class="token keyword">set</span> <span class="token keyword">user</span><span class="token punctuation">.</span>Host<span class="token operator">=</span><span class="token string">'%'</span> <span class="token keyword">where</span> <span class="token keyword">user</span><span class="token punctuation">.</span><span class="token keyword">User</span><span class="token operator">=</span><span class="token string">'root'</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">--刷新权限</span>mysql<span class="token operator">></span> flush <span class="token keyword">privileges</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>防火墙开放，测试连接</p></blockquote><pre class="line-numbers language-shell"><code class="language-shell">firewall-cmd --state    #查看状态firwall-cmd --permanent --add-port=13306/tcp #开放13306端口<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;卸载历史版本&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;查询系统是否已安装mysql，如果已安装则卸载，并删除mysql相关目录&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&quot;line-numbers language-shell&quot;&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="MYSQL" scheme="http://www.ldclass.club/categories/MYSQL/"/>
-    
-      <category term="linux" scheme="http://www.ldclass.club/categories/MYSQL/linux/"/>
-    
-    
-      <category term="MYSQL" scheme="http://www.ldclass.club/tags/MYSQL/"/>
-    
-      <category term="linux" scheme="http://www.ldclass.club/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nginx.conf常用配置</title>
-    <link href="http://www.ldclass.club/2021/05/18/nginx-conf-chang-yong-pei-zhi/"/>
-    <id>http://www.ldclass.club/2021/05/18/nginx-conf-chang-yong-pei-zhi/</id>
-    <published>2021-05-18T11:32:24.000Z</published>
-    <updated>2021-05-18T08:21:47.549Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>https</p></blockquote><pre class="line-numbers language-shell"><code class="language-shell">#user  nobody;worker_processes  1;#error_log  logs/error.log;#error_log  logs/error.log  notice;#error_log  logs/error.log  info;#pid        logs/nginx.pid;events {    worker_connections  1024;}http {    include       mime.types;    default_type  application/octet-stream;    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '    #                  '$status $body_bytes_sent "$http_referer" '    #                  '"$http_user_agent" "$http_x_forwarded_for"';    #access_log  logs/access.log  main;    sendfile        on;    #tcp_nopush     on;    #keepalive_timeout  0;    keepalive_timeout  65;    #gzip  on;    #server {    #    listen       80;    #    server_name  192.168.8.104;#        location /test/file {#            # 服务默认启动目录 #           alias D:\\BpmLogs\\;    #        autoindex on;   #允许nginx在浏览器以文件夹形式访问    #        autoindex_exact_size off;  #显示文件大小    #        autoindex_localtime on;    #显示文件时间    #        index index.html index.htm;     #   }    #}    # another virtual host using mix of IP-, name-, and port-based configuration    #    #server {    #    listen       8000;    #    listen       somename:8080;    #    server_name  somename  alias  another.alias;    #    location / {    #        root   html;    #        index  index.html index.htm;    #    }    #}    # HTTPS server    #    server {        listen       9998 ssl;        server_name  localhost;        ssl_certificate      server.crt;        ssl_certificate_key  server.key;        #ssl_session_cache    shared:SSL:1m;        ssl_session_timeout  5m;        ssl_ciphers  HIGH:!aNULL:!MD5;        ssl_prefer_server_ciphers  on;        location / {            #静态资源路径            root   html/webim;            index  index.html index.htm;            chunked_transfer_encoding on;            add_header Cache-Control no-cache;            try_files $uri $uri/ /index.html;        }        error_page 500 502 503 504 /50x.html;        location = /50x.html {            root html;        }    }}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>http</p></blockquote><pre class="line-numbers language-shell"><code class="language-shell">#user  nobody;worker_processes  1;#error_log  logs/error.log;#error_log  logs/error.log  notice;#error_log  logs/error.log  info;#pid        logs/nginx.pid;events {    worker_connections  1024;}http {    include       mime.types;    default_type  application/octet-stream;    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '    #                  '$status $body_bytes_sent "$http_referer" '    #                  '"$http_user_agent" "$http_x_forwarded_for"';    #access_log  logs/access.log  main;    sendfile        on;    #tcp_nopush     on;    #keepalive_timeout  0;    keepalive_timeout  65;    #gzip  on;    #server {        #listen       80;        #server_name  192.168.8.104;        #location /test/file {            # 服务默认启动目录     #       alias D:\\BpmLogs\\;    #        autoindex on;   #允许nginx在浏览器以文件夹形式访问    #        autoindex_exact_size off;  #显示文件大小    #        autoindex_localtime on;    #显示文件时间    #        index index.html index.htm;     #   }    #}    server {        listen            8081;        server_name        localhost;        location /{            root html\static;            index  index.html index.htm;            chunked_transfer_encoding on;            add_header Cache-Control no-cache;            try_files $uri $uri/ /index.html;        }        location /api/{            proxy_pass http://localhost:5000/;            proxy_set_header Host $http_host;            proxy_set_header X-Real_IP $remote_addr;            proxy_set_header REMOTE-HOST $remote_addr;            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;            add_header Access-Control-Allow-Origin *;            add_header Access-Control-Allow-Methods "DELETE,POST,GET,OPTIONS";            add_header Access-Control-Allow-Headers "Origin,Authorization,Accept";            add_header Access-Control-Allow-Credentials true;        }        error_page 500 502 503 504 /50x.html;        location = /50x.html {            root html;        }    }    # another virtual host using mix of IP-, name-, and port-based configuration    #    #server {    #    listen       8000;    #    listen       somename:8080;    #    server_name  somename  alias  another.alias;    #    location / {    #        root   html;    #        index  index.html index.htm;    #    }    #}    # HTTPS server    #    #server {    #    listen       9998 ssl;   #     server_name  localhost;  #      ssl_certificate      server.crt; #       ssl_certificate_key  server.key;        #ssl_session_cache    shared:SSL:1m;#        ssl_session_timeout  5m;        #ssl_ciphers  HIGH:!aNULL:!MD5;        #ssl_prefer_server_ciphers  on;        #location / {            #静态资源路径          #  root   html/webim;         #   index  index.html index.htm;        #    chunked_transfer_encoding on;        #    add_header Cache-Control no-cache;        #    try_files $uri $uri/ /index.html;     #   }    #    error_page 500 502 503 504 /50x.html;    #    location = /50x.html {    #        root html;    #    }    #}}<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;https&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;pre class=&quot;line-numbers language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;
-#user  nobody;
-worker_process
-      
-    
-    </summary>
-    
-      <category term="Nginx" scheme="http://www.ldclass.club/categories/Nginx/"/>
-    
-    
-      <category term="Nginx" scheme="http://www.ldclass.club/tags/Nginx/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Vue项目部署tomcat后，页面刷新404</title>
-    <link href="http://www.ldclass.club/2021/05/08/vue-xiang-mu-bu-shu-tomcat-hou-ye-mian-shua-xin-404/"/>
-    <id>http://www.ldclass.club/2021/05/08/vue-xiang-mu-bu-shu-tomcat-hou-ye-mian-shua-xin-404/</id>
-    <published>2021-05-08T14:07:53.000Z</published>
-    <updated>2021-05-08T06:10:30.466Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul><li>将 npm run bulid 打包好的 dist文件放到 webapps 目录下<ul><li>访问路径：<code>http://ip:端口/dist</code></li><li>能访问成功，但可能刷新 404</li></ul></li></ul></li><li><h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><ul><li>在上传到tomcat 项目的根目录下  创建WEB-INF/web.xml </li><li>在web.xml写入</li></ul><pre class="line-numbers language-xml"><code class="language-xml">在这里插入代码片  <span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-app</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaee<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>           <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://xmlns.jcp.org/xml/ns/javaeehttp://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd<span class="token punctuation">"</span></span>           <span class="token attr-name">version</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>3.1<span class="token punctuation">"</span></span> <span class="token attr-name">metadata-complete</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>display-name</span><span class="token punctuation">></span></span>Router for Tomcat<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>display-name</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>error-page</span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>error-code</span><span class="token punctuation">></span></span>404<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>error-code</span><span class="token punctuation">></span></span>      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>location</span><span class="token punctuation">></span></span>/index.html<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>location</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>error-page</span><span class="token punctuation">></span></span>  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-app</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;h4 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;将 npm run bulid 打包好的 dist文件放到 webapps 目录下&lt;ul&gt;
-&lt;li&gt;访问路径：
-      
-    
-    </summary>
-    
-      <category term="vue" scheme="http://www.ldclass.club/categories/vue/"/>
-    
-      <category term="Tomcat" scheme="http://www.ldclass.club/categories/vue/Tomcat/"/>
-    
-    
-      <category term="vue" scheme="http://www.ldclass.club/tags/vue/"/>
-    
-      <category term="Tomcat" scheme="http://www.ldclass.club/tags/Tomcat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vue使用elementUI组件库在tomcat服务器部署后图标不显示</title>
-    <link href="http://www.ldclass.club/2021/05/08/vue-shi-yong-elementui-zu-jian-ku-zai-tomcat-fu-wu-qi-bu-shu-hou-tu-biao-bu-xian-shi/"/>
-    <id>http://www.ldclass.club/2021/05/08/vue-shi-yong-elementui-zu-jian-ku-zai-tomcat-fu-wu-qi-bu-shu-hou-tu-biao-bu-xian-shi/</id>
-    <published>2021-05-08T14:00:06.000Z</published>
-    <updated>2021-05-08T06:08:07.398Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><ul><li>vue使用elementUI组件库在tomcat服务器部署后图标不能正常显示</li></ul></li><li><h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><ul><li>通过查看 /build/webpack.base.conf.js 文件可以发现，woff 或 ttf 这些字体会经由 url-loader 处理后在 static/fonts 目录下生成相应的文件。</li><li>也就是说实际应该通过 /static/fonts/** 路径来获取字体图标，而实际我们通过调试窗口发现，却是请求 /static/css/static/fonts/**，自然报错误。 <ul><li><code>GET https://localhost:8443/static/css/static/fonts/element-icons.535877f.woff net::ERR_ABORTED 404</code></li></ul></li></ul></li><li><h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><ul><li>打开build/utils.js文件，加上 publicPath: ‘../../‘，如下所示：</li></ul><pre class="line-numbers language-js"><code class="language-js"> <span class="token keyword">if</span> <span class="token punctuation">(</span>options<span class="token punctuation">.</span>extract<span class="token punctuation">)</span> <span class="token punctuation">{</span>      <span class="token keyword">return</span> ExtractTextPlugin<span class="token punctuation">.</span><span class="token function">extract</span><span class="token punctuation">(</span><span class="token punctuation">{</span>        use<span class="token punctuation">:</span> loaders<span class="token punctuation">,</span>        fallback<span class="token punctuation">:</span> <span class="token string">'vue-style-loader'</span><span class="token punctuation">,</span>        publicPath<span class="token punctuation">:</span><span class="token string">"../../"</span>      <span class="token punctuation">}</span><span class="token punctuation">)</span>    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>      <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token string">'vue-style-loader'</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">concat</span><span class="token punctuation">(</span>loaders<span class="token punctuation">)</span>    <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>重新build，重新部署之后，可以正常显示</p></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;h4 id=&quot;问题&quot;&gt;&lt;a href=&quot;#问题&quot; class=&quot;headerlink&quot; title=&quot;问题&quot;&gt;&lt;/a&gt;问题&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;vue使用elementUI组件库在tomcat服务器部署后图标不能正常显示&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-      
-    
-    </summary>
-    
-      <category term="Tomcat" scheme="http://www.ldclass.club/categories/Tomcat/"/>
-    
-      <category term="vue" scheme="http://www.ldclass.club/categories/Tomcat/vue/"/>
-    
-      <category term="element" scheme="http://www.ldclass.club/categories/Tomcat/vue/element/"/>
-    
-    
-      <category term="vue" scheme="http://www.ldclass.club/tags/vue/"/>
-    
-      <category term="element" scheme="http://www.ldclass.club/tags/element/"/>
-    
-      <category term="Tomcat" scheme="http://www.ldclass.club/tags/Tomcat/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>tomcat生成证书配置https</title>
-    <link href="http://www.ldclass.club/2021/05/08/tomcat-sheng-cheng-zheng-shu-pei-zhi-https/"/>
-    <id>http://www.ldclass.club/2021/05/08/tomcat-sheng-cheng-zheng-shu-pei-zhi-https/</id>
-    <published>2021-05-08T11:56:33.000Z</published>
-    <updated>2021-05-08T05:37:10.575Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>tomcat之https配置（生成证书）</p></blockquote><ul><li><h4 id="生成ssl证书"><a href="#生成ssl证书" class="headerlink" title="生成ssl证书"></a>生成ssl证书</h4><ul><li><p>管理员打开cmd窗口，输入</p><p><code>keytool -genkey -alias tomcat -keyalg RSA -keystore D:\ssl\tomcat.keystore -validity 36500</code></p><p>keytool 是jdk中的工具。</p><p><code>D:\ssl\tomcat.keystore</code> 是证书文件保存位置</p><p><code>tomcat.keystore</code>是证书文件名称</p><p><code>-validity 36500</code> 是证书有效期，36500表示100年，默认值是90天。</p></li><li><p>输入密钥库口令</p><ul><li>输入密钥库密码：此处需要输入大于6个字符的字符串，例如123456</li></ul></li><li><p>输入两次通过后，弹出一些问题</p><ul><li><p>“您的名字与姓氏是什么？” 这是必填项，并且必须是TOMCAT部署主机的域名或者IP [如：baidu.com 或者 127.0.0.1]，就是你将来要在浏览器中输入的访问地址;</p><p>其他得问题可填可不填，最后对照信息正确则输入y，不正确打算重来则输入n。</p></li></ul></li><li><p>输入密钥口令</p><p>密钥库口令，这里我理解的是tomcat的主密码，会在tomcat配置文件中使用，建议输入与keystore的密码一致，设置其它密码也可以生成完成，可在指定目录下找到证书文件。</p></li></ul></li><li><h4 id="配置tomcat"><a href="#配置tomcat" class="headerlink" title="配置tomcat"></a>配置tomcat</h4><ul><li><p>修改server.xml</p><ul><li>打开tomcat目录下conf/server.xml文件，修改如下</li></ul><pre class="line-numbers language-xml"><code class="language-xml">    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8999<span class="token punctuation">"</span></span> <span class="token attr-name">protocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>HTTP/1.1<span class="token punctuation">"</span></span>               <span class="token attr-name">connectionTimeout</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>200000<span class="token punctuation">"</span></span>               <span class="token attr-name">redirectPort</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8443<span class="token punctuation">"</span></span>               <span class="token attr-name">URIEncoding</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>utf-8<span class="token punctuation">"</span></span>                <span class="token attr-name">compression</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>on<span class="token punctuation">"</span></span>                              <span class="token attr-name">compressionMinSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>1024<span class="token punctuation">"</span></span>                <span class="token attr-name">maxPostSize</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>-1<span class="token punctuation">"</span></span>                <span class="token attr-name">disableUploadTimeout</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span>               <span class="token punctuation">/></span></span>               <span class="token comment" spellcheck="true">&lt;!-- A "Connector" using the shared thread pool--></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>8443<span class="token punctuation">"</span></span>        <span class="token attr-name">protocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>org.apache.coyote.http11.Http11NioProtocol<span class="token punctuation">"</span></span>        <span class="token attr-name">SSLEnabled</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>        <span class="token attr-name">maxThreads</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>800<span class="token punctuation">"</span></span>        <span class="token attr-name">scheme</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https<span class="token punctuation">"</span></span>        <span class="token attr-name">secure</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span>        <span class="token attr-name">clientAuth</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>false<span class="token punctuation">"</span></span>        <span class="token attr-name">sslProtocol</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>TLS<span class="token punctuation">"</span></span>        <span class="token attr-name">keystoreFile</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>D:/ssl/tomcat.keystore<span class="token punctuation">"</span></span>        <span class="token attr-name">keystorePass</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>123456<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>修改web.xml</p><ul><li>打开conf/web.xml，在最后增加以下代码：</li></ul><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>login-config</span><span class="token punctuation">></span></span>        <span class="token comment" spellcheck="true">&lt;!-- Authorization setting for SSL --></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>auth-method</span><span class="token punctuation">></span></span>CLIENT-CERT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>auth-method</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>realm-name</span><span class="token punctuation">></span></span>Client Cert Users-only Area<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>realm-name</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>login-config</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>security-constraint</span><span class="token punctuation">></span></span>        <span class="token comment" spellcheck="true">&lt;!-- Authorization setting for SSL --></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-resource-collection</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-resource-name</span><span class="token punctuation">></span></span>SSL<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-resource-name</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-resource-collection</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>user-data-constraint</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>transport-guarantee</span><span class="token punctuation">></span></span>CONFIDENTIAL<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>transport-guarantee</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>user-data-constraint</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>security-constraint</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul></li><li><p>至此tomcat配置完成，启动tomcat即可使用ssl，在浏览器输入localhost:8080</p><ul><li>Tomcat配置完成后，使用Https访问，Chrome会提示安全警告，点击“高级”，继续访问即可，之后再https下使用ip地址访问是没有问题的。</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;tomcat之https配置（生成证书）&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h4 id=&quot;生成ssl证书&quot;&gt;&lt;a href=&quot;#生成ssl证书&quot; class=&quot;headerlink&quot; title=&quot;生成ssl证书&quot;&gt;&lt;/a&gt;生
-      
-    
-    </summary>
-    
-      <category term="Tomcat" scheme="http://www.ldclass.club/categories/Tomcat/"/>
-    
-      <category term="https" scheme="http://www.ldclass.club/categories/Tomcat/https/"/>
-    
-    
-      <category term="Tomcat" scheme="http://www.ldclass.club/tags/Tomcat/"/>
-    
-      <category term="https" scheme="http://www.ldclass.club/tags/https/"/>
     
   </entry>
   
