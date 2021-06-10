@@ -10,9 +10,9 @@
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
     <meta name="description" content="
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if (!el.dataset.src) { return">
+HTTP1.0定义了三种请求方法： GET, POST 和 HEAD方法；HTTP1.1新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法。
+
+PUT：由于PUT方法自身不带验证机制，利用">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -487,99 +487,10 @@
 
 
 
-<main class="post-container content">
+<main class="container content">
 
     
-    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
-<style>
-    #articleContent h1::before,
-    #articleContent h2::before,
-    #articleContent h3::before,
-    #articleContent h4::before,
-    #articleContent h5::before,
-    #articleContent h6::before {
-        display: block;
-        content: " ";
-        height: 100px;
-        margin-top: -100px;
-        visibility: hidden;
-    }
-
-    #articleContent :focus {
-        outline: none;
-    }
-
-    .toc-fixed {
-        position: fixed;
-        top: 64px;
-    }
-
-    .toc-widget {
-        padding-left: 20px;
-    }
-
-    .toc-widget .toc-title {
-        margin: 35px 0 15px 0;
-        padding-left: 17px;
-        font-size: 1.5rem;
-        font-weight: bold;
-        line-height: 1.5rem;
-    }
-
-    .toc-widget ol {
-        padding: 0;
-        list-style: none;
-    }
-
-    #toc-content ol {
-        padding-left: 10px;
-    }
-
-    #toc-content ol li {
-        padding-left: 10px;
-    }
-
-    #toc-content .toc-link:hover {
-        color: #42b983;
-        font-weight: 700;
-        text-decoration: underline;
-    }
-
-    #toc-content .toc-link::before {
-        background-color: transparent;
-        max-height: 25px;
-    }
-
-    #toc-content .is-active-link {
-        color: #42b983;
-    }
-
-    #toc-content .is-active-link::before {
-        background-color: #42b983;
-    }
-
-    #floating-toc-btn {
-        position: fixed;
-        right: 20px;
-        bottom: 76px;
-        padding-top: 15px;
-        margin-bottom: 0;
-        z-index: 998;
-    }
-
-    #floating-toc-btn .btn-floating {
-        width: 48px;
-        height: 48px;
-    }
-
-    #floating-toc-btn .btn-floating i {
-        line-height: 48px;
-        font-size: 1.4rem;
-    }
-</style>
-<div class="row">
-    <div id="main-content" class="col s12 m12 l9">
-        <!--  DongLiu  modify 2020.08.15-->
+    <!--  DongLiu  modify 2020.08.15-->
 <!-- 文章内容详情 -->
 <div id="artDetail">
     <div class="card">
@@ -588,11 +499,24 @@
                 <div class="col s7">
                     
                     <div class="article-tag">
-                        <span class="chip bg-color">无标签</span>
+                        
+                        <a href="/tags/HTTP/" target="_blank">
+                            <span class="chip bg-color">HTTP</span>
+                        </a>
+                        
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/HTTP/" class="post-category" target="_blank">
+                            HTTP
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -614,14 +538,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    52
+                    634
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    2 分
                 </div>
                 
                 
@@ -638,7 +562,58 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <script>
+                <ul>
+<li><p>HTTP1.0定义了三种请求方法： GET, POST 和 HEAD方法；HTTP1.1新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法。</p>
+<ul>
+<li>PUT：由于PUT方法自身不带验证机制，利用PUT方法可以向服务器上传文件，所以恶意攻击者可以上传木马等恶意文件。</li>
+<li>DELETE：利用DELETE方法可以删除服务器上特定的资源文件，造成恶意攻击。</li>
+<li>OPTIONS：将会造成服务器信息暴露，如中间件版本、支持的HTTP方法等。</li>
+<li>TRACE：可以回显服务器收到的请求，主要用于测试或诊断，一般都会存在反射型跨站漏洞。</li>
+</ul>
+</li>
+<li><p>WebDAV完全采用了HTTP1.1的方法，扩展了一些方法，并扩展了一些其他方法：</p>
+<ul>
+<li>Options、Head、Trace：主要由应用程序来发现和跟踪服务器支持和网络行为；</li>
+<li>Get：检索文档；</li>
+<li>Put和Post：将文档提交到服务器；</li>
+<li>Delete：销毁资源或集合；</li>
+<li>Mkcol：创建集合</li>
+<li>PropFind和PropPatch：针对资源和集合检索和设置属性；</li>
+<li>Copy和Move：管理命名空间上下文中的集合和资源；</li>
+<li>Lock和Unlock：改写保护</li>
+</ul>
+</li>
+<li><p>问题描述：</p>
+<ul>
+<li>上述操作明细可以对web服务器进行上传、修改、删除等操作，对服务造成威胁</li>
+</ul>
+</li>
+<li><p>解决思路：</p>
+<ul>
+<li>最简单的方式就是修改WEB应用的web.xml部署文件。在里面插入下面几行代码就搞定了，把需要屏蔽的方法加在里面。如果应用包比较多也没必要一个个改，直接修改Tomcat的web.xml就可以了，这样在Tomcat中运行的实例都会有效。</li>
+</ul>
+<pre class="line-numbers language-xml"><code class="language-xml">   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>security-constraint</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-resource-collection</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-resource-name</span><span class="token punctuation">></span></span>fortune<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-resource-name</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>http-method</span><span class="token punctuation">></span></span>PUT<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>http-method</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>http-method</span><span class="token punctuation">></span></span>DELETE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>http-method</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>http-method</span><span class="token punctuation">></span></span>HEAD<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>http-method</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>http-method</span><span class="token punctuation">></span></span>OPTIONS<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>http-method</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>http-method</span><span class="token punctuation">></span></span>TRACE<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>http-method</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-resource-collection</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>auth-constraint</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>auth-constraint</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>security-constraint</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li><code>&lt;security-constraint&gt;</code>用于限制对资源的访问；</li>
+<li><code>&lt;auth-constraint&gt;</code>用于限制那些角色可以访问资源，这里设置为空就是禁止所有角色用户访问；</li>
+<li><code>&lt;url-pattern&gt;</code>指定需要验证的资源</li>
+<li><code>&lt;http-method&gt;</code>指定那些方法需要验证</li>
+</ul>
+<p>重启服务再验证就不会存在这个问题了。</p>
+</li>
+</ul>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1223,9 +1198,9 @@ target/
                     <div class="summary block-with-text">
                         
                             
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return
+问题类型：未授权的访问
+
+问题描述：攻击者可通过此漏洞访问不允许访问的页面以获得更多的攻击内容。未授权访问漏洞,是在攻击者没有获取到登录权限或未授权的情况下,不需要输入密码,即可通过输入网站控制台主页面地址或者不允许查看的连接便可进行访问
                         
                     </div>
                     <div class="publish-info">
@@ -1234,8 +1209,23 @@ target/
                             </span>
                         <span class="publish-author">
                             
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/JavaWeb/" class="post-category" target="_blank">
+                                    JavaWeb
+                                </a>
+                            
+                            
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/JavaWeb/" target="_blank">
+                        <span class="chip bg-color">JavaWeb</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1265,103 +1255,6 @@ target/
         white-space: pre !important;
     }
 </style> 
-    </div>
-    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
-        <div class="toc-widget">
-            <div class="toc-title"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;目录</div>
-            <div id="toc-content"></div>
-        </div>
-    </div>
-</div>
-
-<!-- TOC 悬浮按钮. -->
-
-<div id="floating-toc-btn" class="hide-on-med-and-down">
-    <a class="btn-floating btn-large bg-color">
-        <i class="fa fa-list"></i>
-    </a>
-</div>
-
-
-<script src="/libs/tocbot/tocbot.min.js"></script>
-<script>
-    $(function () {
-        tocbot.init({
-            tocSelector: '#toc-content',
-            contentSelector: '#articleContent',
-            headingsOffset: -($(window).height() * 0.4 - 45),
-            // headingsOffset: -205,
-            headingSelector: 'h1, h2, h3, h4, h5'
-        });
-
-        // modify the toc link href to support Chinese.
-        let i = 0;
-        let tocHeading = 'toc-heading-';
-        $('#toc-content a').each(function () {
-            $(this).attr('href', '#' + tocHeading + (++i));
-        });
-
-        // modify the heading title id to support Chinese.
-        i = 0;
-        $('#articleContent').children('h1, h2, h3, h4, h5').each(function () {
-            $(this).attr('id', tocHeading + (++i));
-        });
-
-        // Set scroll toc fixed.
-        let tocHeight = parseInt($(window).height() * 0.4 - 64);
-        let $tocWidget = $('.toc-widget');
-        $(window).scroll(function () {
-            let scroll = $(window).scrollTop();
-            /* add post toc fixed. */
-            if (scroll > tocHeight) {
-                $tocWidget.addClass('toc-fixed');
-            } else {
-                $tocWidget.removeClass('toc-fixed');
-            }
-        });
-
-        
-            // 先关闭目录
-            /* 修复文章卡片 div 的宽度. */
-            let fixPostCardWidth = function (srcId, targetId) {
-                let srcDiv = $('#' + srcId);
-                if (srcDiv.length === 0) {
-                    return;
-                }
-
-                let w = srcDiv.width();
-                if (w >= 450) {
-                    w = w + 21;
-                } else if (w >= 350 && w < 450) {
-                    w = w + 18;
-                } else if (w >= 300 && w < 350) {
-                    w = w + 16;
-                } else {
-                    w = w + 14;
-                }
-                $('#' + targetId).width(w);
-            };
-
-            // 切换TOC目录展开收缩的相关操作.
-            const expandedClass = 'expanded';
-            let $tocAside = $('#toc-aside');
-            let $mainContent = $('#main-content');
-            // $tocAside.removeClass(expandedClass).slideUp(500);
-            // $mainContent.removeClass('l9');
-            // fixPostCardWidth('artDetail', 'prenext-posts');
-            $('#floating-toc-btn .btn-floating').click(function () {
-                if ($tocAside.hasClass(expandedClass)) {
-                    $tocAside.removeClass(expandedClass).slideUp(500);
-                    $mainContent.removeClass('l9');
-                } else {
-                    $tocAside.addClass(expandedClass).slideDown(500);
-                    $mainContent.addClass('l9');
-                }
-                fixPostCardWidth('artDetail', 'prenext-posts');
-            });
-          
-    });
-</script>
     
 
 </main>
@@ -1393,7 +1286,7 @@ target/
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">202.8k</span> 字
+                <span class="white-color">204.8k</span> 字
             
 
             
