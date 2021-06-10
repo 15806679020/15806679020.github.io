@@ -14,8 +14,11 @@ Tomcat版本信息泄露
 
 
 Tomcat报错页面泄漏相关版本号信息，是攻击者攻击的途径之一。因此实际当中建议去掉版本号信息。
-解决办法：
-进入到tomcat/lib目录下，用电脑自带解压软件打开catalina.jar  进入到\org">
+
+解决办法：、
+
+在tomcat的lib文件夹下新建目录org\apache\catalina\util
+在此">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -557,20 +560,20 @@ Tomcat报错页面泄漏相关版本号信息，是攻击者攻击的途径之�
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    347
+                    676
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    3 分
                 </div>
                 
                 
 
                 
-                <span id="busuanzi_container_site_pv" style="display:none"></span>
+                <span id="busuanzi_container_site_pv" style='display:none'></span>
                 <i class="fa fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
                 <span id="busuanzi_value_page_pv"></span>
 
@@ -585,11 +588,16 @@ Tomcat报错页面泄漏相关版本号信息，是攻击者攻击的途径之�
 <p>Tomcat版本信息泄露</p>
 </blockquote>
 <ul>
-<li>Tomcat报错页面泄漏相关版本号信息，是攻击者攻击的途径之一。因此实际当中建议去掉版本号信息。</li>
-<li>解决办法：<ul>
-<li>进入到tomcat/lib目录下，用电脑自带解压软件打开catalina.jar  进入到\org\apache\catalina\util目录下</li>
-<li>编辑ServerInfo.properties文件，编辑最后三行，去掉版本号等信息</li>
+<li><p>Tomcat报错页面泄漏相关版本号信息，是攻击者攻击的途径之一。因此实际当中建议去掉版本号信息。</p>
+</li>
+<li><p>解决办法：、</p>
+<ul>
+<li>在tomcat的lib文件夹下新建目录<code>org\apache\catalina\util</code></li>
+<li>在此目录下新建<code>ServerInfo.properties</code>，并写入以下内容</li>
 </ul>
+<pre class="line-numbers language-properties"><code class="language-properties"><span class="token attr-name">server.info</span><span class="token punctuation">=</span><span class="token attr-value">****</span>
+<span class="token attr-name">server.number</span><span class="token punctuation">=</span><span class="token attr-value">X.X.XX.X</span>
+<span class="token attr-name">server.built</span><span class="token punctuation">=</span><span class="token attr-value">XXXX-XX--XX</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </li>
 </ul>
 <blockquote>
@@ -629,50 +637,47 @@ Tomcat报错页面泄漏相关版本号信息，是攻击者攻击的途径之�
 <ul>
 <li>404.jsp</li>
 </ul>
-<pre class="line-numbers language-jsp"><code class="language-jsp"><%@ page language="java" pageencoding="UTF-8" %>
-<!DOCTYPE html>
-<html lang="en">
-<head><meta name="generator" content="Hexo 3.9.0">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content>
-    <meta name="author" content>
-    <meta http-equiv="/" content="5;url=http://www.13bk.cn/">
-    <title>错误页</title>
-    <link href="/resources/assets/error/css/bootstrap.css" rel="stylesheet">
-    <link href="/resources/assets/error/css/font-awesome.min.css" rel="stylesheet">
-    <link href="http://fonts.googleapis.com/css?family=Nova+Flat" rel="stylesheet" type="text/css">
-    <link href="/resources/assets/error/css/style.css" rel="stylesheet">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
-<body>
-<div class="container">
+<pre><code>&lt;%@ page language="java"  pageEncoding="UTF-8"%&gt;
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;meta name="description" content=""&gt;
+    &lt;meta name="author" content=""&gt;
+    &lt;meta http-equiv="/" content="5;url=http://www.13bk.cn/" /&gt;
+    &lt;title&gt;错误页&lt;/title&gt;
+    &lt;link href="/resources/assets/error/css/bootstrap.css" rel="stylesheet"/&gt;
+    &lt;link href="/resources/assets/error/css/font-awesome.min.css" rel="stylesheet" /&gt;
+    &lt;link href='http://fonts.googleapis.com/css?family=Nova+Flat' rel='stylesheet' type='text/css'&gt;
+    &lt;link href="/resources/assets/error/css/style.css" rel="stylesheet" /&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class="container"&gt;
+    &lt;div class="row pad-top text-center"&gt;
+        &lt;div class="col-md-6 col-md-offset-3 text-center"&gt;
+            &lt;h1&gt; 似乎没有找到你想要的页面 &lt;/h1&gt;
+            &lt;h1&gt; 404 &lt;/h1&gt;
+            &lt;span id="error-link"&gt;&lt;/span&gt;
+            &lt;h2&gt; 错误提示 &lt;/h2&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
 
-    <div class="row pad-top text-center">
-        <div class="col-md-6 col-md-offset-3 text-center">
-            <h1> 似乎没有找到你想要的页面 </h1>
-            <h1> 404 </h1>
-            <span id="error-link"></span>
-            <h2> 错误提示 </h2>
-        </div>
-    </div>
+    &lt;div class="row text-center"&gt;
+        &lt;div class="col-md-8 col-md-offset-2"&gt;
 
-    <div class="row text-center">
-        <div class="col-md-8 col-md-offset-2">
+            &lt;h3&gt; &lt;i  class="fa fa-lightbulb-o fa-5x"&gt;&lt;/i&gt; &lt;/h3&gt;
+            &lt;!-- &lt;a href="/" class="btn btn-primary"&gt;&lt;span class="second"&gt;5&lt;/span&gt;秒后自动返回网站首页&lt;/a&gt; --&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
 
-            <h3> <i class="fa fa-lightbulb-o fa-5x"></i> </h3>
-            <!-- <a href="/" class="btn btn-primary"><span class="second">5</span>秒后自动返回网站首页</a> -->
-        </div>
-    </div>
-
-</div>
-<%--<script src="/resources/assets/error/js/jquery-1.10.2.js">--%>
-<%--<script src="/resources/assets/error/js/bootstrap.js">--%>
-<%--<script src="/resources/assets/error/js/countUp.js">--%>
-<%--<script src="/resources/assets/error/js/custom.js">--%>
-</%--<script></%--<script></%--<script></%--<script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":150,"height":200},"mobile":{"show":false},"react":{"opacity":0.7}});</script></body>
-</html><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></%@></code></pre>
-<script>
+&lt;/div&gt;
+&lt;%--&lt;script src="/resources/assets/error/js/jquery-1.10.2.js"&gt;&lt;/script&gt;--%&gt;
+&lt;%--&lt;script src="/resources/assets/error/js/bootstrap.js"&gt;&lt;/script&gt;--%&gt;
+&lt;%--&lt;script src="/resources/assets/error/js/countUp.js"&gt;&lt;/script&gt;--%&gt;
+&lt;%--&lt;script src="/resources/assets/error/js/custom.js"&gt;&lt;/script&gt;--%&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -692,7 +697,7 @@ Tomcat报错页面泄漏相关版本号信息，是攻击者攻击的途径之�
           });
       </script>
             </div>
-            <hr>
+            <hr />
 
             
 
@@ -1174,7 +1179,7 @@ Tomcat报错页面泄漏相关版本号信息，是攻击者攻击的途径之�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
                 <i class="fa fa-dot-circle-o"></i>&nbsp;本篇
             </div>
@@ -1196,8 +1201,11 @@ Tomcat版本信息泄露
 
 
 Tomcat报错页面泄漏相关版本号信息，是攻击者攻击的途径之一。因此实际当中建议去掉版本号信息。
-解决办法：
-进入到tomcat/lib目录下，用电脑自带解压软件打开catalina.jar  进入到\org
+
+解决办法：、
+
+在tomcat的lib文件夹下新建目录org\apache\catalina\util
+在此
                         
                     </div>
                     <div class="publish-info">
@@ -1366,7 +1374,7 @@ target/
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">204.8k</span> 字
+                <span class="white-color">205.1k</span> 字
             
 
             

@@ -721,29 +721,6 @@ $(function () {
     
     
     <div class="col s12 m6" >
-        <div class="post-card" style="background-image: url('/medias/featureimages/2.jpg')">
-            <div class="post-body">
-                <div class="post-categories">
-                    
-                </div>
-                <a href="/2020/11/18/jdk8-han-shu-shi-bian-cheng/" target="_blank">
-                    <h3 class="post-title">JDK8函数式编程</h3>
-                </a>
-                <p class="post-description">
-                    
-                        Lambda表达式必须先定义接口，创建相关方法之后才可使用，这样做十分不便，其实java8已经内置了许多接口, 例如下面四个功能型接口，所以
-                    
-                </p>
-                <a href="/2020/11/18/jdk8-han-shu-shi-bian-cheng/" target="_blank"
-                        class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)">
-                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    
-    <div class="col s12 m6" data-aos="zoom-in-up">
         <div class="post-card" style="background-image: url('/medias/featureimages/1.jpg')">
             <div class="post-body">
                 <div class="post-categories">
@@ -764,6 +741,29 @@ collect()方法的作用
                     
                 </p>
                 <a href="/2020/11/20/jdk8-shou-ji-qi-he-ji-he-tong-ji/" target="_blank"
+                        class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #EF4DB6 0%, #C643FC 100%)">
+                    <i class="icon fa fa-eye fa-fw"></i>阅读更多
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col s12 m6" data-aos="zoom-in-up">
+        <div class="post-card" style="background-image: url('/medias/featureimages/2.jpg')">
+            <div class="post-body">
+                <div class="post-categories">
+                    
+                </div>
+                <a href="/2020/11/18/jdk8-han-shu-shi-bian-cheng/" target="_blank">
+                    <h3 class="post-title">JDK8函数式编程</h3>
+                </a>
+                <p class="post-description">
+                    
+                        Lambda表达式必须先定义接口，创建相关方法之后才可使用，这样做十分不便，其实java8已经内置了许多接口, 例如下面四个功能型接口，所以
+                    
+                </p>
+                <a href="/2020/11/18/jdk8-han-shu-shi-bian-cheng/" target="_blank"
                         class="read-more btn waves-effect waves-light" style="background: linear-gradient(to right, #1AD6FD 0%, #1D62F0 100%)">
                     <i class="icon fa fa-eye fa-fw"></i>阅读更多
                 </a>
@@ -1071,8 +1071,11 @@ Tomcat版本信息泄露
 
 
 Tomcat报错页面泄漏相关版本号信息，是攻击者攻击的途径之一。因此实际当中建议去掉版本号信息。
-解决办法：
-进入到tomcat/lib目录下，用电脑自带解压软件打开catalina.jar  进入到\org
+
+解决办法：、
+
+在tomcat的lib文件夹下新建目录org\apache\catalina\util
+在此
                             
                         </div>
                         <div class="publish-info">
@@ -1805,7 +1808,7 @@ pom.xml
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">204.8k</span> 字
+                <span class="white-color">205.1k</span> 字
             
 
             
