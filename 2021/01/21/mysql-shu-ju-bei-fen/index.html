@@ -635,14 +635,14 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
                 
@@ -719,6 +719,36 @@
 <li>远程备份全库</li>
 </ul>
 <pre class="line-numbers language-shell"><code class="language-shell">mysqldump -uroot -pabc123456 -h120.25.93.69 --all-databases | gzip > /mysql_data_back/all.sql.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li><p>问题一：<code>提示"mysqldump: command not found"</code></p>
+<ul>
+<li><p>解决方法：</p>
+<ul>
+<li>设置软链接</li>
+</ul>
+<pre class="line-numbers language-shell"><code class="language-shell">ln -fs /usr/local/mysql/bin/mysqldump /usr/bin
+
+ln -fs /usr/local/mysql/bin/mysql /usr/bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+</li>
+<li><p>问题二：<code>mysqldump: Got error: 1066: Not unique table/alias: 't' when doing LOCK TABL</code></p>
+<ul>
+<li><p>解决方法：</p>
+<ul>
+<li>配置文件<code>my.cnf</code>中设置变量<code>lower_case_table_names=0</code>，重启MySQL服务</li>
+<li>提前规划，使用统一的命名规则，避免这样的问题出现</li>
+<li>系统变量lower_case_table_names有三个值：分别是0、1、2.</li>
+</ul>
+<pre class="line-numbers language-shell"><code class="language-shell">设置成0：表名按你写的SQL大小写存储，大写就大写小写就小写，比较时大小写敏感。
+
+设置成1：表名转小写后存储到硬盘，比较时大小写不敏感。 
+
+设置成2：表名按你写的SQL大小写存储，大写就大写小写就小写，比较时统一转小写比较。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
 <h3 id="三、mysql数据恢复"><a href="#三、mysql数据恢复" class="headerlink" title="三、mysql数据恢复"></a>三、mysql数据恢复</h3><ul>
 <li>远程恢复数据（备份的数据文件里有创建库的语句）</li>
 </ul>
@@ -1615,7 +1645,7 @@ sl
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">205.1k</span> 字
+                <span class="white-color">205.3k</span> 字
             
 
             
