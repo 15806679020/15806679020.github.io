@@ -635,14 +635,14 @@ yum ">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2k
+                    2.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    7 分
+                    9 分
                 </div>
                 
                 
@@ -745,6 +745,21 @@ yum ">
 <li><p><code>git merge origin/master</code> 将远程的变更，合并到本地仓库的master分支</p>
 </li>
 <li><p><code>git pull</code> 不建议使用 等同于<code>fetch</code>之后<code>merge</code></p>
+<ul>
+<li>用git pull来更新代码的时候，遇到了下面的问题：<code>error: Your local changes to the following files would be overwritten by merge: xxx/xxx/xxx.js Please, commit your changes or stash them before you can merge. Aborting</code></li>
+<li>出现这个问题的原因是其他人修改了<code>xxx.js</code>并提交到版本库中去了，而你本地也修改了<code>xxx.js</code>，这时候你进行git pull操作就好出现冲突了，解决方法，在上面的提示中也说的很明确了。</li>
+<li>保留本地的方式修改<ul>
+<li>步骤如下：<ul>
+<li>通过git stash将工作区恢复到上次提交的内容，同时备份本地所做的修改，之后就可以正常git pull了，git pull完成后，执行git stash pop将之前本地做的修改应用到当前工作区。git stash: 备份当前的工作区的内容，从最近的一次提交中读取相关内容，让工作区保证和上次提交的内容一致。同时，将当前的工作区内容保存到Git栈中。</li>
+<li><code>git pull</code>:拉取服务器上的代码；</li>
+<li><code>git stash pop</code>: 从Git栈中读取最近一次保存的内容，恢复工作区的相关内容。由于可能存在多个Stash的内容，所以用栈来管理，pop会从最近的一个stash中读取内容并恢复。</li>
+<li><code>git stash list</code>: 显示Git栈内的所有备份，可以利用这个列表来决定从那个地方恢复。</li>
+<li><code>git stash clear</code>: 清空Git栈。此时使用gitg等图形化工具会发现，原来stash的哪些节点都消失了。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </li>
 </ul>
 <h3 id="三、git的文件状态"><a href="#三、git的文件状态" class="headerlink" title="三、git的文件状态"></a>三、git的文件状态</h3><ul>
@@ -1682,7 +1697,7 @@ npm: nodejs
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">206.7k</span> 字
+                <span class="white-color">207.1k</span> 字
             
 
             
