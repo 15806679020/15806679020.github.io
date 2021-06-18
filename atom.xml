@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ldclass.club/"/>
-  <updated>2021-06-17T08:24:36.067Z</updated>
+  <updated>2021-06-18T04:57:06.275Z</updated>
   <id>http://www.ldclass.club/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Oracle-system用户忘记密码的解决方法</title>
+    <link href="http://www.ldclass.club/2021/06/18/oracle-system-yong-hu-wang-ji-mi-ma-de-jie-jue-fang-fa/"/>
+    <id>http://www.ldclass.club/2021/06/18/oracle-system-yong-hu-wang-ji-mi-ma-de-jie-jue-fang-fa/</id>
+    <published>2021-06-18T12:49:02.000Z</published>
+    <updated>2021-06-18T04:57:06.275Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><p>依次输入以下命令</p><ul><li><code>sqlplus /nolog</code></li><li><code>conn / as sysdba</code></li></ul></li><li><p>查询下是否能看到实例的用户</p><ul><li><code>select username,password from dba_users;</code></li></ul></li><li><p>修改指定用户密码</p><ul><li><code>alter user system identified by system;</code></li></ul></li><li><p><strong>注意</strong>： </p><ul><li><p>密码第一位不能为数字。</p></li><li><p>不能有@</p><ul><li>比如我的密码是<code>system@123</code>，那使用<code>sqlplus</code>登录的时候就理解成<code>sqlplus system/system@123</code>,这样<code>sqlplus</code>就理解成<code>system</code>后面的就是数据库的连接字符串，这样自然就报错并提示<code>TNS: 无法解析指定的连接标识符或no listener</code></li></ul></li><li><p>不能有空格</p></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;依次输入以下命令&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;sqlplus /nolog&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;conn / as sysdba&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;查询下是否能看到实例的用户&lt;/
+      
+    
+    </summary>
+    
+      <category term="Oracle" scheme="http://www.ldclass.club/categories/Oracle/"/>
+    
+    
+      <category term="Oracle" scheme="http://www.ldclass.club/tags/Oracle/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>system用户忘记密码的解决方法</title>
+    <link href="http://www.ldclass.club/2021/06/18/system-yong-hu-wang-ji-mi-ma-de-jie-jue-fang-fa/"/>
+    <id>http://www.ldclass.club/2021/06/18/system-yong-hu-wang-ji-mi-ma-de-jie-jue-fang-fa/</id>
+    <published>2021-06-18T12:46:27.000Z</published>
+    <updated>2021-06-18T04:50:03.985Z</updated>
+    
+    <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>解决任意文件上传漏洞</title>
@@ -248,7 +305,7 @@
     <link href="http://www.ldclass.club/2021/06/08/centos7-ben-di-gua-zai-yum-yuan/"/>
     <id>http://www.ldclass.club/2021/06/08/centos7-ben-di-gua-zai-yum-yuan/</id>
     <published>2021-06-07T17:34:49.000Z</published>
-    <updated>2021-06-07T09:36:52.684Z</updated>
+    <updated>2021-06-17T10:58:23.991Z</updated>
     
     <content type="html"><![CDATA[<ul><li>挂载镜像</li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# mkdir  -p  /mnt/centos7[root@lmzf ~]# mount  /root/CentOS-7-x86_64-DVD-1708.iso  /mnt/centos7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li>开机永久挂载</li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# cat  /etc/fstab/root/CentOS-7-x86_64-DVD-1708.iso   /mnt/centos7  iso9660 defaults,loop,ro  0  0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li><p>删除<code>/etc/yum.repo.d/</code>中的所有yum源 (重要)</p></li><li><p>创建本地的<code>repo</code>文件</p></li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# vim  /etc/yum.repo.d/centos7.repo[centos7]name=centos7baseurl=file:///mnt/centos7gpgcheck=0enabled=1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>开始yum安装软件</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
@@ -265,10 +322,10 @@
     
     </summary>
     
-      <category term="Linux" scheme="http://www.ldclass.club/categories/Linux/"/>
+      <category term="linux" scheme="http://www.ldclass.club/categories/linux/"/>
     
     
-      <category term="Linux" scheme="http://www.ldclass.club/tags/Linux/"/>
+      <category term="linux" scheme="http://www.ldclass.club/tags/linux/"/>
     
       <category term="Centos7" scheme="http://www.ldclass.club/tags/Centos7/"/>
     
@@ -577,67 +634,6 @@
     
     
       <category term="Node" scheme="http://www.ldclass.club/tags/Node/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux安装yarn</title>
-    <link href="http://www.ldclass.club/2021/05/27/linux-an-zhuang-yarn/"/>
-    <id>http://www.ldclass.club/2021/05/27/linux-an-zhuang-yarn/</id>
-    <published>2021-05-27T11:50:51.000Z</published>
-    <updated>2021-05-27T07:44:05.420Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><p>Yarn 是一个依赖管理工具。它能够管理你的代码，并与全世界的开发者分享代码。Yarn 是高效、安全和可靠的，你完全可以安心使用。代码是通过包（有时也被称为组件）。 在每一个包中会定义一个 <code>package.json</code> 文件，用来描述这个包中所有要被分享的代码。</p></li><li><p>在 CentOS, Fedora 和 RHEL 操作系统上，你可以通过RPM 包仓库来安装 Yarn</p></li></ul><pre class="line-numbers language-shell"><code class="language-shell">sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>如果尚未安装 Node.js（查看是否安装node.js用命令：node -v可以显示版本。安装方法参考<code>https://www.ldclass.club/2021/05/27/linux-an-zhuang-nodejs/</code>，配置 Node 源仓库：</li></ul><pre class="line-numbers language-shell"><code class="language-shell">curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>运行：</li></ul><pre class="line-numbers language-shell"><code class="language-shell">sudo yum install yarn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>安装完成。查看yarn版本用命令：<code>yarn --version</code></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Yarn 是一个依赖管理工具。它能够管理你的代码，并与全世界的开发者分享代码。Yarn 是高效、安全和可靠的，你完全可以安心使用。代码是通过包（有时也被称为组件）。 在每一个包中会定义一个 &lt;code&gt;package.json&lt;/code&gt; 文件，用来描述
-      
-    
-    </summary>
-    
-      <category term="yarn" scheme="http://www.ldclass.club/categories/yarn/"/>
-    
-    
-      <category term="yarn" scheme="http://www.ldclass.club/tags/yarn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>iframe标签开启麦克风和摄像权限</title>
-    <link href="http://www.ldclass.club/2021/05/23/ifame-biao-qian-kai-qi-mai-ke-feng-he-she-xiang-quan-xian/"/>
-    <id>http://www.ldclass.club/2021/05/23/ifame-biao-qian-kai-qi-mai-ke-feng-he-she-xiang-quan-xian/</id>
-    <published>2021-05-22T22:47:14.000Z</published>
-    <updated>2021-05-22T16:31:15.512Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>直接通过html<ul><li>使用iframe进行嵌入调用：可以调取麦克风和摄像头</li></ul></li></ul><pre class="line-numbers language-html"><code class="language-html">&lt;iframe id="refFrame" allow="microphone;camera;midi;encrypted-media;" src = "https://XXXX"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>在vue框架中<ul><li>在vue模板中，直接嵌入iframe去调用也是不行的；</li><li>在vue中嵌入iframe去调取摄像头和麦克风，iframe的allow的属性必须得通过js的方式添加进去</li></ul></li></ul><pre class="line-numbers language-html"><code class="language-html">&lt;iframe id="refFrame"  src = "https://XXXX"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>iframe</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><pre class="line-numbers language-js"><code class="language-js"><span class="token function">mounted</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">//调取摄像头和麦克风</span>    <span class="token keyword">var</span> iframeElment <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>$refs<span class="token punctuation">.</span>refFrame    <span class="token keyword">if</span> <span class="token punctuation">(</span>iframeElment<span class="token punctuation">)</span> <span class="token punctuation">{</span>        iframeElment<span class="token punctuation">.</span>allow <span class="token operator">=</span> <span class="token string">'microphone;camera;midi;encrypted-media;'</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;直接通过html&lt;ul&gt;
-&lt;li&gt;使用iframe进行嵌入调用：可以调取麦克风和摄像头&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&quot;line-numbers language-html&quot;&gt;&lt;code class=&quot;language-ht
-      
-    
-    </summary>
-    
-      <category term="Html" scheme="http://www.ldclass.club/categories/Html/"/>
-    
-      <category term="iframe" scheme="http://www.ldclass.club/categories/Html/iframe/"/>
-    
-    
-      <category term="Html" scheme="http://www.ldclass.club/tags/Html/"/>
-    
-      <category term="iframe" scheme="http://www.ldclass.club/tags/iframe/"/>
     
   </entry>
   

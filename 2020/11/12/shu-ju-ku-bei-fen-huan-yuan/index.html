@@ -595,6 +595,10 @@ mysqldump -u -p -h 库名 | gzip &gt;/路径/">
                     
                     <div class="article-tag">
                         
+                        <a href="/tags/Oracle/" target="_blank">
+                            <span class="chip bg-color">Oracle</span>
+                        </a>
+                        
                         <a href="/tags/数据库/" target="_blank">
                             <span class="chip bg-color">数据库</span>
                         </a>
@@ -613,6 +617,10 @@ mysqldump -u -p -h 库名 | gzip &gt;/路径/">
                         
                         <a href="/categories/数据库/备份还原/" class="post-category" target="_blank">
                             备份还原
+                        </a>
+                        
+                        <a href="/categories/数据库/备份还原/Oracle/" class="post-category" target="_blank">
+                            Oracle
                         </a>
                         
                     </div>
@@ -637,7 +645,7 @@ mysqldump -u -p -h 库名 | gzip &gt;/路径/">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    1.3k
                 </div>
                 
 
@@ -795,6 +803,16 @@ imp test/test@orcl tablespaces=test fromuser=dtxy touser=test file=F:\test.DMP l
 #将d:\test.dmp中的表table1 导入
 imp test/test@orcl file=d:\test.dmp tables=(table1) <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
+<li><strong>问题一</strong>：<code>ORACLE 这些对象由 XXXX 导出, 而不是当前用户</code><ul>
+<li>导出dmp文件的用户和导入的用户不一致</li>
+<li>去掉 fromuser= 和 touser= 加上 full=y ignore=y即可</li>
+</ul>
+</li>
+<li><strong>问题二</strong>：<code>IMP-00013: 只有 DBA 才能导入由其他 DBA 导出的文件</code><ul>
+<li>导出数据的用户拥有DBA权限，而导入的用户没有这个权限</li>
+<li><code>sqlplus 用户名/密码</code> ==&gt; <code>grant dba  to username；（username是用户名）</code></li>
+</ul>
+</li>
 <li>impdp导入<ul>
 <li>注意：impdp导入的dmp文件必须是expdb导出的</li>
 </ul>
@@ -1584,7 +1602,7 @@ Springboot默认支持4种数据源类型，定义在 org.springframework.boot.a
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">207.1k</span> 字
+                <span class="white-color">207.5k</span> 字
             
 
             
