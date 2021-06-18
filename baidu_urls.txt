@@ -1,5 +1,4 @@
 http://www.ldclass.club/2021/06/18/oracle-system-yong-hu-wang-ji-mi-ma-de-jie-jue-fang-fa/
-http://www.ldclass.club/2021/06/18/system-yong-hu-wang-ji-mi-ma-de-jie-jue-fang-fa/
 http://www.ldclass.club/2021/06/17/jie-jue-ren-yi-wen-jian-shang-chuan-lou-dong/
 http://www.ldclass.club/2021/06/11/ban-ben-xin-xi-xie-lu/
 http://www.ldclass.club/2021/06/09/chang-yong-gitignore/
@@ -78,3 +77,4 @@ http://www.ldclass.club/2021/01/06/xiang-mu-zi-yuan-guan-li/
 http://www.ldclass.club/2021/01/05/dan-li-she-ji-mo-shi/
 http://www.ldclass.club/2021/01/05/she-ji-mo-shi-jian-jie/
 http://www.ldclass.club/2021/01/05/xiang-mu-zhi-liang-guan-li-de-3-ge-zi-guo-cheng/
+http://www.ldclass.club/2021/01/04/xiang-mu-zhi-liang-guan-li/

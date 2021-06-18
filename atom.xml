@@ -49,31 +49,6 @@
   </entry>
   
   <entry>
-    <title>system用户忘记密码的解决方法</title>
-    <link href="http://www.ldclass.club/2021/06/18/system-yong-hu-wang-ji-mi-ma-de-jie-jue-fang-fa/"/>
-    <id>http://www.ldclass.club/2021/06/18/system-yong-hu-wang-ji-mi-ma-de-jie-jue-fang-fa/</id>
-    <published>2021-06-18T12:46:27.000Z</published>
-    <updated>2021-06-18T04:50:03.985Z</updated>
-    
-    <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;script&gt;
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if (!el.dataset.src) { return; }
-        
-      
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
     <title>解决任意文件上传漏洞</title>
     <link href="http://www.ldclass.club/2021/06/17/jie-jue-ren-yi-wen-jian-shang-chuan-lou-dong/"/>
     <id>http://www.ldclass.club/2021/06/17/jie-jue-ren-yi-wen-jian-shang-chuan-lou-dong/</id>
@@ -634,6 +609,32 @@
     
     
       <category term="Node" scheme="http://www.ldclass.club/tags/Node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>linux安装yarn</title>
+    <link href="http://www.ldclass.club/2021/05/27/linux-an-zhuang-yarn/"/>
+    <id>http://www.ldclass.club/2021/05/27/linux-an-zhuang-yarn/</id>
+    <published>2021-05-27T11:50:51.000Z</published>
+    <updated>2021-05-27T07:44:05.420Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><p>Yarn 是一个依赖管理工具。它能够管理你的代码，并与全世界的开发者分享代码。Yarn 是高效、安全和可靠的，你完全可以安心使用。代码是通过包（有时也被称为组件）。 在每一个包中会定义一个 <code>package.json</code> 文件，用来描述这个包中所有要被分享的代码。</p></li><li><p>在 CentOS, Fedora 和 RHEL 操作系统上，你可以通过RPM 包仓库来安装 Yarn</p></li></ul><pre class="line-numbers language-shell"><code class="language-shell">sudo wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>如果尚未安装 Node.js（查看是否安装node.js用命令：node -v可以显示版本。安装方法参考<code>https://www.ldclass.club/2021/05/27/linux-an-zhuang-nodejs/</code>，配置 Node 源仓库：</li></ul><pre class="line-numbers language-shell"><code class="language-shell">curl --silent --location https://rpm.nodesource.com/setup_6.x | bash -<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>运行：</li></ul><pre class="line-numbers language-shell"><code class="language-shell">sudo yum install yarn<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>安装完成。查看yarn版本用命令：<code>yarn --version</code></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Yarn 是一个依赖管理工具。它能够管理你的代码，并与全世界的开发者分享代码。Yarn 是高效、安全和可靠的，你完全可以安心使用。代码是通过包（有时也被称为组件）。 在每一个包中会定义一个 &lt;code&gt;package.json&lt;/code&gt; 文件，用来描述
+      
+    
+    </summary>
+    
+      <category term="yarn" scheme="http://www.ldclass.club/categories/yarn/"/>
+    
+    
+      <category term="yarn" scheme="http://www.ldclass.club/tags/yarn/"/>
     
   </entry>
   
