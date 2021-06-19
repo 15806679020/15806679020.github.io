@@ -1547,13 +1547,13 @@ yum install -y vim wget<span aria-hidden="true" class="line-numbers-rows"><span>
 <li>启动和查看命令</li>
 </ul>
 <pre class="line-numbers language-shell"><code class="language-shell">#启动
-service keepalived start
+systemctl start keepalived.service
 #停止
-service keepalived stop
+systemctl stop keepalived.service
 #查看状态
 service keepalived status
 #重启
-service keepalived restart
+systemctl restart keepalived.service
 #停止防火墙
 systemctl stop firewalld.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
@@ -1692,6 +1692,7 @@ fi<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><
 <li>interface 网卡ID；要根据自己的实际情况来看，可以使用<code>ip a</code>查询</li>
 <li>在BACKUP节点上，其keepalived.conf与Master上基本一致，修改state为BACKUP，priority值改小即可</li>
 <li>authentication主备之间的认证方式，一般使用PASS即可；主备的配置必须一致，不能超过8位</li>
+<li>虚拟ip要和主机ip在同一网段</li>
 </ul>
 </li>
 </ul>
@@ -2529,7 +2530,7 @@ alter table user a
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">207.4k</span> 字
+                <span class="white-color">207.5k</span> 字
             
 
             

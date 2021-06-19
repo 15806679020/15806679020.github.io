@@ -280,7 +280,7 @@
     <link href="http://www.ldclass.club/2021/06/08/centos7-ben-di-gua-zai-yum-yuan/"/>
     <id>http://www.ldclass.club/2021/06/08/centos7-ben-di-gua-zai-yum-yuan/</id>
     <published>2021-06-07T17:34:49.000Z</published>
-    <updated>2021-06-17T10:58:23.991Z</updated>
+    <updated>2021-06-18T08:57:43.058Z</updated>
     
     <content type="html"><![CDATA[<ul><li>挂载镜像</li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# mkdir  -p  /mnt/centos7[root@lmzf ~]# mount  /root/CentOS-7-x86_64-DVD-1708.iso  /mnt/centos7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li>开机永久挂载</li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# cat  /etc/fstab/root/CentOS-7-x86_64-DVD-1708.iso   /mnt/centos7  iso9660 defaults,loop,ro  0  0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li><p>删除<code>/etc/yum.repo.d/</code>中的所有yum源 (重要)</p></li><li><p>创建本地的<code>repo</code>文件</p></li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# vim  /etc/yum.repo.d/centos7.repo[centos7]name=centos7baseurl=file:///mnt/centos7gpgcheck=0enabled=1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>开始yum安装软件</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
     
@@ -302,7 +302,7 @@
     
       <category term="linux" scheme="http://www.ldclass.club/tags/linux/"/>
     
-      <category term="Centos7" scheme="http://www.ldclass.club/tags/Centos7/"/>
+      <category term="CentOS7" scheme="http://www.ldclass.club/tags/CentOS7/"/>
     
       <category term="yum" scheme="http://www.ldclass.club/tags/yum/"/>
     
