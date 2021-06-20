@@ -766,33 +766,26 @@ wget http://mirrors.aliyun.com/docker-ce/l">
 <li><p>进入容器</p>
 <pre class="line-numbers language-shell"><code class="language-shell">#查看容器
 docker ps
-
 #进入容器
-docker exec -it   容器名  /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+docker exec -it   容器名  /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 </li>
 <li><p>创建用户</p>
 <pre class="line-numbers language-shell"><code class="language-shell">#登录
  sqlplus   /nolog
-
 #使用超级管理员 sysdba默认密码是oracle
 connect /as sysdba
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-</li>
-</ul>
-</li>
-</ul>
-<pre><code>#创建用户
+#创建用户
 create user test identified by 密码; 
-
 # 给用户赋予权限
-grant dba to test; 
-```</code></pre><ul>
+grant dba to test; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
 <li><p>开始导入dmp文件到oracle</p>
 <pre class="line-numbers language-shell"><code class="language-shell">imp 用户名/密码@ocl file=/home/oracle/test.dmp full=y ignore=y<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
 <li>这里的路径一定要写全路径要不会找不到文件的</li>
 <li>Import terminated successfully without warnings.出现如下字样表示导入成功</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
