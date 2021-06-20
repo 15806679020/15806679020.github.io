@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.ldclass.club/2021/02/01/docker-an-zhuang-oracle11g/</loc>
+    <lastmod>2021-06-20</lastmod>
+  </url>  <url>
+    <loc>http://www.ldclass.club/2020/11/12/shu-ju-ku-bei-fen-huan-yuan/</loc>
+    <lastmod>2021-06-20</lastmod>
+  </url>  <url>
     <loc>http://www.ldclass.club/2021/01/19/nginx/</loc>
     <lastmod>2021-06-19</lastmod>
   </url>  <url>
@@ -11,9 +17,6 @@
     <lastmod>2021-06-18</lastmod>
   </url>  <url>
     <loc>http://www.ldclass.club/2021/06/18/oracle-system-yong-hu-wang-ji-mi-ma-de-jie-jue-fang-fa/</loc>
-    <lastmod>2021-06-18</lastmod>
-  </url>  <url>
-    <loc>http://www.ldclass.club/2020/11/12/shu-ju-ku-bei-fen-huan-yuan/</loc>
     <lastmod>2021-06-18</lastmod>
   </url>  <url>
     <loc>http://www.ldclass.club/2021/05/18/linux-an-zhuang-mysql/</loc>
@@ -129,9 +132,6 @@
   </url>  <url>
     <loc>http://www.ldclass.club/2021/02/20/springboot-ji-cheng-websocket/</loc>
     <lastmod>2021-03-03</lastmod>
-  </url>  <url>
-    <loc>http://www.ldclass.club/2021/02/01/docker-an-zhuang-oracle11g/</loc>
-    <lastmod>2021-01-31</lastmod>
   </url>  <url>
     <loc>http://www.ldclass.club/2020/12/01/centos7-fang-huo-qiang-chang-yong-pei-zhi/</loc>
     <lastmod>2021-01-31</lastmod>

@@ -504,12 +504,12 @@ wget http://mirrors.aliyun.com/docker-ce/l">
                     
                     <div class="article-tag">
                         
-                        <a href="/tags/Oracle/" target="_blank">
-                            <span class="chip bg-color">Oracle</span>
-                        </a>
-                        
                         <a href="/tags/Docker/" target="_blank">
                             <span class="chip bg-color">Docker</span>
+                        </a>
+                        
+                        <a href="/tags/Oracle/" target="_blank">
+                            <span class="chip bg-color">Oracle</span>
                         </a>
                         
                     </div>
@@ -550,14 +550,14 @@ wget http://mirrors.aliyun.com/docker-ce/l">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    776
+                    978
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
                 
@@ -721,29 +721,80 @@ wget http://mirrors.aliyun.com/docker-ce/l">
 </ul>
 </li>
 </ul>
+</li>
+<li><p>配置软连接</p>
+<ul>
+<li><code>ln -s $ORACLE_HOME/bin/sqlplus /usr/bin</code></li>
+</ul>
 <img src="/2021/02/01/docker-an-zhuang-oracle11g/8.png" title="查看监听">
 
 <ul>
 <li>修改system密码<ul>
 <li>oracle 用户下 输入 <code>sqlplus /nolog</code>，实现无用户名登录oracle</li>
-<li><code>conn /as sysdba</code>  连接到数据本地数据</li>
+</ul>
+</li>
+<li><code>conn /as sysdba</code>  连接到数据本地数据<ul>
 <li><code>alter user system identified by password;</code> 修改system 密码 为password(你自定义的密码)</li>
 </ul>
 </li>
 </ul>
 <img src="/2021/02/01/docker-an-zhuang-oracle11g/9.png" title="修改system密码">
-
+</li>
+<li><p>PLSQL测试链接</p>
 <ul>
-<li>PLSQL测试链接<ul>
 <li>输入用户名，口令，与数据库连接串 <code>ip:port/SID</code></li>
 </ul>
 </li>
 </ul>
 <img src="/2021/02/01/docker-an-zhuang-oracle11g/10.png" title="PLSQL测试链接">
 <ul>
-<li>从Docker退出到虚拟机</li>
+<li><p>从Docker退出到虚拟机</p>
+<img src="/2021/02/01/docker-an-zhuang-oracle11g/11.png" title="从Docker退出到虚拟机">
+
+</li>
 </ul>
-<img src="/2021/02/01/docker-an-zhuang-oracle11g/11.png" title="从Docker退出到虚拟机"></li>
+<ul>
+<li><p>Docker导入dmp文件到oracle容器</p>
+<ul>
+<li><p>上传文件</p>
+<ul>
+<li>把dmp文件上传到服务器，然后在复制到oracle容器中</li>
+</ul>
+<pre class="line-numbers language-shell"><code class="language-shell">docker cp /home/production/test.dmp 4480e931b512:/home/oracle/
+              dmp文件的全路径             容器id     复制到容器中的路径<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>进入容器</p>
+<pre class="line-numbers language-shell"><code class="language-shell">#查看容器
+docker ps
+
+#进入容器
+docker exec -it   容器名  /bin/bash<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>创建用户</p>
+<pre class="line-numbers language-shell"><code class="language-shell">#登录
+ sqlplus   /nolog
+
+#使用超级管理员 sysdba默认密码是oracle
+connect /as sysdba
+
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<pre><code>#创建用户
+create user test identified by 密码; 
+
+# 给用户赋予权限
+grant dba to test; 
+```</code></pre><ul>
+<li><p>开始导入dmp文件到oracle</p>
+<pre class="line-numbers language-shell"><code class="language-shell">imp 用户名/密码@ocl file=/home/oracle/test.dmp full=y ignore=y<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<ul>
+<li>这里的路径一定要写全路径要不会找不到文件的</li>
+<li>Import terminated successfully without warnings.出现如下字样表示导入成功</li>
+</ul>
+</li>
 </ul>
 <script>
         document.querySelectorAll('.github-emoji')
@@ -1444,7 +1495,7 @@ mkdir -p /home/app/
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">207.5k</span> 字
+                <span class="white-color">207.7k</span> 字
             
 
             
