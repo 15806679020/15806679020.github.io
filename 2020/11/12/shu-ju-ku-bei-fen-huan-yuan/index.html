@@ -645,14 +645,14 @@ mysqldump -u -p -h 库名 | gzip &gt;/路径/">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="fa fa-clock-o fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    7 分
                 </div>
                 
                 
@@ -796,7 +796,34 @@ exp test/test@orcl file=d:\test.dmp tables=(table1,table2)
 #将数据库中的表table1中的字段filed1以"00"打头的数据导出
 exp test/test@orcl file=d:\test.dmp tables=(table1) query=\" where filed1 like '00%'\"<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>exp导入</li>
+<li><p><strong>问题一</strong>：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">  已导出 ZHS16GBK 字符集和 AL16UTF16 NCHAR 字符集
+    . 正在导出 pre-schema 过程对象和操作
+    . 正在导出用户 JXUNICOM 的外部函数库名
+    . 导出 PUBLIC 类型同义词
+    . 正在导出专用类型同义词
+    . 正在导出用户 JXUNICOM 的对象类型定义
+    即将导出 JXUNICOM 的对象…
+    . 正在导出数据库链接
+    . 正在导出序号
+    . 正在导出簇定义
+    . 即将导出 JXUNICOM 的表通过常规路径…
+    EXP-00008: 遇到 ORACLE 错误 904
+    ORA-00904: "POLTYP": invalid identifier
+    EXP-00000: 导出终止失败
+    发生EXP-00008: 遇到 ORACLE 错误 904 的导出报错。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>本地使用的exp导出工具的版本与数据库服务器端exp版本不一致导致</li>
+<li>由于Oracle的imp/exp组件的操作原则–向下兼容，且有一些规则：<ul>
+<li>规则1:低版本的exp/imp可以连接到高版本（或同版本）的数据库服务器，但高版本的exp/imp不能连接到低版本的数据库服务器；</li>
+<li>规则2:高版本exp出的dmp文件，低版本无法imp（无法识别dmp文件）；低版本exp出的dmp文件，高版本可以imp（向下兼容）；</li>
+<li>规则3:从Oracle 低版本Export的数据可以Import到Oracle高版本中，但限于Oracle的相邻版本，如从Oracle 10 到 Oracle 11.对于两个不相邻版本间进行转换，如从Oracle 9 到 Oracle 11,则应先将数据输入到中间版本-Oracle 10,再从中间数据库转入更高版本Oracle 11.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>imp导入</p>
+</li>
 </ul>
 <pre class="line-numbers language-shell"><code class="language-shell">#说明：当前用户名 /密码@ 数据库名 fromuser=当初导出时的用户 touser= 导入的新用户 file=d: \test.dmp
 #如果有的表已经存在，然后它就报错，对该表就不进行导入。在后面加上 ignore=y 就可以了。
@@ -1604,7 +1631,7 @@ Springboot默认支持4种数据源类型，定义在 org.springframework.boot.a
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">208.8k</span> 字
+                <span class="white-color">209.8k</span> 字
             
 
             

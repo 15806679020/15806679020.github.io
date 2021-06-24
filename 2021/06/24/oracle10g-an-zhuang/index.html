@@ -10,9 +10,19 @@
     <meta name="baidu-site-verification" content="fmlEuI34ir">
     <meta name="google-site-verification" content="KeoTn_OFy4ndJwXNmm2gMeQfPhd7alqE9vQDwI32KCY">
     <meta name="description" content="
-        document.querySelectorAll(&#39;.github-emoji&#39;)
-          .forEach(el =&gt; {
-            if (!el.dataset.src) { return">
+问题一
+
+描述
+
+oracle安装中出现：检查操作系统版本必须是5.0,5.1,or 6.0。实际为6.1
+
+
+解决
+
+更改install文件夹下的配置文件oraparam.ini
+
+[Certified Versions]
+#You c">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -588,11 +598,24 @@
                 <div class="col s7">
                     
                     <div class="article-tag">
-                        <span class="chip bg-color">无标签</span>
+                        
+                        <a href="/tags/Oracle/" target="_blank">
+                            <span class="chip bg-color">Oracle</span>
+                        </a>
+                        
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fa fa-bookmark fa-fw icon-category"></i>
+                        
+                        <a href="/categories/Oracle/" class="post-category" target="_blank">
+                            Oracle
+                        </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -614,7 +637,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    52
+                    151
                 </div>
                 
 
@@ -638,7 +661,32 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <script>
+                <ul>
+<li><p><strong>问题一</strong></p>
+<ul>
+<li><p>描述</p>
+<ul>
+<li>oracle安装中出现：检查操作系统版本必须是5.0,5.1,or 6.0。实际为6.1</li>
+</ul>
+</li>
+<li><p>解决</p>
+<ul>
+<li>更改install文件夹下的配置文件<code>oraparam.ini</code></li>
+</ul>
+<pre class="line-numbers language-ini"><code class="language-ini"><span class="token selector">[Certified Versions]</span>
+#You can customise error message shown for failure, provide value for CERTIFIED_VERSION_FAILURE_MESSAGE
+<span class="token constant">Windows</span><span class="token attr-value"><span class="token punctuation">=</span>5.0,5.1,5.2,6.0,6.1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-ini"><code class="language-ini">#[Windows-6.1-required]
+#Minimum display colours for OUI to run
+<span class="token constant">MIN_DISPLAY_COLORS</span><span class="token attr-value"><span class="token punctuation">=</span>256</span>
+#Minimum CPU speed required for OUI
+<span class="token constant">#CPU</span><span class="token attr-value"><span class="token punctuation">=</span>300</span>
+#[Windows-6.1-optional]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<script>
         document.querySelectorAll('.github-emoji')
           .forEach(el => {
             if (!el.dataset.src) { return; }
@@ -1157,9 +1205,14 @@
                     <div class="summary block-with-text">
                         
                             
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return
+问题描述
+
+打开.properties文件后，汉字都变成了\u6295\u7968\u6210\u529f\uff0c\u8c22\u8c22\u53c2\u4e0e
+这是汉字的unicode编码。
+
+
+解决：
+在project sett
                         
                     </div>
                     <div class="publish-info">
@@ -1168,8 +1221,23 @@
                         </span>
                         <span class="publish-author">
                             
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/IDEA/" class="post-category" target="_blank">
+                                    IDEA
+                                </a>
+                            
+                            
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/IDEA/" target="_blank">
+                        <span class="chip bg-color">IDEA</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1194,9 +1262,26 @@
                     <div class="summary block-with-text">
                         
                             
-        document.querySelectorAll('.github-emoji')
-          .forEach(el => {
-            if (!el.dataset.src) { return
+采用图形化工具
+
+​    
+​    
+​    
+​    
+​    
+​    
+​    
+
+可以用命令直接配
+
+在oracle安装目录下找到tnsnames.ora
+
+
+
+添加以下配置
+
+test=
+(DESCRIPTION 
                         
                     </div>
                     <div class="publish-info">
@@ -1205,8 +1290,23 @@
                             </span>
                         <span class="publish-author">
                             
+                            <i class="fa fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Oracle/" class="post-category" target="_blank">
+                                    Oracle
+                                </a>
+                            
+                            
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Oracle/" target="_blank">
+                        <span class="chip bg-color">Oracle</span>
+                    </a>
+                    
                 </div>
                 
             </div>
@@ -1364,7 +1464,7 @@
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">208.8k</span> 字
+                <span class="white-color">209.8k</span> 字
             
 
             
