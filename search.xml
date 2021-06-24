@@ -4,6 +4,83 @@
   
     
     <entry>
+      <title>SpringBoot-GA/PRE/SNAPSHOT详解</title>
+      <link href="2021/06/24/springboot-ga-pre-snapshot-xiang-jie/"/>
+      <url>2021/06/24/springboot-ga-pre-snapshot-xiang-jie/</url>
+      
+        <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>IDEA-properties中文乱码</title>
+      <link href="2021/06/24/idea-properties-zhong-wen-luan-ma/"/>
+      <url>2021/06/24/idea-properties-zhong-wen-luan-ma/</url>
+      
+        <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Oracle10g安装</title>
+      <link href="2021/06/24/oracle10g-an-zhuang/"/>
+      <url>2021/06/24/oracle10g-an-zhuang/</url>
+      
+        <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>oracle10g配置远程连接</title>
+      <link href="2021/06/24/oracle10g-pei-zhi-yuan-cheng-lian-jie/"/>
+      <url>2021/06/24/oracle10g-pei-zhi-yuan-cheng-lian-jie/</url>
+      
+        <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MYSQL免安装版配置</title>
+      <link href="2021/06/24/mysql-mian-an-zhuang-ban-pei-zhi/"/>
+      <url>2021/06/24/mysql-mian-an-zhuang-ban-pei-zhi/</url>
+      
+        <content type="html"><![CDATA[<ul><li><p>下载</p><ul><li>下载地址：<code>https://dev.mysql.com/downloads/mysql/</code>·</li></ul></li><li><p>解压</p></li><li><p>配置</p><ul><li>在文件目录 中新建一个<code>my.ini</code>的文件，代码如下，把其中的两处工作路径改为自己的按照路径即可。</li></ul><pre class="line-numbers language-ini"><code class="language-ini"><span class="token selector">[mysqld]</span># 设置3306端口<span class="token constant">port</span><span class="token attr-value"><span class="token punctuation">=</span>3306</span># 设置mysql的安装目录<span class="token constant">basedir</span><span class="token attr-value"><span class="token punctuation">=</span>D:\Mylargeprogram\Mysql\mysql-8.0.12-winx64</span># 设置mysql数据库的数据的存放目录<span class="token constant">datadir</span><span class="token attr-value"><span class="token punctuation">=</span>D:\Mylargeprogram\Mysql\mysql-8.0.12-winx64\data</span># 允许最大连接数<span class="token constant">max_connections</span><span class="token attr-value"><span class="token punctuation">=</span>200</span># 允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统<span class="token constant">max_connect_errors</span><span class="token attr-value"><span class="token punctuation">=</span>10</span># 服务端使用的字符集默认为UTF8<span class="token constant">character-set-server</span><span class="token attr-value"><span class="token punctuation">=</span>utf8</span># 创建新表时将使用的默认存储引擎<span class="token constant">default-storage-engine</span><span class="token attr-value"><span class="token punctuation">=</span>INNODB</span># 默认使用“mysql_native_password”插件认证<span class="token constant">default_authentication_plugin</span><span class="token attr-value"><span class="token punctuation">=</span>mysql_native_password</span><span class="token selector">[mysql]</span># 设置mysql客户端默认字符集<span class="token constant">default-character-set</span><span class="token attr-value"><span class="token punctuation">=</span>utf8</span><span class="token selector">[client]</span># 设置mysql客户端连接服务端时默认使用的端口<span class="token constant">port</span><span class="token attr-value"><span class="token punctuation">=</span>3306</span><span class="token constant">default-character-set</span><span class="token attr-value"><span class="token punctuation">=</span>utf8</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> MYSQL </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MYSQL </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Windows2012R2安装Oracle</title>
       <link href="2021/06/21/windows2012r2-an-zhuang-oracle/"/>
       <url>2021/06/21/windows2012r2-an-zhuang-oracle/</url>
@@ -1033,9 +1110,9 @@
       
         <tags>
             
-            <tag> Oracle </tag>
-            
             <tag> Docker </tag>
+            
+            <tag> Oracle </tag>
             
         </tags>
       

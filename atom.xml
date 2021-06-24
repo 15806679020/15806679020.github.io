@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ldclass.club/"/>
-  <updated>2021-06-20T13:39:37.344Z</updated>
+  <updated>2021-06-24T05:59:00.997Z</updated>
   <id>http://www.ldclass.club/</id>
   
   <author>
@@ -15,6 +15,140 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>SpringBoot-GA/PRE/SNAPSHOT详解</title>
+    <link href="http://www.ldclass.club/2021/06/24/springboot-ga-pre-snapshot-xiang-jie/"/>
+    <id>http://www.ldclass.club/2021/06/24/springboot-ga-pre-snapshot-xiang-jie/</id>
+    <published>2021-06-24T13:59:00.000Z</published>
+    <updated>2021-06-24T05:59:00.997Z</updated>
+    
+    <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>IDEA-properties中文乱码</title>
+    <link href="http://www.ldclass.club/2021/06/24/idea-properties-zhong-wen-luan-ma/"/>
+    <id>http://www.ldclass.club/2021/06/24/idea-properties-zhong-wen-luan-ma/</id>
+    <published>2021-06-24T13:57:09.000Z</published>
+    <updated>2021-06-24T05:57:09.110Z</updated>
+    
+    <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Oracle10g安装</title>
+    <link href="http://www.ldclass.club/2021/06/24/oracle10g-an-zhuang/"/>
+    <id>http://www.ldclass.club/2021/06/24/oracle10g-an-zhuang/</id>
+    <published>2021-06-23T18:30:24.000Z</published>
+    <updated>2021-06-23T10:30:24.303Z</updated>
+    
+    <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>oracle10g配置远程连接</title>
+    <link href="http://www.ldclass.club/2021/06/24/oracle10g-pei-zhi-yuan-cheng-lian-jie/"/>
+    <id>http://www.ldclass.club/2021/06/24/oracle10g-pei-zhi-yuan-cheng-lian-jie/</id>
+    <published>2021-06-23T18:29:32.000Z</published>
+    <updated>2021-06-23T10:29:32.278Z</updated>
+    
+    <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script&gt;
+        document.querySelectorAll(&#39;.github-emoji&#39;)
+          .forEach(el =&gt; {
+            if (!el.dataset.src) { return; }
+        
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>MYSQL免安装版配置</title>
+    <link href="http://www.ldclass.club/2021/06/24/mysql-mian-an-zhuang-ban-pei-zhi/"/>
+    <id>http://www.ldclass.club/2021/06/24/mysql-mian-an-zhuang-ban-pei-zhi/</id>
+    <published>2021-06-23T16:03:12.000Z</published>
+    <updated>2021-06-23T18:33:13.043Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><p>下载</p><ul><li>下载地址：<code>https://dev.mysql.com/downloads/mysql/</code>·</li></ul></li><li><p>解压</p></li><li><p>配置</p><ul><li>在文件目录 中新建一个<code>my.ini</code>的文件，代码如下，把其中的两处工作路径改为自己的按照路径即可。</li></ul><pre class="line-numbers language-ini"><code class="language-ini"><span class="token selector">[mysqld]</span># 设置3306端口<span class="token constant">port</span><span class="token attr-value"><span class="token punctuation">=</span>3306</span># 设置mysql的安装目录<span class="token constant">basedir</span><span class="token attr-value"><span class="token punctuation">=</span>D:\Mylargeprogram\Mysql\mysql-8.0.12-winx64</span># 设置mysql数据库的数据的存放目录<span class="token constant">datadir</span><span class="token attr-value"><span class="token punctuation">=</span>D:\Mylargeprogram\Mysql\mysql-8.0.12-winx64\data</span># 允许最大连接数<span class="token constant">max_connections</span><span class="token attr-value"><span class="token punctuation">=</span>200</span># 允许连接失败的次数。这是为了防止有人从该主机试图攻击数据库系统<span class="token constant">max_connect_errors</span><span class="token attr-value"><span class="token punctuation">=</span>10</span># 服务端使用的字符集默认为UTF8<span class="token constant">character-set-server</span><span class="token attr-value"><span class="token punctuation">=</span>utf8</span># 创建新表时将使用的默认存储引擎<span class="token constant">default-storage-engine</span><span class="token attr-value"><span class="token punctuation">=</span>INNODB</span># 默认使用“mysql_native_password”插件认证<span class="token constant">default_authentication_plugin</span><span class="token attr-value"><span class="token punctuation">=</span>mysql_native_password</span><span class="token selector">[mysql]</span># 设置mysql客户端默认字符集<span class="token constant">default-character-set</span><span class="token attr-value"><span class="token punctuation">=</span>utf8</span><span class="token selector">[client]</span># 设置mysql客户端连接服务端时默认使用的端口<span class="token constant">port</span><span class="token attr-value"><span class="token punctuation">=</span>3306</span><span class="token constant">default-character-set</span><span class="token attr-value"><span class="token punctuation">=</span>utf8</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;下载&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;下载地址：&lt;code&gt;https://dev.mysql.com/downloads/mysql/&lt;/code&gt;·&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;解压&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;配置&lt;/p&gt;
+&lt;ul
+      
+    
+    </summary>
+    
+      <category term="MYSQL" scheme="http://www.ldclass.club/categories/MYSQL/"/>
+    
+    
+      <category term="MYSQL" scheme="http://www.ldclass.club/tags/MYSQL/"/>
+    
+  </entry>
   
   <entry>
     <title>Windows2012R2安装Oracle</title>
@@ -477,168 +611,6 @@
     
     
       <category term="webService" scheme="http://www.ldclass.club/tags/webService/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>SSM集成webservice</title>
-    <link href="http://www.ldclass.club/2021/06/04/ssm-ji-cheng-webservice/"/>
-    <id>http://www.ldclass.club/2021/06/04/ssm-ji-cheng-webservice/</id>
-    <published>2021-06-03T16:44:49.000Z</published>
-    <updated>2021-06-03T11:04:02.243Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>SSM集成webService-maven</p></blockquote><ul><li><h4 id="项目示例：https-gitee-com-liudong666-ssm-demo-git"><a href="#项目示例：https-gitee-com-liudong666-ssm-demo-git" class="headerlink" title="项目示例：https://gitee.com/liudong666/ssm-demo.git"></a>项目示例：<code>https://gitee.com/liudong666/ssm-demo.git</code></h4></li><li><h4 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h4></li></ul><pre class="line-numbers language-xml"><code class="language-xml">        <span class="token comment" spellcheck="true">&lt;!-- 集成CXF实现Webservice接口 --></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>wsdl4j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>wsdl4j<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.6.2<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.cxf<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>cxf-rt-frontend-jaxws<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.2.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.cxf<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>cxf-rt-transports-http<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.2.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.apache.cxf<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>cxf-rt-transports-http-jetty<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>3.2.0<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><h4 id="新建cxf-servlet-xml"><a href="#新建cxf-servlet-xml" class="headerlink" title="新建cxf-servlet.xml"></a>新建cxf-servlet.xml</h4></li></ul><pre class="line-numbers language-xml"><code class="language-xml"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans<span class="token punctuation">"</span></span>       <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>       <span class="token attr-name"><span class="token namespace">xmlns:</span>jaxws</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://cxf.apache.org/jaxws<span class="token punctuation">"</span></span>       <span class="token attr-name"><span class="token namespace">xmlns:</span>http-conf</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://cxf.apache.org/transports/http/configuration<span class="token punctuation">"</span></span>       <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans                        http://www.springframework.org/schema/beans/spring-beans.xsd                        http://cxf.apache.org/jaxws                        http://cxf.apache.org/schemas/jaxws.xsd                        http://cxf.apache.org/transports/http/configuration                         http://cxf.apache.org/schemas/configuration/http-conf.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>import</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>classpath:META-INF/cxf/cxf.xml<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>import</span> <span class="token attr-name">resource</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>classpath:META-INF/cxf/cxf-servlet.xml<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>    <span class="token comment" spellcheck="true">&lt;!-- 新版本不需要此xml文件--></span>    <span class="token comment" spellcheck="true">&lt;!-- &lt;import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" /> --></span>    <span class="token comment" spellcheck="true">&lt;!-- Start 供WebService调用的业务Service --></span>    <span class="token comment" spellcheck="true">&lt;!-- 配置方式1   注意：serviceClass为接口类并非实现类 --></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">jaxws:</span>server</span> <span class="token attr-name">serviceClass</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.ssm.webService.service.CxyJkfwService<span class="token punctuation">"</span></span> <span class="token attr-name">address</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/cxyJkfwService_server<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">jaxws:</span>server</span><span class="token punctuation">></span></span>    <span class="token comment" spellcheck="true">&lt;!-- 配置方式2    注意：implementor为接口的具体实现类 --></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">jaxws:</span>endpoint</span> <span class="token attr-name">implementor</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>com.ssm.webService.service.impl.CxyJkfwServiceImpl<span class="token punctuation">"</span></span> <span class="token attr-name">address</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>/cxyJkfwService<span class="token punctuation">"</span></span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">jaxws:</span>endpoint</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>beans</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><h4 id="web-xml"><a href="#web-xml" class="headerlink" title="web.xml"></a>web.xml</h4></li></ul><pre class="line-numbers language-xml"><code class="language-xml"><span class="token doctype">&lt;!DOCTYPE web-app PUBLIC        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"        "http://java.sun.com/dtd/web-app_2_3.dtd" ></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>web-app</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>display-name</span><span class="token punctuation">></span></span>Archetype Created Web Application<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>display-name</span><span class="token punctuation">></span></span>    <span class="token comment" spellcheck="true">&lt;!-- 为了cxf而加入 start  --></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>context-param</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">></span></span>contextConfigLocation<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">></span></span>            classpath*:cxf-servlet.xml        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>context-param</span><span class="token punctuation">></span></span>    <span class="token comment" spellcheck="true">&lt;!-- Spring监听配置，Web容器启动自动装配ApplicationContext的配置信息--></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>listener</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>listener-class</span><span class="token punctuation">></span></span>org.springframework.web.context.ContextLoaderListener<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>listener-class</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>listener</span><span class="token punctuation">></span></span>    <span class="token comment" spellcheck="true">&lt;!-- 为了cxf而加入 end  --></span>    <span class="token comment" spellcheck="true">&lt;!-- 配置springMVC的前端控制器 --></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">></span></span>spring-dispatch<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-class</span><span class="token punctuation">></span></span>org.springframework.web.servlet.DispatcherServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-class</span><span class="token punctuation">></span></span>        <span class="token comment" spellcheck="true">&lt;!-- 配置映射配置文件路径 --></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>init-param</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">></span></span>contextConfigLocation<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">></span></span>classpath:spring/spring-*.xml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>init-param</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet</span><span class="token punctuation">></span></span>    <span class="token comment" spellcheck="true">&lt;!--webservice服务端 cxy start--></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">></span></span>CXFServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-class</span><span class="token punctuation">></span></span>org.apache.cxf.transport.servlet.CXFServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-class</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>load-on-startup</span><span class="token punctuation">></span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>load-on-startup</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-mapping</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">></span></span>CXFServlet<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/webService/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-mapping</span><span class="token punctuation">></span></span>      <span class="token comment" spellcheck="true">&lt;!--webservice服务端 cxy end--></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-mapping</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>servlet-name</span><span class="token punctuation">></span></span>spring-dispatch<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-name</span><span class="token punctuation">></span></span>        <span class="token comment" spellcheck="true">&lt;!-- 匹配所有的请求 --></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>servlet-mapping</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>web-app</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><h4 id="service"><a href="#service" class="headerlink" title="service"></a>service</h4></li></ul><pre class="line-numbers language-java"><code class="language-java"><span class="token annotation punctuation">@WebService</span><span class="token annotation punctuation">@SOAPBinding</span><span class="token punctuation">(</span>style <span class="token operator">=</span> SOAPBinding<span class="token punctuation">.</span>Style<span class="token punctuation">.</span>RPC<span class="token punctuation">)</span><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">CxyJkfwService</span> <span class="token punctuation">{</span>    <span class="token keyword">public</span> String <span class="token function">swapInfo</span><span class="token punctuation">(</span><span class="token annotation punctuation">@WebParam</span><span class="token punctuation">(</span>name<span class="token operator">=</span><span class="token string">"param"</span><span class="token punctuation">)</span> String requestXml<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception<span class="token punctuation">;</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><h4 id="impl"><a href="#impl" class="headerlink" title="impl"></a>impl</h4></li></ul><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CxyJkfwServiceImpl</span> <span class="token keyword">extends</span> <span class="token class-name">SpringBeanAutowiringSupport</span> <span class="token keyword">implements</span> <span class="token class-name">CxyJkfwService</span> <span class="token punctuation">{</span>    <span class="token keyword">public</span> String <span class="token function">swapInfo</span><span class="token punctuation">(</span>String requestXml<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>        String xml  <span class="token operator">=</span> requestXml<span class="token operator">+</span><span class="token string">" HelloWorld"</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> xml<span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>SSM集成webService-非maven</p></blockquote><ul><li><h4 id="集成webservice所需jar包：https-gitee-com-liudong666-cxf-jar-git"><a href="#集成webservice所需jar包：https-gitee-com-liudong666-cxf-jar-git" class="headerlink" title="集成webservice所需jar包：https://gitee.com/liudong666/cxf_-jar.git"></a>集成webservice所需jar包：<code>https://gitee.com/liudong666/cxf_-jar.git</code></h4></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;SSM集成webService-maven&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;h4 id=&quot;项目示例：https-gitee-com-liudong666-ssm-demo-git&quot;&gt;&lt;a href=&quot;#项目示例：https-
-      
-    
-    </summary>
-    
-      <category term="SSM" scheme="http://www.ldclass.club/categories/SSM/"/>
-    
-      <category term="webService" scheme="http://www.ldclass.club/categories/SSM/webService/"/>
-    
-    
-      <category term="SSM" scheme="http://www.ldclass.club/tags/SSM/"/>
-    
-      <category term="webService" scheme="http://www.ldclass.club/tags/webService/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>windows安装yarn</title>
-    <link href="http://www.ldclass.club/2021/05/27/windows-an-zhuang-yarn/"/>
-    <id>http://www.ldclass.club/2021/05/27/windows-an-zhuang-yarn/</id>
-    <published>2021-05-27T15:47:14.000Z</published>
-    <updated>2021-05-27T07:58:52.566Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><p>安装Yarn</p></blockquote><ul><li><p>方法一：使用安装包安装</p><ul><li>官方下载安装包，<code>https://yarnpkg.com/zh-Hans/docs/install</code>，安装完毕后，一定要配置环境变量。</li></ul></li><li><p>方法二：使用npm安装</p></li></ul><pre class="line-numbers language-shell"><code class="language-shell">npm i yarn -g-i：install -g：全局安装（global）,使用 -g 或 --global<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><p>输入yarn -version 可以看到版本号，说明安装成功了。我们就可以在项目中像使用npm一样使用yarn了。</p></li><li><p>解决：‘yarn’ 不是内部或外部命令，也不是可运行的程序</p><img src="/2021/05/27/windows-an-zhuang-yarn/1.png" title="安装yarn"><ul><li>根据安装的路径添加环境变量<ul><li>第1步：找到你刚才安装的yarn 如:E:\nodejs\node_global\node_modules\yarn\bin</li><li>第2步：系统变量-&gt;path,打开之后添加 E:\nodejs\node_global\node_modules\yarn\bin 重新打开cmd，输入 yarn -v 即可</li></ul></li></ul></li></ul><blockquote><p>卸载yarn</p></blockquote><ul><li>安装包直接软件卸载。</li><li>npm安装的则通过命令npm uninstall yarn -g卸载。</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;p&gt;安装Yarn&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;方法一：使用安装包安装&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;官方下载安装包，&lt;code&gt;https://yarnpkg.com/zh-Hans/docs/install&lt;/code&gt;，
-      
-    
-    </summary>
-    
-      <category term="yarn" scheme="http://www.ldclass.club/categories/yarn/"/>
-    
-    
-      <category term="yarn" scheme="http://www.ldclass.club/tags/yarn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Nginx虚拟目录alias和root目录</title>
-    <link href="http://www.ldclass.club/2021/05/27/nginx-xu-ni-mu-lu-alias-he-root-mu-lu/"/>
-    <id>http://www.ldclass.club/2021/05/27/nginx-xu-ni-mu-lu-alias-he-root-mu-lu/</id>
-    <published>2021-05-27T14:59:42.000Z</published>
-    <updated>2021-05-27T07:10:11.686Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><p>nginx是通过alias设置虚拟目录，在nginx的配置中，alias目录和root目录是有区别的：</p><ul><li>alias指定的目录是准确的，即location匹配访问的path目录下的文件直接是在alias目录下查找的；</li><li>root指定的目录是location匹配访问的path目录的上一级目录,这个path目录一定要是真实存在root指定目录下的；</li><li>使用alias标签的目录块中不能使用rewrite的break；另外，alias指定的目录后面必须要加上”/“符号！！</li><li>alias虚拟目录配置中，location匹配的path目录如果后面不带”/“，那么访问的url地址中这个path目录后面加不加”/“不影响访问，访问时它会自动加上”/“；但是如果location匹配的path目录后面加上”/“，那么访问的url地址中这个path目录必须要加上”/“，访问时它不会自动加上”/“。如果不加上”/“，访问就会失败！</li><li>root目录配置中，location匹配的path目录后面带不带”/“，都不会影响访问。</li></ul></li><li><p>示例</p></li></ul><pre class="line-numbers language-nginx"><code class="language-nginx">        <span class="token keyword">location</span>  <span class="token operator">/</span> <span class="token punctuation">{</span>            <span class="token keyword">root</span>   <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>excalidraw<span class="token operator">/</span>build<span class="token punctuation">;</span>            <span class="token keyword">index</span>  <span class="token keyword">index</span><span class="token punctuation">.</span>html <span class="token keyword">index</span><span class="token punctuation">.</span>htm<span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">#location匹配访问的path目录名与项目路径一致时，可以使用alias 也可以使用root</span>        <span class="token keyword">location</span> <span class="token operator">/</span>build <span class="token punctuation">{</span>            <span class="token keyword">alias</span>  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>excalidraw<span class="token operator">/</span>build<span class="token operator">/</span><span class="token punctuation">;</span>            <span class="token keyword">index</span>  <span class="token keyword">index</span><span class="token punctuation">.</span>html <span class="token keyword">index</span><span class="token punctuation">.</span>htm<span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">#/usr/local/excalidraw下必须有build目录</span>        <span class="token keyword">location</span> <span class="token operator">/</span>build<span class="token punctuation">{</span>            <span class="token keyword">root</span>  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>excalidraw<span class="token punctuation">;</span>            <span class="token keyword">index</span>  <span class="token keyword">index</span><span class="token punctuation">.</span>html <span class="token keyword">index</span><span class="token punctuation">.</span>htm<span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">#location匹配访问的path目录名与项目路径不一致时，不能直接更改为root</span>        <span class="token keyword">location</span> <span class="token operator">/</span>excalidraw <span class="token punctuation">{</span>            <span class="token keyword">alias</span>  <span class="token operator">/</span>usr<span class="token operator">/</span>local<span class="token operator">/</span>excalidraw<span class="token operator">/</span>build<span class="token operator">/</span><span class="token punctuation">;</span>            <span class="token keyword">index</span>  <span class="token keyword">index</span><span class="token punctuation">.</span>html <span class="token keyword">index</span><span class="token punctuation">.</span>htm<span class="token punctuation">;</span>        <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>所以，一般情况下，在nginx配置中的良好习惯是：<ul><li>在location /中配置root目录；</li><li>在location /path中配置alias虚拟目录。</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;nginx是通过alias设置虚拟目录，在nginx的配置中，alias目录和root目录是有区别的：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;alias指定的目录是准确的，即location匹配访问的path目录下的文件直接是在alias目录下查找的；&lt;/li&gt;
-&lt;l
-      
-    
-    </summary>
-    
-      <category term="Nginx" scheme="http://www.ldclass.club/categories/Nginx/"/>
-    
-      <category term="Alias" scheme="http://www.ldclass.club/categories/Nginx/Alias/"/>
-    
-    
-      <category term="Nginx" scheme="http://www.ldclass.club/tags/Nginx/"/>
-    
-      <category term="Alias" scheme="http://www.ldclass.club/tags/Alias/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>windows使用nvm管理node版本</title>
-    <link href="http://www.ldclass.club/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/"/>
-    <id>http://www.ldclass.club/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/</id>
-    <published>2021-05-27T13:59:56.000Z</published>
-    <updated>2021-05-27T07:32:32.348Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>需要在同一台机器上安装多个版本的Node，使用<code>nvm</code>来做Node版本的管理。</li></ul><blockquote><p>安装前需要先将之前安装的Node版本完全删除</p></blockquote><ul><li><p>Windows设置 –&gt; 应用–&gt; 找到Node–&gt;点击卸载</p></li><li><p>重启电脑（或者从任务管理器中杀死所有Node相关的进程）</p></li><li><p>寻找以下文件夹并删除他们。根据您安装的版本，这些文件可能存在也可能不存在：</p><ul><li>C:\Program Files (x86)\Nodejs</li><li>C:\Program Files\Nodejs</li><li>C:\Users{User}\AppData\Roaming\npm（或%appdata%\npm）</li><li>C:\Users{User}\AppData\Roaming\npm-cache（或%appdata%\npm-cache）</li></ul></li><li><p>检查%PATH%环境变量，确保没有引用Nodejs和npm的存在</p></li><li><p>重启（重启大法解决90%问题）</p></li></ul><blockquote><p>下载安装</p></blockquote><ul><li>链接：<code>https://github.com/coreybutler/nvm-windows/releases</code></li><li>可下载以下版本：<ul><li>nvm-noinstall.zip：绿色免安装版，但使用时需要进行配置。</li><li>nvm-setup.zip：安装版，推荐使用</li></ul></li><li>双击解压后的文件<code>nvm-setup.exe</code></li><li>选择nvm安装路径<ul><li>在选择文件夹的时候，需要注意，文件夹名不要出现 <code>中文</code> 和 <code>空格</code></li></ul></li></ul><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/1.png" title="选择nvm安装路径"><ul><li>选择nodejs安装路径</li></ul><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/2.png" title="选择nodejs安装路径"><ul><li>检查是否安装成功<ul><li>打开cmd，输入<code>nvm</code>，安装成功则会如下图所示，它会显示出当前nvm版本以及nvm的命令：</li></ul></li></ul><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/3.png" title="检查是否安装成功"><blockquote><p>环境变量</p></blockquote><ul><li>安装好之后，环境变量会自动设置好</li></ul><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/4.png" title="环境变量"><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/5.png" title="环境变量"><blockquote><p>使用</p></blockquote><ul><li>nvm list 命令 - 显示版本列表</li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm list // 显示已安装的版本（同 nvm list installed）nvm list installed // 显示已安装的版本nvm list available // 显示所有可以下载的版本<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><ul><li>nvm install 命令 - 安装指定版本nodejs<ul><li>在运行<code>nvm install</code> 的时候，有可能会出现无权限安装的问题，如果遇到此问题，请 <code>以管理员身份运行</code> cmd。</li></ul></li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm install 14.5.0 // 安装14.5.0版本nodenvm install latest // 安装最新版本node<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li>nvm uninstall 命令 - 卸载指定版本 node</li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm uninstall 14.5.0 // 卸载14.5.0版本node<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>nvm use 命令 // 使用指定版本Node</li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm use 14.5.0 // 使用14.5.0版本node<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><p>可能遇到的问题</p></blockquote><ul><li><p>错误一：无法安装npm</p><img src="/2021/05/27/windows-shi-yong-nvm-guan-li-node-ban-ben/6.png" title="错误一"><ul><li><p>可行的解决方法：</p><ul><li>使用nvm-windows高版本时需要单独另外安装npm，nvm只是用来管理node版本的，没有管理npm功能</li><li>为 nvm 设置淘宝镜像</li></ul><pre class="line-numbers language-shell"><code class="language-shell">nvm uninstall 14.5.0nvm npm_mirror https://npm.taobao.org/mirrors/npm/nvm install 14.5.0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;需要在同一台机器上安装多个版本的Node，使用&lt;code&gt;nvm&lt;/code&gt;来做Node版本的管理。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;blockquote&gt;
-&lt;p&gt;安装前需要先将之前安装的Node版本完全删除&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p
-      
-    
-    </summary>
-    
-      <category term="Node" scheme="http://www.ldclass.club/categories/Node/"/>
-    
-      <category term="nvm" scheme="http://www.ldclass.club/categories/Node/nvm/"/>
-    
-    
-      <category term="Node" scheme="http://www.ldclass.club/tags/Node/"/>
-    
-      <category term="nvm" scheme="http://www.ldclass.club/tags/nvm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux安装nodejs</title>
-    <link href="http://www.ldclass.club/2021/05/27/linux-an-zhuang-nodejs/"/>
-    <id>http://www.ldclass.club/2021/05/27/linux-an-zhuang-nodejs/</id>
-    <published>2021-05-27T11:51:13.000Z</published>
-    <updated>2021-05-27T07:41:24.390Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><p>去官网下载和自己系统匹配的文件：</p><ul><li>英文网址：<code>https://nodejs.org/en/download/</code></li><li>中文网址：<code>http://nodejs.cn/download/</code></li></ul></li><li><p>通过  uname -a  命令查看到Linux系统位数（备注：x86_64表示64位系统， i686 i386表示32位系统）</p></li><li><p>下载下来的tar文件上传到服务器并且解压，然后通过建立软连接变为全局；</p><ul><li>上传服务器可以是自己任意路径，目前我的放置路径为  cd /app/software/</li><li>解压上传（解压后的文件我这边将名字改为了nodejs，这个地方自己随意，只要在建立软连接的时候写正确就可以）<ul><li>tar -xvf  node-v6.10.0-linux-x64.tar.xz  </li><li>mv node-v6.10.0-linux-x64  nodejs </li><li>确认一下nodejs下bin目录是否有node 和npm文件，如果有执行软连接，如果没有重新下载执行上边步骤；</li></ul></li><li>建立软连接，变为全局<ul><li>ln -s /app/software/nodejs/bin/npm /usr/local/bin/ </li><li>ln -s /app/software/nodejs/bin/node /usr/local/bin/</li></ul></li><li>最后一步检验nodejs是否已变为全局<ul><li>在Linux命令行node -v 命令会显示nodejs版本，如图所示为大功告成</li></ul></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;去官网下载和自己系统匹配的文件：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;英文网址：&lt;code&gt;https://nodejs.org/en/download/&lt;/code&gt;&lt;/li&gt;
-&lt;li&gt;中文网址：&lt;code&gt;http://nodejs.cn/download/&lt;/
-      
-    
-    </summary>
-    
-      <category term="Node" scheme="http://www.ldclass.club/categories/Node/"/>
-    
-    
-      <category term="Node" scheme="http://www.ldclass.club/tags/Node/"/>
     
   </entry>
   
