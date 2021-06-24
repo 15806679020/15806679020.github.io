@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>数据库定时备份</title>
+      <link href="2021/06/25/shu-ju-ku-ding-shi-bei-fen/"/>
+      <url>2021/06/25/shu-ju-ku-ding-shi-bei-fen/</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Windows</p></blockquote><ul><li>mysql</li></ul><pre class="line-numbers language-bat"><code class="language-bat">rem ******MySQL backup start********@echo offset "Ymd=%DATE:~,4%%DATE:~5,2%%DATE:~8,2%%time:~0,2%%time:~3,2%""C:\mysql5.7\bin\mysqldump" -uroot -pRoot@123 -h127.0.0.1 --databases plat > C:\mysqldata\plat_%Ymd%.sql@echo onrem ******MySQL backup end********<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>oracle</li></ul><pre class="line-numbers language-bat"><code class="language-bat">rem ******MySQL backup start********@echo offset adir=%DATE:~,4%%DATE:~5,2%%DATE:~8,2%%time:~0,2%%time:~3,2%exp rjm/rjm@orcl owner=rjm file=C:\oracledata\rjm_%adir%.dmp log='C:\oracledata\rjm_%adir%.log'@echo onrem ******MySQL backup end********<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><p>配置定时任务</p><ul><li>首先是创建一个任务，在附件–&gt;系统工具中可以看到任务计划程序： </li></ul><img src="/2021/06/25/shu-ju-ku-ding-shi-bei-fen/1.png" title="配置定时任务"><ul><li>点击打开后可以看到主界面： </li></ul><img src="/2021/06/25/shu-ju-ku-ding-shi-bei-fen/2.png" title="配置定时任务"><ul><li>点击右侧的创建基本任务，随便输入一个名称后点击【下一步】： </li></ul><img src="/2021/06/25/shu-ju-ku-ding-shi-bei-fen/3.png" title="配置定时任务"><ul><li>然后是选择执行频率，我这里选择每天，然后点击【下一步】： </li></ul><img src="/2021/06/25/shu-ju-ku-ding-shi-bei-fen/4.png" title="配置定时任务"><ul><li>接着是设置开始时间和具体几点执行，我这里选择每天18点执行，从今天开始，然后点击【下一步】： </li></ul><img src="/2021/06/25/shu-ju-ku-ding-shi-bei-fen/5.png" title="配置定时任务"><ul><li>由于我们执行的是批处理脚本，所以直接选择【启动程序】即可，然后点击【下一步】： </li></ul><img src="/2021/06/25/shu-ju-ku-ding-shi-bei-fen/6.png" title="配置定时任务"><ul><li>接着就是选择我们脚本的位置，如果有参数的话填上参数，点击【下一步】： </li></ul><img src="/2021/06/25/shu-ju-ku-ding-shi-bei-fen/7.png" title="配置定时任务"><ul><li>最后确认一下配置无误，点击【完成】： </li></ul><img src="/2021/06/25/shu-ju-ku-ding-shi-bei-fen/8.png" title="配置定时任务"><ul><li>由于我们勾选了当点击【完成】时打开任务属性对话框，所以接下来我们看到的就是任务属性对话框，我们在这里还要再做一些设置：</li></ul><img src="/2021/06/25/shu-ju-ku-ding-shi-bei-fen/9.png" title="配置定时任务"><ul><li>如上图所示，这个配置非常重要，即选中“不管用户是否登录都要运行”和“使用最高权限运行”，注意这一点尤为重要，如果不选中这两项那么批处理脚本就无法自动执行完毕。最后点击【确定】并输入密码即可： </li></ul><img src="/2021/06/25/shu-ju-ku-ding-shi-bei-fen/10.png" title="配置定时任务"><ul><li>最后在首页就可以看到刚才添加的任务了： </li></ul><ul><li>双击该任务即可进入任务详情页面，也就能看到上次和下次的执行时间以及上次的执行结果： </li></ul><img src="/2021/06/25/shu-ju-ku-ding-shi-bei-fen/12.png" title="配置定时任务"></li></ul><blockquote><p>Linux</p></blockquote><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>pom配置使用lib下的jar包</title>
       <link href="2021/06/25/pom-pei-zhi-shi-yong-lib-xia-de-jar-bao/"/>
       <url>2021/06/25/pom-pei-zhi-shi-yong-lib-xia-de-jar-bao/</url>
