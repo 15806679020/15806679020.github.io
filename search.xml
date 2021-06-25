@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Springboot静态资源加载</title>
+      <link href="2021/06/26/springboot-jing-tai-zi-yuan-jia-zai/"/>
+      <url>2021/06/26/springboot-jing-tai-zi-yuan-jia-zai/</url>
+      
+        <content type="html"><![CDATA[<ul><li><p>静态资源加载顺序</p><pre class="line-numbers language-yml"><code class="language-yml">classpath:/META-INF/resources/, classpath:/resources/, classpath:/static/, classpath:/public/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li><li><p>spring boot配置文件中 <code>spring.mvc.static-path-pattern</code> 配置项</p><pre class="line-numbers language-yml"><code class="language-yml">spring:    mvc:        static-path-pattern: /static/**<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>项目中<code>application.yml</code>配置文件中，存在如上配置项时，访问静态资源文件要加<code>static</code>才行，当把这个配置项除掉时，不用加static作为前缀亦可进行正常访问。</p></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> SpringBoot </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringBoot </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据库定时备份</title>
       <link href="2021/06/25/shu-ju-ku-ding-shi-bei-fen/"/>
       <url>2021/06/25/shu-ju-ku-ding-shi-bei-fen/</url>
@@ -2927,11 +2952,11 @@
       
         <tags>
             
+            <tag> AlibabaCloud </tag>
+            
             <tag> CAP </tag>
             
             <tag> BASE </tag>
-            
-            <tag> AlibabaCloud </tag>
             
         </tags>
       
@@ -3653,7 +3678,7 @@
       <link href="2020/11/23/springboot2-x-zheng-he-mo-ban-yin-qing-thymelea-he-fk/"/>
       <url>2020/11/23/springboot2-x-zheng-he-mo-ban-yin-qing-thymelea-he-fk/</url>
       
-        <content type="html"><![CDATA[<script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+        <content type="html"><![CDATA[<blockquote><p>thymeleaf</p></blockquote><ul><li>pom.xml配置</li></ul><pre class="line-numbers language-xml"><code class="language-xml">        <span class="token comment" spellcheck="true">&lt;!--thymeleaf--></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>org.springframework.boot<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>spring-boot-starter-thymeleaf<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>net.sourceforge.nekohtml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>nekohtml<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>version</span><span class="token punctuation">></span></span>1.9.22<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>version</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>yml配置</li></ul><pre class="line-numbers language-yml"><code class="language-yml">spring:  profiles:    #启用的配置文件    active: dev  #不配置，默认是此加载顺序  resources:    static-locations: classpath:/META-INF/resources/, classpath:/resources/, classpath:/static/, classpath:/public/  ################ thymeleaf配置 开始  ################  thymeleaf:    #开发时关闭缓存，不然无法看到实时页面    cache: false    mode: HTML5    #前缀    prefix: classpath:/templates/    #编码    encoding: utf-8    #类型    servlet:      content-type: text/html    #后缀    suffix: .html  ################ thymeleaf配置 结束  ################<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>html配置</li></ul><pre><code>&lt;!DOCTYPE html&gt;&lt;html lang="en" xmlns:th="http://www.thymeleaf.org"&gt;</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
       
       
       <categories>
