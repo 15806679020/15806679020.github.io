@@ -645,7 +645,7 @@ mysqldump -u -p -h 库名 | gzip &gt;/路径/">
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    1.8k
                 </div>
                 
 
@@ -783,7 +783,16 @@ alter user test identified by test;
 --//执行该语句请小心，会级联删除该用户下所有对象。
 drop user test cascade; <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li>exp导出</li>
+<li><p>注意：</p>
+<ul>
+<li>exp和imp是客户端工具程序，它们既可以在客户端使用，也可以在服务端使用</li>
+<li>expdp和impdp是服务端的工具程序，他们只能在oracle服务端使用，不能在客户端使用</li>
+<li>imp只适用于exp导出的文件，不适用于expdp导出文件；impdp只适用于expdp导出的文件，而不适用于exp导出文件。</li>
+<li>对于10g以上的服务器，使用exp通常不能导出0行数据的空表，而此时必须使用expdp导出。</li>
+</ul>
+</li>
+<li><p>exp导出</p>
+</li>
 </ul>
 <pre class="line-numbers language-shell"><code class="language-shell">exp test/test@orcl owner=test file=d:\test.dmp log=d:\test.log
 
@@ -1631,7 +1640,7 @@ Springboot默认支持4种数据源类型，定义在 org.springframework.boot.a
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">211.8k</span> 字
+                <span class="white-color">212k</span> 字
             
 
             

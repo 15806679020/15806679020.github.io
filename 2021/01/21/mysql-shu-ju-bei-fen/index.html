@@ -635,7 +635,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    1.6k
                 </div>
                 
 
@@ -752,11 +752,13 @@ ln -fs /usr/local/mysql/bin/mysql /usr/bin<span aria-hidden="true" class="line-n
 <h3 id="三、mysql数据恢复"><a href="#三、mysql数据恢复" class="headerlink" title="三、mysql数据恢复"></a>三、mysql数据恢复</h3><ul>
 <li>远程恢复数据（备份的数据文件里有创建库的语句）</li>
 </ul>
-<pre class="line-numbers language-shell"><code class="language-shell">mysql -uroot -pabc123456 -h120.25.93.69 < zabbix_bak.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">mysql -uroot -pabc123456 -h120.25.93.69 < zabbix_bak.sql
+mysql -uroot -pabc123456 -h120.25.93.69 --port3306 < zabbix_bak.sql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <ul>
 <li>远程恢复数据（备份的数据文件里没有创建库的语句）：</li>
 </ul>
-<pre class="line-numbers language-shell"><code class="language-shell">mysql -uroot -pabc123456 -h120.25.93.69 zabbix < zabbix_bak.sql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">mysql -uroot -pabc123456 -h120.25.93.69 zabbix < zabbix_bak.sql
+mysql -uroot -pabc123456 -h120.25.93.69 --port3306 zabbix < zabbix_bak.sql<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <h3 id="四、mysql物理备份"><a href="#四、mysql物理备份" class="headerlink" title="四、mysql物理备份"></a>四、mysql物理备份</h3><ul>
 <li>查找数据库源文件路径</li>
 </ul>
@@ -1645,7 +1647,7 @@ sl
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">211.8k</span> 字
+                <span class="white-color">212k</span> 字
             
 
             
