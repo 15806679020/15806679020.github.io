@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ldclass.club/"/>
-  <updated>2021-07-13T09:55:43.585Z</updated>
+  <updated>2021-08-11T15:23:36.309Z</updated>
   <id>http://www.ldclass.club/</id>
   
   <author>
@@ -15,6 +15,122 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>微服务技术对比和选择</title>
+    <link href="http://www.ldclass.club/2021/08/12/wei-fu-wu-ji-zhu-dui-bi-he-xuan-ze/"/>
+    <id>http://www.ldclass.club/2021/08/12/wei-fu-wu-ji-zhu-dui-bi-he-xuan-ze/</id>
+    <published>2021-08-11T23:15:51.000Z</published>
+    <updated>2021-08-11T15:23:36.309Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><h3 id="SpringCloud"><a href="#SpringCloud" class="headerlink" title="SpringCloud"></a>SpringCloud</h3></li></ul><pre><code>全家桶+轻松嵌入第三方组件(Netflix 奈飞)官网：https://spring.io/projects/spring-cloud配套通信方式：http restful注册中心：eureka配置中心：config断路器：hystrix网关：zuul/gateway分布式追踪系统：sleuth+zipkin</code></pre><ul><li><h3 id="SpringCloudAlibaba"><a href="#SpringCloudAlibaba" class="headerlink" title="SpringCloudAlibaba"></a>SpringCloudAlibaba</h3></li></ul><pre><code>全家桶+阿里生态多个组件组合+SpringCloud支持官网 https://spring.io/projects/spring-cloud-alibaba配套通信方式：http restful服务注册发现：Nacos服务限流降级：Sentinel分布配置中心：Nacos服务网关：SpringCloud Gateway服务之间调用：Feign、Ribbon链路追踪：Sleuth+Zipkin</code></pre><ul><li><h3 id="为什么要选择SpringCloud和AlibabaCloud的区别"><a href="#为什么要选择SpringCloud和AlibabaCloud的区别" class="headerlink" title="为什么要选择SpringCloud和AlibabaCloud的区别"></a>为什么要选择SpringCloud和AlibabaCloud的区别</h3></li></ul><pre><code>官网 https://spring.io/projects/spring-cloud-alibaba#overviewSpringCloud和AlibabaCloud组件存在很大交集，互相配合SpringCloud很多组件是基于第三方整合，目前多个已经不更新了，比如zuul、eureka、hystrix等AlibabaCloud 提供一站式微服务解决方法，已经和SpringCloud进行了整合，组件互相支持我们也习惯称为 Spring Cloud Alibaba详细介绍：https://mp.weixin.qq.com/s/NMD52MLDY2Lq3LSeOcVwjA</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;SpringCloud&quot;&gt;&lt;a href=&quot;#SpringCloud&quot; class=&quot;headerlink&quot; title=&quot;SpringCloud&quot;&gt;&lt;/a&gt;SpringCloud&lt;/h3&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre&gt;&lt;code&gt;全家桶+轻
+      
+    
+    </summary>
+    
+      <category term="实战项目" scheme="http://www.ldclass.club/categories/%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+      <category term="实战项目" scheme="http://www.ldclass.club/tags/%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/"/>
+    
+      <category term="SpringCloud" scheme="http://www.ldclass.club/tags/SpringCloud/"/>
+    
+      <category term="SpringCloudAlibaba" scheme="http://www.ldclass.club/tags/SpringCloudAlibaba/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DevOps如何提效</title>
+    <link href="http://www.ldclass.club/2021/08/10/devops-ru-he-ti-xiao/"/>
+    <id>http://www.ldclass.club/2021/08/10/devops-ru-he-ti-xiao/</id>
+    <published>2021-08-09T21:58:25.000Z</published>
+    <updated>2021-08-09T14:50:01.024Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><h3 id="DevOps"><a href="#DevOps" class="headerlink" title="DevOps"></a>DevOps</h3><ul><li>什么是DevOps：开发+测试+运维 交集</li><li>一专多能，配合提效</li><li>核心：CI/CD（持续集成/持续交付） 多环境-构建-打包-测试-上线-监控</li><li>快速迭代产品，每次代码的改动都触发校验，每刻都可进行新版本的上线</li><li>持续开发、持续集成、持续测试、持续部署、持续监控</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;DevOps&quot;&gt;&lt;a href=&quot;#DevOps&quot; class=&quot;headerlink&quot; title=&quot;DevOps&quot;&gt;&lt;/a&gt;DevOps&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;什么是DevOps：开发+测试+运维 交集&lt;/li&gt;
+&lt;li&gt;一专多能，配合提
+      
+    
+    </summary>
+    
+      <category term="DevOps" scheme="http://www.ldclass.club/categories/DevOps/"/>
+    
+    
+      <category term="DevOps" scheme="http://www.ldclass.club/tags/DevOps/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>DDD领域驱动设计</title>
+    <link href="http://www.ldclass.club/2021/08/10/ddd-ling-yu-qu-dong-she-ji/"/>
+    <id>http://www.ldclass.club/2021/08/10/ddd-ling-yu-qu-dong-she-ji/</id>
+    <published>2021-08-09T21:51:36.000Z</published>
+    <updated>2021-08-09T13:57:51.204Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><h3 id="DDD领域驱动设计"><a href="#DDD领域驱动设计" class="headerlink" title="DDD领域驱动设计"></a>DDD领域驱动设计</h3><ul><li>什么是DDD：领域驱动设计，领域专家—&gt;电商领域/支付领域/物流领域/在线教育等</li><li>步骤：领域分析—&gt;领域设计—&gt;领域实现—&gt;循环迭代优化</li><li>DDD是一套思想，不通团队实行DDD都有不同的理解，不是每个项目都适合</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;DDD领域驱动设计&quot;&gt;&lt;a href=&quot;#DDD领域驱动设计&quot; class=&quot;headerlink&quot; title=&quot;DDD领域驱动设计&quot;&gt;&lt;/a&gt;DDD领域驱动设计&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;什么是DDD：领域驱动设计，领域专家—&amp;gt;电商领域
+      
+    
+    </summary>
+    
+      <category term="DDD" scheme="http://www.ldclass.club/categories/DDD/"/>
+    
+    
+      <category term="DDD" scheme="http://www.ldclass.club/tags/DDD/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解决方案分析方法论SWOT</title>
+    <link href="http://www.ldclass.club/2021/08/10/jie-jue-fang-an-fen-xi-fang-fa-lun-swot/"/>
+    <id>http://www.ldclass.club/2021/08/10/jie-jue-fang-an-fen-xi-fang-fa-lun-swot/</id>
+    <published>2021-08-09T21:41:14.000Z</published>
+    <updated>2021-08-09T13:48:12.124Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><h3 id="SWOT"><a href="#SWOT" class="headerlink" title="SWOT"></a>SWOT</h3><ul><li>S(strengths)是优势</li><li>W(weaknesses)是劣势</li><li>O(opportunities)是机会</li><li>T(threats)是威胁</li></ul></li><li><h3 id="SMART"><a href="#SMART" class="headerlink" title="SMART"></a>SMART</h3><ul><li><p>SMART原则【目标管理、设置】</p><ul><li><p><strong>Specific</strong>：目标要具体</p></li><li><p><strong>Measurable</strong>：目标成果要可衡量（量化）</p></li><li><p><strong>Attainable</strong>：目标要可实现，避免过高/过低</p></li><li><p><strong>Relevant</strong>：与其他目标有一定的相关性</p></li><li><p><strong>Time bound</strong>：目标必须有明确的期限</p></li><li><p><strong>意义</strong>：在制定工作目标或者任务目标时，考虑一下目标与计划是不是SMART化的。只有具备SMART化的计划才是具有良好可实施性的，也才能指导保证计划得以实现</p></li><li><p><strong>OKR</strong>：绩效考核 </p></li></ul></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;h3 id=&quot;SWOT&quot;&gt;&lt;a href=&quot;#SWOT&quot; class=&quot;headerlink&quot; title=&quot;SWOT&quot;&gt;&lt;/a&gt;SWOT&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;S(strengths)是优势&lt;/li&gt;
+&lt;li&gt;W(weaknesses)是劣势&lt;/li&gt;
+
+      
+    
+    </summary>
+    
+      <category term="SWOT" scheme="http://www.ldclass.club/categories/SWOT/"/>
+    
+    
+      <category term="SWOT" scheme="http://www.ldclass.club/tags/SWOT/"/>
+    
+  </entry>
   
   <entry>
     <title>Mysql主从复制</title>
@@ -501,132 +617,6 @@
     
     
       <category term="JavaWeb" scheme="http://www.ldclass.club/tags/JavaWeb/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CORS跨域配置</title>
-    <link href="http://www.ldclass.club/2021/06/09/cors-kua-yu-pei-zhi/"/>
-    <id>http://www.ldclass.club/2021/06/09/cors-kua-yu-pei-zhi/</id>
-    <published>2021-06-09T09:25:30.000Z</published>
-    <updated>2021-06-10T09:07:22.308Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><p>CORS跨域资源共享漏洞</p></li><li><p>问题描述：</p><ul><li>WEB应用程序可以通过在HTTP增加字段来告诉浏览器，哪些不同来源的服务器是有权访问本站资源的，当不同域的请求发生时，就出现了跨域的现象。</li><li>当CORS的设置不正确时，就会带来安全问题。注意Access-Control-Allow-Origin的值，当其为null、意味着信任任何域，*这时候可能引入安全问题。假设用户登陆一个含有CORS配置网站vuln.com，同时又访问了攻击者提供的一个链接evil.com。evil.com的网站向vuln.com这个网站发起请求获取敏感数据，浏览器能否接收信息取决于vuln.com的配置。如果vuln.com配置了Access-Control-Allow-Origin头且为预期，那么允许接收，否则浏览器会因为同源策略而不接收。</li></ul></li><li><p>解决思路</p><p>1.不要配置”Access-Control-Allow-Origin” 为通配符 “*” ，而且更为重要的是，要严格效验来自请求数据包中的“Origin”的值。当收到跨域请求的时候，要检查“Origin” 的值是否是一个可信的源，还要检查是否为null。</p><p>2.避免使用 “Access-Control-Allow-Credentials ：true” （请求中带cookie）。</p><p>3.减少“Access-Control-Allow-Methods”所允许的方法，一般只配置常用的POST、GET</p></li><li><p>web.xml</p></li></ul><pre class="line-numbers language-xml"><code class="language-xml">  <span class="token comment" spellcheck="true">&lt;!-- 实现跨域 --></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>CORS<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">></span></span>com.thetransactioncompany.cors.CORSFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>init-param</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">></span></span>cors.allowOrigin<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">></span></span>*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">></span></span><span class="token comment" spellcheck="true">&lt;!--            &lt;param-value>http://192.168.31.47:8072,http://192.168.31.47:9212,http://192.168.31.47:9214&lt;/param-value>--></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>init-param</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>init-param</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">></span></span>cors.supportedMethods<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">></span></span><span class="token comment" spellcheck="true">&lt;!--            &lt;param-value>GET, POST, PUT&lt;/param-value>--></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">></span></span>GET, POST,OPTIONS<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>init-param</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>init-param</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">></span></span>cors.supportedHeaders<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">></span></span>Accept, Origin, X-Requested-With, Content-Type, Last-Modified, X-Session-Token<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>init-param</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>init-param</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">></span></span>cors.exposedHeaders<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">></span></span>Set-Cookie<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>init-param</span><span class="token punctuation">></span></span><span class="token comment" spellcheck="true">&lt;!--        &lt;init-param>--></span><span class="token comment" spellcheck="true">&lt;!--            &lt;param-name>cors.supportsCredentials&lt;/param-name>--></span><span class="token comment" spellcheck="true">&lt;!--            &lt;param-value>true&lt;/param-value>--></span><span class="token comment" spellcheck="true">&lt;!--        &lt;/init-param>--></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>CORS<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;CORS跨域资源共享漏洞&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;问题描述：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;WEB应用程序可以通过在HTTP增加字段来告诉浏览器，哪些不同来源的服务器是有权访问本站资源的，当不同域的请求发生时，就出现了跨域的现象。&lt;/li&gt;
-&lt;li&gt;
-      
-    
-    </summary>
-    
-      <category term="CORS" scheme="http://www.ldclass.club/categories/CORS/"/>
-    
-      <category term="JavaWeb" scheme="http://www.ldclass.club/categories/CORS/JavaWeb/"/>
-    
-    
-      <category term="CORS" scheme="http://www.ldclass.club/tags/CORS/"/>
-    
-      <category term="JavaWeb" scheme="http://www.ldclass.club/tags/JavaWeb/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Xss保护过滤器</title>
-    <link href="http://www.ldclass.club/2021/06/09/xss-bao-hu-guo-lu-qi/"/>
-    <id>http://www.ldclass.club/2021/06/09/xss-bao-hu-guo-lu-qi/</id>
-    <published>2021-06-09T09:14:27.000Z</published>
-    <updated>2021-06-10T08:32:29.879Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><h5 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h5><ul><li>预防存储型跨站脚本攻击</li><li>网站会将用户输入内容中包含的JavaScript代码呈现到页面上。如果攻击者能够设法诱骗合法用户访问其构造的链接或表单，攻击者就能以目标网站的身份在合法用户的浏览器上执行任意JS代码，从而窃取Cookie、执行CSRF、甚至借助浏览器漏洞完全控制用户主机。</li></ul></li><li><h5 id="风险分析"><a href="#风险分析" class="headerlink" title="风险分析"></a>风险分析</h5><ul><li>攻击者可以利用存在XSS漏洞的Web系统攻击浏览相关网页的用户，窃取用户会话中诸如用户名和口令（可能包含在Cookie里）等敏感信息、通过插入恶意代码对用户执行挂马攻击、XSS漏洞还可能被攻击者用于网页篡改。</li></ul></li><li><h5 id="解决思路"><a href="#解决思路" class="headerlink" title="解决思路"></a>解决思路</h5><ul><li><code>JavaWeb</code>：配置<code>Xss</code>过滤器</li><li><code>web.xml</code></li></ul><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>XssEscape<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">></span></span>com.blb.util.dataSource.XssFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">></span></span>        <span class="token comment" spellcheck="true">&lt;!-- 需要排除的接口 --></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>init-param</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-name</span><span class="token punctuation">></span></span>excludedPages<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-name</span><span class="token punctuation">></span></span>            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>param-value</span><span class="token punctuation">></span></span>                /ApiUser/ssoLogin,                /ApiUser/ssoLoginTokenVerification,                /ApiUser/authentication,                /ApiUser/login,                /ApiUser/updatePwd,                /questionLook/QuestionBydoc,                /Kapi/upfiles,                /payment/authorizeLogin,                /questionLook/questionSaveOrUpdate,                /Kapi/uploadStorage,                /interlocution/saveEditQA,                /stage/addUpdateArrange,                /questionLook/questionsToPaper,                /course/AddNoCourseinfo            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>param-value</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>init-param</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>XssEscape<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dispatcher</span><span class="token punctuation">></span></span>REQUEST<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dispatcher</span><span class="token punctuation">></span></span>    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>Java</li></ul><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>io<span class="token punctuation">.</span>IOException<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>Filter<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>FilterChain<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>FilterConfig<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletException<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletRequest<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ServletResponse<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletRequest<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletResponse<span class="token punctuation">;</span><span class="token comment" spellcheck="true">/** * 过滤xss和sql * @author JH * */</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">XssFilter</span> <span class="token keyword">implements</span> <span class="token class-name">Filter</span> <span class="token punctuation">{</span>    <span class="token comment" spellcheck="true">/**  需排除过滤的URL路径   例如（/ApiUser/login）*/</span>    <span class="token keyword">private</span> String excludedPages<span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">/** 需排除过滤的URL路径的数组*/</span>    <span class="token keyword">private</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> excludedPageStr<span class="token punctuation">;</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span>FilterConfig filterConfig<span class="token punctuation">)</span> <span class="token keyword">throws</span> ServletException <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">//此处的ignores就是在web.xml定义的名称一样。</span>        excludedPages <span class="token operator">=</span> filterConfig<span class="token punctuation">.</span><span class="token function">getInitParameter</span><span class="token punctuation">(</span><span class="token string">"excludedPages"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>excludedPages <span class="token operator">!=</span> null <span class="token operator">&amp;&amp;</span> excludedPages<span class="token punctuation">.</span><span class="token function">length</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>            excludedPageStr <span class="token operator">=</span> excludedPages<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doFilter</span><span class="token punctuation">(</span>ServletRequest req<span class="token punctuation">,</span> ServletResponse res<span class="token punctuation">,</span>            FilterChain chain<span class="token punctuation">)</span> <span class="token keyword">throws</span> IOException<span class="token punctuation">,</span> ServletException <span class="token punctuation">{</span>        HttpServletRequest request <span class="token operator">=</span> <span class="token punctuation">(</span>HttpServletRequest<span class="token punctuation">)</span>req<span class="token punctuation">;</span>        HttpServletResponse response <span class="token operator">=</span> <span class="token punctuation">(</span>HttpServletResponse<span class="token punctuation">)</span> res<span class="token punctuation">;</span>        String targetURL <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getRequestURI</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">if</span><span class="token punctuation">(</span>targetURL<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"/"</span><span class="token punctuation">)</span> <span class="token operator">||</span> targetURL<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>            targetURL <span class="token operator">=</span> <span class="token string">"/index"</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token comment" spellcheck="true">// 定义表示变量 并验证用户请求URL 是否包含不过滤路径</span>        <span class="token keyword">boolean</span> flag <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>        <span class="token keyword">for</span> <span class="token punctuation">(</span>String page<span class="token operator">:</span>excludedPageStr<span class="token punctuation">)</span> <span class="token punctuation">{</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>targetURL<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>page<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>                flag <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span>        <span class="token keyword">if</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">{</span>            <span class="token comment" spellcheck="true">//判断接口是否需要过滤xss</span>            request <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">XssAndSqlHttpServletRequestWrapper</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        chain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span>response<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        System<span class="token punctuation">.</span>err<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==========执行=========="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;h5 id=&quot;问题描述&quot;&gt;&lt;a href=&quot;#问题描述&quot; class=&quot;headerlink&quot; title=&quot;问题描述&quot;&gt;&lt;/a&gt;问题描述&lt;/h5&gt;&lt;ul&gt;
-&lt;li&gt;预防存储型跨站脚本攻击&lt;/li&gt;
-&lt;li&gt;网站会将用户输入内容中包含的JavaScript代码
-      
-    
-    </summary>
-    
-      <category term="Xss" scheme="http://www.ldclass.club/categories/Xss/"/>
-    
-      <category term="JavaWeb" scheme="http://www.ldclass.club/categories/Xss/JavaWeb/"/>
-    
-    
-      <category term="JavaWeb" scheme="http://www.ldclass.club/tags/JavaWeb/"/>
-    
-      <category term="Xss" scheme="http://www.ldclass.club/tags/Xss/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Centos7本地挂载yum源</title>
-    <link href="http://www.ldclass.club/2021/06/08/centos7-ben-di-gua-zai-yum-yuan/"/>
-    <id>http://www.ldclass.club/2021/06/08/centos7-ben-di-gua-zai-yum-yuan/</id>
-    <published>2021-06-07T17:34:49.000Z</published>
-    <updated>2021-06-18T08:57:43.058Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>挂载镜像</li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# mkdir  -p  /mnt/centos7[root@lmzf ~]# mount  /root/CentOS-7-x86_64-DVD-1708.iso  /mnt/centos7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li>开机永久挂载</li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# cat  /etc/fstab/root/CentOS-7-x86_64-DVD-1708.iso   /mnt/centos7  iso9660 defaults,loop,ro  0  0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li><p>删除<code>/etc/yum.repo.d/</code>中的所有yum源 (重要)</p></li><li><p>创建本地的<code>repo</code>文件</p></li></ul><pre class="line-numbers language-shell"><code class="language-shell">[root@lmzf ~]# vim  /etc/yum.repo.d/centos7.repo[centos7]name=centos7baseurl=file:///mnt/centos7gpgcheck=0enabled=1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li>开始yum安装软件</li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;挂载镜像&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre class=&quot;line-numbers language-shell&quot;&gt;&lt;code class=&quot;language-shell&quot;&gt;[root@lmzf ~]# mkdir  -p  /mnt/centos7
-[root@
-      
-    
-    </summary>
-    
-      <category term="linux" scheme="http://www.ldclass.club/categories/linux/"/>
-    
-    
-      <category term="linux" scheme="http://www.ldclass.club/tags/linux/"/>
-    
-      <category term="CentOS7" scheme="http://www.ldclass.club/tags/CentOS7/"/>
-    
-      <category term="yum" scheme="http://www.ldclass.club/tags/yum/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis部署遇到的问题</title>
-    <link href="http://www.ldclass.club/2021/06/04/redis-bu-shu-yu-dao-de-wen-ti/"/>
-    <id>http://www.ldclass.club/2021/06/04/redis-bu-shu-yu-dao-de-wen-ti/</id>
-    <published>2021-06-04T13:38:25.000Z</published>
-    <updated>2021-06-04T05:45:07.278Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote><h4 id="redis远程连接不上解决办法"><a href="#redis远程连接不上解决办法" class="headerlink" title="redis远程连接不上解决办法"></a>redis远程连接不上解决办法</h4></blockquote><ul><li><p>解决步骤：</p><ul><li>步骤一：注释掉redis.conf文件中的bind属性设置。</li></ul><img src="/2021/06/04/redis-bu-shu-yu-dao-de-wen-ti/1.png" title="bind"><ul><li>步骤二：把protected-mode属性设置no</li></ul><img src="/2021/06/04/redis-bu-shu-yu-dao-de-wen-ti/2.png" title="protected-mode"></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;blockquote&gt;
-&lt;h4 id=&quot;redis远程连接不上解决办法&quot;&gt;&lt;a href=&quot;#redis远程连接不上解决办法&quot; class=&quot;headerlink&quot; title=&quot;redis远程连接不上解决办法&quot;&gt;&lt;/a&gt;redis远程连接不上解决办法&lt;/h4&gt;&lt;/blockq
-      
-    
-    </summary>
-    
-      <category term="Redis" scheme="http://www.ldclass.club/categories/Redis/"/>
-    
-    
-      <category term="Redis" scheme="http://www.ldclass.club/tags/Redis/"/>
     
   </entry>
   
