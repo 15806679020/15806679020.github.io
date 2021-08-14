@@ -1,3 +1,6 @@
+http://www.ldclass.club/2021/08/15/swagger3-0-xin-quan-ju-pei-zhi/
+http://www.ldclass.club/2021/08/14/postman-pei-zhi-duo-huan-jing-cao-zuo/
+http://www.ldclass.club/2021/08/14/xiang-mu-bian-ma-gui-fan/
 http://www.ldclass.club/2021/08/12/wei-fu-wu-ji-zhu-dui-bi-he-xuan-ze/
 http://www.ldclass.club/2021/08/10/devops-ru-he-ti-xiao/
 http://www.ldclass.club/2021/08/10/ddd-ling-yu-qu-dong-she-ji/
@@ -75,6 +78,3 @@ http://www.ldclass.club/2021/01/14/dai-li-she-ji-mo-shi/
 http://www.ldclass.club/2021/01/14/swagger3-0-jie-kou-wen-dang/
 http://www.ldclass.club/2021/01/14/mybatis-plus-generator-dai-ma-sheng-cheng-qi/
 http://www.ldclass.club/2021/01/14/mybatis-plus/
-http://www.ldclass.club/2021/01/14/lombok-cha-jian/
-http://www.ldclass.club/2021/01/13/xiang-mu-feng-xian-guan-li/
-http://www.ldclass.club/2021/01/12/xiang-mu-gou-tong-guan-li-de-3-ge-zi-guo-cheng/
