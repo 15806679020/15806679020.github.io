@@ -543,7 +543,7 @@
                 
                 <div class="info-break-policy">
                     <i class="fa fa-file-word-o fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.6k
+                    1.7k
                 </div>
                 
 
@@ -829,55 +829,67 @@ aliyun:
 </ul>
 <pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> club<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>controller<span class="token punctuation">;</span>
 
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-</li>
-</ul>
-<p>  import club.ldclass.enums.BizCodeEnum;<br>  import club.ldclass.service.FileService;<br>  import club.ldclass.utils.JsonData;<br>  import io.swagger.annotations.Api;<br>  import io.swagger.annotations.ApiOperation;<br>  import io.swagger.annotations.ApiParam;<br>  import org.springframework.beans.factory.annotation.Autowired;<br>  import org.springframework.web.bind.annotation.PostMapping;<br>  import org.springframework.web.bind.annotation.RequestMapping;</p>
-<p>  import org.springframework.web.bind.annotation.RequestPart;<br>  import org.springframework.web.bind.annotation.RestController;<br>  import org.springframework.web.multipart.MultipartFile;<br>  import springfox.documentation.spring.web.json.Json;</p>
-<p>  /**</p>
+<span class="token keyword">import</span> club<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>enums<span class="token punctuation">.</span>BizCodeEnum<span class="token punctuation">;</span>
+<span class="token keyword">import</span> club<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>service<span class="token punctuation">.</span>FileService<span class="token punctuation">;</span>
+<span class="token keyword">import</span> club<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>JsonData<span class="token punctuation">;</span>
+<span class="token keyword">import</span> io<span class="token punctuation">.</span>swagger<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>Api<span class="token punctuation">;</span>
+<span class="token keyword">import</span> io<span class="token punctuation">.</span>swagger<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>ApiOperation<span class="token punctuation">;</span>
+<span class="token keyword">import</span> io<span class="token punctuation">.</span>swagger<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span>ApiParam<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>beans<span class="token punctuation">.</span>factory<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Autowired<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>PostMapping<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>RequestMapping<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>RequestPart<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>bind<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>RestController<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>multipart<span class="token punctuation">.</span>MultipartFile<span class="token punctuation">;</span>
+<span class="token keyword">import</span> springfox<span class="token punctuation">.</span>documentation<span class="token punctuation">.</span>spring<span class="token punctuation">.</span>web<span class="token punctuation">.</span>json<span class="token punctuation">.</span>Json<span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">/**
+ * &lt;p>
+ * 前端控制器
+ * &lt;/p>
+ *
+ * @author LiuDong
+ * @since 2021-08-13
+ */</span>
+<span class="token annotation punctuation">@Api</span><span class="token punctuation">(</span>tags <span class="token operator">=</span> <span class="token string">"用户模块"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span><span class="token string">"/api/user/v1"</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UserController</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Autowired</span>
+    <span class="token keyword">private</span> FileService fileService<span class="token punctuation">;</span>
+
+    <span class="token comment" spellcheck="true">/**
+     * 上传用户头像
+     * &lt;p>
+     * SpringBoot默认上传1M，超过则报错
+     *
+     * @param file
+     * @return club.ldclass.utils.JsonData
+     * @author LiuDong
+     * @date 2021/8/19 0:03
+     */</span>
+    <span class="token annotation punctuation">@ApiOperation</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"用户头像上传"</span><span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"upload"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> JsonData <span class="token function">uploadUserImg</span><span class="token punctuation">(</span>
+            <span class="token annotation punctuation">@ApiParam</span><span class="token punctuation">(</span>value <span class="token operator">=</span> <span class="token string">"文件上传"</span><span class="token punctuation">,</span> required <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+            <span class="token annotation punctuation">@RequestPart</span><span class="token punctuation">(</span><span class="token string">"file"</span><span class="token punctuation">)</span> MultipartFile file<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+
+        String result <span class="token operator">=</span> fileService<span class="token punctuation">.</span><span class="token function">uploadUserImg</span><span class="token punctuation">(</span>file<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> result <span class="token operator">!=</span> null <span class="token operator">?</span> JsonData<span class="token punctuation">.</span><span class="token function">buildSuccess</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span> <span class="token operator">:</span> JsonData<span class="token punctuation">.</span><span class="token function">buildResult</span><span class="token punctuation">(</span>BizCodeEnum<span class="token punctuation">.</span>FILE_UPLOAD_USER_IMG_FAIL<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <ul>
-<li><p></p></li>
-<li><p>前端控制器</p>
-</li>
-<li><p></p></li>
-<li></li>
-<li><p>@author LiuDong</p>
-</li>
-<li><p>@since 2021-08-13</p>
-</li>
-<li><p>/<br>@Api(tags = “用户模块”)<br>@RestController<br>@RequestMapping(“/api/user/v1”)<br>public class UserController {</p>
-<p>  @Autowired<br>  private FileService fileService;</p>
-<p>  /**</p>
-<ul>
-<li><p>上传用户头像</p>
-</li>
-<li><p></p></li>
-<li><p>SpringBoot默认上传1M，超过则报错</p>
-</li>
-<li></li>
-<li><p>@param file</p>
-</li>
-<li><p>@return club.ldclass.utils.JsonData</p>
-</li>
-<li><p>@author LiuDong</p>
-</li>
-<li><p>@date 2021/8/19 0:03</p>
-</li>
-<li><p>/<br>@ApiOperation(value = “用户头像上传”)<br>@PostMapping(value = “upload”)<br>public JsonData uploadUserImg(</p>
-<pre><code>  @ApiParam(value = "文件上传", required = true)
-  @RequestPart("file") MultipartFile file) {</code></pre><p>  String result = fileService.uploadUserImg(file);<br>  return result != null ? JsonData.buildSuccess(result) : JsonData.buildResult(BizCodeEnum.FILE_UPLOAD_USER_IMG_FAIL);<br>}<br>}</p>
-<pre><code></code></pre></li>
-</ul>
-<ul>
-<li>SwaggerUI接口测试</li>
-</ul>
-<ul>
+<li>SwaggerUI接口测试<ul>
 <li>ui界面可以直接测试文件上传</li>
 </ul>
-<ul>
-<li>Postman测试</li>
+</li>
+<li>Postman测试<ul>
 <li><img src="/2021/08/19/a-li-yun-oss/1.png" title="测试图片上传">
 
+</li>
+</ul>
 </li>
 </ul>
 </li>
