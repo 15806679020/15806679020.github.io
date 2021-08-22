@@ -1,3 +1,4 @@
+http://www.ldclass.club/2021/08/23/wang-luo-gong-fang-zhi-mi-ma-xue/
 http://www.ldclass.club/2021/08/19/a-li-yun-oss/
 http://www.ldclass.club/2021/08/19/fen-bu-shi-wen-jian-cun-chu/
 http://www.ldclass.club/2021/08/17/springboot-zheng-he-you-xiang-starter/
@@ -77,4 +78,3 @@ http://www.ldclass.club/2021/01/19/nginx/
 http://www.ldclass.club/2021/01/16/zhuang-tai-she-ji-mo-shi/
 http://www.ldclass.club/2021/01/16/bei-wang-lu-she-ji-mo-shi/
 http://www.ldclass.club/2021/01/16/die-dai-qi-she-ji-mo-shi/
-http://www.ldclass.club/2021/01/16/ming-ling-she-ji-mo-shi/

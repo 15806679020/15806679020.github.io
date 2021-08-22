@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>网络攻防之密码学</title>
+      <link href="2021/08/23/wang-luo-gong-fang-zhi-mi-ma-xue/"/>
+      <url>2021/08/23/wang-luo-gong-fang-zhi-mi-ma-xue/</url>
+      
+        <content type="html"><![CDATA[<ul><li><h4 id="信息安全的基本目标"><a href="#信息安全的基本目标" class="headerlink" title="信息安全的基本目标"></a>信息安全的基本目标</h4><ul><li>保密性：防止用户的数据被不合法的用户读取</li><li>完整性：保护数据免受未授权的修改，包括数据的未授权创建和删除</li><li>可用性：保证具有授权的一方可以访问所有的资源</li></ul></li><li><h4 id="常见加密算法"><a href="#常见加密算法" class="headerlink" title="常见加密算法"></a>常见加密算法</h4><ul><li>哈希算法（单向加密）</li><li>对称加密</li><li>非对称加密</li></ul></li><li><h4 id="hash算法-单项加密"><a href="#hash算法-单项加密" class="headerlink" title="hash算法-单项加密"></a>hash算法-单项加密</h4><ul><li>加密过程中不需要使用密钥，输入明文后由系统直接经过加密算法处理成密文，密文无法解密。只有重新输入明文，并经过同样的加密算法处理，得到相同的密文并被系统重新识别后，才能真正解密        </li><li>算法：MD5/SHA1/SHA224/SHA256/</li><li>优点：快速计算m，具有单向性 one-way，不可由散列值推出原消息</li><li>场景：文件完整性校验和(Checksum)算法、常规密码等</li></ul></li><li><h4 id="彩虹表暴力破解"><a href="#彩虹表暴力破解" class="headerlink" title="彩虹表暴力破解"></a>彩虹表暴力破解</h4><ul><li>网站：<a href="https://www.cmd5.com/" target="_blank" rel="noopener">https://www.cmd5.com/</a></li><li>密码存储常用方式<ul><li>双重MD5</li><li>MD5+加盐（常使用）</li><li>双重MD5+加盐</li></ul></li><li>加密解密更复杂，接口性能下降更严重</li></ul></li><li><h4 id="加密工具包"><a href="#加密工具包" class="headerlink" title="加密工具包"></a>加密工具包</h4><pre class="line-numbers language-xml"><code class="language-xml"> <span class="token comment" spellcheck="true">&lt;!--用于加密--></span>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>groupId</span><span class="token punctuation">></span></span>commons-codec<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>groupId</span><span class="token punctuation">></span></span>           <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>artifactId</span><span class="token punctuation">></span></span>commons-codec<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>artifactId</span><span class="token punctuation">></span></span>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>dependency</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 1024 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 1024 </tag>
+            
+            <tag> 密码学 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>阿里云OSS</title>
       <link href="2021/08/19/a-li-yun-oss/"/>
       <url>2021/08/19/a-li-yun-oss/</url>
