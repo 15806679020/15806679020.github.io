@@ -4,6 +4,87 @@
   
     
     <entry>
+      <title>登录拦截器和ThreadLocal原理</title>
+      <link href="2021/08/25/deng-lu-lan-jie-qi-he-threadlocal-yuan-li/"/>
+      <url>2021/08/25/deng-lu-lan-jie-qi-he-threadlocal-yuan-li/</url>
+      
+        <content type="html"><![CDATA[<ul><li><h4 id="开发登录拦截器"><a href="#开发登录拦截器" class="headerlink" title="开发登录拦截器"></a>开发登录拦截器</h4><ul><li>解密JWT</li><li>传递登录用户信息<ul><li>attribute传递</li><li>threadLocal传递</li></ul></li></ul></li><li><h4 id="SpringBoot拦截器代码开发"><a href="#SpringBoot拦截器代码开发" class="headerlink" title="SpringBoot拦截器代码开发"></a>SpringBoot拦截器代码开发</h4></li></ul><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> club<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>interceptor<span class="token punctuation">;</span><span class="token keyword">import</span> club<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>enums<span class="token punctuation">.</span>BizCodeEnum<span class="token punctuation">;</span><span class="token keyword">import</span> club<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>model<span class="token punctuation">.</span>LoginUser<span class="token punctuation">;</span><span class="token keyword">import</span> club<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>CommonUtil<span class="token punctuation">;</span><span class="token keyword">import</span> club<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>JWTUtil<span class="token punctuation">;</span><span class="token keyword">import</span> club<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>utils<span class="token punctuation">.</span>JsonData<span class="token punctuation">;</span><span class="token keyword">import</span> io<span class="token punctuation">.</span>jsonwebtoken<span class="token punctuation">.</span>Claims<span class="token punctuation">;</span><span class="token keyword">import</span> lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Slf4j<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>commons<span class="token punctuation">.</span>lang3<span class="token punctuation">.</span>StringUtils<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>HandlerInterceptor<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>ModelAndView<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletRequest<span class="token punctuation">;</span><span class="token keyword">import</span> javax<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>http<span class="token punctuation">.</span>HttpServletResponse<span class="token punctuation">;</span><span class="token comment" spellcheck="true">/** * @author LiuDong * @version 1.0 * @description 登录拦截器 * @date 2021年08月24日 23:04 */</span><span class="token annotation punctuation">@Slf4j</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginInterceptor</span> <span class="token keyword">implements</span> <span class="token class-name">HandlerInterceptor</span> <span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token keyword">static</span> ThreadLocal<span class="token operator">&lt;</span>LoginUser<span class="token operator">></span> threadLocal <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ThreadLocal</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">preHandle</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span> Object handler<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">//从头信息获取</span>        String accessToken <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getHeader</span><span class="token punctuation">(</span><span class="token string">"token"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>accessToken <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>            <span class="token comment" spellcheck="true">//从url获取</span>            accessToken <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"token"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        <span class="token keyword">if</span> <span class="token punctuation">(</span>StringUtils<span class="token punctuation">.</span><span class="token function">isNoneBlank</span><span class="token punctuation">(</span>accessToken<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>            <span class="token comment" spellcheck="true">//不为空</span>            Claims claims <span class="token operator">=</span> JWTUtil<span class="token punctuation">.</span><span class="token function">checkJWT</span><span class="token punctuation">(</span>accessToken<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">if</span> <span class="token punctuation">(</span>claims <span class="token operator">==</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>                <span class="token comment" spellcheck="true">//未登录</span>                CommonUtil<span class="token punctuation">.</span><span class="token function">sendJsonMsg</span><span class="token punctuation">(</span>response<span class="token punctuation">,</span> JsonData<span class="token punctuation">.</span><span class="token function">buildResult</span><span class="token punctuation">(</span>BizCodeEnum<span class="token punctuation">.</span>ACCOUNT_UNLOGIN<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>            <span class="token punctuation">}</span>            Long userId <span class="token operator">=</span> Long<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>claims<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"id"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            String headImg <span class="token operator">=</span> claims<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"head_img"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            String mail <span class="token operator">=</span> claims<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"mail"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            String name <span class="token operator">=</span> claims<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            LoginUser loginUser <span class="token operator">=</span> LoginUser<span class="token punctuation">.</span><span class="token function">builder</span><span class="token punctuation">(</span><span class="token punctuation">)</span>                    <span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span>userId<span class="token punctuation">)</span>                    <span class="token punctuation">.</span><span class="token function">headImg</span><span class="token punctuation">(</span>headImg<span class="token punctuation">)</span>                    <span class="token punctuation">.</span><span class="token function">mail</span><span class="token punctuation">(</span>mail<span class="token punctuation">)</span>                    <span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token comment" spellcheck="true">//通过attribute传递用户信息</span>            <span class="token comment" spellcheck="true">//request.setAttribute("loginUser", loginUser);</span>            <span class="token comment" spellcheck="true">//通过ThreadLocal传递用户信息</span>            <span class="token comment" spellcheck="true">//全局变量</span>            threadLocal<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>loginUser<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        CommonUtil<span class="token punctuation">.</span><span class="token function">sendJsonMsg</span><span class="token punctuation">(</span>response<span class="token punctuation">,</span> JsonData<span class="token punctuation">.</span><span class="token function">buildResult</span><span class="token punctuation">(</span>BizCodeEnum<span class="token punctuation">.</span>ACCOUNT_UNLOGIN<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">postHandle</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span> Object handler<span class="token punctuation">,</span> ModelAndView modelAndView<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">afterCompletion</span><span class="token punctuation">(</span>HttpServletRequest request<span class="token punctuation">,</span> HttpServletResponse response<span class="token punctuation">,</span> Object handler<span class="token punctuation">,</span> Exception ex<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><ul><li><h4 id="核心知识-ThreadLocal介绍"><a href="#核心知识-ThreadLocal介绍" class="headerlink" title="核心知识-ThreadLocal介绍"></a>核心知识-ThreadLocal介绍</h4><ul><li><strong>ThreadLocal</strong>全称thread local variable（线程局部变量）功用非常简单，使用场合主要解决多线程中数据因并发产生不一致问题。</li><li>ThreadLocal为每一个线程都提供了变量的副本，使得每个线程在某时间访问到的并不是同一个对象，这样就隔离了多个线程对数据的数据共享，这样的结果是耗费了内存，但大大减少了线程同步所带来性能消耗，也减少了线程并发控制的复杂度。 </li><li>总结起来就是：同个线程共享数据</li><li>注意：ThreadLocal不能使用原子类型，只能使用Object类型</li></ul></li><li><h4 id="核心应用场景"><a href="#核心应用场景" class="headerlink" title="核心应用场景"></a>核心应用场景</h4><ul><li>ThreadLocal 用作每个线程内需要独立保存信息，方便同个线程的其他方法获取该信息的场景。</li><li>每个线程获取到的信息可能都是不一样的，前面执行的方法保存了信息后，后续方法可以通过ThreadLocal 直接获取到，避免了传参，类似于全局变量的概念，比如用户登录令牌解密后的信息传递（还有用户权限信息、从用户系统获取到的用户名、用户ID）</li></ul></li><li><h4 id="ThreadLocal同个线程共享变量"><a href="#ThreadLocal同个线程共享变量" class="headerlink" title="ThreadLocal同个线程共享变量"></a>ThreadLocal同个线程共享变量</h4><ul><li>方法一（拦截器）》》方法二（controller）》》方法三（service）》》方法四（mapper）</li></ul></li><li><h4 id="登录拦截器路径配置和开发"><a href="#登录拦截器路径配置和开发" class="headerlink" title="登录拦截器路径配置和开发"></a>登录拦截器路径配置和开发</h4><ul><li>拦截器配置<ul><li>拦截路径</li><li>不拦截路径</li></ul></li></ul></li></ul><pre class="line-numbers language-java"><code class="language-java"><span class="token keyword">package</span> club<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>config<span class="token punctuation">;</span><span class="token keyword">import</span> club<span class="token punctuation">.</span>ldclass<span class="token punctuation">.</span>interceptor<span class="token punctuation">.</span>LoginInterceptor<span class="token punctuation">;</span><span class="token keyword">import</span> lombok<span class="token punctuation">.</span>extern<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>Slf4j<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Bean<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>context<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>Configuration<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>config<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>InterceptorRegistry<span class="token punctuation">;</span><span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>web<span class="token punctuation">.</span>servlet<span class="token punctuation">.</span>config<span class="token punctuation">.</span>annotation<span class="token punctuation">.</span>WebMvcConfigurer<span class="token punctuation">;</span><span class="token comment" spellcheck="true">/** * @author LiuDong * @version 1.0 * @description * @date 2021年08月24日 23:52 */</span><span class="token annotation punctuation">@Configuration</span><span class="token annotation punctuation">@Slf4j</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">interceptorConfig</span> <span class="token keyword">implements</span> <span class="token class-name">WebMvcConfigurer</span> <span class="token punctuation">{</span>    <span class="token annotation punctuation">@Bean</span>    <span class="token keyword">public</span> LoginInterceptor <span class="token function">loginInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">LoginInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span>    <span class="token annotation punctuation">@Override</span>    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addInterceptors</span><span class="token punctuation">(</span>InterceptorRegistry registry<span class="token punctuation">)</span> <span class="token punctuation">{</span>        registry<span class="token punctuation">.</span><span class="token function">addInterceptor</span><span class="token punctuation">(</span><span class="token function">loginInterceptor</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>                <span class="token comment" spellcheck="true">//拦截的路径 黑名单</span>                <span class="token punctuation">.</span><span class="token function">addPathPatterns</span><span class="token punctuation">(</span><span class="token string">"/api/user/*/**"</span><span class="token punctuation">,</span> <span class="token string">"/api/address/*/**"</span><span class="token punctuation">,</span> <span class="token string">"/api/notify/*/**"</span><span class="token punctuation">)</span>                <span class="token operator">/</span><span class="token operator">/</span>不拦截的路径 白名单                <span class="token punctuation">.</span><span class="token function">excludePathPatterns</span><span class="token punctuation">(</span><span class="token string">"/api/notify/*/send_code"</span><span class="token punctuation">,</span> <span class="token string">"/api/notify/*/captcha"</span><span class="token punctuation">)</span>                <span class="token punctuation">.</span><span class="token function">excludePathPatterns</span><span class="token punctuation">(</span><span class="token string">"/api/user/*/register"</span><span class="token punctuation">,</span> <span class="token string">"/api/user/*/login"</span><span class="token punctuation">,</span> <span class="token string">"/api/user/*/upload"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token punctuation">}</span><span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> JWT </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JWT </tag>
+            
+            <tag> 1024 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JWT令牌token泄露恶意使用解决方案</title>
+      <link href="2021/08/25/jwt-ling-pai-token-xie-lu-e-yi-shi-yong-jie-jue-fang-an/"/>
+      <url>2021/08/25/jwt-ling-pai-token-xie-lu-e-yi-shi-yong-jie-jue-fang-an/</url>
+      
+        <content type="html"><![CDATA[<ul><li><h4 id="如何避免token令牌泄露被恶意使用"><a href="#如何避免token令牌泄露被恶意使用" class="headerlink" title="如何避免token令牌泄露被恶意使用"></a>如何避免token令牌泄露被恶意使用</h4><ul><li>ip绑定方式<ul><li>生成token的时候，加密的payload加入当前用户ip。</li><li>拦截器解密后，获取payload的ip和当前访问ip判断是否同个，如果不是则提示重新登录</li><li>优点：服务端无需存储相关内容，性能高，假如用户广州登录，泄露了token给杭州的黑客，依旧用不了</li><li>缺点：如果用户用使用过程中ip变动频繁，则操作会经常提示重新登录，体验不友好</li><li>当然也可以让用户开启安全模式和非安全模式，让用户自己知道这个情况，一些区块链、比特币交易所里面就会让用户自己选择控制这个token令牌安全是否和ip、终端、地理网络信息进行绑定</li></ul></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 1024 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JWT </tag>
+            
+            <tag> 1024 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JWT登录过期自动刷新token</title>
+      <link href="2021/08/25/jwt-deng-lu-guo-qi-zi-dong-shua-xin-token/"/>
+      <url>2021/08/25/jwt-deng-lu-guo-qi-zi-dong-shua-xin-token/</url>
+      
+        <content type="html"><![CDATA[<ul><li><p>在前后分离场景下，越来越多的项目使用jwt token作为接口的安全机制,但存在jwt过期后，用户无法直接感知，假如在用户操作页面期间，突然提示登录，则体验很不友好，所以就有了token自动刷新需求</p></li><li><h4 id="方案一：前端控制检测token，无感知刷新"><a href="#方案一：前端控制检测token，无感知刷新" class="headerlink" title="方案一：前端控制检测token，无感知刷新"></a>方案一：前端控制检测token，无感知刷新</h4><ul><li><p>用户登录成功的时候，一次性给他两个Token，分别为AccessToken和RefreshToken，AccessToken有效期较短,比如1天或者5天，用于正常请求<br>RefreshToken有效期可以设置长一些，例如10天、20天，作为刷新AccessToken的凭证</p></li><li><p>刷新方案：当AccessToken即将过期的时候，例如提前30分钟，客户端利用RefreshToken请求指定的API获取新的AccessToken并更新本地存储中的AccessToken</p></li><li><p>核心逻辑</p><ul><li>登录成功后，jwt生成AccessToken； UUID生成RefreshToken并存储在服务端redis中,设置过期时间</li><li>接口返回3个字段AccessToken/RefreshToken/访问令牌过期时间戳</li><li>由于RefreshToken存储在服务端redis中，假如这个RefreshToken也过期，则提示重新登录； </li></ul></li><li><p>疑问：RefreshToken有效期那么长，和直接将AccessToken的有效期延长有什么区别</p><ul><li>答：RefreshToken不像AccessToken那样在大多数请求中都被使用，主要是本地检测accessToken快过期的时候才使用，一般本地存储的时候，也不叫refreshToken,前端可以取个别名，混淆代码让攻击者不能直接识别这个就是刷新令牌</li></ul></li><li><p>缺点：前端每次请求需要判断token距离过期时间</p></li><li><p>优点：后端压力小，代码逻辑改动不大</p></li></ul></li></ul><img src="/2021/08/25/jwt-deng-lu-guo-qi-zi-dong-shua-xin-token/1.png" title="token自动刷新方案"><ul><li><h4 id="方案二：后端存储判断过期时间"><a href="#方案二：后端存储判断过期时间" class="headerlink" title="方案二：后端存储判断过期时间"></a>方案二：后端存储判断过期时间</h4><ul><li><p>后端存储AccessToken，每次请求过来都判断是否要过期，如果快要过期则重新生成新的token，并返回给前端重新存储，比如距离1天就过期的情况，如果用户访问对应的接口则会更新，但假如没访问则token已经过期则需要重新登录</p></li><li><p>优点：前端改动小，只需要存储响应http头里面是否有新的令牌产生，有的话就重新存储</p></li><li><p>缺点：后端实现复杂，且泄露后容易存在一直保活状态，且前端会存在并发请求，当并发请求收到多个jwt token时，容易生成多个token混乱使用    </p></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 1024 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> JWT </tag>
+            
+            <tag> 1024 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>网络攻防之密码学</title>
       <link href="2021/08/23/wang-luo-gong-fang-zhi-mi-ma-xue/"/>
       <url>2021/08/23/wang-luo-gong-fang-zhi-mi-ma-xue/</url>
@@ -1736,9 +1817,9 @@
       
         <tags>
             
-            <tag> Docker </tag>
-            
             <tag> Oracle </tag>
+            
+            <tag> Docker </tag>
             
         </tags>
       
@@ -2850,9 +2931,9 @@
       
         <tags>
             
-            <tag> Thread </tag>
-            
             <tag> 线程 </tag>
+            
+            <tag> Thread </tag>
             
         </tags>
       
@@ -2879,9 +2960,9 @@
       
         <tags>
             
-            <tag> Thread </tag>
-            
             <tag> 线程 </tag>
+            
+            <tag> Thread </tag>
             
         </tags>
       
@@ -2908,9 +2989,9 @@
       
         <tags>
             
-            <tag> Thread </tag>
-            
             <tag> 线程 </tag>
+            
+            <tag> Thread </tag>
             
         </tags>
       
@@ -2937,9 +3018,9 @@
       
         <tags>
             
-            <tag> Thread </tag>
-            
             <tag> 线程 </tag>
+            
+            <tag> Thread </tag>
             
         </tags>
       
@@ -3043,9 +3124,9 @@
       
         <tags>
             
-            <tag> Thread </tag>
-            
             <tag> 线程 </tag>
+            
+            <tag> Thread </tag>
             
         </tags>
       
@@ -3415,11 +3496,11 @@
       
         <tags>
             
+            <tag> AlibabaCloud </tag>
+            
             <tag> CAP </tag>
             
             <tag> BASE </tag>
-            
-            <tag> AlibabaCloud </tag>
             
         </tags>
       
