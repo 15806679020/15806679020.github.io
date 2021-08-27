@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ldclass.club/"/>
-  <updated>2021-08-25T01:28:39.674Z</updated>
+  <updated>2021-08-27T13:59:22.361Z</updated>
   <id>http://www.ldclass.club/</id>
   
   <author>
@@ -15,6 +15,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>nginx的location和proxy_pass是否带斜杠的区别</title>
+    <link href="http://www.ldclass.club/2021/08/28/nginx-de-location-he-proxy-pass-shi-fou-dai-xie-gang-de-qu-bie/"/>
+    <id>http://www.ldclass.club/2021/08/28/nginx-de-location-he-proxy-pass-shi-fou-dai-xie-gang-de-qu-bie/</id>
+    <published>2021-08-27T21:53:54.000Z</published>
+    <updated>2021-08-27T13:59:22.361Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li><p>当前nginx服务器IP为192.168.231.128</p><ul><li>针对一个IP，可以通过路径跳转到多个项目，server配置如下：</li></ul><pre class="line-numbers language-conf"><code class="language-conf">   server {        listen       8081;        server_name  192.168.231.128;        location / {            proxy_pass   http://localhost:8080;        }        location /txffc {            proxy_pass   http://localhost:8082;        }    }<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>proxy_pass最后待斜杠和不带斜杠的区别如下：</p><pre class="line-numbers language-conf"><code class="language-conf">location /txffc {    proxy_pass http://localhost:8082;}访问URL=http://192.168.231.128/txffc/common指向的地址实际是：http://localhost:8082/txffc/common即nginx会把包括匹配到的内容都追加到proxy_pass地址后面。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-conf"><code class="language-conf">location /txffc {    proxy_pass http://localhost:8082/;}访问URL=http://192.168.231.128/txffc/common指向的地址实际是：http://localhost:8082/common即nginx不会把匹配到的内容追加到proxy_pass地址后面。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li><li><p>location 最后待斜杠和不带斜杠的区别如下：</p><pre class="line-numbers language-conf"><code class="language-conf">location /txffc {    proxy_pass http://localhost:8082;}不带斜杠，可以匹配http://192.168.231.128/txffc/commonhttp://192.168.231.128/txffcdddhttp://192.168.231.128/txffcddd/aabc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><pre class="line-numbers language-conf"><code class="language-conf">location /txffc/ {    proxy_pass http://localhost:8082;}带斜杠，可以匹配http://192.168.231.128/txffc/commonhttp://192.168.231.128/txffc/aabb不能匹配http://192.168.231.128/txffcddd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;&lt;p&gt;当前nginx服务器IP为192.168.231.128&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;针对一个IP，可以通过路径跳转到多个项目，server配置如下：&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class=&quot;line-numbers language-conf&quot;&gt;&lt;c
+      
+    
+    </summary>
+    
+      <category term="Nginx" scheme="http://www.ldclass.club/categories/Nginx/"/>
+    
+    
+      <category term="Nginx" scheme="http://www.ldclass.club/tags/Nginx/"/>
+    
+  </entry>
   
   <entry>
     <title>登录拦截器和ThreadLocal原理</title>
@@ -603,33 +633,6 @@ yum in
     
     
       <category term="DevOps" scheme="http://www.ldclass.club/tags/DevOps/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>DDD领域驱动设计</title>
-    <link href="http://www.ldclass.club/2021/08/10/ddd-ling-yu-qu-dong-she-ji/"/>
-    <id>http://www.ldclass.club/2021/08/10/ddd-ling-yu-qu-dong-she-ji/</id>
-    <published>2021-08-09T21:51:36.000Z</published>
-    <updated>2021-08-09T13:57:51.204Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><h3 id="DDD领域驱动设计"><a href="#DDD领域驱动设计" class="headerlink" title="DDD领域驱动设计"></a>DDD领域驱动设计</h3><ul><li>什么是DDD：领域驱动设计，领域专家—&gt;电商领域/支付领域/物流领域/在线教育等</li><li>步骤：领域分析—&gt;领域设计—&gt;领域实现—&gt;循环迭代优化</li><li>DDD是一套思想，不通团队实行DDD都有不同的理解，不是每个项目都适合</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;h3 id=&quot;DDD领域驱动设计&quot;&gt;&lt;a href=&quot;#DDD领域驱动设计&quot; class=&quot;headerlink&quot; title=&quot;DDD领域驱动设计&quot;&gt;&lt;/a&gt;DDD领域驱动设计&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;什么是DDD：领域驱动设计，领域专家—&amp;gt;电商领域
-      
-    
-    </summary>
-    
-      <category term="DDD" scheme="http://www.ldclass.club/categories/DDD/"/>
-    
-    
-      <category term="DDD" scheme="http://www.ldclass.club/tags/DDD/"/>
     
   </entry>
   
