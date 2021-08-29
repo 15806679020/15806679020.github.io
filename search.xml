@@ -4,6 +4,58 @@
   
     
     <entry>
+      <title>Mapper和Repository注解的区别</title>
+      <link href="2021/08/30/mapper-he-repository-zhu-jie-de-qu-bie/"/>
+      <url>2021/08/30/mapper-he-repository-zhu-jie-de-qu-bie/</url>
+      
+        <content type="html"><![CDATA[<ul><li>@Mapper是MyBatis的注解，@Repository是Spring中的注解，这些注解就是声明一个Bean。</li><li>@Mapper<ul><li>@Mapper注解不需要在SpringBoot启动类上配置扫描类；通过xml里面的namespace里面的接口地址，生成bean对象后注入到Service里面。</li><li>在连接数据库的接口上添加@Mapper，然后在xml中的namespace指向mapper，会生成一个动态bean，然后在servcieImpl进行动态注入。</li><li>如果不在dao的接口上添加@Mapper，可以在启动类上添加@MapperScan(“”)，并且指明扫描的位置</li></ul></li><li>@Repository<ul><li>需要配置扫描地址，然后dao层生成的bean才能被注入到Service层进行使用。</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> SpringBoot </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> SpringBoot </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>越权攻击</title>
+      <link href="2021/08/30/yue-quan-gong-ji/"/>
+      <url>2021/08/30/yue-quan-gong-ji/</url>
+      
+        <content type="html"><![CDATA[<h4 id="水平-垂直越权攻击和代码防范"><a href="#水平-垂直越权攻击和代码防范" class="headerlink" title="水平-垂直越权攻击和代码防范"></a>水平-垂直越权攻击和代码防范</h4><ul><li><p>越权攻击介绍</p><ul><li>是Web应用程序中一种常见的漏洞，由于其存在范围广、危害大, 列为Web应用十大安全隐患的第二名</li><li>指应用在检查授权时存在纰漏，使得攻击者在获得低权限用户账户后，利用一些方式绕过权限检查，访问或者操作其他用户或者更高权限.</li><li>产生原因：主要是因为开发人员在对数据进行增、删、改、查询时对客户端请求的数据过分相信，而遗漏了权限的判定</li></ul></li><li><p>水平越权</p><ul><li>攻击者尝试访问与他拥有相同权限的用户的资源</li><li>例子：A用户可以直接操作到B用户的数据</li></ul></li><li><p>垂直越权</p><ul><li>一个低级别攻击者尝试访问高级别用户的资源</li><li>例子：普通管理员登录，拼接浏览器地址，直接访问高级管理员的页面</li></ul></li><li><p>防范水平越权</p><ul><li>建立用户和可操作资源的绑定关系，用户对任何资源进行操作时，通过该绑定关系确保该资源是属于该用户所有的</li></ul></li><li><p>防范垂直越权</p><ul><li>基于RBAC角色访问控制机制来防止纵向越权攻击，定义不同的权限角色，为每个角色分配不同的权限，当用户执行某个动作或产生某种行为时，通过用户所在的角色判定该动作或者行为是否允许。</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+      
+      
+      <categories>
+          
+          <category> 1024 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 1024 </tag>
+            
+            <tag> 越权攻击 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>RabbitMQ</title>
       <link href="2021/08/29/rabbitmq/"/>
       <url>2021/08/29/rabbitmq/</url>

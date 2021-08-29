@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.ldclass.club/"/>
-  <updated>2021-08-29T03:55:17.049Z</updated>
+  <updated>2021-08-29T13:36:57.933Z</updated>
   <id>http://www.ldclass.club/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mapper和Repository注解的区别</title>
+    <link href="http://www.ldclass.club/2021/08/30/mapper-he-repository-zhu-jie-de-qu-bie/"/>
+    <id>http://www.ldclass.club/2021/08/30/mapper-he-repository-zhu-jie-de-qu-bie/</id>
+    <published>2021-08-29T21:35:19.000Z</published>
+    <updated>2021-08-29T13:36:57.933Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>@Mapper是MyBatis的注解，@Repository是Spring中的注解，这些注解就是声明一个Bean。</li><li>@Mapper<ul><li>@Mapper注解不需要在SpringBoot启动类上配置扫描类；通过xml里面的namespace里面的接口地址，生成bean对象后注入到Service里面。</li><li>在连接数据库的接口上添加@Mapper，然后在xml中的namespace指向mapper，会生成一个动态bean，然后在servcieImpl进行动态注入。</li><li>如果不在dao的接口上添加@Mapper，可以在启动类上添加@MapperScan(“”)，并且指明扫描的位置</li></ul></li><li>@Repository<ul><li>需要配置扫描地址，然后dao层生成的bean才能被注入到Service层进行使用。</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;@Mapper是MyBatis的注解，@Repository是Spring中的注解，这些注解就是声明一个Bean。&lt;/li&gt;
+&lt;li&gt;@Mapper&lt;ul&gt;
+&lt;li&gt;@Mapper注解不需要在SpringBoot启动类上配置扫描类；通过xml里面的namespa
+      
+    
+    </summary>
+    
+      <category term="SpringBoot" scheme="http://www.ldclass.club/categories/SpringBoot/"/>
+    
+    
+      <category term="SpringBoot" scheme="http://www.ldclass.club/tags/SpringBoot/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>越权攻击</title>
+    <link href="http://www.ldclass.club/2021/08/30/yue-quan-gong-ji/"/>
+    <id>http://www.ldclass.club/2021/08/30/yue-quan-gong-ji/</id>
+    <published>2021-08-29T21:21:46.000Z</published>
+    <updated>2021-08-29T13:24:21.320Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="水平-垂直越权攻击和代码防范"><a href="#水平-垂直越权攻击和代码防范" class="headerlink" title="水平-垂直越权攻击和代码防范"></a>水平-垂直越权攻击和代码防范</h4><ul><li><p>越权攻击介绍</p><ul><li>是Web应用程序中一种常见的漏洞，由于其存在范围广、危害大, 列为Web应用十大安全隐患的第二名</li><li>指应用在检查授权时存在纰漏，使得攻击者在获得低权限用户账户后，利用一些方式绕过权限检查，访问或者操作其他用户或者更高权限.</li><li>产生原因：主要是因为开发人员在对数据进行增、删、改、查询时对客户端请求的数据过分相信，而遗漏了权限的判定</li></ul></li><li><p>水平越权</p><ul><li>攻击者尝试访问与他拥有相同权限的用户的资源</li><li>例子：A用户可以直接操作到B用户的数据</li></ul></li><li><p>垂直越权</p><ul><li>一个低级别攻击者尝试访问高级别用户的资源</li><li>例子：普通管理员登录，拼接浏览器地址，直接访问高级管理员的页面</li></ul></li><li><p>防范水平越权</p><ul><li>建立用户和可操作资源的绑定关系，用户对任何资源进行操作时，通过该绑定关系确保该资源是属于该用户所有的</li></ul></li><li><p>防范垂直越权</p><ul><li>基于RBAC角色访问控制机制来防止纵向越权攻击，定义不同的权限角色，为每个角色分配不同的权限，当用户执行某个动作或产生某种行为时，通过用户所在的角色判定该动作或者行为是否允许。</li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;水平-垂直越权攻击和代码防范&quot;&gt;&lt;a href=&quot;#水平-垂直越权攻击和代码防范&quot; class=&quot;headerlink&quot; title=&quot;水平-垂直越权攻击和代码防范&quot;&gt;&lt;/a&gt;水平-垂直越权攻击和代码防范&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;越权攻击介绍&lt;/p&gt;
+&lt;u
+      
+    
+    </summary>
+    
+      <category term="1024" scheme="http://www.ldclass.club/categories/1024/"/>
+    
+    
+      <category term="1024" scheme="http://www.ldclass.club/tags/1024/"/>
+    
+      <category term="越权攻击" scheme="http://www.ldclass.club/tags/%E8%B6%8A%E6%9D%83%E6%94%BB%E5%87%BB/"/>
+    
+  </entry>
   
   <entry>
     <title>RabbitMQ</title>
@@ -571,66 +628,6 @@ yum in
       <category term="1024" scheme="http://www.ldclass.club/tags/1024/"/>
     
       <category term="postman" scheme="http://www.ldclass.club/tags/postman/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>项目编码规范</title>
-    <link href="http://www.ldclass.club/2021/08/14/xiang-mu-bian-ma-gui-fan/"/>
-    <id>http://www.ldclass.club/2021/08/14/xiang-mu-bian-ma-gui-fan/</id>
-    <published>2021-08-14T15:09:46.000Z</published>
-    <updated>2021-08-14T09:25:20.042Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><h3 id="N方库"><a href="#N方库" class="headerlink" title="N方库"></a>N方库</h3><ul><li>一方库: 本工程内部子项目模块依赖的库(jar 包)。<ul><li>自己项目中的module</li></ul></li><li>二方库: 公司内部发布到中央仓库，可供公司内部其它应用依赖的库(jar包)。<ul><li>公司内部其他项目开发的公共包</li></ul></li><li>三方库: 公司之外的开源库(jar 包)。<ul><li>第三方的包</li></ul></li></ul></li><li><h3 id="POJO实体类"><a href="#POJO实体类" class="headerlink" title="POJO实体类"></a>POJO实体类</h3><ul><li>POJO(Plain Ordinary Java Object): 在手册中，POJO 专指只有 setter / getter / toString的简单类，包括DO/DTO/BO/VO等, 禁止命名成xxxPOJO<ul><li>DO：数据库映射，一一对应</li><li>DTO：服务层之间的通讯</li><li>BO：业务对象</li><li>VO：值对象，业务层和前端交互</li></ul></li></ul></li><li><h3 id="各个层级约束规范"><a href="#各个层级约束规范" class="headerlink" title="各个层级约束规范"></a>各个层级约束规范</h3><ul><li>Service/DAO层方法命名规约<ul><li>获取单个对象的方法用get做前缀。</li><li>获取多个对象的方法用list做前缀，复数形式结尾如:listObjects。 </li><li>获取统计值的方法用count做前缀。</li><li>插入的方法用save/insert做前缀。</li><li>删除的方法用remove/delete做前缀。</li><li>修改的方法用update做前缀。</li></ul></li><li>领域模型命名规约<ul><li>数据对象:xxxDO，xxx即为数据表名。</li><li>一般数据传输对象:xxxDTO，xxx为业务领域相关的名称，项目里面也用VO。 </li><li>展示对象:xxxVO，也就是响应给前端的实体包装类。</li><li>接收前端json对象请求的命名为 XXXRequest</li></ul></li></ul></li></ul><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;h3 id=&quot;N方库&quot;&gt;&lt;a href=&quot;#N方库&quot; class=&quot;headerlink&quot; title=&quot;N方库&quot;&gt;&lt;/a&gt;N方库&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;一方库: 本工程内部子项目模块依赖的库(jar 包)。&lt;ul&gt;
-&lt;li&gt;自己项目中的module&lt;/l
-      
-    
-    </summary>
-    
-      <category term="项目编码规范" scheme="http://www.ldclass.club/categories/%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/"/>
-    
-    
-      <category term="项目编码规范" scheme="http://www.ldclass.club/tags/%E9%A1%B9%E7%9B%AE%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>微服务技术对比和选择</title>
-    <link href="http://www.ldclass.club/2021/08/12/wei-fu-wu-ji-zhu-dui-bi-he-xuan-ze/"/>
-    <id>http://www.ldclass.club/2021/08/12/wei-fu-wu-ji-zhu-dui-bi-he-xuan-ze/</id>
-    <published>2021-08-11T23:15:51.000Z</published>
-    <updated>2021-08-11T15:23:36.309Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li><h3 id="SpringCloud"><a href="#SpringCloud" class="headerlink" title="SpringCloud"></a>SpringCloud</h3></li></ul><pre><code>全家桶+轻松嵌入第三方组件(Netflix 奈飞)官网：https://spring.io/projects/spring-cloud配套通信方式：http restful注册中心：eureka配置中心：config断路器：hystrix网关：zuul/gateway分布式追踪系统：sleuth+zipkin</code></pre><ul><li><h3 id="SpringCloudAlibaba"><a href="#SpringCloudAlibaba" class="headerlink" title="SpringCloudAlibaba"></a>SpringCloudAlibaba</h3></li></ul><pre><code>全家桶+阿里生态多个组件组合+SpringCloud支持官网 https://spring.io/projects/spring-cloud-alibaba配套通信方式：http restful服务注册发现：Nacos服务限流降级：Sentinel分布配置中心：Nacos服务网关：SpringCloud Gateway服务之间调用：Feign、Ribbon链路追踪：Sleuth+Zipkin</code></pre><ul><li><h3 id="为什么要选择SpringCloud和AlibabaCloud的区别"><a href="#为什么要选择SpringCloud和AlibabaCloud的区别" class="headerlink" title="为什么要选择SpringCloud和AlibabaCloud的区别"></a>为什么要选择SpringCloud和AlibabaCloud的区别</h3></li></ul><pre><code>官网 https://spring.io/projects/spring-cloud-alibaba#overviewSpringCloud和AlibabaCloud组件存在很大交集，互相配合SpringCloud很多组件是基于第三方整合，目前多个已经不更新了，比如zuul、eureka、hystrix等AlibabaCloud 提供一站式微服务解决方法，已经和SpringCloud进行了整合，组件互相支持我们也习惯称为 Spring Cloud Alibaba详细介绍：https://mp.weixin.qq.com/s/NMD52MLDY2Lq3LSeOcVwjA</code></pre><script>        document.querySelectorAll('.github-emoji')          .forEach(el => {            if (!el.dataset.src) { return; }            const img = document.createElement('img');            img.style = 'display:none !important;';            img.src = el.dataset.src;            img.addEventListener('error', () => {              img.remove();              el.style.color = 'inherit';              el.style.backgroundImage = 'none';              el.style.background = 'none';            });            img.addEventListener('load', () => {              img.remove();            });            document.body.appendChild(img);          });      </script>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;&lt;h3 id=&quot;SpringCloud&quot;&gt;&lt;a href=&quot;#SpringCloud&quot; class=&quot;headerlink&quot; title=&quot;SpringCloud&quot;&gt;&lt;/a&gt;SpringCloud&lt;/h3&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre&gt;&lt;code&gt;全家桶+轻
-      
-    
-    </summary>
-    
-      <category term="实战项目" scheme="http://www.ldclass.club/categories/%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/"/>
-    
-    
-      <category term="实战项目" scheme="http://www.ldclass.club/tags/%E5%AE%9E%E6%88%98%E9%A1%B9%E7%9B%AE/"/>
-    
-      <category term="SpringCloud" scheme="http://www.ldclass.club/tags/SpringCloud/"/>
-    
-      <category term="SpringCloudAlibaba" scheme="http://www.ldclass.club/tags/SpringCloudAlibaba/"/>
     
   </entry>
   

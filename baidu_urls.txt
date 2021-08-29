@@ -1,3 +1,5 @@
+http://www.ldclass.club/2021/08/30/mapper-he-repository-zhu-jie-de-qu-bie/
+http://www.ldclass.club/2021/08/30/yue-quan-gong-ji/
 http://www.ldclass.club/2021/08/29/rabbitmq/
 http://www.ldclass.club/2021/08/28/nginx-de-location-he-proxy-pass-shi-fou-dai-xie-gang-de-qu-bie/
 http://www.ldclass.club/2021/08/25/deng-lu-lan-jie-qi-he-threadlocal-yuan-li/
@@ -76,5 +78,3 @@ http://www.ldclass.club/2021/01/21/mysql-yu-ju-you-hua-si-lu/
 http://www.ldclass.club/2021/01/21/mysql-zhi-suo-yin-yu-cun-chu-yin-qing/
 http://www.ldclass.club/2021/01/21/mysql-zhi-shi-wu-shi-tu-hong-fa-qi-cun-chu-guo-cheng/
 http://www.ldclass.club/2021/01/21/mysql-zhi-dcl-kong-zhi-yu-yan/
-http://www.ldclass.club/2021/01/21/mysql-gao-ji-cha-xun/
-http://www.ldclass.club/2021/01/21/mysql-zi-fu-ji/
