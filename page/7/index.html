@@ -501,6 +501,72 @@ $('.bg-cover').css('background-image', 'url(/medias/banner/' + new Date().getDay
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
+                    <a href="/2021/02/01/docker-an-zhuang-mysql5-7/" target="_blank">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Docker安装mysql5.7">
+                            
+                            <span class="card-title">Docker安装mysql5.7</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                            
+docker查找mysql5.7镜像
+docker search mysql5.7
+
+
+拉取MySQL镜像(:5.7 表示5.7版本)
+docker pull mysql:5.7
+
+
+创建挂载目录
+
+mkdir -p /home/app/
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-31
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fa fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Docker/" class="post-category" target="_blank">
+                                    Docker
+                                </a>
+                                
+                                <a href="/categories/Docker/MYSQL/" class="post-category" target="_blank">
+                                    MYSQL
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Docker/" target="_blank">
+                            <span class="chip bg-color">Docker</span>
+                        </a>
+                        
+                        <a href="/tags/MYSQL/" target="_blank">
+                            <span class="chip bg-color">MYSQL</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
                     <a href="/2021/02/01/docker-an-zhuang-oracle11g/" target="_blank">
                         <div class="card-image">
                             
@@ -1124,62 +1190,6 @@ show variables like 'character%';
                 </div>
             </div>
             
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2021/01/21/mysql-shu-ju-biao-jie-gou-wei-hu/" target="_blank">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Mysql数据表结构维护">
-                            
-                            <span class="card-title">Mysql数据表结构维护</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                            
-修改表名
-
-rename table 旧表名 to 新表名;
-rename table student to user;
-
-添加列
-
-#给表添加一列：alter table 表名 add 列名 类型;
-alter table user a
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="fa fa-clock-o fa-fw icon-date"></i>2021-01-20
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fa fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/MYSQL/" class="post-category" target="_blank">
-                                    MYSQL
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/MYSQL/" target="_blank">
-                            <span class="chip bg-color">MYSQL</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
         </div>
     </article>
 
@@ -1237,7 +1247,7 @@ alter table user a
 
             
                 &nbsp; | &nbsp;字数统计:&nbsp;
-                <span class="white-color">232.2k</span> 字
+                <span class="white-color">234.4k</span> 字
             
 
             
